@@ -1,0 +1,37 @@
+﻿<tbody>
+    <tr ng-repeat="sh051 in Open.Report.Current.SH051" ng-first-readonly>
+        <th>
+            {{sh051.DW}}
+        </th>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-YJFBGX')}">
+            <input type="text" ng-model="sh051.YJFBGX" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-YJXJFBCS')}">
+            <input type="text" ng-model="sh051.YJXJFBCS" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-YJDXTS')}">
+            <input type="text" ng-model="sh051.YJDXTS" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-YJZRRS')}">
+            <input type="text" ng-model="sh051.YJZRRS" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-QDGBZ')}">
+            <input type="text" ng-model="sh051.QDGBZ" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-ZYRS')}">
+            <input type="text" ng-model="sh051.ZYRS" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-BMSW')}">
+            <input type="text" ng-model="sh051.BMSW" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-DTFW')}">
+            <input type="text" ng-model="sh051.DTFW" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh051.UnitCode + '-SSSH')}">
+            <input type="text" ng-model="sh051.SSSH" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td>
+            <input type="text" ng-model="sh051.BZ" ng-blur="FCS(0,0)"/>
+        </td>
+    </tr>
+</tbody>

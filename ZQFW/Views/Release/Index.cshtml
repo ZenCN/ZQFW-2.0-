@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="Index" id="ng-app">
+<head>
+    <title>报表操作</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--------------------------CSS-------------------------->
+    <!--Public-->
+    <link rel="stylesheet" href="../../CSS/Public/Body.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Head.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/MenuBar.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/LeftTree.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Tabs.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/ToolBar.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Report.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/TitleList.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Search.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/ListHorizontal.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Button.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Dialog.css"/>
+    <!--Plugin-->
+    <link rel="stylesheet" href="../../CSS/Plugins/zTree/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/zTree/TreeItems.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/Easydialog.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/Uploadify/uploadify.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/MultiSelect/multi-select.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/JGrowl/JGrowl.min.css"/>
+    <!--Page-->
+    <link rel="stylesheet" href="../../CSS/Pages/Index/Frame.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/New.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/Open.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/Receive.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/RecycleBin.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/UrgeReport.css"/>
+    <!--------------------------JavaScript----------------------->
+    <!--Base Library-->
+    <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/preloader.js" type="text/javascript"></script> <!--Preloader-->
+    <script src="../../Scripts/Library/Angular/angular.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Angular/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Angular/Scope.SafeApply.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Extend/String.js" type="text/javascript"></script>
+    <!--Angular Application-->
+    <script src="../../Scripts/Application/IndexApp.js" type="text/javascript"></script>
+    <!--Head-->
+    <script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../Scripts/Others/Head.js" type="text/javascript"></script>
+    <!--Load ServerData-->
+    <script type="text/javascript">
+        window.basedata = @Html.Raw(ViewData["InitData"].ToString());
+    </script>
+    <script id="load_js"></script>
+</head>
+    <body class="DarkGray">
+        <div ui-view>
+            
+        </div>
+        <div id="preloader" class="Shadow">
+            <div id="loaderImage" style="width: 124px; height: 128px; margin: 25% auto; background-image: url(../../CSS/Img/Public/Sprites.png)">
+            </div>
+        </div>
+        <div id="jGrowlMessage" class="jGrowl bottom-right">
+            
+        </div>
+    </body>
+    <!--Plugin-->
+    <script src="../../Scripts/Library/Plugins/easydialog.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.uploadify.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.form.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.multi-select.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.quicksearch.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.jgrowl.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/table-fixed.js" type="text/javascript"></script>
+    <!--Tool-->
+    <script src="../../Scripts/Others/Tools.js" type="text/javascript"></script>
+    <!--Configure-->
+    <script src="../../Scripts/Configuration/Field.js" type="text/javascript"></script>
+    <!--Angular MVC-->
+    <script src="../../Scripts/Models/ReportTitleModel.js" type="text/javascript"></script>
+    <script src="../../Scripts/Models/HLModel.js" type="text/javascript"></script>
+    <script src="../../Scripts/Models/TreeNodeModel.js" type="text/javascript"></script>
+    <script src="../../Scripts/Directives/PublicDirective.js" type="text/javascript"></script>
+    <script src="../../Scripts/Directives/Index/IndexDirective.js" type="text/javascript"></script>
+    <script src="../../Scripts/Factories/Index/IndexFactory.js" type="text/javascript"></script>
+    <script src="../../Scripts/Factories/PublicFactory.js" type="text/javascript"></script>
+    <script src="../../Scripts/Controllers/Index/IndexController.js" type="text/javascript"></script>
+    <!--Document Ready-->
+    <script src="../../Scripts/Others/PublicReady.js" type="text/javascript"></script>
+    <script src="../../Scripts/Others/IndexReady.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,51 @@
+﻿div.Manintain {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.Manintain .Button {
+	width: 100%;
+	height: 80%;
+}
+
+.Manintain .Button .BackUp {
+	width: 162px;
+	height: 162px;
+	margin: 0 auto;
+	background-image: url("../../CSS/Img/Pages/System/BackUp.png");
+	background-position: -8px -7px;
+	position: relative;
+	background-repeat: no-repeat;
+	top: 35%;
+	cursor: pointer;
+	border-radius: 79px;
+}
+.Manintain .Button .BackUp:hover {
+	background-color: rgb(7, 7, 7);
+}
+
+.Manintain .Button .BackUp.Start {
+	background-position: -174px -7px;
+}
+
+.Manintain .Button .BackUp.Run {
+	background-position: -9px -171px;
+}
+
+.Manintain .Button .BackUp.Success {
+	background-position: -8px -335px;
+}
+
+.Manintain .Button .BackUp.Error {
+	background-position: -8px -499px;
+}
+
+.Manintain .Message ul {
+	list-style: none;
+	padding: 0 20px 0 20px;
+	text-align: center;
+	font-size: 15px;
+}

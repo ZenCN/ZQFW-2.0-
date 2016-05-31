@@ -1,0 +1,34 @@
+﻿<tbody>
+    <tr ng-repeat="sh036 in Open.Report.Current.SH036">
+        <th>
+            {{$index + 1}}
+        </th>
+        <th>
+            <span class="txt_center">{{sh036.SSX}}</span>
+        </th>
+        <td class="ReadOnly">
+            {{sh036.XYAJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh036.XYAJH > 0),WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh036.UnitCode + '-XYAWC')}">
+            <input type="text" ng-readonly="!(sh036.XYAJH > 0)" ng-model="sh036.XYAWC" ng-blur="FCN();FCS();FCKD();"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh036.XZYAJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh036.XZYAJH > 0),WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh036.UnitCode + '-XZYAWC')}">
+            <input type="text" ng-readonly="!(sh036.XZYAJH > 0)" ng-model="sh036.XZYAWC" ng-blur="FCN();FCS();FCKD();"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh036.CYAJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh036.CYAJH > 0),WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh036.UnitCode + '-CYAWC')}">
+            <input type="text" ng-readonly="!(sh036.CYAJH > 0)" ng-model="sh036.CYAWC" ng-blur="FCN();FCS();FCKD();"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh036.QTYAJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh036.QTYAJH > 0),WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh036.UnitCode + '-QTYAWC')}">
+            <input type="text" ng-readonly="!(sh036.QTYAJH > 0)" ng-model="sh036.QTYAWC" ng-blur="FCN();FCS();FCKD();"/>
+        </td>
+    </tr>
+</tbody>

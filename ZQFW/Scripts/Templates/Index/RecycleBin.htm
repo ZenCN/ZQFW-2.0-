@@ -1,0 +1,106 @@
+﻿<div class="ToolBar">
+    <ul>
+        <li ng-click="RecycleBin.Fn.Operate('Resume')" class="Resume"><i></i>恢复</li>
+        <li ng-click="RecycleBin.Fn.Operate('Delete')" class="Deleted"><i></i>删除</li>
+    </ul>
+</div>
+<div class="Search-Condition">
+    <p>
+        <label>行政单位:</label>
+        <select ng-model="RecycleBin.Attr[RecycleBin.Box.Current].UnitCode" ng-change="Fn.TabSearch.ChangeCondition()" ng-hide="RecycleBin.Box.Current == 'CurrentDept'" ng-options="Unit.UnitCode as Unit.UnitName for Unit in BaseData.Unit.Unders">
+            <option value="">所有下级单位</option>
+        </select>
+        <select ng-show="RecycleBin.Box.Current == 'CurrentDept'">
+            <option>本级单位</option>
+        </select>
+
+        <label>报表类型:</label>
+        <select ng-model="RecycleBin.Attr[RecycleBin.Box.Current].ORD_Code" ng-change="Fn.TabSearch.ChangeCondition()" ng-options="op.code as op.name for op in RecycleBin.Attr.RptClass">
+        </select>
+        
+        <label>结束日期:</label>
+        <input ng-model="RecycleBin.Attr[RecycleBin.Box.Current].StartDateTime" type="text" ng-wdatepicker='{"maxDate": "RecycleBin.Attr[RecycleBin.Box.Current].EndDateTime","callback":"Fn.TabSearch.ChangeCondition"}' readonly />
+        <label>至</label>
+        <input ng-model="RecycleBin.Attr[RecycleBin.Box.Current].EndDateTime" type="text" ng-wdatepicker='{"minDate":"RecycleBin.Attr[RecycleBin.Box.Current].StartDateTime","callback":"Fn.TabSearch.ChangeCondition"}' readonly />
+    </p>
+    <p>
+        <label>时段类型:</label>
+        <label>
+            <input type="radio" name="cycType" ng-model="RecycleBin.Attr[RecycleBin.Box.Current].StatisticalCycType" ng-change="Fn.TabSearch.ChangeCondition()" value=""/>
+            所有类型
+        </label>
+        <label ng-repeat="type in RecycleBin.Attr.CycTypeSelect">
+            <input type="radio" name="cycType" ng-model="RecycleBin.Attr[RecycleBin.Box.Current].StatisticalCycType" ng-change="Fn.TabSearch.ChangeCondition()" value="{{type.value}}"/>
+            {{type.name}}
+        </label>
+        <input class="DarkBlue" name="Search" type="button" ng-click="Fn.TabSearch.Refresh.Server()" value="搜索" />
+    </p>
+</div>
+<div class="Search-Tabs">
+    <div class="Tabs">
+        <ul>
+            <li id="Current" ng-class="{Selected:RecycleBin.Box.Current == 'CurrentDept'}" ng-click="Fn.TabSearch.SwitchBox('CurrentDept')"><span><i></i>本级单位</span></li>
+            <li id="Inferior" ng-hide="Config.Page.RecycleBin.Func.Inferior" ng-class="{Selected:RecycleBin.Box.Current == 'InferiorDept'}" ng-click="Fn.TabSearch.SwitchBox('InferiorDept')"><!--浙江、黑龙江县级隐藏下级单位-->
+                <span><i></i>下级单位</span>
+            </li>
+        </ul>
+    </div>
+    <div class="ListHorizontal">
+        <ul class="Head" ng-css='{ selector: ".ListHorizontal .Boxes div", attr: "width" }'>
+            <li class="Check"><input type="checkbox" ng-model="RecycleBin.Attr.CheckAll" ng-click="Fn.TabSearch.CheckAll()" /></li>
+            <li class="UnitName">单位名称</li>
+            <li class="TableName">表名</li>
+            <li class="CycName">时段类型</li>
+            <li class="BeginTime">起始日期</li>
+            <li class="EndTime">结束日期</li>
+            <li class="WriteTime">填报日期</li>
+            <li class="LastUpdateTime">最后更新日期</li>
+            <li class="Remark">备注</li>
+        </ul>
+        <div class="Boxes">
+            <div class="CurrentDept" ng-show="RecycleBin.Box.Current == 'CurrentDept'">
+                <ul ng-repeat="rpt in RecycleBin.Box.CurrentDept.Fake" ng-class="{Selected:RecycleBin.Box.Selected.PageNO == rpt.PageNO}" ng-click="Fn.TabSearch.ViewReport(rpt)" ng-dblclick="RecycleBin.Box.Selected = undefined">
+                    <li class="Check" ng-click="Fn.TabSearch.StopPro(arguments[0])"><input type="checkbox" ng-model="rpt.Checked"/></li>
+                    <li class="UnitName">{{rpt.UnitName}}</li>
+                    <li class="TableName">{{BaseData.Select.RptClass.Find('code',rpt.ORD_Code,"name")}}</li>
+                    <li class="CycName">{{BaseData.Select.CycType[rpt.ORD_Code].Find("value",rpt.StatisticalCycType,"name")}}</li>
+                    <li class="BeginTime">{{rpt.StartDateTime}}</li>
+                    <li class="EndTime">{{rpt.EndDateTime}}</li>
+                    <li class="WriteTime">{{rpt.WriterTime}}</li>
+                    <li class="LastUpdateTime" title="{{rpt.LastUpdateTime.replaceAll('{/r-/n}','\n')}}">{{rpt.LastUpdateTime}}</li>
+                    <li class="Remark" title="{{rpt.Remark.replaceAll('{/r-/n}','\n')}}">{{rpt.Remark.replaceAll('{/r-/n}','\n')}}</li>
+                </ul>
+            </div>
+            <div class="InferiorDept" ng-show="RecycleBin.Box.Current == 'InferiorDept'">
+                <ul ng-repeat="rpt in RecycleBin.Box.InferiorDept.Fake" ng-class="{Selected:RecycleBin.Box.Selected.PageNO == rpt.PageNO}" ng-click="Fn.TabSearch.ViewReport(rpt)" ng-dblclick="RecycleBin.Box.Selected = undefined">
+                    <li class="Check" ng-click="Fn.TabSearch.StopPro(arguments[0])"><input type="checkbox" ng-model="rpt.Checked"/></li>
+                    <li class="UnitName">{{rpt.UnitName}}</li>
+                    <li class="TableName">{{BaseData.Select.RptClass.Find('code',rpt.ORD_Code,"name")}}</li>
+                    <li class="CycName">{{BaseData.Select.CycType[rpt.ORD_Code].Find("value",rpt.StatisticalCycType,"name")}}</li>
+                    <li class="BeginTime">{{rpt.StartDateTime}}</li>
+                    <li class="EndTime">{{rpt.EndDateTime}}</li>
+                    <li class="WriteTime">{{rpt.WriterTime}}</li>
+                    <li class="LastUpdateTime" title="{{rpt.LastUpdateTime.replaceAll('{/r-/n}','\n')}}">{{rpt.LastUpdateTime}}</li>
+                    <li class="Remark" title="{{rpt.Remark.replaceAll('{/r-/n}','\n')}}">{{rpt.Remark.replaceAll('{/r-/n}','\n')}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Preview" ng-if="RecycleBin.Box.Selected.ORD_Code == 'HL01'">
+        <div class="Affix" ng-show="RecycleBin.Attr.Report.Affix">
+            <ul>
+                <li ng-repeat="affix in RecycleBin.Attr.Report.Affix">
+                    <a href="{{'/AffixOperater/DownFiles?name=' + affix.name + '&url=' + affix.url}}" title="{{affix.name}}">
+                        {{$index + 1}}.{{affix.name}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div ng-class = "{View:RecycleBin.Attr.Report.Affix.length}">
+            <span class="Close" ng-click="RecycleBin.Box.Selected = undefined"></span>
+            <input type="button" value="明细" class="DarkBlue" ng-click="Fn.ViewUnderRpt(RecycleBin.Box.Selected)" />
+            <div ng-include="'Index/GetTemmplate?url=Public.HL.Preview'">
+            </div>
+        </div>
+    </div>
+</div>

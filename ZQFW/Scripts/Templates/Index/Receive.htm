@@ -1,0 +1,117 @@
+﻿<div class="ToolBar">
+    <ul>
+<!--        <li ng-click="Receive.Fn.Download()" class="Download"><i></i>下载</li>-->
+        <li ng-click="Receive.Fn.Operate('Delete')" class="Deleted"><i></i>删除</li>
+        <li ng-click="Receive.Fn.Operate('Audit')" class="Cased" ng-show="Receive.Box.Current == 'Auditing'"><i></i>装入</li>
+        <li ng-click="Receive.Fn.Operate('Refuse')" class="Refused" ng-show="Receive.Box.Current == 'Auditing'"><i></i>拒收</li>
+        <li ng-click="Receive.Fn.Operate('Recover')" class="Resume" ng-show="Receive.Box.Current == 'Refused'"><i></i>恢复</li>
+    </ul>
+</div>
+<div class="Search-Condition">
+    <p>
+        <label>下级单位:</label>
+        <select ng-model="Receive.Attr[Receive.Box.Current].UnitCode" ng-change="Fn.TabSearch.ChangeCondition()" ng-options="Unit.UnitCode as Unit.UnitName for Unit in BaseData.Unit.Unders">
+            <option value="">所有下级单位</option>
+        </select>
+
+        <label>报表类型:</label>
+        <select ng-model="Receive.Attr[Receive.Box.Current].ORD_Code" ng-change="Fn.TabSearch.ChangeCondition()" ng-options="op.code as op.name for op in Receive.Attr.RptClass">
+        </select>
+        
+        <label>
+            <label>发送日期:</label>
+            <input ng-wdatepicker='{"maxDate": "Receive.Attr[Receive.Box.Current].EndDateTime","callback":"Fn.TabSearch.ChangeCondition"}'
+             ng-model="Receive.Attr[Receive.Box.Current].StartDateTime" type="text"  readonly />
+            <label>至</label>
+            <input ng-model="Receive.Attr[Receive.Box.Current].EndDateTime" type="text" ng-wdatepicker='{"minDate":"Receive.Attr[Receive.Box.Current].StartDateTime","callback":"Fn.TabSearch.ChangeCondition"}' readonly />
+        </label>
+    </p>
+    <p>
+        <label>时段类型:</label>
+        <label>
+            <input type="radio" name="cycType" ng-model="Receive.Attr[Receive.Box.Current].StatisticalCycType" ng-change="Fn.TabSearch.ChangeCondition()" value=""/>
+            所有类型
+        </label>
+        <label ng-repeat="type in Receive.Attr.CycTypeSelect">
+            <input type="radio" name="cycType" ng-model="Receive.Attr[Receive.Box.Current].StatisticalCycType" ng-change="Fn.TabSearch.ChangeCondition()" value="{{type.value}}"/>
+            {{type.name}}
+        </label>
+        <input class="DarkBlue" name="Search" type="button" ng-click="Fn.TabSearch.Refresh.Server()" value="搜索" />
+    </p>
+</div>
+<div class="Search-Tabs">
+    <div class="Tabs">
+        <ul>
+            <li id="Auditing" ng-class="{Selected:Receive.Box.Current == 'Auditing'}" ng-click="Fn.TabSearch.SwitchBox('Auditing')"><span><i></i>收表箱</span></li>
+            <li id="Audited" ng-class="{Selected:Receive.Box.Current == 'Audited'}" ng-click="Fn.TabSearch.SwitchBox('Audited')"><span><i></i>已收表箱</span></li>
+            <li id="Refused" ng-class="{Selected:Receive.Box.Current == 'Refused'}" ng-click="Fn.TabSearch.SwitchBox('Refused')"><span><i></i>拒收表箱</span></li>
+        </ul>
+    </div>
+    <div class="ListHorizontal">
+        <ul class="Head" ng-css='{ selector: ".ListHorizontal .Boxes div", attr: "width" }'>
+            <li class="Check"><input type="checkbox" ng-model="Receive.Attr.CheckAll" ng-click="Fn.TabSearch.CheckAll()"/></li>
+            <li class="UnitName">单位名称</li>
+            <li class="TableName">表名</li>
+            <li class="BeginTime">起始日期</li>
+            <li class="EndTime">结束日期</li>
+            <li class="WriteTime">填报日期</li>
+            <li class="SendTime">发送时间</li>
+            <li class="Remark">备注</li>
+        </ul>
+        <div class="Boxes">
+            <div class="Auditing" ng-show="Receive.Box.Current == 'Auditing'">
+                <ul ng-repeat="rpt in Receive.Box.Auditing.Fake" ng-class="{Selected:Receive.Box.Selected.PageNO == rpt.PageNO}" ng-click="Fn.TabSearch.ViewReport(rpt)" ng-dblclick="Receive.Box.Selected = undefined">
+                    <li class="Check" ng-click="Fn.TabSearch.StopPro(arguments[0])"><input type="checkbox" ng-model="rpt.Checked"/></li>
+                    <li class="UnitName">{{rpt.UnitName}}</li>
+                    <li class="TableName">{{BaseData.Select.RptClass.Find('code',rpt.ORD_Code,"name")}}</li>
+                    <li class="BeginTime">{{rpt.StartDateTime}}</li>
+                    <li class="EndTime">{{rpt.EndDateTime}}</li>
+                    <li class="WriteTime">{{rpt.WriterTime}}</li>
+                    <li class="SendTime" title="{{rpt.SendTime}}">{{rpt.SendTime}}</li>
+                    <li class="Remark" title="{{rpt.Remark}}">{{rpt.Remark}}</li>
+                </ul>
+            </div>
+            <div class="Audited" ng-show="Receive.Box.Current == 'Audited'">
+                <ul ng-repeat="rpt in Receive.Box.Audited.Fake" ng-class="{Selected:Receive.Box.Selected.PageNO == rpt.PageNO}" ng-click="Fn.TabSearch.ViewReport(rpt)" ng-dblclick="Receive.Box.Selected = undefined">
+                    <li class="Check" ng-click="Fn.TabSearch.StopPro(arguments[0])"><input type="checkbox" ng-model="rpt.Checked"/></li>
+                    <li class="UnitName">{{rpt.UnitName}}</li>
+                    <li class="TableName">{{BaseData.Select.RptClass.Find('code',rpt.ORD_Code,"name")}}</li>
+                    <li class="BeginTime">{{rpt.StartDateTime}}</li>
+                    <li class="EndTime">{{rpt.EndDateTime}}</li>
+                    <li class="WriteTime">{{rpt.WriterTime}}</li>
+                    <li class="SendTime" title="{{rpt.SendTime}}">{{rpt.SendTime}}</li>
+                    <li class="Remark" title="{{rpt.Remark}}">{{rpt.Remark}}</li>
+                </ul>
+            </div>
+            <div class="Refused" ng-show="Receive.Box.Current == 'Refused'">
+                <ul ng-repeat="rpt in Receive.Box.Refused.Fake" ng-class="{Selected:Receive.Box.Selected.PageNO == rpt.PageNO}" ng-click="Fn.TabSearch.ViewReport(rpt)" ng-dbclick="Receive.Box.Selected = undefined">
+                    <li class="Check" ng-click="Fn.TabSearch.StopPro(arguments[0])"><input type="checkbox" ng-model="rpt.Checked"/></li>
+                    <li class="UnitName">{{rpt.UnitName}}</li>
+                    <li class="TableName">{{BaseData.Select.RptClass.Find('code',rpt.ORD_Code,"name")}}</li>
+                    <li class="BeginTime">{{rpt.StartDateTime}}</li>
+                    <li class="EndTime">{{rpt.EndDateTime}}</li>
+                    <li class="WriteTime">{{rpt.WriterTime}}</li>
+                    <li class="SendTime" title="{{rpt.SendTime}}">{{rpt.SendTime}}</li>
+                    <li class="Remark" title="{{rpt.Remark}}">{{rpt.Remark}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Preview" ng-if="Receive.Box.Selected.ORD_Code == 'HL01'">
+        <div class="Affix" ng-show="Receive.Attr.Report.Affix.length">
+            <ul>
+                <li ng-repeat="affix in Receive.Attr.Report.Affix">
+                    <a href="{{'/AffixOperater/DownFiles?name=' + affix.name + '&url=' + affix.url}}" title="{{affix.name}}">
+                        {{$index + 1}}.{{affix.name}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div ng-class = "{View:Receive.Attr.Report.Affix.length}"> 
+            <span class="Close" ng-click="Receive.Box.Selected = undefined"></span>
+            <input type="button" value="明细" class="DarkBlue" ng-click="Fn.ViewUnderRpt(Receive.Box.Selected)" />
+            <div ng-include="'Index/GetTemmplate?url=Public.HL.Preview'">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<div class="LeftTree" pos-top="26" name="BaseData">
+    <div class="Left">
+        <ul class="ztree myTree"></ul>
+    </div>
+    <div class="Right">
+        <div class="MenuBar">
+            <ul>
+                <li ng-class="{Selected: Unit.Tabs.Current == 'BaseData'}" ng-click="Unit.Tabs.TurnTo('BaseData')">
+                    <span><i class="BaseData"></i>基础数据</span>
+                </li>
+                <li ng-if="SysUserCode == 43" ng-class="{Selected: Unit.Tabs.Current == 'Reservoir'}" ng-click="Unit.Tabs.TurnTo('Reservoir')">
+                    <span><i class="Reservoir"></i>蓄水数据</span>
+                </li>
+                <li ng-class="{Selected: Unit.Tabs.Current == 'InferiorManager'}" ng-click="Unit.Tabs.TurnTo('InferiorManager')">
+                    <span><i class="InferiorManager"></i>单位管理</span>
+                </li>
+            </ul>
+        </div>
+        <div class="ToolBar">
+            <ul>
+                <li class="Save" ng-click="Unit.Fn.Save()" ng-show="Unit.SelectedCode || Unit.Tabs.Current == 'Reservoir'"><i></i>保存</li>
+                <li class="New" ng-show="Unit.Tabs.Current == 'InferiorManager' && Unit.SelectedCode" ng-click="Unit.Fn.New()"><i></i>新增</li>
+                <li class="Reset" ng-show="Unit.Tabs.Current == 'InferiorManager' && Unit.SelectedCode">
+                    <div>
+                        <i></i>重置
+                    </div>
+                    <ul>
+                        <li ng-click="Unit.Fn.Reset(0, Unit.SelectedCode)">本级</li>
+                        <li ng-click="Unit.Fn.Reset('all')">所有下级</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="SlidePage">
+            <div ng-class="{BaseData:Unit.Tabs.Current == 'BaseData',InferiorManager:Unit.Tabs.Current == 'InferiorManager',Reservoir:Unit.Tabs.Current == 'Reservoir'}"
+                ng-include="'Town/GetTemplateResult?type=' + Unit.Tabs.Current">
+            </div>
+        </div>
+    </div>
+</div>

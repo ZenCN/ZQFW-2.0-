@@ -1,0 +1,40 @@
+﻿<tbody>
+<tr ng-repeat="sh032 in Open.Report.Current.SH032">
+    <th>
+        {{$index + 1}}
+    </th>
+    <th>
+        <span class="txt_center">{{sh032.SSX}}</span>
+    </th>
+    <td class="ReadOnly">
+        {{sh032.WXGBJH}}
+    </td>
+    <td ng-class="{ ReadOnly: !(sh032.WXGBJH > 0)}">
+        <input type="text" ng-readonly="!(sh032.WXGBJH > 0)" ng-model="sh032.WXGBWC" ng-blur="FCN();FCS()"/>
+    </td>
+    <td class="ReadOnly">
+        {{sh032.YLBJJH}}
+    </td>
+    <td ng-class="{ ReadOnly: !(sh032.YLBJJH > 0)}">
+        <input type="text" ng-readonly="!(sh032.YLBJJH > 0)" ng-model="sh032.YLBJWC" ng-blur="FCN();FCS()"/>
+    </td>
+    <td class="ReadOnly">
+        {{sh032.SWZJH}}
+    </td>
+    <td ng-class="{ ReadOnly: !(sh032.SWZJH > 0)}">
+        <input type="text" ng-readonly="!(sh032.SWZJH > 0)" ng-model="sh032.SWZWC" ng-blur="FCN();FCS()"/>
+    </td>
+    <td class="ReadOnly">
+        {{sh032.BJQJH}}
+    </td>
+    <td ng-class="{ ReadOnly: !(sh032.BJQJH > 0)}">
+        <input type="text" ng-readonly="!(sh032.BJQJH > 0)" ng-model="sh032.BJQWC" ng-blur="FCN();FCS()"/>
+    </td>
+    <td class="ReadOnly">
+        {{sh032.LGHJH}}
+    </td>
+    <td ng-class="{ ReadOnly: !(sh032.LGHJH > 0)}">
+        <input type="text" ng-readonly="!(sh032.LGHJH > 0)" ng-model="sh032.LGHWC" ng-blur="FCN();FCS()"/>
+    </td>
+</tr>
+</tbody>

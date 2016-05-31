@@ -1,0 +1,8 @@
+﻿<table>
+    <tbody>
+        <tr ng-repeat="Field in Unit.BaseData">
+            <td>{{Field.Name}}：</td>
+            <td><input type="text" ng-model="Field.BaseData" ng-blur="FCN(Field.Decimal)"/></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,165 @@
+﻿<table ng-show="Report.TableIndex == 3">
+    <caption>
+        水利设施洪涝灾害统计表
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="3" nowrap="">
+                地区
+            </th>
+            <th colspan="2" scope="col">
+                损坏水库
+            </th>
+            <th colspan="3" scope="col" rolspan="2">
+                水库垮坝
+            </th>
+            <th colspan="2" scope="col" rolspan="2">
+                损坏堤防
+            </th>
+            <th colspan="2" scope="col" rolspan="2">
+                堤防决口
+            </th>
+            <th scope="col" class="noborder">
+                损坏
+            </th>
+            <th scope="col" class="noborder">
+                损坏
+            </th>
+            <th scope="col" class="noborder">
+                冲毁
+            </th>
+            <th scope="col" class="noborder">
+                损坏灌
+            </th>
+            <th scope="col" class="noborder">
+                损坏水
+            </th>
+            <th scope="col" class="noborder">
+                损坏
+            </th>
+            <th scope="col" class="noborder">
+                损坏机
+            </th>
+            <th scope="col" class="noborder">
+                损坏
+            </th>
+            <th scope="col" class="noborder">
+                水利设施
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                大中型
+            </th>
+            <th scope="col">
+                小型
+            </th>
+            <th scope="col">
+                大中型
+            </th>
+            <th scope="col">
+                小一
+            </th>
+            <th scope="col">
+                小二
+            </th>
+            <th scope="col">
+                处数
+            </th>
+            <th scope="col">
+                长度
+            </th>
+            <th scope="col">
+                处数
+            </th>
+            <th scope="col">
+                长度
+            </th>
+            <th scope="col" class="noborder">
+                护岸
+            </th>
+            <th scope="col" class="noborder">
+                水闸
+            </th>
+            <th scope="col" class="noborder">
+                塘坝
+            </th>
+            <th scope="col" class="noborder">
+                溉设施
+            </th>
+            <th scope="col" class="noborder">
+                文测站
+            </th>
+            <th scope="col" class="noborder">
+                机电井
+            </th>
+            <th scope="col" class="noborder">
+                电泵站
+            </th>
+            <th scope="col" class="noborder">
+                水电站
+            </th>
+            <th scope="col" class="noborder">
+                直接经济损失
+            </th>
+        </tr>
+        <tr>
+            <th scope="col" name="SHSKD">
+                {{BaseData.Field.SHSKD.MeasureName ? BaseData.Field.SHSKD.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SHSKX">
+                {{BaseData.Field.SHSKX.MeasureName ? BaseData.Field.SHSKX.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SKKBD">
+                {{BaseData.Field.SKKBD.MeasureName ? BaseData.Field.SKKBD.MeasureName : "(座)"}}
+            </th>
+            <th scope="col" name="SKKBX1">
+                {{BaseData.Field.SKKBX1.MeasureName ? BaseData.Field.SKKBX1.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SKKBX2">
+                {{BaseData.Field.SKKBX2.MeasureName ? BaseData.Field.SKKBX2.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SHDFCS">
+                {{BaseData.Field.SHDFCS.MeasureName ? BaseData.Field.SHDFCS.MeasureName : "(处)"}}
+            </th>
+            <th scope="col" name="SHDFCD">
+                {{BaseData.Field.SHDFCD.MeasureName ? BaseData.Field.SHDFCD.MeasureName : "（米）"}}
+            </th>
+            <th scope="col" name="DFJKCS">
+                {{BaseData.Field.DFJKCS.MeasureName ? BaseData.Field.DFJKCS.MeasureName : "（处）"}}
+            </th>
+            <th scope="col" name="DFJKCD">
+                {{BaseData.Field.DFJKCD.MeasureName ? BaseData.Field.DFJKCD.MeasureName : "（米）"}}
+            </th>
+            <th scope="col" name="SHHAC">
+                {{BaseData.Field.SHHAC.MeasureName ? BaseData.Field.SHHAC.MeasureName : "（处）"}}
+            </th>
+            <th scope="col" name="SHSZ">
+                {{BaseData.Field.SHSZ.MeasureName ? BaseData.Field.SHSZ.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="CHTB">
+                {{BaseData.Field.CHTB.MeasureName ? BaseData.Field.CHTB.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SHGGSS">
+                {{BaseData.Field.SHGGSS.MeasureName ? BaseData.Field.SHGGSS.MeasureName : " （处）"}}
+            </th>
+            <th scope="col" name="SHSWCZ">
+                {{BaseData.Field.SHSWCZ.MeasureName ? BaseData.Field.SHSWCZ.MeasureName : "（个）"}}
+            </th>
+            <th scope="col" name="SHJDJ">
+                {{BaseData.Field.SHJDJ.MeasureName ? BaseData.Field.SHJDJ.MeasureName : "（眼）"}}
+            </th>
+            <th scope="col" name="SHJDBZ">
+                {{BaseData.Field.SHJDBZ.MeasureName ? BaseData.Field.SHJDBZ.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SHSDZ">
+                {{BaseData.Field.SHSDZ.MeasureName ? BaseData.Field.SHSDZ.MeasureName : "（座）"}}
+            </th>
+            <th scope="col" name="SLSSZJJJSS">
+                {{BaseData.Field.SLSSZJJJSS.MeasureName ? BaseData.Field.SLSSZJJJSS.MeasureName
+                : "（万元）"}}
+            </th>
+        </tr>
+    </thead>
+ 
+</table>

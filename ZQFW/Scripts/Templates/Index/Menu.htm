@@ -1,0 +1,24 @@
+﻿<div class="MenuBar" pos-top="20">
+    <ul>
+        <li ng-click="RedictUrl('/New')" ng-class="{Selected:CurrentUrl=='/New'}"><span><i class="New"></i>新建</span></li>
+        <li ng-click="RedictUrl('/Open')" ng-class="{Selected:CurrentUrl=='/Open'}"><span><i class="Open"></i>打开</span></li>
+        <li ng-hide="Config.Page.Receive.Hide" ng-click="RedictUrl('/Receive')" ng-class="{Selected:CurrentUrl=='/Receive'}"><!--浙江、黑龙江县级没有接收页面-->
+            <span><i class="Receive"></i>接收</span>
+            <span class="InboxMsg"></span>
+        </li>
+        <li ng-click="RedictUrl('/RecycleBin')" ng-class="{Selected:CurrentUrl=='/RecycleBin'}" ng-hide="SysUserCode == 15 && SysORD_Code == 'NP01'">
+            <span><i class="RecycleBin"></i>回收站</span>
+        </li>
+        <li ng-hide="Config.Page.UrgeReport.Hide" ng-click="RedictUrl('/UrgeReport')" ng-class="{Selected:CurrentUrl=='/UrgeReport'}"><!--浙江、黑龙江县级没有催报页面-->
+            <span><i class="UrgeReport"></i>催报</span>
+        </li>
+    </ul>
+</div>
+
+<ng-include src="'Index/GetTemmplate?url=Public.Dialog'">
+    
+</ng-include>
+
+<div class="Frame" pos-top="55" ui-view>
+    
+</div>

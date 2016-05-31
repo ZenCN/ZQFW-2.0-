@@ -1,0 +1,125 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.ListHorizontal .Check{
+    width: 30px;
+}
+.ListHorizontal .UnitName,.ListHorizontal .TableName{
+    width: 14%;
+}
+.ListHorizontal .BeginTime,.ListHorizontal .EndTime,.ListHorizontal .WriteTime{
+    width: 10%;
+}
+.ListHorizontal .SendTime{
+    width: 16%;
+}
+.ListHorizontal .Remark{
+    width: 22%;
+    height: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.Preview {
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	top: 65%;
+	overflow: auto;
+	border-top: 1px #e8e8e8 solid;
+	background-color: #ffffff;
+}
+.Preview input[type=button] {
+	height: 22px; 
+	margin: 5px 0px 0px 5px;
+}
+.Preview .Close {
+	width: 32px;
+	height: 32px;
+	display: block;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-image: url(../../Img/Public/OpenLayer/close.png);
+	position: absolute;
+	cursor: pointer;
+	top: -4px;
+	right: 0px;
+}
+.Preview .Close:hover {
+	background-position: right;
+	right: 0px;
+}
+.Preview table {
+	margin-top: -22px;
+	width: 100%;
+	border: 1px #ccc solid;
+	background-color: #D6DDEB;
+	border-collapse: collapse;
+	text-align: center;
+	float: right;
+	display: table;
+	border-spacing: 2px;
+}
+.Preview table caption {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 5px auto;
+}
+.Preview table th{
+	 border:1px #ccc solid;
+	 background-color:#D6DDEB; 
+	 font-weight: normal;
+}
+.Preview table  td{
+	 border:1px #ccc solid; 
+	 background-color:#fff;
+	 text-align: right;
+     vert-align: middle;
+}
+.Preview .Affix {
+	position: absolute;
+	top: 5px;
+	right: 86%;
+	bottom: auto;
+	left: 5px;
+	border: 1px gray solid;
+	margin-right: 5px;
+	padding: 5px 5px 5px 5px;
+}
+.Preview .Affix ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.Preview .Affix ul li {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.Preview .Affix ul li a {
+	text-decoration: none;
+	line-height: 18px;
+	color: #555;
+}
+.Preview .Affix ul li a:hover {
+	text-decoration: underline;
+}
+.Preview .View {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 14%;
+}
+.MenuBar .InboxMsg {
+	font-size: large;
+	font-weight: bolder;
+	color: red;
+	float: right;
+	position: relative;
+	top: -7px;   /*-35px*/
+}

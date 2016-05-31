@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html ng-app="DisasterReview">
+<head>
+    <title>灾情综述</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--------------------------CSS------------------------------>
+    <link rel="stylesheet" href="../../../../CSS/Public/ToolBar.css"/>
+    <link rel="stylesheet" href="../../../../CSS/Pages/DisasterReview.css"/>
+    <!--------------------------JavaScript------------------------------>
+    <!--Base Library-->
+    <script src="../../../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
+    <!--Plugin-->
+    <script src="../../../../Scripts/Library/Plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Application/ReportDetails/HL01/15.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Models/DisasterModel.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Directives/PublicDirective.js" type="text/javascript"></script>
+</head>
+<body ng-controller="MainCtrl">
+    <div class="ToolBar">
+        <ul>
+            <li class="Export" ng-click="Fn.Export()"><i></i>导出</li>
+        </ul>
+    </div>
+    <div class="Main">
+        <div class="Title">
+            <p class="Center">
+                <span>{{Report.UnitName}}</span>地区
+                <input ng-model="Report.StartDateTime" style="font-weight: bold;width: 122px;" type="text" ng-wdatepicker readonly />至
+                <input ng-model="Report.EndDateTime" style="font-weight: bold;width: 122px;" type="text" ng-wdatepicker readonly />洪涝灾害情况综述
+            </p>
+        </div>
+        <div><!--雨情-->
+            <p class="Head">一、雨情</p>
+            <p></p>
+        </div>
+        <div><!--水情-->
+            <p class="Head">二、水情</p>
+            <p></p>
+        </div>
+        <div><!--灾情综述-->
+            <p class="Head">三、灾情</p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;据统计，从{{Report.ZQKSRQ}}到{{Report.ZQJZRQ}}，全区共造成
+                <input id="SZFWDSS" ng-model="Report.SZFWDSS" type="text" class="Number"/><!--label class="text">{{Report.SZFWDSS}}</label-->
+                <input id="SZFWX" ng-model="Report.SZFWX" type="text" class="Number"/><!--label class="text">{{Report.SZFWX}}</label-->
+                <input ng-model="Report.SZFWZ" type="text" class="Number"/>个乡镇苏木，
+                <input ng-model="Report.SZRK" type="text" class="Number"/>
+                <span>{{Field.SZRK.MeasureName ? Field.SZRK.MeasureName : '人'}}</span>受灾，因灾死亡
+                <input ng-model="Report.SWRK" type="text" class="Number"/>人（其中山洪冲淹、滑坡、泥石流死亡
+                <input ng-model="Report.ZYRYSWRK" type="text" class="Number"/>
+                <span>{{Field.ZYRYSWRK.MeasureName ? Field.ZYRYSWRK.MeasureName : '人'}}</span>），失踪
+                <input ng-model="Report.SZRKR" type="text" class="Number"/>人，紧急转移人口
+                <input ng-model="Report.ZYRK" type="text" class="Number"/>
+                <span>{{Field.ZYRK.MeasureName ? Field.ZYRK.MeasureName : '人'}}</span>，倒塌房屋
+                <input ng-model="Report.DTFW" type="text" class="Number"/>
+                <span>{{Field.DTFW.MeasureName ? Field.DTFW.MeasureName : '间'}}</span>。农作物受灾面积
+                <input ng-model="Report.SHMJXJ" type="text" class="Number"/>
+                <span>{{Field.SHMJXJ.MeasureName ? Field.SHMJXJ.MeasureName : '千公顷'}}</span>，成灾面积
+                <input ng-model="Report.CZMJXJ" type="text" class="Number"/>
+                <span>{{Field.CZMJXJ.MeasureName ? Field.CZMJXJ.MeasureName : '千公顷'}}</span>，绝收面积
+                <input ng-model="Report.JSMJXJ" type="text" class="Number"/>
+                <span>{{Field.JSMJXJ.MeasureName ? Field.JSMJXJ.MeasureName : '千公顷'}}</span>，因灾减产粮食
+                <input ng-model="Report.YZJCLS" type="text" class="Number"/>
+                <span>{{Field.YZJCLS.MeasureName ? Field.YZJCLS.MeasureName : '万吨'}}</span>，死亡大牲畜
+                <input ng-model="Report.SWDSC" type="text" class="Number"/>
+                <span>{{Field.SWDSC.MeasureName ? Field.SWDSC.MeasureName : '万头'}}</span>，水产养殖损失
+                <input ng-model="Report.SCYZMJ" type="text" class="Number"/>
+                <span>{{Field.SCYZMJ.MeasureName ? Field.SCYZMJ.MeasureName : '千公顷'}}</span>
+                <input ng-model="Report.SCYZSL" type="text" class="Number"/>
+                <span>{{Field.SCYZSL.MeasureName ? Field.SCYZSL.MeasureName : '万吨'}}</span>；停产工矿企业
+                <input ng-model="Report.TCGKQY" type="text" class="Number"/>个，铁路中断
+                <input ng-model="Report.TLZD" type="text" class="Number"/>条次，公路中断
+                <input ng-model="Report.GLZD" type="text" class="Number"/>条次，机场港口关停
+                <input ng-model="Report.JCGKGT" type="text" class="Number"/>个次，供电中断
+                <input ng-model="Report.GDZD" type="text" class="Number"/>条次，通讯中断
+                <input ng-model="Report.TXZD" type="text" class="Number"/>条次；损坏水库
+                <input ng-model="Report.SHSKD" type="text" class="Number"/>座（大中型），水库垮坝
+                <input ng-model="Report.SKKBD" type="text" class="Number"/>座（大中型），损坏堤防
+                <input ng-model="Report.SHDFCS" type="text" class="Number"/>处、长度
+                <input ng-model="Report.SHDFCD" type="text" class="Number"/>千米，损坏护岸
+                <input ng-model="Report.SHHAC" type="text" class="Number"/>处，损坏水闸
+                <input ng-model="Report.SHSZ" type="text" class="Number"/>座，冲毁塘坝
+                <input ng-model="Report.CHTB" type="text" class="Number"/>座，损坏灌溉设施
+                <input ng-model="Report.SHGGSS" type="text" class="Number"/>处，损坏水文测站
+                <input ng-model="Report.SHSWCZ" type="text" class="Number"/>个，损坏机电泵站
+                <input ng-model="Report.SHJDBZ" type="text" class="Number"/>座，损坏水电站
+                <input ng-model="Report.SHSDZ" type="text" class="Number"/>座。受淹城市
+                <input ng-model="Report.SYCS" type="text" class="Number"/>个，受淹面积
+                <input ng-model="Report.YMFWMJ" type="text" class="Number"/>平方公里，占城区面积比例
+                <input ng-model="Report.YMFWBL" type="text" class="Number"/>%，淹没历时
+                <input ng-model="Report.GCYMLS" type="text" class="Number"/>小时，洪水围困人口
+                <input ng-model="Report.GCHSWKRK" type="text" class="Number"/>
+                <span>{{Field.GCHSWKRK.MeasureName ? Field.GCHSWKRK.MeasureName : '万'}}</span>，受淹过程中紧急转移人口
+                <input ng-model="Report.GCJJZYRK" type="text" class="Number"/>
+                <span>{{Field.GCJJZYRK.MeasureName ? Field.GCJJZYRK.MeasureName : '人'}}</span>，主要街道最大水深
+                <input ng-model="Report.ZYZJZDSS" type="text" class="Number"/>米，供水中断
+                <input ng-model="Report.SMXGS" type="text" class="Number"/>小时，供电中断
+                <input ng-model="Report.SMXGD" type="text" class="Number"/>小时，供气中断
+                <input ng-model="Report.SMXGQ" type="text" class="Number"/>小时，交通中断
+                <input ng-model="Report.SMXJT" type="text" class="Number"/>小时，房屋受淹
+                <input ng-model="Report.JZWSYFW" type="text" class="Number"/>
+                <span>{{Field.JZWSYFW.MeasureName ? Field.JZWSYFW.MeasureName : '万户'}}</span>，地下设施受淹
+                <input ng-model="Report.JZWSYDX" type="text" class="Number"/>平方米。
+                共造成直接经济损失<input ng-model="Report.ZJJJZSS" type="text" class="Number" />
+                <span>{{Field.ZJJJZSS.MeasureName ? Field.ZJJJZSS.MeasureName : '亿元'}}</span>，
+                其中农林牧渔业直接经济损失<input ng-model="Report.NLMYZJJJSS" type="text" class="Number" />
+                <span>{{Field.NLMYZJJJSS.MeasureName ? Field.NLMYZJJJSS.MeasureName : '万元'}}</span>、
+                工业交通运输业直接经济损失<input ng-model="Report.GJYSZJJJSS" type="text" class="Number" />
+                <span>{{Field.GJYSZJJJSS.MeasureName ? Field.GJYSZJJJSS.MeasureName : '亿元'}}</span>、
+                水利设施直接经济损失<input ng-model="Report.SLSSZJJJSS" type="text" class="Number" />
+                <span>{{Field.SLSSZJJJSS.MeasureName ? Field.SLSSZJJJSS.MeasureName : '亿元'}}</span>、
+                城区直接经济损失<input ng-model="Report.CQZJJJSS" type="text" class="Number" />
+                <span>{{Field.CQZJJJSS.MeasureName ? Field.CQZJJJSS.MeasureName : '亿元'}}</span>。
+            </p>
+        </div>
+        <div><!--灾情特点-->
+            <p class="Head">四、抢险投入</p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;总投入抢险人数<input ng-model="Report.QXHJ" type="text" class="Number"/>(人次)，其中部队官兵
+                <input ng-model="Report.QXBDGB" type="text" class="Number"/>(人次)、
+                地方人员<input ng-model="Report.QXDFRY" type="text" class="Number"/>(人次)、
+                防汛机动抢险队员<input ng-model="Report.QXFXJD" type="text" class="Number"/>(人次)。
+                总投入资金小计<input ng-model="Report.ZJXJ" type="text" class="Number"/>
+                {{Field.ZJXJ.MeasureName ? Field.ZJXJ.MeasureName : '万元'}}，其中中央
+                <input ng-model="Report.ZJZY" type="text" class="Number"/>
+                {{Field.ZJXJ.MeasureName ? Field.ZJXJ.MeasureName : '万元'}}、<!--默认与直接经济总损失单位一致，后同-->
+                省级<input ng-model="Report.ZJSJ" type="text" class="Number"/>
+                {{Field.ZJXJ.MeasureName ? Field.ZJXJ.MeasureName : '万元'}}、
+                省级以下<input ng-model="Report.ZJSJYS" type="text" class="Number"/>
+                {{Field.ZJXJ.MeasureName ? Field.ZJXJ.MeasureName : '万元'}}、
+                群众投劳折资<input ng-model="Report.ZJQZ" type="text" class="Number"/>
+                {{Field.ZJXJ.MeasureName ? Field.ZJXJ.MeasureName : '万元'}}。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.MenuBar{
+    position:relative;
+    top: 88px;
+    left:9px;
+    right:0;
+    height:30px;
+    background-image:url(../img/Public/TWhite_BBlue-Y.png);
+    background-repeat:no-repeat;
+    background-position:right -35px;
+    padding:5px 5px 0 0;
+    min-width:946px;
+    z-index:2;
+}
+.MenuBar ul{
+    position: absolute;
+    height: 30px;
+    left: -9px;
+    top: 0;
+    z-index: 4;
+    display: block;
+    list-style: none;
+    background-image: url(../img/Public/TWhite_BBlue-Y.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    margin: 0;
+    padding: 5px 0 0 0;
+}
+.MenuBar ul li{
+    float:left;
+    display:block;
+    padding:0 10px 0 10px;
+    height:30px;
+    cursor:pointer;
+}
+.MenuBar ul li.Selected{
+	background-color: #114D70;
+	margin-left: 5px;
+}
+.MenuBar ul li span{
+    z-index: 4;
+    font-weight: bold;
+    font-size: 14px;
+    color: #2f609e;
+    line-height: 30px;
+    height: 30px;
+    position: relative;
+    text-decoration: none;
+}
+.MenuBar ul li.Selected span{
+    color: #fbfbfb;
+    cursor: auto;
+    text-decoration: none;
+}
+.MenuBar li span i{
+    height: 24px;
+    width: 24px;
+    margin: 3px;
+    display: block;
+    float: left;
+    background-image: url(../img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 4;
+}
+.MenuBar ul li.Selected span i{
+    background-position-y: -24px;
+}
+/*<菜单栏中各种按钮的图标>*/
+.MenuBar li span i.New{
+    background-position: -312px 1px;
+}
+.MenuBar li span i.Open{
+    background-position: -240px 2px;
+}
+.MenuBar li span i.Secretary{
+    background-position: -48px 1px;
+}
+.MenuBar li span i.RecycleBin{
+    background-position: -24px 1px;
+}
+.MenuBar li span i.UrgeReport{
+    background-position: -336px 1px;
+}
+.MenuBar li span i.Receive{
+    background-position: -96px 1px;
+}
+.MenuBar li span i.BaseData{
+    background-position: -288px 0px;
+}
+.MenuBar li span i.InferiorManager{
+    background-position: -336px 0px;
+}
+/*</菜单栏中各种按钮的图标>*/

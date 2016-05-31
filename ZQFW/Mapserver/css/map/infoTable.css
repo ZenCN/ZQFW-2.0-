@@ -1,0 +1,51 @@
+﻿#infoTable{
+	position:absolute;
+	top: 70px;
+	right: 10px;
+	z-index: 10;
+	border-top: 1px solid #BFBFBF;
+	border-left: 1px solid #BFBFBF;
+	border-bottom: 1px solid #BFBFBF;
+	border-right: 1px solid #BFBFBF;
+	background-color: white;
+	background-image:url(../../images/packed-2.gif);
+	background-repeat:repeat;	
+	max-height:300px;
+	overflow-y:auto;
+}
+#infoTable table{
+	font-size:12px;
+	/*width:100%;*/
+	}
+#infoTable table thead td{
+	border-bottom:1px dotted #bfbfbf;
+	height:21px;
+	line-height:21px;
+	padding:0 5px;
+	margin:3px 0;
+	text-align:center;	
+	}
+#infoTable table tbody td,#infoTable table tbody th{
+	border-bottom:1px dotted #bfbfbf;	
+	height:21px;
+	line-height:21px;
+	}
+#infoTable table tbody th{	
+	text-align:left;
+	padding:0 1px 0 10px;
+	font-weight:normal;
+	}
+#infoTable table tbody th span{
+	border-right:1px solid #f9c1ca;
+	padding:0 5px;
+	display:block;
+	}
+#infoTable table tbody td{
+	border-left:1px solid #f9c1ca;
+	text-align:center;
+	padding:0 5px 0;
+	margin:3px 0 0 5px;
+	}
+#infoTable table tbody tr.last td,#infoTable table tbody tr.last th{
+	border-bottom:none;
+	}

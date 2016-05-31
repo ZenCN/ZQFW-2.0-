@@ -1,0 +1,32 @@
+﻿.Frame .UrgeReport {
+	text-align: center; 
+	margin-top:30px;
+}
+
+.UrgeReport table {
+	margin: 0 auto; 
+	width: 30%;
+}
+
+.UrgeReport table fieldset {
+	padding: 0; 
+	border-color: rgb(247, 247, 247); 
+	border-radius: 10px; 
+	margin: 0; 
+	overflow: hidden;
+}
+
+.UrgeReport table fieldset textarea {
+	font-size: 14px; 
+	margin: 0; 
+	border: 0; 
+	width: 100%;
+}
+
+.UrgeReport table input[type=text] {
+	border-radius: 8px;
+}
+
+.UrgeReport table button {
+	height: 25px;
+}

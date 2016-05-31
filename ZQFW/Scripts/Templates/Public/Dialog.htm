@@ -1,0 +1,89 @@
+﻿<div ng-class="{ Shadow: Dialog.Attr.Show }"></div>
+<div id="Dialog" class="dialog" ng-show="Dialog.Attr.Show" ng-style="{ width: Dialog.Attr.Width, top: Dialog.Attr.Top, left: Dialog.Attr.Left }" >
+    <div class="top">
+        <div class="top_title_left">
+        </div>
+        <div class="top_title_middle">
+            <span id="dialog_content">{{Dialog.Attr.Title}}</span>
+        </div>
+        <div class="top_title_right">
+            <img class="Close" src="../../../CSS/Img/Public/Close.png" alt="关闭" ng-click="Dialog.Attr.Show = false" />
+        </div>
+    </div>
+    <div class="middle">
+        <div class="middle_left">
+        </div>
+        <div class="middle_middle">
+            
+            <table ng-if="Dialog.Attr.Layout == 'Table'">
+                <tbody>
+                    <tr ng-repeat="obj in Dialog.Attr.Content">
+                        <td align="right">
+                            <label>{{obj.Name}}:</label>
+                        </td>
+                        <td>
+                            <input type="{{obj.Type}}" ng-style="{ width: Dialog.Attr.Input.Width }" style="text-align: center;" ng-model="obj.Model"/>&nbsp;{{Dialog.Attr.Input.Unit}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style=" text-align: center;">
+                            <label style=" color:Red">{{Dialog.Attr.Message}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style=" text-align: right; padding-right: 8px;">
+                            <input type="button" style="text-align: center;" class="DarkBlue" value="{{Dialog.Attr.Button.Left.Text}}" ng-click="Dialog.Attr.Button.Left.CallBack()" />
+                            <input type="button" style="text-align: center;" class="DarkBlue" value="{{Dialog.Attr.Button.Right.Text}}" ng-click="Dialog.Attr.Button.Right.CallBack()" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div ng-if="Dialog.Attr.Layout == 'DIV'" class="{{Dialog.Attr.Class}}">
+                <ul>
+                    <li ng-repeat="obj in Dialog.Attr.Content" ng-click="Dialog.Attr.CallBack(obj.PageNO,obj.RiverCode)">{{obj.RiverName}}</li>
+                </ul>
+            </div>
+
+            <div ng-if="Dialog.Attr.Layout == 'Message'" class="Message">
+                <ul>
+                    <li class="UnitName" style="background-color: #C7C7C7;">催报单位</li>
+                    <li class="PersonName" style="background-color: #C7C7C7;">催报人</li>
+                    <li class="DateTime" style="background-color: #C7C7C7;">催报日期</li>
+                </ul>
+                <div class="Content">
+                    <ul ng-repeat="obj in Dialog.Attr.Content" ng-class="{Selected:Dialog.Attr.Selected.TBNO == obj.TBNO}" ng-click="Dialog.Attr.Selected = obj">
+                        <li class="UnitName">{{obj.SendUnitName}}</li>
+                        <li class="PersonName">{{obj.UrgeRptPersonName}}</li>
+                        <li class="DateTime">{{obj.UrgeRptDateTime}}</li>
+                    </ul>
+                </div>
+                <div>
+                    <fieldset style="padding: 0px;">
+                        <legend>催报内容:</legend>
+                        <textarea rows="4" cols="20" readonly>{{Dialog.Attr.Selected.UrgeRptContent}}</textarea>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div ng-if="Dialog.Attr.Layout == 'Refuse'" class="Refuse">
+                <textarea ng-model="Dialog.Attr.Message" ng-blur="Fn.Check.Quot();Fn.Check.Length(150);"></textarea>
+                <input type="button" value="确认" class="DarkBlue" ng-click="Dialog.Attr.Confirm()"/>
+            </div>
+
+            <div ng-if="Dialog.Attr.Layout == 'Histogram'" id="highcharts" ng-init="Dialog.Attr.Inited.Element = true">
+            </div>
+
+        </div>
+        <div class="middle_right">
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom_left">
+        </div>
+        <div class="bottom_middle">
+        </div>
+        <div class="bottom_right">
+        </div>
+    </div>
+</div>

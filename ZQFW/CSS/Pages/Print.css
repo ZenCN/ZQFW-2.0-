@@ -1,0 +1,74 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+table{
+    width: 800px;
+    margin: auto;
+}
+table caption h2{
+    font-size: 24px;
+}
+.Title{
+    font-size: 13px;
+    text-align: left;
+}
+.Title .Left{
+    float: left;
+    margin-top: 57px;
+}
+.Title .Right{
+    float: right;
+}
+table{
+    border-collapse: collapse;
+    font-size:13px;
+    text-align:center;
+    width:100%;
+}
+table caption{
+    font-size: 15px;
+}
+table th{
+    border: 1px solid #4A97CB;
+    background-color:#FFF;
+    color: #000000;
+    text-align: center;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    white-space:nowrap;
+    line-height:24px;
+    font-size: 14px;
+}
+table th.NoBorder-B {
+    border-bottom-color: white;
+}
+table td{
+    margin: 0;
+    padding: 0 5px;
+    text-align: right;
+    border: 1px solid #4A97CB;
+    background-color: #FFF;
+    font-size: 14px;
+    line-height: 24px;
+}
+.tail
+{
+    width: 20%;
+	text-align:right;
+	float: left;
+	font-size: 13px;
+}
+#dwfzr {
+    text-align: left;
+}
+#tbrq
+{
+	width:38%;
+}
+
+.tagContent table h2 {
+    margin-Bottom: 3px;
+}

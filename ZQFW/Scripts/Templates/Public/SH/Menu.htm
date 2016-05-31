@@ -1,0 +1,18 @@
+﻿<div class="MenuBar" pos-top="20">
+    <ul>
+        <li ng-click="Menu.RedirectTo('New')" ng-class="{Selected: Menu.Current == 'New'}"><span><i class="New"></i>新建</span></li>
+        <li ng-click="Menu.RedirectTo('Open')" ng-class="{Selected: Menu.Current == 'Open'}"><span><i class="Open"></i>打开</span></li>
+        <!--<li ng-hide="BaseData.Unit.Local.Limit == 4" ng-click="Menu.RedirectTo('Receive')" ng-class="{Selected: Menu.Current=='Receive'}">
+            <span><i class="Receive"></i>接收</span>
+            <span class="InboxMsg"></span>
+        </li>-->
+    </ul>
+</div>
+
+<ng-include src="'/Index/GetTemmplate?url=Public.Dialog'">
+    
+</ng-include>
+
+<div class="Frame" pos-top="55" ui-view>
+    
+</div>

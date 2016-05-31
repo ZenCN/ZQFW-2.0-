@@ -1,0 +1,50 @@
+﻿#loginDiv
+{
+	width:250px;
+	
+	}
+#loginDiv center
+{
+	font-size:16px;
+	font-family:黑体;	
+	}
+#loginDiv ul
+{
+	margin:0;
+	padding:0;
+	width:100%;	
+	}
+#loginDiv ul li
+{
+	width:100%;
+	display:block;
+	list-style:none;
+	margin:5px 0;
+	height:24px;	
+	}
+#loginDiv ul li span
+{
+	float:left;
+	width:85px;
+	height:24px;
+	line-height:24px;
+	display:block;
+	font-size:14px;	
+	}
+#loginDiv ul li input[type="text"],#loginDiv ul li input[type="password"]
+{
+	height:20px;
+	width:140px;
+	line-height:20px;
+	font-size:14px;
+	margin:1px 1px 1px 5px;
+	border:1px solid #bfbfbf;	
+	}
+#loginDiv ul li input[type="button"]
+{
+	width:48px;
+	font-size:12px;
+	text-align:center;
+	display:block;
+	margin:10px auto;
+	}

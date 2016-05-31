@@ -1,0 +1,33 @@
+﻿<div class="Condition">
+    <label>年份：</label>
+    <select ng-model="BaseData.Reservoir.Select.Year.Value" ng-change="BaseData.Reservoir.Search()">
+        <option ng-repeat="year in BaseData.Reservoir.Select.Year.Array" value="{{year}}" ng-selected="year == BaseData.Reservoir.Select.Year.Value">{{year}}</option>
+    </select>
+    <label>时间：</label>
+    <select ng-model="BaseData.Reservoir.Select.Time.Value" ng-change="BaseData.Reservoir.Search()">
+        <option ng-repeat="time in BaseData.Reservoir.Select.Time.Array" value="{{time}}" ng-selected="BaseData.Reservoir.Select.Time.Value == time">{{time}}</option>
+    </select>
+</div>
+<table class="Table" ng-if="BaseData.Reservoir.Select.Time.Value != '———————'">
+    <caption>{{BaseData.Reservoir.Select.Year.Value}}年{{BaseData.Reservoir.Select.Time.Value.replace('-','至')}}蓄水数据</caption>
+    <thead>
+        <tr>
+            <th class="blue" rowspan="2">单位名称</th>
+            <th class="blue">总计蓄水量</th>
+        </tr>
+        <tr>
+            <th class="blue">（亿立方米）</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-show="BaseData.Reservoir.Source.length" ng-repeat="_this in BaseData.Reservoir.Source">
+            <th class="blue">{{_this.UnitName}}</th>
+            <td ng-class="{ReadOnly: $first}">
+                <input type="text" ng-model="_this.ZJLNXSL" ng-readonly="$first" ng-blur="BaseData.Reservoir.Sum(_this)"/>
+            </td>
+        </tr>
+        <tr ng-hide="BaseData.Reservoir.Source.length">
+            <td colspan="2" style="color: gray;">未查到相关蓄水数据</td>
+        </tr>
+    </tbody>
+</table>

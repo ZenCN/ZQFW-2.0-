@@ -1,0 +1,55 @@
+﻿<tbody>
+    <tr ng-repeat="sh021 in Open.Report.Current.SH021">
+        <th>
+            {{$index + 1}}
+        </th>
+        <th>
+            <span class="txt_center">{{sh021.GDMC}}</span>
+        </th>
+        <td>
+            <span class="txt_center">{{sh021.SZX}}</span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh021.CBSJBG" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh021.SCTG" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh021.ZBQK" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh021.SFKG" ng-click="FCK()"></span>
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHDF}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHHA}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHQY}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHJHG}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHQT}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHTF}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHSF}}
+        </td>
+        <td class="ReadOnly">
+            {{sh021.JHHNT}}
+        </td>
+        <td>
+            <input type="text" ng-model="sh021.JD" ng-blur="FCN()"/>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh021.JGYS" ng-click="FCK()"></span>
+        </td>
+    </tr>
+</tbody>

@@ -1,0 +1,1691 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Float{
+    padding: 0;
+    margin: 0;
+}
+.FloatBlock{
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    background-position:  0px -70px;
+    display: block;
+    height: 30px;
+    width: 80px;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+body{
+    margin: 0;
+    padding: 0;
+}
+.None{
+    font-size: 12px;
+    color: #333;
+    background-color: #f0f0f0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+.DarkGray {
+    font-size:12px;
+    color:#333;
+    background-color:#f0f0f0;
+    background-image:url(../../CSS/img/Public/DarkGray.png);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+.Scenery{
+    padding:0;
+    margin:0;
+    background-color:#f0f0f0;
+    font-family:Arial;
+    background-image:url(../../CSS/img/Public/Scenery-BackGround.jpg);
+    background-position:center top;
+    background-repeat:no-repeat;
+}
+
+.Link {
+	color: white;
+	text-decoration: none; 
+}
+.Link:hover {
+	color: gainsboro;
+}
+.Shadow{
+	position:absolute;
+	top: 0px;
+	right:0;
+	bottom:0;
+	left:0;
+	z-index:10;
+	background-image:url(../../CSS/Img/Public/Shadow.png);
+	overflow: hidden;
+}
+.Head a{
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.Head a:hover{
+    color:#ccc;
+    text-decoration: underline;
+}
+.Head .Top {
+    height: 25px;
+    border-radius: 10px;
+	margin: 0 5px 0 5px;
+	font-family: STKaiti;
+}
+.Head .TopLeft {
+    height:25px;
+    color:#fbfbfb;
+    line-height:25px;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    font-size: 15px;
+}
+.Head .TopRight {
+    padding-left: 0;
+    height:25px;
+    font-size:13px;
+    color:#fbfbfb;
+    line-height:25px;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+}
+.Head .Bottom {
+    position:absolute;
+    top: 25px;
+    left:0;
+    right:0;
+    height:67px;
+    background-image:url(../../CSS/img/Public/Logo/background.png);
+    background-repeat: repeat-x;
+    min-width:960px;
+    z-index:0;
+	margin: auto 5px;
+	border-radius: 10px;
+}
+.Head .Bottom .Image {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.MenuBar{
+    position:relative;
+    top: 88px;
+    left:9px;
+    right:0;
+    height:30px;
+    background-image:url(../../CSS/img/Public/TWhite_BBlue-Y.png);
+    background-repeat:no-repeat;
+    background-position:right -35px;
+    padding:5px 5px 0 0;
+    min-width:946px;
+    z-index:2;
+}
+.MenuBar ul{
+    position: absolute;
+    height: 30px;
+    left: -9px;
+    top: 0;
+    z-index: 4;
+    display: block;
+    list-style: none;
+    background-image: url(../../CSS/img/Public/TWhite_BBlue-Y.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    margin: 0;
+    padding: 5px 0 0 0;
+}
+.MenuBar ul li{
+    float:left;
+    display:block;
+    padding:0 10px 0 10px;
+    height:30px;
+    cursor:pointer;
+}
+.MenuBar ul li.Selected{
+	background-color: #114D70;
+	margin-left: 5px;
+}
+.MenuBar ul li span{
+    z-index: 4;
+    font-weight: bold;
+    font-size: 14px;
+    color: #2f609e;
+    line-height: 30px;
+    height: 30px;
+    position: relative;
+    text-decoration: none;
+}
+.MenuBar ul li.Selected span{
+    color: #fbfbfb;
+    cursor: auto;
+    text-decoration: none;
+}
+.MenuBar li span i{
+    height: 24px;
+    width: 24px;
+    margin: 3px;
+    display: block;
+    float: left;
+    background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 4;
+}
+.MenuBar ul li.Selected span i{
+    background-position-y: -24px;
+}
+/*<菜单栏中各种按钮的图标>*/
+.MenuBar li span i.New{
+    background-position: -312px 1px;
+}
+.MenuBar li span i.Open{
+    background-position: -240px 2px;
+}
+.MenuBar li span i.Secretary{
+    background-position: -48px 1px;
+}
+.MenuBar li span i.RecycleBin{
+    background-position: -24px 1px;
+}
+.MenuBar li span i.UrgeReport{
+    background-position: -336px 1px;
+}
+.MenuBar li span i.Receive{
+    background-position: -96px 1px;
+}
+.MenuBar li span i.BaseData{
+    background-position: -288px 0px;
+}
+.MenuBar li span i.InferiorManager{
+    background-position: -336px 0px;
+}
+/*</菜单栏中各种按钮的图标>*/
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.LeftTree{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0 5px 5px 5px;
+    overflow: auto;
+    min-width: 950px;
+    min-height: 510px;
+    z-index: 1;
+    font-size: 14px;
+}
+.Left{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 220px;
+    overflow: auto;
+    background-color: #FAFAFA;
+    border-right: 1px solid #e5e5e5;
+    background-image: url(../../CSS/img/Public/White-Y.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 10px;
+}
+.Right{
+    position: absolute;
+    left: 241px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: #FAFAFA;
+}
+input[type=text]{
+	text-align:center;
+}
+.LeftTree[name=Open] .Left select {
+	margin: 0px 0px 0px 0px;
+	width: 129px;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+body{
+    margin: 0px;
+}
+.ToolBar{
+    height: 30px;
+    overflow: hidden;
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    z-index: 31;
+}
+.ToolBar ul{
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 26px;
+    overflow: hidden;
+}
+.ToolBar ul li{
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    line-height: 26px;
+    color: #fff;
+    margin: 0 0 0 5px;
+    padding: 0 5px;
+    font-weight: bold;
+    float: left;
+    cursor: pointer;
+    font-size: 14px;
+    border-left: 1px solid transparent;
+}
+.ToolBar ul li.Maximize,.ToolBar ul li.Restore {
+	float: right;
+}
+.ToolBar ul li.Maximize i {
+	background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+	background-position: 0px -312px;
+}
+.ToolBar ul li.Restore i {
+	background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+	background-position: -24px -312px;
+}
+.ToolBar ul li:hover{
+    background-position:right -26px;
+    border-left:1px solid #466081;
+}
+.ToolBar ul li i{
+    width: 24px;
+    height: 24px;
+    margin: 2px 2px 0px 0;
+    background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+}
+.ToolBar ul li.Export a {
+	color: #fff;
+	text-decoration: none;
+}
+/*<工具栏中各种按钮的图标>*/
+.ToolBar ul li.Print i{
+    background-position: -672px -24px;
+}
+.ToolBar ul li.Audit i,.ToolBar ul li.Modify i{
+    background-position: 0px -24px;
+}
+.ToolBar ul li.Resume i{
+    background-position: -528px -24px;
+}
+.ToolBar ul li.Deleted i{
+    background-position: -168px -24px;
+}
+.ToolBar ul li.DeleteAll i{
+    background-position: -504px -24px;
+}
+.ToolBar ul li.Cased i{
+    background-position: -312px -24px;
+}
+.ToolBar ul li.Refused i{
+    background-position: -456px -24px;
+}
+.ToolBar ul li.Save i{
+    background-position: -120px -24px;
+}
+.ToolBar ul li.New i{
+     background-position: -312px -24px;
+ }
+.ToolBar ul li.Delete i{
+    background-position: -168px -24px;
+}
+.ToolBar ul li.ResetPassword i{
+     background-position: -528px -24px;
+ }
+.ToolBar ul li.Open i{
+    background-position: -240px -24px;
+}
+.ToolBar ul li.Copy i{
+    background-position: -144px -24px;
+}
+.ToolBar ul li.Send i{
+    background-position: -72px -24px;
+}
+.ToolBar ul li.AddRow i{
+    background-position: -360px -24px;
+}
+.ToolBar ul li.DelRow i{
+    background-position: -384px -24px;
+}
+.ToolBar ul li.Export i{
+    background-position: -624px -24px;
+}
+.ToolBar ul li.Import i{
+    background-position: -648px -24px;
+}
+.ToolBar ul li.DisasterReview i{
+    background-position: -240px -24px;
+}
+.ToolBar ul li.River i{
+    background-position: -696px -24px;
+}
+.ToolBar ul li.SimpleSheet i{
+    background-position: -288px -24px;
+}
+.ToolBar ul li.Download i{
+	background-position: -96px -24px;
+} 
+.ToolBar ul li.CommonReport i{
+	 background-position: -240px -24px;
+}
+.ToolBar ul li.CommonReport a {
+    color: inherit;
+    text-decoration: none;
+}
+.ToolBar ul li.Reset i {
+	background-position: -530px -26px;
+}
+
+/*<工具栏中各种按钮的图标>*/
+
+/*ToolBar中的耳机菜单*/
+.ToolBar ul li.Reset{
+	width: 68px;
+}
+.ToolBar ul li.Reset:hover ul {
+	display: block;
+}
+.ToolBar ul li.Reset div {
+	width: 57px;
+	margin: 0 auto;
+}
+.ToolBar ul li.Reset ul {
+	position: absolute;
+	width: 78px;
+	margin: 0 0 0 -6px;
+	height: 53px;
+	z-index: 2;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: none;
+}
+.ToolBar ul li.Reset ul li {
+	float: left;
+	clear: both;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.DarkBlue{
+    height: 25px;
+    background-color: rgb(47, 96, 158);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    text-align: center;
+    border: 1px rgb(47, 96, 158) solid;
+    color: rgb(255, 255, 255);
+}
+.DarkBlue:hover{
+    background-image: linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -o-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -moz-linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -ms-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    border: 1px rgb(47, 96, 158) solid;
+    cursor: pointer;
+}
+input.DarkBlue[name=Search] {
+	margin-left: 40px;
+}
+.Keyboard i {
+	width: 18px;
+	height: 18px;
+	background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+}
+.Keyboard i.Delete {
+	background-position: -170px -26px;  /*background-position: -168px -24px;*/
+}
+.Keyboard i.Reset {
+	background-position: -530px -26px;  /*background-position: -168px -24px;*/
+}
+.dialog{
+	position: absolute;
+	z-index: 150;
+	width: 315px;
+	left: 43%;
+	top: 30%;
+	font-size: 14px;
+}
+
+.dialog div.middle, dialog div.bottom {
+    cursor: default;
+}
+
+.dialog table{
+	margin:10px;	
+}
+
+.dialog .top_title_left{
+	position:absolute;
+	left:0;
+	top:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:top left;
+	height:36px;
+	width:20px;
+}
+
+.dialog .top_title_middle{
+	position:absolute;
+	left:20px;
+	right:20px;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:0 -36px;
+	background-repeat:repeat-x;
+	padding-top:10px;
+	height:26px;
+	cursor: move;
+}
+
+.dialog .top_title_middle span{
+	display:block;
+	height:26px;
+	line-height:26px;
+}
+
+.dialog .top_title_right{
+	position:absolute;
+	right:0;
+	top:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:top right;
+	height:36px;
+	width:20px;
+}
+
+.dialog .top_title_right .Close {
+	position: absolute;
+	top: 14px;
+	right: 13px;
+	cursor: pointer;
+}
+
+.dialog .bottom_left{
+	position:absolute;
+	left:0;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:left -72px;
+	height:16px;
+	width:20px;	
+}
+
+.dialog .bottom_middle{
+	position:absolute;
+	left:20px;
+	right:20px;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:16px;	
+}
+
+.dialog .bottom_right{
+	position:absolute;
+	right:0;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:right -72px;
+	height:16px;
+	width:20px;	
+}
+
+.dialog .middle_left{
+	position:absolute;
+	left:0;
+	top:36px;
+	bottom:16px;
+	background-image:url(../../CSS/Img/Public/Float_Box/2.png);
+	background-repeat:repeat-y;
+	background-position:left;
+	width:20px;	
+}
+
+.dialog .middle_middle{
+	margin:36px 20px 16px 20px;
+	padding:5px;
+	background-color:#fcfcfc;
+}
+
+.dialog .middle_middle .div {
+	text-align: center;
+}
+
+.dialog .middle_middle .div ul {
+	list-style: none;
+	padding: 0px;
+}
+
+.dialog .middle_middle .div ul li {
+	line-height: 26px;
+	cursor: pointer;
+}
+
+.dialog .middle_middle .div ul li:hover {
+	text-decoration: underline;
+	color: blue;
+}
+
+.dialog .middle_right{
+	position:absolute;
+	right:0;
+	top:36px;
+	bottom:16px;
+	background-image:url(../../CSS/Img/Public/Float_Box/2.png);
+	background-repeat:repeat-y;
+	background-position:right;
+	width:20px;	
+}
+
+.dialog .Message ul {
+	list-style: none;
+	float: left;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.dialog .Message ul li {
+	float: left;
+}
+.dialog .Message ul li.UnitName,.dialog .Message ul li.PersonName,.dialog .Message ul li.DateTime {
+	text-align: center;
+	line-height: 20px;
+	border-right: 1px #a8a8a8 solid;
+	float: left;
+	white-space: nowrap;
+}
+.dialog .Message ul li.UnitName {
+	min-width: 180px;
+	
+}
+.dialog .Message ul li.PersonName {
+	min-width: 108px;
+}
+.dialog .Message ul li.DateTime {
+	min-width: 158px;
+}
+.dialog .Message textarea {
+	margin: 0px; 
+	border: 0px; 
+	width: 99%;
+	text-align: center;
+	resize: none;
+	font-size: 15px;
+}
+.dialog .Message .Content ul:hover li {
+	background: #E3E3E3;
+	cursor: pointer;
+}
+.dialog .Message ul.Selected li {
+	background: #E3E3E3;
+}
+
+.dialog .Refuse textarea{
+    position: relative;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    margin: 0px;
+    min-height: 65px;
+    min-width: 245px;
+}
+.dialog .Refuse input {
+    position: relative;
+    top: 5px;
+    display: block;
+    margin: 0 auto;
+}
+.OpenLayer{
+	position:absolute;
+	right:0;
+	top: 0px;
+	width:0px;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/OpenLayer/shadow_hor.png);
+	background-position:0px;
+	background-repeat:repeat-y;
+	overflow:auto;
+	z-index:10;
+}
+.OpenLayer .Container{	
+	position:absolute;
+	right:0;
+	top:0;
+	left:10px;
+	bottom:0;
+	background-color:#fff;
+	overflow:auto;
+}
+.OpenLayer .Container center{
+	margin: 40px 10px;
+}
+.OpenLayer .Close{
+	width:32px;
+	height:32px;
+	display:block;
+	background-position:left;
+	background-repeat:no-repeat;
+	background-image:url(../../CSS/Img/Public/OpenLayer/close.png);
+	position:absolute;
+	cursor:pointer;
+	top:0;
+	right:0;
+	z-index:11;
+}
+.OpenLayer .Close:hover{
+	background-position:right;
+}
+.OpenLayer .Head{
+	text-align: left; 
+	margin-bottom: 5px;
+}
+.OpenLayer .DeadPersonList{
+	clear:both;
+	border: 1px solid #5F6F7E;
+	border-collapse: collapse;
+	font-size:13px;
+	text-align:center;
+	width:100%;
+	margin-bottom:10px;
+}
+.OpenLayer .DeadPersonList tr{
+	height:18px;
+	line-height:18px;
+	text-align:center;
+	}
+.OpenLayer .DeadPersonList th{
+	border: 1px solid #5F6F7E;
+	background-color:#B0D8FF;
+	color: #000000;
+	text-align: center;
+	font-weight: normal;
+	margin: 0;
+	line-height:18px;
+}
+.OpenLayer .DeadPersonList td{
+	margin: 0;
+	padding: 0;
+	text-align:center;
+	border: 1px solid #E2E2E2;
+}
+.OpenLayer .DeadPersonList td input{
+	padding:0;
+	margin: 0;
+	width:95%;
+/*	height:95%;*/
+	border: 0px solid #ffffff;
+	text-align:center;
+	vertical-align: middle;
+}
+.OpenLayer input:focus{
+	border: 0px solid #fff;
+}
+.OpenLayer select{
+	border:1px #fff solid;
+	width:95%;
+	height:95%;
+}
+.OpenLayer tbody input[disabled]{
+	background-color: white;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.MenuBar{
+    position: absolute;
+}
+.Middle{
+    position: absolute;
+    top: 135px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0 5px 5px 5px;
+    overflow: hidden;
+    min-width: 950px;
+    min-height: 510px;
+    z-index: 1;
+}
+.Frame{
+    position: absolute;
+    top: 123px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #FFF;
+    margin: 0 5px 5px 5px;
+}
+.Frame iframe{
+    height: 100%;
+    width: 100%;
+    min-height: 445px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    left:0px;
+    bottom: 0px;
+}
+
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.LeftTree .Left{
+    width: 265px;
+}
+.LeftTree .Right{
+    left: 286px;
+}
+.Report{
+    margin: 10px 20px 20px 32px;
+    font-size: 14px;
+    color: #333;
+}
+.Report p{
+    margin-left: 4px;
+}
+.Report .Stretch {
+	width: 175px;
+	height: 18px;
+	position: absolute;
+	top: 46px;
+}
+.Report table tr{
+    height: 40px;
+    text-align: right;
+}
+.Report table tr td:nth-child(3){
+    text-align: left;
+/*    cursor: pointer;*/
+}
+/*.Report table div{
+    width: 152px;
+    height: 20px;
+    display: none;
+}*/
+.Report table .File{
+    text-align: left;
+}
+.Report table .File td{
+	border-top: 1px solid gray;
+}
+.Report .File ul {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.Report .File ul li{
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.Report .File ul li img {
+	float: left;
+}
+.Report .File ul li a.NoDel {
+	position: relative;
+	top: 0px;
+	left: 16px;
+}
+.Report .File ul li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.Report .File ul li a:hover {
+	color: rgb(47, 96, 158);
+	text-decoration: underline;
+}
+/*.Report table tbody lable[name=SWRK]{
+	font-size: 18px;
+	margin-left: 57px;
+	font-weight: bolder;
+	color: red;
+	float:left;
+}*/
+.Report input,.Report .NoBorder-Bottom{
+	border-bottom:0px;
+}
+.Report hr{
+	border-bottom:1px gray;
+}
+.Report input[type=text] {
+	font-size: 16px;
+	font-weight: bolder;
+	width: 160px;
+}
+.Report input[disabled],textarea[disabled]{
+	background-color:#FAFAFA;
+	border: 0px;
+	color: gray;
+}
+.Report table input[readonly],.Report input.ReadOnly{
+	border: 0px;
+	background-color: #FAFAFA;
+	color: gray;
+}
+.Report table input[name=SWRK],.Report table input[name=SZRKR] {
+	width: 80px;
+	border: 0px;
+	color: red;
+	background-color:#FAFAFA;
+	font-size: 20px;
+	margin: 0px;
+}
+.Report table input[name=SZRKR] {
+	margin-right: 44px;	                   
+}
+.Report input.DarkBlue{
+	float: right;
+	background-color: rgb(47, 96, 158);
+}
+.Title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    overflow: hidden;
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+.Title span{
+    line-height: 26px;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    display: block;
+    margin: 0;
+    height: 26px;
+}
+.Box{
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    overflow: auto;
+    font-size: 12px;
+    color: #333;
+}
+.Box p{
+    margin-left: 5px;
+}
+.Box #SearchBeginTime,.Box #SearchEndTime{
+    width: 78px;
+}
+.Box ul{
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    overflow-x: hidden;
+	overflow-y: auto;
+}
+.Box ul li{
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #A3ABBB;
+    padding: 0 0 0 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.Box ul li:hover {
+	background-color: #DFE3EB;
+}
+.Box ul li.Selected{
+    background-color: #D4DEF1;
+}
+.Box li i{
+    margin: 9px;
+    display: block;
+    float: left;
+    background: url(../../CSS/img/Public/Dot.png) no-repeat 0px 0px;
+    width: 12px;
+    height: 12px;
+}
+.Box li.selected i {
+    background-position: 0 -12px;
+}
+.Jumper{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 22px;
+    padding-left: 19px;
+}
+.Jumper .PageText{
+    margin: 0px 40px;
+}
+.Jumper i{
+    background: url(../../CSS/img/Public/JumperIcons.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.Jumper .ToPrevious{
+    background-position: 0px -16px;
+}
+.Jumper .ToLast{
+    background-position: 0px -32px;
+}
+.Jumper .ToNext{
+    background-position: 0px -48px;
+}
+
+/*-------------------------------------
+zTree Style
+
+version:	3.4
+author:		Hunter.z
+email:		hunter.z@263.net
+website:	http://code.google.com/p/jquerytree/
+
+-------------------------------------*/
+
+.ztree * {padding:0; margin:0; font-size:12px; font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif}
+.ztree {margin:0; padding:5px; color:#333}
+.ztree li{padding:0; margin:0; list-style:none; line-height:14px; text-align:left; white-space:nowrap; outline:0}
+.ztree li ul{ margin:0; padding:0 0 0 18px}
+.ztree li ul.line{ background:url(../../CSS/Plugins/zTree/img/line_conn.gif) 0 0 repeat-y;}
+
+.ztree li a {padding:1px 3px 0 0; margin:0; cursor:pointer; height:17px; color:#333; background-color: transparent;
+	text-decoration:none; vertical-align:top; display: inline-block}
+.ztree li a:hover {text-decoration:underline}
+.ztree li a.curSelectedNode {padding-top:0px; background-color:#FFE6B0; color:black; height:16px; border:1px #FFB951 solid; opacity:0.8;}
+.ztree li a.curSelectedNode_Edit {padding-top:0px; background-color:#FFE6B0; color:black; height:16px; border:1px #FFB951 solid; opacity:0.8;}
+.ztree li a.tmpTargetNode_inner {padding-top:0px; background-color:#316AC5; color:white; height:16px; border:1px #316AC5 solid;
+	opacity:0.8; filter:alpha(opacity=80)}
+.ztree li a.tmpTargetNode_prev {}
+.ztree li a.tmpTargetNode_next {}
+.ztree li a input.rename {height:14px; width:80px; padding:0; margin:0;
+	font-size:12px; border:1px #7EC4CC solid; *border:0px}
+.ztree li span {line-height:16px; margin-right:2px}
+.ztree li span.button {line-height:0; margin:0; width:16px; height:16px; display: inline-block; vertical-align:middle;
+	border:0 none; cursor: pointer;outline:none;
+	background-color:transparent; background-repeat:no-repeat; background-attachment: scroll;
+	background-image:url("../../CSS/Plugins/zTree/img/zTreeStandard.png"); *background-image:url("../../CSS/Plugins/zTree/img/zTreeStandard.gif")}
+
+.ztree li span.button.chk {width:13px; height:13px; margin:0 3px 0 0; cursor: auto}
+.ztree li span.button.chk.checkbox_false_full {background-position:0 0}
+.ztree li span.button.chk.checkbox_false_full_focus {background-position:0 -14px}
+.ztree li span.button.chk.checkbox_false_part {background-position:0 -28px}
+.ztree li span.button.chk.checkbox_false_part_focus {background-position:0 -42px}
+.ztree li span.button.chk.checkbox_false_disable {background-position:0 -56px}
+.ztree li span.button.chk.checkbox_true_full {background-position:-14px 0}
+.ztree li span.button.chk.checkbox_true_full_focus {background-position:-14px -14px}
+.ztree li span.button.chk.checkbox_true_part {background-position:-14px -28px}
+.ztree li span.button.chk.checkbox_true_part_focus {background-position:-14px -42px}
+.ztree li span.button.chk.checkbox_true_disable {background-position:-14px -56px}
+.ztree li span.button.chk.radio_false_full {background-position:-28px 0}
+.ztree li span.button.chk.radio_false_full_focus {background-position:-28px -14px}
+.ztree li span.button.chk.radio_false_part {background-position:-28px -28px}
+.ztree li span.button.chk.radio_false_part_focus {background-position:-28px -42px}
+.ztree li span.button.chk.radio_false_disable {background-position:-28px -56px}
+.ztree li span.button.chk.radio_true_full {background-position:-42px 0}
+.ztree li span.button.chk.radio_true_full_focus {background-position:-42px -14px}
+.ztree li span.button.chk.radio_true_part {background-position:-42px -28px}
+.ztree li span.button.chk.radio_true_part_focus {background-position:-42px -42px}
+.ztree li span.button.chk.radio_true_disable {background-position:-42px -56px}
+
+.ztree li span.button.switch {width:18px; height:18px}
+.ztree li span.button.root_open{background-position:-92px -54px}
+.ztree li span.button.root_close{background-position:-74px -54px}
+.ztree li span.button.roots_open{background-position:-92px 0}
+.ztree li span.button.roots_close{background-position:-74px 0}
+.ztree li span.button.center_open{background-position:-92px -18px}
+.ztree li span.button.center_close{background-position:-74px -18px}
+.ztree li span.button.bottom_open{background-position:-92px -36px}
+.ztree li span.button.bottom_close{background-position:-74px -36px}
+.ztree li span.button.noline_open{background-position:-92px -72px}
+.ztree li span.button.noline_close{background-position:-74px -72px}
+.ztree li span.button.root_docu{ background:none;}
+.ztree li span.button.roots_docu{background-position:-56px 0}
+.ztree li span.button.center_docu{background-position:-56px -18px}
+.ztree li span.button.bottom_docu{background-position:-56px -36px}
+.ztree li span.button.noline_docu{ background:none;}
+
+.ztree li span.button.ico_open{margin-right:2px; background-position:-110px -16px; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.ico_close{margin-right:2px; background-position:-110px 0; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.ico_docu{margin-right:2px; background-position:-110px -32px; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.edit {margin-right:2px; background-position:-110px -48px; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.remove {margin-right:2px; background-position:-110px -64px; vertical-align:top; *vertical-align:middle}
+
+.ztree li span.button.ico_loading{margin-right:2px; background:url(../../CSS/Plugins/zTree/img/loading.gif) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+
+ul.tmpTargetzTree {background-color:#FFE6B0; opacity:0.8; filter:alpha(opacity=80)}
+
+span.tmpzTreeMove_arrow {width:16px; height:16px; display: inline-block; padding:0; margin:2px 0 0 1px; border:0 none; position:absolute;
+	background-color:transparent; background-repeat:no-repeat; background-attachment: scroll;
+	background-position:-110px -80px; background-image:url("../../CSS/Plugins/zTree/img/zTreeStandard.png"); *background-image:url("../../CSS/Plugins/zTree/img/zTreeStandard.gif")}
+
+ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height:auto;overflow:hidden; background-color:#cfcfcf; border:1px #00B83F dotted; opacity:0.8; filter:alpha(opacity=80)}
+.zTreeMask {z-index:10000; background-color:#cfcfcf; opacity:0.0; filter:alpha(opacity=0); position:absolute}
+
+/* level style*/
+/*.ztree li span.button.level0 {
+	display:none;
+}
+.ztree li ul.level0 {
+	padding:0;
+	background:none;
+}*/
+.ztree li .button.c7_ico_docu,.cycType7 {
+	 background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	 background-position:0 -108px; 
+	 background-repeat:no-repeat;
+	 margin:0px; 
+	 width:18px; 
+	 height:18px;
+}
+.ztree li .button.c6_ico_docu,.cycType6 {
+	 background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	 background-position:0 0; 
+	 background-repeat:no-repeat;
+	 margin:0px; 
+	 width:18px; 
+	 height:18px;
+}
+.ztree li .button.c5_ico_docu,.cycType5 {
+	 background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	 background-position:0 -126px; 
+	 background-repeat:no-repeat;
+	 margin:0px; 
+	 width:18px; 
+	 height:18px;
+}
+.ztree li .button.c4_ico_docu,.cycType4 {
+	 background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	 background-position:0 -36px; 
+	 background-repeat:no-repeat;
+	 margin:0px; 
+	 width:18px; 
+	 height:18px;
+}
+.ztree li .button.c3_ico_docu,.cycType3 {
+	background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	background-position:0 -72px; 
+	background-repeat:no-repeat;
+	margin:0px; 
+	width:18px; 
+	height:18px;
+}
+.ztree li .button.c2_ico_docu,.cycType2 {
+	background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	background-position:0 -90px; 
+	background-repeat:no-repeat;
+	margin:0px; 
+	width:18px; 
+	height:18px;
+}
+.ztree li .button.c1_ico_docu,.cycType1 {
+	 background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	 background-position:0 -54px; 
+	 background-repeat:no-repeat;
+	 margin:0px;
+	 width:18px; 
+	 height:18px;
+}
+.ztree li .button.c0_ico_docu,.cycType0 {
+	 background:url('../../CSS/Plugins/zTree/img/treeico.png'); 
+	 background-position:0 -18px; 
+	 background-repeat:no-repeat;
+	 margin:0px; 
+	 width:18px; 
+	 height:18px;
+}
+.DeathTree {
+	position: fixed;
+	height: 300px;
+	width: 200px;
+	z-index: 100;
+	border: 1px solid #d5d5d5;
+	background-color: #FFF;
+	overflow: auto;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	-webkit-transition-property: height,opacity;
+}
+/*
+.dialog .close_btn �����ӵķ���
+*/
+
+button::-moz-focus-inner
+{
+	 border:0;
+	 padding:0;
+	 margin:0;
+	 }
+.easyDialog_wrapper
+{
+	 width:auto;
+	 color:#FFF;
+	 /*border:3px solid rgba(0,0,0,0);
+	 -webkit-border-radius:5px;
+	 -moz-border-radius:5px;
+	 border-radius:5px;
+	 -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+	 -moz-box-shadow:0 0 10px rgba(0,0,0,0.4);
+	 box-shadow:0 0 10px rgba(0,0,0,0.4);*/
+	 display:none;
+	 font-family:"Microsoft yahei", Arial; 
+	 }
+
+.easyDialog_wrapper .easyDialog_content{ -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; background:#333; border:1px solid #e5e5e5; text-align:center; }
+
+.easyDialog_wrapper .easyDialog_title{ height:30px; line-height:30px; overflow:hidden; color:#666; padding:0 10px; font-size:14px; border-bottom:1px solid #e5e5e5; background:#f7f7f7; border-radius:4px 4px 0 0; }
+
+.easyDialog_wrapper .close_btn,.dialog .close_btn{ font-family:arial; font-size:18px; _font-size:12px; font-weight:700; color:#999; text-decoration:none; float:right; }
+
+.easyDialog_wrapper .close_btn:hover{ color:#333; }
+
+.easyDialog_wrapper .easyDialog_text{ padding:25px 10px; font-size:13px; line-height:22px; }
+
+.easyDialog_wrapper .easyDialog_footer{ padding:0 10px; *zoom:1; }
+
+.easyDialog_wrapper .easyDialog_footer:after{ content:''; display:block; height:0; overflow:hidden; visibility:hidden; clear:both; }
+
+.easyDialog_wrapper .btn_highlight,
+.easyDialog_wrapper .btn_normal{ border:1px solid; border-radius:2px; cursor:pointer; font-family:"Microsoft yahei", Arial; float:right; font-size:12px; padding:0 12px; height:24px; line-height:24px; margin-bottom:10px; }
+
+.easyDialog_wrapper .btn_highlight{ background:#4787ed; background:-webkit-gradient(linear,center bottom,center top,from(#4787ed),to(#4d90fe)); background:-moz-linear-gradient(90deg, #4787ed, #4d90fe); border-color:#3079ed; color:#fff; }
+
+.easyDialog_wrapper .btn_normal{ margin-left:10px; border-color:#c3c3c3; background:#ececec; color:#333; background:-webkit-gradient(linear,center bottom,center top,from(#ececec),to(#f4f4f4)); background:-moz-linear-gradient(90deg,#ececec,#f4f4f4); }
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+
+.uploadify {
+	position: relative;
+	margin-bottom: 1em;
+}
+.uploadify-button {
+	background-color: rgb(47, 96, 158);
+	background-image: linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -o-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(47, 96, 158)),
+		color-stop(1, #707070)
+	);
+	background-position: center top;
+	background-repeat: no-repeat;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	border: 2px solid #808080;
+	color: #FFF;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	width: 100%;
+	cursor: pointer;
+}
+.uploadify:hover .uploadify-button {
+	background-color: #606060;
+	background-image: linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -o-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -moz-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -ms-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #606060),
+		color-stop(1, #808080)
+	);
+	background-position: center bottom;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+.uploadify-queue {
+	margin-bottom: 1em;
+}
+.uploadify-queue-item {
+	background-color: #F5F5F5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	max-width: 350px;
+	padding: 10px;
+	margin: 0px;
+	float: left;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background: url('../../CSS/Img/Public/Close.png') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+html {
+	 -webkit-font-smoothing: antialiased;
+}
+
+/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
+.tooltipster-default {
+	border-radius: 5px; 
+	border: 2px solid #000;
+	background: #4c4c4c;
+	color: #fff;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-default .tooltipster-content {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	padding: 8px 10px;
+	overflow: hidden;
+}
+
+/* This next selector defines the color of the border on the outside of the arrow. This will automatically match the color and size of the border set on the main tooltip styles. Set display: none; if you would like a border around the tooltip but no border around the arrow */
+.tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
+	/* border-color: ... !important; */
+}
+
+
+/* If you're using the icon option, use this next selector to style them */
+.tooltipster-icon {
+	cursor: help;
+	margin-left: 4px;
+}
+
+
+
+/* This is the base styling required to make all Tooltipsters work */
+.tooltipster-base {
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	z-index: 9999999;
+	pointer-events: none;
+	width: auto;
+	overflow: visible;
+}
+.tooltipster-base .tooltipster-content {
+	overflow: hidden;
+}
+
+
+/* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
+.tooltipster-arrow {
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+.tooltipster-arrow span, .tooltipster-arrow-border {
+	display: block;
+	width: 0; 
+	height: 0;
+	position: absolute;
+}
+.tooltipster-arrow-top span, .tooltipster-arrow-top-right span, .tooltipster-arrow-top-left span {
+	border-left: 8px solid transparent !important;
+	border-right: 8px solid transparent !important;
+	border-top: 8px solid;
+	bottom: -7px;
+}
+.tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-top-left .tooltipster-arrow-border {
+	border-left: 9px solid transparent !important;
+	border-right: 9px solid transparent !important;
+	border-top: 9px solid;
+	bottom: -7px;
+}
+
+.tooltipster-arrow-bottom span, .tooltipster-arrow-bottom-right span, .tooltipster-arrow-bottom-left span {
+	border-left: 8px solid transparent !important;
+	border-right: 8px solid transparent !important;
+	border-bottom: 8px solid;
+	top: -7px;
+}
+.tooltipster-arrow-bottom .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
+	border-left: 9px solid transparent !important;
+	border-right: 9px solid transparent !important;
+	border-bottom: 9px solid;
+	top: -7px;
+}
+.tooltipster-arrow-top span, .tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-bottom span, .tooltipster-arrow-bottom .tooltipster-arrow-border {
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.tooltipster-arrow-top-left span, .tooltipster-arrow-bottom-left span {
+	left: 6px;
+}
+.tooltipster-arrow-top-left .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
+	left: 5px;
+}
+.tooltipster-arrow-top-right span,  .tooltipster-arrow-bottom-right span {
+	right: 6px;
+}
+.tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border {
+	right: 5px;
+}
+.tooltipster-arrow-left span, .tooltipster-arrow-left .tooltipster-arrow-border {
+	border-top: 8px solid transparent !important;
+	border-bottom: 8px solid transparent !important; 
+	border-left: 8px solid;
+	top: 50%;
+	margin-top: -7px;
+	right: -7px;
+}
+.tooltipster-arrow-left .tooltipster-arrow-border {
+	border-top: 9px solid transparent !important;
+	border-bottom: 9px solid transparent !important; 
+	border-left: 9px solid;
+	margin-top: -8px;
+}
+.tooltipster-arrow-right span, .tooltipster-arrow-right .tooltipster-arrow-border {
+	border-top: 8px solid transparent !important;
+	border-bottom: 8px solid transparent !important; 
+	border-right: 8px solid;
+	top: 50%;
+	margin-top: -7px;
+	left: -7px;
+}
+.tooltipster-arrow-right .tooltipster-arrow-border {
+	border-top: 9px solid transparent !important;
+	border-bottom: 9px solid transparent !important; 
+	border-right: 9px solid;
+	margin-top: -8px;
+}
+
+
+/* Some CSS magic for the awesome animations - feel free to make your own custom animations and reference it in your Tooltipster settings! */
+
+.tooltipster-fade {
+	opacity: 0;
+	-webkit-transition-property: opacity;
+	-moz-transition-property: opacity;
+	-o-transition-property: opacity;
+	-ms-transition-property: opacity;
+	transition-property: opacity;
+}
+.tooltipster-fade-show {
+	opacity: 1;
+}
+
+.tooltipster-grow {
+	-webkit-transform: scale(0,0);
+	-moz-transform: scale(0,0);
+	-o-transform: scale(0,0);
+	-ms-transform: scale(0,0);
+	transform: scale(0,0);
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	-ms-transition-property: -ms-transform;
+	transition-property: transform;
+	-webkit-backface-visibility: hidden;
+}
+.tooltipster-grow-show {
+	-webkit-transform: scale(1,1);
+	-moz-transform: scale(1,1);
+	-o-transform: scale(1,1);
+	-ms-transform: scale(1,1);
+	transform: scale(1,1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
+}
+
+.tooltipster-swing {
+	opacity: 0;
+	-webkit-transform: rotateZ(4deg);
+	-moz-transform: rotateZ(4deg);
+	-o-transform: rotateZ(4deg);
+	-ms-transform: rotateZ(4deg);
+	transform: rotateZ(4deg);
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	-ms-transition-property: -ms-transform;
+	transition-property: transform;
+}
+.tooltipster-swing-show {
+	opacity: 1;
+	-webkit-transform: rotateZ(0deg);
+	-moz-transform: rotateZ(0deg);
+	-o-transform: rotateZ(0deg);
+	-ms-transform: rotateZ(0deg);
+	transform: rotateZ(0deg);
+	-webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	-moz-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	-ms-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	-o-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
+}
+
+.tooltipster-fall {
+	top: 0;
+	-webkit-transition-property: top;
+	-moz-transition-property: top;
+	-o-transition-property: top;
+	-ms-transition-property: top;
+	transition-property: top;
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+}
+.tooltipster-fall-show {
+}
+.tooltipster-fall.tooltipster-dying {
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	-ms-transition-property: all;
+	transition-property: all;
+	top: 0px !important;
+	opacity: 0;
+}
+
+.tooltipster-slide {
+	left: -40px;
+	-webkit-transition-property: left;
+	-moz-transition-property: left;
+	-o-transition-property: left;
+	-ms-transition-property: left;
+	transition-property: left;
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
+}
+.tooltipster-slide.tooltipster-slide-show {
+}
+.tooltipster-slide.tooltipster-dying {
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	-ms-transition-property: all;
+	transition-property: all;
+	left: 0px !important;
+	opacity: 0;
+}
+
+
+/* CSS transition for when contenting is changing in a tooltip that is still open. The only properties that will NOT transition are: width, height, top, and left */
+.tooltipster-content-changing {
+	opacity: 0.5;
+	-webkit-transform: scale(1.1, 1.1);
+	-moz-transform: scale(1.1, 1.1);
+	-o-transform: scale(1.1, 1.1);
+	-ms-transform: scale(1.1, 1.1);
+	transform: scale(1.1, 1.1);
+}
+
+.tooltipster-shadow {
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0px 0px 14px rgba(0,0,0,0.3);
+        color: #2c2c2c;
+}
+.tooltipster-shadow .tooltipster-content {
+        font-family: 'Arial', sans-serif;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 8px 10px;
+}
+div.jGrowl{z-index:9999;color:#fff;font-size:12px}div.ie6{position:absolute}div.ie6.top-right{right:auto;bottom:auto;left:expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth:document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft:document.body.scrollLeft ) ) + 'px' );top:expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop:document.body.scrollTop ) ) + 'px' )}div.ie6.top-left{left:expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft:document.body.scrollLeft ) ) + 'px' );top:expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop:document.body.scrollTop ) ) + 'px' )}div.ie6.bottom-right{left:expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth:document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft:document.body.scrollLeft ) ) + 'px' );top:expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight:document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop:document.body.scrollTop ) ) + 'px' )}div.ie6.bottom-left{left:expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft:document.body.scrollLeft ) ) + 'px' );top:expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight:document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop:document.body.scrollTop ) ) + 'px' )}div.ie6.center{left:expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft:document.body.scrollLeft ) ) + 'px' );top:expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop:document.body.scrollTop ) ) + 'px' );width:100%}div.jGrowl{position:absolute}body > div.jGrowl{position:fixed}div.jGrowl.top-left{left:0;top:0}div.jGrowl.top-right{right:0;top:0}div.jGrowl.bottom-left{left:0;bottom:0}div.jGrowl.bottom-right{right:0;bottom:0}div.jGrowl.center{top:0;width:50%;left:25%}div.center div.jGrowl-notification,div.center div.jGrowl-closer{margin-left:auto;margin-right:auto}div.jGrowl div.jGrowl-notification,div.jGrowl div.jGrowl-closer{background-color:#000;opacity:.85;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=85);zoom:1;width:235px;padding:10px;margin-top:5px;margin-bottom:5px;font-family:Tahoma,Arial,Helvetica,sans-serif;font-size:1em;text-align:left;display:none;-moz-border-radius:5px;-webkit-border-radius:5px}div.jGrowl div.jGrowl-notification{min-height:40px}div.jGrowl div.jGrowl-notification,div.jGrowl div.jGrowl-closer{margin:10px}div.jGrowl div.jGrowl-notification div.jGrowl-header{font-weight:bold;font-size:.85em}div.jGrowl div.jGrowl-notification div.jGrowl-close{z-index:99;float:right;font-weight:bold;font-size:1em;cursor:pointer}div.jGrowl div.jGrowl-closer{padding-top:4px;padding-bottom:4px;cursor:pointer;font-size:.9em;font-weight:bold;text-align:center}@media print{div.jGrowl{display:none}}
+
+div.jGrowl div.default {
+	width: 180px;
+}
+
+div.jGrowl div.iphone {
+	font-family: 			"Helvetica Neue", "Helvetica";
+	font-size: 				12px;
+	background: 			url(iphone.png) no-repeat;
+	-moz-border-radius: 	0px;
+	-webkit-border-radius:	0px;
+	opacity: 				.90;
+	filter: 				alpha(opacity = 90);
+	width: 					235px;
+	height: 				137px;
+	overflow: 				hidden;
+	border-color: 			#5ab500;
+	color: 					#fff;
+}
+
+div.jGrowl div.iphone .jGrowl-close {
+	padding-right: 			20px;
+}
+
+div.jGrowl div.iphone div.message {
+	padding-top: 			0px;
+	padding-bottom: 		7px;
+	padding-left: 			15px;
+	padding-right: 			15px;
+}
+			
+div.jGrowl div.iphone div.header {
+	padding: 				7px;
+	padding-left: 			15px;
+	padding-right: 			15px;
+	font-size: 				17px;
+}
+
+div.jGrowl div.iphone div.close {
+	display: 				none;
+}
+
+#jGrowlMessage .jGrowl-message .Center {
+	text-align: center;
+	font-size: larger;
+	top: 12px;
+	position: relative;
+}

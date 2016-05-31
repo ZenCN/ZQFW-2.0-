@@ -1,0 +1,141 @@
+﻿<div class="LeftTree"  name="Open">
+    <div class="Left">
+        <div>
+            <p>
+                <label>报表类型：</label>
+                <select ng-model="Open.Report.Selected.ORD_Code" ng-options="op.Value as op.Name for op in BaseData.Select.RptClass" ng-change="Open.Report.Tree.Fn.Switch(false, true).Refresh.Report()">
+                </select>
+            </p>
+            <p>
+                <label>时段类型：</label>
+                <select ng-model="Open.Report.Selected.StatisticalCycType" ng-options="op.Code as op.Name for op in BaseData.Select.CycType">
+                </select>
+            </p>
+        </div>
+        <div class="Tabs">
+            <ul>
+                <li class="Inbox" ng-class="{Selected: Open.Report.Tree.Current.Tab == 'MyRptTree'}" ng-click="Open.Report.Tree.Fn.Switch('MyRptTree')"><span><i></i>我的表箱</span></li>
+                <li class="Cased" ng-hide="BaseData.Unit.Local.Limit == 4" ng-class="{Selected: Open.Report.Tree.Current.Tab == 'ReceivedRptTree'}"  ng-click="Open.Report.Tree.Fn.Switch('ReceivedRptTree')"> 
+                    <span><i></i>已收表箱</span>
+                </li>
+            </ul>
+        </div>
+        <div class="TreeBoxes" ng-class="{ShowAggAcc: Open.Report.Current.ReportTitle.SourceType > 0}">
+            <div ng-switch on="Open.Report.Tree.Current.Tab">
+                <div ng-switch-when="MyRptTree">
+                    <ul id="MyRptTree" ng-tree class="ztree">
+                    </ul>
+                </div>
+                <div ng-switch-when="ReceivedRptTree">
+                    <div class="UnitName">
+                        <label>单位名称：</label>
+                        <select ng-model="Open.Report.Selected.UnderUnitCode" ng-change="Open.Report.Tree.Fn.Switch(false, true).Refresh.Report()">
+                            <option value="{{BaseData.Unit.Local.UnitCode}}" ng-selected="Open.Report.Selected.UnitCode == BaseData.Unit.Local.UnitCode">所有单位</option>
+                            <option ng-repeat="obj in BaseData.Unit.Unders" value="{{obj.UnitCode}}" ng-selected="Open.Report.Selected.UnitCode == obj.UnitCode">{{obj.UnitName}}</option>
+                        </select>
+                    </div>
+                    <ul id="ReceivedRptTree" ng-tree class="ztree">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="AggAccBox" ng-show="Open.Report.Current.ReportTitle.SourceType > 0">
+            <div class="AggAcc-Menu">
+                <ul>
+                    <li class="Add" ng-click="Open.Fn.Core.AggAcc.Sum()"><i></i>加表</li>
+                    <li class="Del" ng-click="Open.Fn.Core.AggAcc.Sub()"><i></i>减表</li>
+                </ul>
+            </div>
+            <div class="AggAcc-Content">
+                <ul>
+                    <li ng-repeat="rpt in Open.Report.Current.Attr.AggAcc.Content" ng-class="{Selected: rpt.id == Open.Report.Current.Attr.AggAcc.Selected.id}" ng-click="Open.Report.Current.Attr.AggAcc.Selected = rpt" ng-dblclick="Open.Fn.Core.AggAcc.View(rpt)">
+                        <a ng-if="Open.Report.Current.ReportTitle.SourceType == '1'">
+                            {{rpt.Name}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Right" ng-if="Open.Report.Current">
+        <div class="ToolBar">
+            <ul>
+                <li class="Save" ng-click="Open.Fn.Core.Save()">
+                    <i></i>保存
+                </li>
+                <li class="Send" ng-hide="Open.Report.Current.ReportTitle.PageNO == 0 || BaseData.Unit.Local.Limit == 2 || Open.Report.Current.ReportTitle.State == 3" ng-click="Open.Fn.Core.Send()">
+                    <i></i>报送
+                </li>
+                <li class="Delete" ng-hide="Open.Report.Current.ReportTitle.PageNO == 0 || Open.Report.Current.ReportTitle.State == 3" ng-click="Open.Fn.Core.Delete.Report()">
+                    <i></i>删除
+                </li>
+                <li class="Print" ng-click="Open.Fn.Core.Print()"><i></i>打印</li>
+                <!--li class="Reset" ng-click="Open.Report.Fn.Core.Delete.Data()">
+                    <i></i>清除
+                </li-->
+                <li class="Export" ng-hide="Open.Report.Current.ReportTitle.PageNO == 0">
+                    <a href="{{'/sh/exporttoexcel?pageno=' + Open.Report.Current.ReportTitle.PageNO + '&ord_code=' + Open.Report.Current.ReportTitle.ORD_Code}}">
+                        <i></i>导出
+                    </a>
+                </li>
+                <li class="Maximize" title="最大化" ng-show="Open.Report.Screen.State == 'inhreit'" ng-click="Open.Report.Screen.Fn.Maximize('.Right',Open.Report.Screen)">
+                    <i></i>
+                </li>
+                <li class="Restore" title="还原" ng-show="Open.Report.Screen.State == 'full'" ng-click="Open.Report.Screen.Fn.Restore('.Right',Open.Report.Screen)">
+                    <i></i>
+                </li>
+            </ul>
+        </div>
+        <div id="Report">
+            <ul id="ReportTabs">
+                <li ng-repeat="rpt in Open.Report.Opened" title="{{'页号：' + rpt.ReportTitle.PageNO}}" ng-class="{Selected:rpt.ReportTitle.PageNO == Open.Report.Current.ReportTitle.PageNO}" ng-click="Open.Fn.Common.SelectNode()">
+                    <span class="title" ng-click="Open.Report.Current = rpt">
+                        <span name="icon" ng-class="'cycType' + rpt.ReportTitle.StatisticalCycType"></span>
+                        <span>
+                            [山洪]{{rpt.ReportTitle.WriterTime}}
+                            <a class="TabClose" title="关闭" href="javascript:void(0)" ng-click="Open.Fn.Core.Close.Report(rpt.ReportTitle.PageNO)">x</a>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+            <div ng-include="'SH/GetTemplate?rptType=' + Open.Report.Current.ReportTitle.ORD_Code + '&tableType=Edit&isCurYear=' + Open.Fn.Common.isCurYear(Open.Report.Current.ReportTitle.EndDateTime)">
+                
+            </div>
+        </div>
+        <div id="Report-Footer">
+            <div class="Tabs">
+                <ul>
+                    <li class="ReportTitle" ng-class="{Selected:Open.Report.Current.Attr.ReportFooter == 'ReportTitle'}" ng-click="Open.Report.Current.Attr.ReportFooter='ReportTitle'">
+                        <span><i></i>表头尾信息</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="Boxes">
+                <div class="ReportTitle" ng-hide="Open.Report.Current.Attr.ReportFooter != 'ReportTitle'">
+                    <div style="min-width: 245px; padding-top: 27px;">
+                        <p>
+                            <label>填报日期：</label>
+                            <input ng-model="Open.Report.Current.ReportTitle.WriterTime" ng-disabled="Open.Report.Current.Attr.HB" type="text" readonly />
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <label>&nbsp; 填报单位：</label>
+                            <input class="UnitName" type="text" ng-disabled="Open.Report.Current.Attr.HB" ng-model="Open.Report.Current.ReportTitle.UnitName" ng-blur="FCQ();FCL(20);"/>
+                        </p>
+                        <p style="text-align: right;">
+                            <label>单位负责人：</label>
+                            <input class="UnitPrincipal" type="text" ng-disabled="Open.Report.Current.Attr.HB" ng-model="Open.Report.Current.ReportTitle.UnitPrincipal" ng-blur="FCQ();FCL(8)"/>
+                            <label>统计负责人：</label>
+                            <input class="StatisticsPrincipal" type="text" ng-disabled="Open.Report.Current.Attr.HB" ng-model="Open.Report.Current.ReportTitle.StatisticsPrincipal" ng-blur="FCQ();FCL(8)"/>
+                        </p>
+                        <p style="text-align: right;">
+                            <label>&nbsp;填报人：</label>
+                            <input class="WriterName" type="text" ng-disabled="Open.Report.Current.Attr.HB" ng-model="Open.Report.Current.ReportTitle.WriterName" ng-blur="FCQ();FCL(8);"/>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

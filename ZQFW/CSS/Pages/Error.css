@@ -1,0 +1,41 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+body{
+    background-color:
+    #a3acb5;
+    margin: 0;
+    padding: 0;
+}
+.Error{
+    position: absolute;
+    background-image: url(../img/Public/White-Y.png);
+    width: 403px;
+    height: 303px;
+    background-repeat: no-repeat;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -200px;
+}
+.Balloon{
+    position: absolute;
+    top: -40px;
+    left: -10px;
+    background-image: url(../img/Public/Balloon.png);
+    width: 117px;
+    height: 112px;
+    background-repeat: no-repeat;
+    display: block;
+}
+#Msg{
+    width: 400px;
+    height: 300px;
+    margin: 2px 0 0 2px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+.E404{
+    background-image: url(../img/Pages/Error/404.png);
+}

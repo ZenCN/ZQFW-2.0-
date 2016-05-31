@@ -1,0 +1,14 @@
+﻿<div class="MenuBar">
+    <ul>
+        <li ng-click="RedictUrl('/New')" ng-class="{Selected:CurrentUrl=='/New'}"><span><i class="New"></i>新建</span></li>
+<!--        <li ng-click="RedictUrl('/Secretary')" ng-class="{Selected:CurrentUrl=='/Secretary'}"><span><i class="Open"></i>工作秘书</span></li>-->
+    </ul>
+</div>
+
+<ng-include src="'Index/GetTemmplate?url=Public.Dialog'">
+    
+</ng-include>
+
+<div class="Frame" ui-view>
+    
+</div>

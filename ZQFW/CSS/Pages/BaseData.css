@@ -1,0 +1,163 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.MenuBar{
+    top: 0px;
+}
+.ToolBar{
+    margin: -4px 0px 0px 1px;
+}
+.LeftTree{
+    position: absolute;
+    top: 92px;
+}
+.LeftTree .Left {
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
+}
+.LeftTree .Right {
+	overflow: hidden;
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
+}
+.LeftTree .Right .MenuBar {
+	top: -4px;
+	left: 6px;
+	background-position: right -35px;
+}
+.LeftTree .Right .MenuBar ul {
+	top: 0px;
+}
+.SlidePage .BaseData,.SlidePage .InferiorManager{
+    margin: 15px 0 10px 10px;
+}
+.SlidePage .Reservoir {
+    margin: -1px 10px 10px 10px;
+}
+.SlidePage .Reservoir .Condition {
+    position: relative;
+    top: 10px;
+    font-size: 15px;
+    margin-left: 21%;
+}
+.SlidePage .BaseData table,.SlidePage .Reservoir table{
+    text-align: right;
+    margin-left: 15%;
+}
+.SlidePage .InferiorManager,.SlidePage .Reservoir{
+	position: absolute;
+	top: 60px;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	overflow-y: auto;
+}
+.SlidePage table.Table{
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+.SlidePage .Reservoir table.Table {
+    width: 420px;
+    margin: 20px auto auto 15%;
+}
+.SlidePage table.Table caption{
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+.SlidePage table.Table caption span {
+    float: right; 
+    font-size: 13px;
+    color: gray;
+}
+.SlidePage table.Table thead th.blue,.SlidePage table.Table tbody th.blue{
+	border: 1px solid #5F6F7E;
+	background-color: #B0D8FF;
+	color: #000000;
+	text-align: center;
+	font-weight: normal;
+	margin: 0;
+	padding: 0 5px;
+	white-space: nowrap;
+	line-height: 24px;
+}
+.SlidePage table.Table tbody td.Warning {
+	background-color: #60A3C7;
+	border: 1px solid rgb(113, 115, 128);
+}
+.SlidePage table.Table tbody td.Warning input {
+	background-color: #60A3C7;
+	font-weight: bolder;
+	color: #050505;
+}
+.SlidePage table.Table tbody td{
+	margin: 0;
+	padding: 0 5px;
+	text-align: center;
+	border: 1px solid #E2E2E2;
+	height: 24px;
+	line-height: 24px;
+	background-color: #FFF;
+	min-width: 60px;
+}
+.SlidePage table.Table tbody th {
+	width: 72px;
+}
+.SlidePage table.Table tbody th button {
+	visibility: hidden;
+	float: left;
+}
+.SlidePage table.Table tbody th:hover button {
+	visibility: visible;
+}
+.SlidePage table.Table tbody td input[type=text] {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 24px;
+	border: none;
+}
+.SlidePage table.Table tbody td.ReadOnly,.SlidePage table.Table tbody td.ReadOnly input[type=text] {
+    background-color: rgb(241, 238, 238);
+}
+.Check{
+    width: 30px;
+}
+.LowerUnits,.UpperUnit{
+    width: 12%;
+}
+.UnitName{
+    width: 20%;
+}
+.UnitOrder{
+    width: 10%;
+}
+.FatherRiverCode{
+    width: 25%;
+}
+.Group {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.Group.DW {
+	z-index: 2;
+}
+.Group.Unit {
+	z-index: 1;
+}
+.Group.Head {
+	z-index: 0;
+}
+.Group .Fixed {
+	position: absolute;
+	border: 1px solid #5F6F7E;
+	background-color: #B0D8FF;
+	text-align: center;
+	font-size: 13px;
+	color: #000;
+}

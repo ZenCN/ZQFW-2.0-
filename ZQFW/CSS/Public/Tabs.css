@@ -1,0 +1,102 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Tabs{
+    height: 25px;
+    border-bottom: 1px #d5dadc solid;
+    font-size: 12px;
+}
+.Tabs div.Notice {
+      position: absolute;
+      top: 4px;
+      left: 413px;
+      right: 10px;
+      font-size: 15px;
+      font-weight: bolder;
+      color: #014284;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+}
+.Tabs ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.Tabs ul li{
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    display: block;
+    padding: 0 12px 0 0;
+    font-weight: bold;
+    background-image: url(../img/Public/Tab_BackGround.png);
+    background-position: right -28px;
+    color: #96aecd;
+    cursor: pointer;
+    margin: 0 0 0 2px;
+}
+.Tabs ul li.Selected{
+    height: 26px;
+    line-height: 26px;
+    background-position: right -84px;
+    color: #2f609e;
+    cursor: auto;
+}
+.Tabs li span{
+    display: block;
+    height: 25px;
+    line-height: 30px;
+    padding: 0 0 0 12px;
+    background-image: url(../img/Public/Tab_BackGround.png);
+    background-position: left 0px;
+}
+.Tabs li.Selected span{
+    height: 26px;
+    line-height: 30px;
+    background-position: left -56px;
+}
+.Tabs li i{
+    width: 24px;
+    height: 24px;
+    margin: 4px 2px 0px 0;
+    background-image: url(../img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+}
+/*<Tabs中各种Tab的图标>*/
+.Tabs li.Inbox i{
+    background-position: -240px 0px;
+}
+.Tabs li.Cased i{
+    background-position: -312px 0px;
+}
+.Tabs li.Refused i{
+    background-position: -456px 0px;
+}
+.Tabs li.Auditing i{
+    background-position: -240px 0px;
+}
+.Tabs li.Audited i{
+    background-position: -432px 0px;
+}
+.Tabs li.ReportTitle i{
+    background-position: -216px 0px;
+}
+.Tabs li.Affix i{
+    background-image: url(../img/Public/MenuIcons/1.png);
+    background-position: 0px -217px;
+}
+.Tabs li.CheckAlert i{
+    background-image: url(../img/Public/MenuIcons/1.png);
+    background-position: 0px -265px;
+}
+.Tabs li.Instructions i{
+    background-image: url(../img/Public/MenuIcons/1.png);
+    background-position: 0px -288px;
+}
+
+/*<Tabs中各种Tab的图标>*/

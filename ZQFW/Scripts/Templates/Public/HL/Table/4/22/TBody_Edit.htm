@@ -1,0 +1,79 @@
+﻿<tbody>
+    <tr ng-repeat="hl011 in Report[Attr.NameSpace].Current.HL011" ng-firstreadonly="">
+        <th>
+            <span class="txt_center">{{hl011.DW}}</span>
+        </th>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHSKD']}">
+            <input type="text" ng-model="hl011.SHSKD" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHSKD.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHSKX']}">
+            <input type="text" ng-model="hl011.SHSKX" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHSKX.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SKKBD']}">
+            <input type="text" ng-model="hl011.SKKBD" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SKKBD.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SKKBX1']}">
+            <input type="text" ng-model="hl011.SKKBX1" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SKKBX1.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SKKBX2']}">
+            <input type="text" ng-model="hl011.SKKBX2" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SKKBX2.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHDFCS']}">
+            <input type="text" ng-model="hl011.SHDFCS" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHDFCS.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHDFCD']}">
+            <input type="text" ng-model="hl011.SHDFCD" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHDFCD.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-DFJKCS']}">
+            <input type="text" ng-model="hl011.DFJKCS" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.DFJKCS.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-DFJKCD']}">
+            <input type="text" ng-model="hl011.DFJKCD" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.DFJKCD.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHHAC']}">
+            <input type="text" ng-model="hl011.SHHAC" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHHAC.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHSZ']}">
+            <input type="text" ng-model="hl011.SHSZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHSZ.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-CHTB']}">
+            <input type="text" ng-model="hl011.CHTB" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.CHTB.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHGGSS']}">
+            <input type="text" ng-model="hl011.SHGGSS" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHGGSS.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHSWCZ']}">
+            <input type="text" ng-model="hl011.SHSWCZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHSWCZ.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHJDJ']}">
+            <input type="text" ng-model="hl011.SHJDJ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHJDJ.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHJDBZ']}">
+            <input type="text" ng-model="hl011.SHJDBZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHJDBZ.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SHSDZ']}">
+            <input type="text" ng-model="hl011.SHSDZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SHSDZ.DecimalCount))" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SLSSZJJJSS']}">
+            <input type="text" ng-model="hl011.SLSSZJJJSS" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SLSSZJJJSS.DecimalCount));FCRC('ZJJJZSS')" />
+        </td>
+    </tr>
+</tbody>

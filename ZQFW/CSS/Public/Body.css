@@ -1,0 +1,51 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+body{
+    margin: 0;
+    padding: 0;
+}
+.None{
+    font-size: 12px;
+    color: #333;
+    background-color: #f0f0f0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+.DarkGray {
+    font-size:12px;
+    color:#333;
+    background-color:#f0f0f0;
+    background-image:url(../img/Public/DarkGray.png);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+.Scenery{
+    padding:0;
+    margin:0;
+    background-color:#f0f0f0;
+    font-family:Arial;
+    background-image:url(../img/Public/Scenery-BackGround.jpg);
+    background-position:center top;
+    background-repeat:no-repeat;
+}
+
+.Link {
+	color: white;
+	text-decoration: none; 
+}
+.Link:hover {
+	color: gainsboro;
+}
+.Shadow{
+	position:absolute;
+	top: 0px;
+	right:0;
+	bottom:0;
+	left:0;
+	z-index:10;
+	background-image:url(../../CSS/Img/Public/Shadow.png);
+	overflow: hidden;
+}

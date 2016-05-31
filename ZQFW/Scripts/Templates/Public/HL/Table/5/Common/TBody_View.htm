@@ -1,0 +1,39 @@
+﻿<tbody>
+    <tr ng-repeat="hl012 in Report[Attr.NameSpace].Current.HL012">
+        <th>
+        </th>
+        <th style="text-align: center">
+            {{hl012.DW}}
+        </th>
+        <td class="txt_center">
+            {{hl012.DataType}}
+        </td>
+        <td class="txt_center">
+            {{hl012.SWXM}}
+        </td>
+        <td class="txt_center">
+            {{hl012.SWXB}} 
+        </td>
+        <td>
+            {{hl012.SWNL}}
+        </td>
+        <td style="white-space: nowrap" class="txt_center">
+            {{hl012.SWHJ}}
+        </td>
+        <td style="white-space: nowrap" class="txt_center">
+            {{hl012.SWSJ}}
+        </td>
+        <td style="white-space: nowrap" class="txt_center">
+            {{hl012.SWDD}}
+        </td>
+        <td style="white-space: nowrap" class="txt_center">
+            {{hl012.DeathReason}}
+        </td>
+        <td style="white-space: nowrap" class="txt_center">
+            {{hl012.BZ}}
+        </td>
+        <td class="txt_center">
+            {{BaseData.RiverCode[hl012.RiverCode]}}
+        </td>
+    </tr>
+</tbody>

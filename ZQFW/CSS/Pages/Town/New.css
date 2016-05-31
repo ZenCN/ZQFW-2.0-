@@ -1,0 +1,221 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.LeftTree .Left{
+    width: 265px;
+}
+.LeftTree .Right{
+    left: 286px;
+}
+.Report{
+    margin: 10px 20px 20px 32px;
+    font-size: 14px;
+    color: #333;
+}
+.Report p{
+    margin-left: 4px;
+}
+.Report .Stretch {
+	width: 175px;
+	height: 18px;
+	position: absolute;
+	top: 46px;
+}
+.Report table tr{
+    height: 40px;
+    text-align: right;
+}
+.Report table tr td:nth-child(3){
+    text-align: left;
+/*    cursor: pointer;*/
+}
+/*.Report table div{
+    width: 152px;
+    height: 20px;
+    display: none;
+}*/
+.Report table .File{
+    text-align: left;
+}
+.Report table .File td{
+	border-top: 1px solid gray;
+}
+.Report .File ul {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.Report .File ul li{
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.Report .File ul li img {
+	float: left;
+}
+.Report .File ul li a.NoDel {
+	position: relative;
+	top: 0px;
+	left: 16px;
+}
+.Report .File ul li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.Report .File ul li a:hover {
+	color: rgb(47, 96, 158);
+	text-decoration: underline;
+}
+/*.Report table tbody lable[name=SWRK]{
+	font-size: 18px;
+	margin-left: 57px;
+	font-weight: bolder;
+	color: red;
+	float:left;
+}*/
+.Report input,.Report .NoBorder-Bottom{
+	border-bottom:0px;
+}
+.Report hr{
+	border-bottom:1px gray;
+}
+.Report input[type=text] {
+	font-size: 16px;
+	font-weight: bolder;
+	width: 160px;
+}
+.Report input[disabled],textarea[disabled]{
+	background-color:#FAFAFA;
+	border: 0px;
+	color: gray;
+}
+.Report table input[readonly],.Report input.ReadOnly{
+	border: 0px;
+	background-color: #FAFAFA;
+	color: gray;
+}
+.Report table input[name=SWRK],.Report table input[name=SZRKR] {
+	width: 80px;
+	border: 0px;
+	color: red;
+	background-color:#FAFAFA;
+	font-size: 20px;
+	margin: 0px;
+}
+.Report table input[name=SZRKR] {
+	margin-right: 44px;	                   
+}
+.Report input.DarkBlue{
+	float: right;
+	background-color: rgb(47, 96, 158);
+}
+.Title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    overflow: hidden;
+    background-image: url(../../img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+.Title span{
+    line-height: 26px;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-image: url(../../img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    display: block;
+    margin: 0;
+    height: 26px;
+}
+.Box{
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    overflow: auto;
+    font-size: 12px;
+    color: #333;
+}
+.Box p{
+    margin-left: 5px;
+}
+.Box #SearchBeginTime,.Box #SearchEndTime{
+    width: 78px;
+}
+.Box ul{
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    overflow-x: hidden;
+	overflow-y: auto;
+}
+.Box ul li{
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #A3ABBB;
+    padding: 0 0 0 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.Box ul li:hover {
+	background-color: #DFE3EB;
+}
+.Box ul li.Selected{
+    background-color: #D4DEF1;
+}
+.Box li i{
+    margin: 9px;
+    display: block;
+    float: left;
+    background: url(../../img/Public/Dot.png) no-repeat 0px 0px;
+    width: 12px;
+    height: 12px;
+}
+.Box li.selected i {
+    background-position: 0 -12px;
+}
+.Jumper{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 22px;
+    padding-left: 19px;
+}
+.Jumper .PageText{
+    margin: 0px 40px;
+}
+.Jumper i{
+    background: url(../../img/Public/JumperIcons.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.Jumper .ToPrevious{
+    background-position: 0px -16px;
+}
+.Jumper .ToLast{
+    background-position: 0px -32px;
+}
+.Jumper .ToNext{
+    background-position: 0px -48px;
+}

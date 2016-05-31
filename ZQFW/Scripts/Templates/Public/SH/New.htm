@@ -1,0 +1,59 @@
+﻿<div class="LeftTree">
+    <div class="Left">
+        <ul ng-rpt-type-tree class="ztree">
+        </ul>
+    </div>
+    <div class="Right">
+        <div class="ToolBar">
+            <ul>
+            </ul>
+        </div>
+        <div class="Main">
+            <p>
+                新建名称：<label style="font-weight: bolder; margin-left: 10px;">{{New.Report.Type.Name}}</label>
+            </p>
+            <p>
+                <label>时段类型：</label>
+                <label title="{{New.Report.CycType.Title}}">
+                    <input type="radio" value="{{New.Report.CycType.Value}}" checked/>{{New.Report.CycType.Name}}
+                </label>
+            </p>
+            <p>
+                <label>新建类型：</label>
+                <label ng-if="BaseData.Unit.Local.Limit == 4"><input type="radio" checked/>录入</label>
+                <label ng-if="BaseData.Unit.Local.Limit != 4"><input type="radio" checked/>汇总</label>
+            </p>
+            <p>
+                <label>填报日期：</label>&nbsp;
+                <label>{{New.Report.Time_Now}}</label>
+            </p>
+            <div class="TitleList">
+                <div class="Title">
+                    <span>已有报表</span>
+                </div>
+                <ul class="Head">
+                    <li>
+                        <span class="Start-EndDate">起止日期</span>
+                        <span class="WriteDate">填报日期</span>
+                        <span class="SourceType">新建类型</span>
+                        <span class="Remark Last">备注</span>
+                    </li>
+                </ul>
+                <div class="Boxes">
+                    <ul>
+                        <li ng-repeat="rpt in New.SameReport.Content" ng-class="{Selected:rpt.PageNO == New.SameReport.Current.PageNO}" ng-click="New.SameReport.Current = rpt">
+                            <span class="Start-EndDate">{{rpt.StartDateTime}} 至 {{rpt.EndDateTime}}</span>
+                            <span class="WriteDate">{{rpt.WriterTime}}</span>
+                            <span class="SourceType">{{rpt.SourceType == 0 ? '录入' : '汇总'}}</span>
+                            <span class="Remark Last" title="{{rpt.Remark}}">{{rpt.Remark}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="TitleList-Operate">
+                <input type="button" value="确认新建" ng-hide="New.SameReport.Content.length > 0" class="DarkBlue" ng-click="New.Fn.Report.Create()"/>&nbsp;&nbsp;&nbsp;&nbsp;  
+                <input type="button" value="打开" class="DarkBlue" ng-click="New.Fn.Report.Open()"/>
+            </div>
+        </div>
+    </div>
+</div>

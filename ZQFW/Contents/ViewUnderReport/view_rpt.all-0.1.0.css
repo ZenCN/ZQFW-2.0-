@@ -1,0 +1,869 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+/*表格*/
+#ReportTabs {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	float: left;
+	margin-left: 2px;
+	font-family: Lucida Sans, Lucida Sans Unicode, Arial, Sans-Serif;
+	font-size: 13px;
+}
+#ReportTabs li {
+	float: left;
+	height: 25px;
+	line-height: 25px;
+	display: block;
+	padding: 0 12px 0 0;
+	font-weight: bold;
+	background-image: url(../../CSS/img/Public/Tab_BackGround.png);
+	background-position: right -28px;
+	color: #96aecd;
+	cursor: pointer;
+	margin: 0 0 0 2px;
+}
+#ReportTabs li.Selected {
+	height: 26px;
+	line-height: 26px;
+	background-position: right -84px;
+	color: #2f609e;
+	cursor: default;
+	position: relative;
+	z-index: 10;
+}
+#ReportTabs li .title {
+	display: block;
+	height: 25px;
+	line-height: 30px;
+	padding: 0 0 0 10px;
+	background-image: url(../../CSS/img/Public/Tab_BackGround.png);
+	background-position: left 0px;
+}
+#ReportTabs li .title span[name=icon] {
+	float: left;
+	margin-top: 5px;
+}
+#ReportTabs li.Selected .title {
+	height: 26px;
+	line-height: 30px;
+	background-position: left -56px;
+}
+/*#ReportTabs li a.TabText {
+	color: #fff;
+	text-decoration: none;
+}
+#ReportTabs li.Selected a.TabText {
+	color: #10486A;
+}*/
+#ReportTabs li a.TabClose {
+	color: #f00;
+	margin-left: 2px;
+	text-decoration: none;
+}
+.Rpt-Content{
+    position: absolute;
+	top: 25px;
+	left: 2px;
+	right: 2px;
+	bottom: 27px;
+	overflow: auto;
+	border-bottom: #c1c1c1 1px solid;
+	border-top: #C09A9A 1px solid;
+	padding-top: 0px;
+}
+.Rpt-Content table{
+    border: 1px solid #5F6F7E;
+    border-collapse: collapse;
+    font-size:13px;
+    text-align:center;
+    width:100%;
+}
+.Rpt-Content table tbody .Loader {
+	height: 25px;
+	text-align: center;
+	color: #696969;
+	background-color: #F9F9F6;
+	border-color: #F9F9F6;
+	display: none;
+}
+.Rpt-Content table tbody .Loader span {
+	background: url("data:image/gif;base64,R0lGODlhEAAQALMMAKqooJGOhp2bk7e1rZ2bkre1rJCPhqqon8PBudDOxXd1bISCef///wAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAAMACwAAAAAEAAQAAAET5DJyYyhmAZ7sxQEs1nMsmACGJKmSaVEOLXnK1PuBADepCiMg/DQ+/2GRI8RKOxJfpTCIJNIYArS6aRajWYZCASDa41Ow+Fx2YMWOyfpTAQAIfkEBQAADAAsAAAAABAAEAAABE6QyckEoZgKe7MEQMUxhoEd6FFdQWlOqTq15SlT9VQM3rQsjMKO5/n9hANixgjc9SQ/CgKRUSgw0ynFapVmGYkEg3v1gsPibg8tfk7CnggAIfkEBQAADAAsAAAAABAAEAAABE2QycnOoZjaA/IsRWV1goCBoMiUJTW8A0XMBPZmM4Ug3hQEjN2uZygahDyP0RBMEpmTRCKzWGCkUkq1SsFOFQrG1tr9gsPc3jnco4A9EQAh+QQFAAAMACwAAAAAEAAQAAAETpDJyUqhmFqbJ0LMIA7McWDfF5LmAVApOLUvLFMmlSTdJAiM3a73+wl5HYKSEET2lBSFIhMIYKRSimFriGIZiwWD2/WCw+Jt7xxeU9qZCAAh+QQFAAAMACwAAAAAEAAQAAAETZDJyRCimFqbZ0rVxgwF9n3hSJbeSQ2rCWIkpSjddBzMfee7nQ/XCfJ+OQYAQFksMgQBxumkEKLSCfVpMDCugqyW2w18xZmuwZycdDsRACH5BAUAAAwALAAAAAAQABAAAARNkMnJUqKYWpunUtXGIAj2feFIlt5JrWybkdSydNNQMLaND7pC79YBFnY+HENHMRgyhwPGaQhQotGm00oQMLBSLYPQ9QIASrLAq5x0OxEAIfkEBQAADAAsAAAAABAAEAAABE2QycmUopham+da1cYkCfZ94UiW3kmtbJuRlGF0E4Iwto3rut6tA9wFAjiJjkIgZAYDTLNJgUIpgqyAcTgwCuACJssAdL3gpLmbpLAzEQA7") no-repeat 2px 50%;
+    margin: 0px auto;
+    width: 180px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    vert-align: middle;
+    display: block;
+}
+.Rpt-Content table caption{
+    font-size: 15px;
+	font-weight: bolder;
+}
+.Rpt-Content table th{
+    border: 1px solid #5F6F7E;
+    background-color:#B0D8FF;
+    width:60px;
+    min-width:60px;
+    color: #000000;
+    text-align: center;
+    font-weight: normal;
+    margin: 0;
+    padding: 0 5px;
+    white-space:nowrap;
+    line-height:24px;
+}
+.Rpt-Content table td{
+	/*position: relative;*/
+    margin: 0;
+    padding: 0 5px;
+    text-align:right;
+    vert-align: middle;
+	border: 1px solid #888888;
+    height:24px;
+    line-height:24px;
+    background-color:#FFF;
+    min-width:60px;
+}
+.Rpt-Content table td.txt_center {
+    text-align: center;
+    vert-align: middle;
+}
+.Rpt-Content .Group {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.Rpt-Content .Group.DW {
+	z-index: 2;
+}
+.Rpt-Content .Group.Unit {
+	z-index: 1;
+}
+.Rpt-Content .Group.Head {
+	z-index: 0;
+}
+.Rpt-Content .Group .Fixed {
+	position: absolute;
+	border: 1px solid #5F6F7E;
+	background-color: #B0D8FF;
+	text-align: center;
+	font-size: 13px;
+	color: #000;
+}
+.Rpt-Content table td.NoPadding {
+	padding: 0px;
+}
+.Rpt-Content table td textarea.Stretch {
+	width: 100%;
+	height: 18px;
+	border: 0px;
+	padding: 4px 0px 0px 0px;
+	text-align: center;
+	resize: none;
+	vertical-align: middle;
+	overflow: hidden;
+	z-index: 1;
+}
+.Rpt-Content table td div.Stretch {
+	width: 120px;
+	height: 25px;
+	overflow: hidden;
+	margin-right: 2px;
+	background-color: white;
+}
+.Rpt-Content table td div.Stretch ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+}
+.Rpt-Content table td div.Stretch span {
+	display: block;
+	height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.Rpt-Content table td div.Stretch ul li {
+	border-bottom: 1px solid rgb(218, 212, 212);
+	float: left;
+	width: 100%;
+}
+.Rpt-Content table td div.Stretch .Stretch-Left {
+	width: 20px;
+	float: left;
+}
+.Rpt-Content table td div.Stretch .Stretch-Left input {
+	margin-top: 5px;
+}
+.Rpt-Content table td div.Stretch .Stretch-Right {
+	float: left;
+}
+.Rpt-Content table td div.Stretch-On {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	height: 200px;
+	overflow: auto;
+	border: 1px solid rgb(163, 150, 150);
+}
+.Rpt-Content table td div.Stretch-On ul {
+	display: block;
+}
+.Rpt-Content table td div.Stretch-On span {
+	display: none;
+}
+.Rpt-Content table td textarea.Stretch-On {
+	position: absolute;
+	resize: vertical;
+	left: 0px;
+	top: 0px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.Rpt-Content table td.ReadOnly,.Rpt-Content table input:disabled{
+    background-color:#f8f8f8;
+}
+.Rpt-Content table .Warning {
+	font-weight: bolder;
+	color: red;
+}
+#Report table tbody tr.Split td,#Report table tbody tr.Split td input,#Report table tbody tr.Split th{
+	background-color: #E9E4E4;
+}
+#Report table tbody tr.Split td {
+	border-color: #D3BDBD;
+}
+.Rpt-Content table input[type=text]{
+    padding: 0;
+    margin: 0;
+    width:100%;
+    height:24px;
+    border: none;
+	text-align: right;
+}
+.Rpt-Content table input[type=text].a-c {
+	text-align: center;
+}
+.Rpt-Content table input[type=text]:focus{
+    outline:none;
+}
+.Rpt-Content input[field=SWDD]{
+    width:200px;
+}
+.Rpt-Content table input[field=DeathReason]{
+    width:200px;
+}
+.Rpt-Content table select{
+    padding: 0;
+    margin: 0;
+    width:100%;
+    height:24px;
+    border: none;
+}
+.Rpt-Content table th select{
+    background-color:#B0D8FF;
+}
+.Rpt-Content table .Wrong{
+    color:#c00;
+    border-color:#c00;
+    background-color:#FFC0C0;
+}
+.Rpt-Content table input.Wrong:disabled{
+    color:#c00;
+    background-color:#FFC0C0;
+}
+.Rpt-Content .FloatTable span {
+	clear: both;
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bolder;
+}
+.Rpt-Content .FloatTable table {
+	float: left;
+	width: 500px;
+}
+.Rpt-Content .WhiteSapce td {
+	height: 25px;
+}
+/*表格*/
+
+/*标签页*/
+.Rpt-Tags{
+    position:absolute;
+    bottom:0;
+    margin: -1px 0px 5px 10px;
+    padding: 0px;
+    height: 23px;
+}
+.Rpt-Tags li{
+    float: left;
+    margin-right: 1px;
+    list-style-type: none;
+    height: 23px;
+    border:#c1c1c1 1px solid;
+    background-color:#f0f0f0;
+}
+.Rpt-Tags li a{
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+    color: #999;
+    line-height: 23px;
+    height: 22px;
+    text-decoration: none;
+    cursor:pointer;
+    display:block;
+}
+.Rpt-Tags li.Selected{
+    background-position: left top;
+    margin-bottom: -2px;
+    position: relative;
+    height: 25px;
+    border-top:none;
+    background-color:#fcfcfc;
+}
+.Rpt-Tags li.Selected a{
+    background-position: right top;
+    color: #000;
+    line-height: 25px;
+    height: 25px;
+}
+/*标签页*/
+
+.Rpt-Content table input[type=text].txt_center{
+	text-align:center;
+	vertical-align:middle;
+}
+
+table thead th.NoBorder-B{
+    border-bottom-color: #B0D8FF;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Tabs{
+    height: 25px;
+    border-bottom: 1px #d5dadc solid;
+    font-size: 12px;
+}
+.Tabs div.Notice {
+      position: absolute;
+      top: 4px;
+      left: 413px;
+      right: 10px;
+      font-size: 15px;
+      font-weight: bolder;
+      color: #014284;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+}
+.Tabs ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.Tabs ul li{
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    display: block;
+    padding: 0 12px 0 0;
+    font-weight: bold;
+    background-image: url(../../CSS/img/Public/Tab_BackGround.png);
+    background-position: right -28px;
+    color: #96aecd;
+    cursor: pointer;
+    margin: 0 0 0 2px;
+}
+.Tabs ul li.Selected{
+    height: 26px;
+    line-height: 26px;
+    background-position: right -84px;
+    color: #2f609e;
+    cursor: auto;
+}
+.Tabs li span{
+    display: block;
+    height: 25px;
+    line-height: 30px;
+    padding: 0 0 0 12px;
+    background-image: url(../../CSS/img/Public/Tab_BackGround.png);
+    background-position: left 0px;
+}
+.Tabs li.Selected span{
+    height: 26px;
+    line-height: 30px;
+    background-position: left -56px;
+}
+.Tabs li i{
+    width: 24px;
+    height: 24px;
+    margin: 4px 2px 0px 0;
+    background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+}
+/*<Tabs中各种Tab的图标>*/
+.Tabs li.Inbox i{
+    background-position: -240px 0px;
+}
+.Tabs li.Cased i{
+    background-position: -312px 0px;
+}
+.Tabs li.Refused i{
+    background-position: -456px 0px;
+}
+.Tabs li.Auditing i{
+    background-position: -240px 0px;
+}
+.Tabs li.Audited i{
+    background-position: -432px 0px;
+}
+.Tabs li.ReportTitle i{
+    background-position: -216px 0px;
+}
+.Tabs li.Affix i{
+    background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+    background-position: 0px -217px;
+}
+.Tabs li.CheckAlert i{
+    background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+    background-position: 0px -265px;
+}
+.Tabs li.Instructions i{
+    background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+    background-position: 0px -288px;
+}
+
+body{
+    margin: 0px;
+}
+.ToolBar{
+    height: 30px;
+    overflow: hidden;
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    z-index: 31;
+}
+.ToolBar ul{
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 26px;
+    overflow: hidden;
+}
+.ToolBar ul li{
+    background-image: url(../../CSS/img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    line-height: 26px;
+    color: #fff;
+    margin: 0 0 0 5px;
+    padding: 0 5px;
+    font-weight: bold;
+    float: left;
+    cursor: pointer;
+    font-size: 14px;
+    border-left: 1px solid transparent;
+}
+.ToolBar ul li.Maximize,.ToolBar ul li.Restore {
+	float: right;
+}
+.ToolBar ul li.Maximize i {
+	background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+	background-position: 0px -312px;
+}
+.ToolBar ul li.Restore i {
+	background-image: url(../../CSS/img/Public/MenuIcons/1.png);
+	background-position: -24px -312px;
+}
+.ToolBar ul li:hover{
+    background-position:right -26px;
+    border-left:1px solid #466081;
+}
+.ToolBar ul li i{
+    width: 24px;
+    height: 24px;
+    margin: 2px 2px 0px 0;
+    background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+}
+.ToolBar ul li.Export a {
+	color: #fff;
+	text-decoration: none;
+}
+/*<工具栏中各种按钮的图标>*/
+.ToolBar ul li.Print i{
+    background-position: -672px -24px;
+}
+.ToolBar ul li.Audit i,.ToolBar ul li.Modify i{
+    background-position: 0px -24px;
+}
+.ToolBar ul li.Resume i{
+    background-position: -528px -24px;
+}
+.ToolBar ul li.Deleted i{
+    background-position: -168px -24px;
+}
+.ToolBar ul li.DeleteAll i{
+    background-position: -504px -24px;
+}
+.ToolBar ul li.Cased i{
+    background-position: -312px -24px;
+}
+.ToolBar ul li.Refused i{
+    background-position: -456px -24px;
+}
+.ToolBar ul li.Save i{
+    background-position: -120px -24px;
+}
+.ToolBar ul li.New i{
+     background-position: -312px -24px;
+ }
+.ToolBar ul li.Delete i{
+    background-position: -168px -24px;
+}
+.ToolBar ul li.ResetPassword i{
+     background-position: -528px -24px;
+ }
+.ToolBar ul li.Open i{
+    background-position: -240px -24px;
+}
+.ToolBar ul li.Copy i{
+    background-position: -144px -24px;
+}
+.ToolBar ul li.Send i{
+    background-position: -72px -24px;
+}
+.ToolBar ul li.AddRow i{
+    background-position: -360px -24px;
+}
+.ToolBar ul li.DelRow i{
+    background-position: -384px -24px;
+}
+.ToolBar ul li.Export i{
+    background-position: -624px -24px;
+}
+.ToolBar ul li.Import i{
+    background-position: -648px -24px;
+}
+.ToolBar ul li.DisasterReview i{
+    background-position: -240px -24px;
+}
+.ToolBar ul li.River i{
+    background-position: -696px -24px;
+}
+.ToolBar ul li.SimpleSheet i{
+    background-position: -288px -24px;
+}
+.ToolBar ul li.Download i{
+	background-position: -96px -24px;
+} 
+.ToolBar ul li.CommonReport i{
+	 background-position: -240px -24px;
+}
+.ToolBar ul li.Reset i {
+	background-position: -530px -26px;
+}
+
+/*<工具栏中各种按钮的图标>*/
+
+/*ToolBar中的耳机菜单*/
+.ToolBar ul li.Reset{
+	width: 68px;
+}
+.ToolBar ul li.Reset:hover ul {
+	display: block;
+}
+.ToolBar ul li.Reset div {
+	width: 57px;
+	margin: 0 auto;
+}
+.ToolBar ul li.Reset ul {
+	position: absolute;
+	width: 78px;
+	margin: 0 0 0 -6px;
+	height: 53px;
+	z-index: 2;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: none;
+}
+.ToolBar ul li.Reset ul li {
+	float: left;
+	clear: both;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+/*
+.dialog .close_btn �����ӵķ���
+*/
+
+button::-moz-focus-inner
+{
+	 border:0;
+	 padding:0;
+	 margin:0;
+	 }
+.easyDialog_wrapper
+{
+	 width:auto;
+	 color:#FFF;
+	 /*border:3px solid rgba(0,0,0,0);
+	 -webkit-border-radius:5px;
+	 -moz-border-radius:5px;
+	 border-radius:5px;
+	 -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+	 -moz-box-shadow:0 0 10px rgba(0,0,0,0.4);
+	 box-shadow:0 0 10px rgba(0,0,0,0.4);*/
+	 display:none;
+	 font-family:"Microsoft yahei", Arial; 
+	 }
+
+.easyDialog_wrapper .easyDialog_content{ -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; background:#333; border:1px solid #e5e5e5; text-align:center; }
+
+.easyDialog_wrapper .easyDialog_title{ height:30px; line-height:30px; overflow:hidden; color:#666; padding:0 10px; font-size:14px; border-bottom:1px solid #e5e5e5; background:#f7f7f7; border-radius:4px 4px 0 0; }
+
+.easyDialog_wrapper .close_btn,.dialog .close_btn{ font-family:arial; font-size:18px; _font-size:12px; font-weight:700; color:#999; text-decoration:none; float:right; }
+
+.easyDialog_wrapper .close_btn:hover{ color:#333; }
+
+.easyDialog_wrapper .easyDialog_text{ padding:25px 10px; font-size:13px; line-height:22px; }
+
+.easyDialog_wrapper .easyDialog_footer{ padding:0 10px; *zoom:1; }
+
+.easyDialog_wrapper .easyDialog_footer:after{ content:''; display:block; height:0; overflow:hidden; visibility:hidden; clear:both; }
+
+.easyDialog_wrapper .btn_highlight,
+.easyDialog_wrapper .btn_normal{ border:1px solid; border-radius:2px; cursor:pointer; font-family:"Microsoft yahei", Arial; float:right; font-size:12px; padding:0 12px; height:24px; line-height:24px; margin-bottom:10px; }
+
+.easyDialog_wrapper .btn_highlight{ background:#4787ed; background:-webkit-gradient(linear,center bottom,center top,from(#4787ed),to(#4d90fe)); background:-moz-linear-gradient(90deg, #4787ed, #4d90fe); border-color:#3079ed; color:#fff; }
+
+.easyDialog_wrapper .btn_normal{ margin-left:10px; border-color:#c3c3c3; background:#ececec; color:#333; background:-webkit-gradient(linear,center bottom,center top,from(#ececec),to(#f4f4f4)); background:-moz-linear-gradient(90deg,#ececec,#f4f4f4); }
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+
+.uploadify {
+	position: relative;
+	margin-bottom: 1em;
+}
+.uploadify-button {
+	background-color: rgb(47, 96, 158);
+	background-image: linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -o-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(47, 96, 158) 0%, #707070 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(47, 96, 158)),
+		color-stop(1, #707070)
+	);
+	background-position: center top;
+	background-repeat: no-repeat;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	border: 2px solid #808080;
+	color: #FFF;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	width: 100%;
+	cursor: pointer;
+}
+.uploadify:hover .uploadify-button {
+	background-color: #606060;
+	background-image: linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -o-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -moz-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -ms-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #606060),
+		color-stop(1, #808080)
+	);
+	background-position: center bottom;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+.uploadify-queue {
+	margin-bottom: 1em;
+}
+.uploadify-queue-item {
+	background-color: #F5F5F5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	max-width: 350px;
+	padding: 10px;
+	margin: 0px;
+	float: left;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background: url('../../CSS/Img/Public/Close.png') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+body {
+	font-size: 12px;
+}
+.Report {
+	position: absolute;
+	top: 25px;
+	right: 0px;
+	bottom: 140px;
+	left: 2px;
+}
+.Report-Footer {
+	position: absolute;
+	top: auto;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	height: 140px;
+}
+.Affix {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.Affix li {
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.Affix li img {
+	float: left;
+}
+.Affix li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.Affix li a:hover {
+	text-decoration: underline;
+}
+.ReportTitle table {
+	margin: 10px auto 10px 10px;
+	font-size: 14px;
+	color: #333;
+}
+.ReportTitle table td {
+	height: 20px;
+	width: 25%;
+	min-width: 235px;
+	text-align: left;
+}
+body div.Rpt-Content {
+    top: 10px;
+    border-top: initial;
+}
+body div.Rpt-Content table caption {
+    margin-bottom: 5px;
+}
+.Boxes .Affix ul {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.Boxes .Affix ul li {
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.Boxes .Affix ul li img {
+	float: left;
+}
+.Boxes .Affix ul li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.Boxes .Affix ul li a:hover {
+	text-decoration: underline;
+}
+
+.Report table td{
+	/*position: relative;*/
+    margin: 0;
+    padding: 0 5px;
+    text-align: right;
+    vert-align: middle;
+	border: 1px solid #888888;
+    height:24px;
+    line-height:24px;
+    background-color:#FFF;
+    min-width:60px;
+}
+.Report table td.txt_center {
+    text-align: center;
+    vert-align: middle;
+}
+.Report table td input[type=text]{
+    padding: 0;
+    margin: 0;
+    width:100%;
+    height:24px;
+    border: none;
+	text-align: right;
+    vert-align: middle;
+}
+.Report table td input.txt_center {
+    text-align: center;
+    vert-align: middle;
+}
+div.Report table td.ReadOnly,div.Report table tr td.ReadOnly input{
+    background-color: #F7F2F2;
+}

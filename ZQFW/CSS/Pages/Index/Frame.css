@@ -1,0 +1,18 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.MenuBar{
+    position: absolute;
+}
+.Frame{
+    position: absolute;
+    top: 121px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #FFF;
+    margin: 0 5px 5px 5px;
+}

@@ -1,0 +1,274 @@
+﻿<div class="Rpt-Content" ng-switch on="Report[Attr.NameSpace].Current.Attr.TableIndex">
+    <table id="HP011-1" ng-show="Report[Attr.NameSpace].Current.Attr.TableIndex == 0" table-fixed>
+        <caption>湖南省水利工程蓄水情况表（一）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></caption>
+        <thead>
+            <tr>
+                <th rowspan="3">
+                    单位
+                </th>
+                <th colspan="7">
+                    总计
+                </th>
+                <th colspan="5">
+                    大型水库
+                </th>
+                <th colspan="5">
+                    中型水库
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    处数{{BaseData.Field.XSCSZJ.MeasureName ? BaseData.Field.XSCSZJ.MeasureName : "（万处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.XZYBFB.MeasureName ? BaseData.Field.XZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    与上期比{{BaseData.Field.SQZJ.MeasureName ? BaseData.Field.SQZJ.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    与历年比{{BaseData.Field.LNZJ.MeasureName ? BaseData.Field.LNZJ.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.DZXKCS.MeasureName ? BaseData.Field.DZXKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.KXZYBFB.MeasureName ? BaseData.Field.KXZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.ZZXKCS.MeasureName ? BaseData.Field.ZZXKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.ZXZYBFB.MeasureName ? BaseData.Field.ZXZYBFB.MeasureName : "（%）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hp011 in Report[Attr.NameSpace].Current.HP011">
+        	    <th>{{hp011.DW}}</th>
+                <td>{{hp011.XSCSZJ}}</td>
+                <td>{{hp011.YXSLZJ}}</td>
+                <td>{{hp011.XXSLZJ}}</td>
+                <td>{{hp011.XZKYSL}}</td>
+                <td>{{hp011.XZYBFB}}</td>
+                <td>{{hp011.SQZJ}}</td>
+                <td>{{hp011.LNZJ}}</td>
+                <td>{{hp011.DZXKCS}}</td>
+                <td>{{hp011.DZKYXSL}}</td>
+                <td>{{hp011.DZKXXSL}}</td>
+                <td>{{hp011.DXKKYSL}}</td>
+                <td>{{hp011.KXZYBFB}}</td>
+                <td>{{hp011.ZZXKCS}}</td>
+                <td>{{hp011.ZZKYXSL}}</td>
+                <td>{{hp011.ZZKXXSL}}</td>
+                <td>{{hp011.ZXKKYSL}}</td>
+                <td>{{hp011.ZXZYBFB}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-show="Report[Attr.NameSpace].Current.Attr.TableIndex == 1" table-fixed>
+        <caption>湖南省水利工程蓄水情况表（二）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></caption>
+        <thead>
+            <tr>
+                <th rowspan="3">
+                    单位
+                </th>
+                <th colspan="5">
+                    小(一)型水库
+                </th>
+                <th colspan="5">
+                    小(二)型水库
+                </th>
+                <th colspan="5">
+                    山坪塘总计
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    处数{{BaseData.Field.XYSKCS.MeasureName ? BaseData.Field.XYSKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.XKXZYBFB.MeasureName ? BaseData.Field.XKXZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.XRSKCS.MeasureName ? BaseData.Field.XRSKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.XRXZYBFB.MeasureName ? BaseData.Field.XRXZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.SPTHJCS.MeasureName ? BaseData.Field.SPTHJCS.MeasureName : "（万处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.TXZYBFB.MeasureName ? BaseData.Field.TXZYBFB.MeasureName : "（%）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hp011 in Report[Attr.NameSpace].Current.HP011">
+                <th>{{hp011.DW}}</th>
+                <td>{{hp011.XYSKCS}}</td>
+                <td>{{hp011.XYKYXS}}</td>
+                <td>{{hp011.XYKXXS}}</td>
+                <td>{{hp011.XYKKYS}}</td>
+                <td>{{hp011.XKXZYBFB}}</td>
+                <td>{{hp011.XRSKCS}}</td>
+                <td>{{hp011.XRKYXS}}</td>
+                <td>{{hp011.XRKXXS}}</td>
+                <td>{{hp011.XRKKYS}}</td>
+                <td>{{hp011.XRXZYBFB}}</td>
+                <td>{{hp011.SPTHJCS}}</td>
+                <td>{{hp011.SPTYXS}}</td>
+                <td>{{hp011.SPTXXS}}</td>
+                <td>{{hp011.SPTKYS}}</td>
+                <td>{{hp011.TXZYBFB}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-show="Report[Attr.NameSpace].Current.Attr.TableIndex == 2" class="FloatTable">
+        <span>湖南省水利工程蓄水情况表（三）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></span>
+        <table ng-repeat="arr in Report[Attr.NameSpace].Current.HP012.Fake.Large" ng-autowidth>
+            <thead>
+                <tr>
+                    <th rowspan="3">
+                        水库
+                    </th>
+                    <th colspan="5">
+                        大型水库
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        计划蓄水
+                    </th>
+                    <th>
+                        实际蓄水
+                    </th>
+                    <th>
+                        可用水量
+                    </th>
+                    <th>
+                        实际占计划{{BaseData.Field.DXZYBFB.MeasureName ? BaseData.Field.DXZYBFB.MeasureName : "（%）"}}
+                    </th>
+                    <th>
+                        去年同期
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hp012 in arr">
+                    <th>{{hp012.DXSKMC}}</th>
+                    <td>{{hp012.DXKYXSL}}</td>
+                    <td>{{hp012.DXKXXSL}}</td>
+                    <td>{{hp012.DXKKYS}}</td>
+                    <td>{{hp012.DXZYBFB}}</td>
+                    <td>{{hp012.QNTQDXS}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="Report[Attr.NameSpace].Current.Attr.TableIndex == 3" class="FloatTable">
+        <span>湖南省水利工程蓄水情况表（四）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></span>
+        <table ng-repeat="arr in Report[Attr.NameSpace].Current.HP012.Fake.Middle" ng-autowidth>
+            <thead>
+                <tr>
+                    <th rowspan="3">
+                        水库
+                    </th>
+                    <th colspan="5">
+                        中型水库
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        计划蓄水
+                    </th>
+                    <th>
+                        实际蓄水
+                    </th>
+                    <th>
+                        可用水量
+                    </th>
+                    <th>
+                        实际占计划{{BaseData.Field.DXZYBFB.MeasureName ? BaseData.Field.DXZYBFB.MeasureName : "（%）"}}
+                    </th>
+                    <th>
+                        去年同期
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hp012 in arr">
+                    <th>{{hp012.DXSKMC}}</th>
+                    <td>{{hp012.DXKYXSL}}</td>
+                    <td>{{hp012.DXKXXSL}}</td>
+                    <td>{{hp012.DXKKYS}}</td>
+                    <td>{{hp012.DXZYBFB}}</td>
+                    <td>{{hp012.QNTQDXS}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ul class="Rpt-Tags">
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 0}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 0"><a>表1</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 1}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 1"><a>表2</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 2}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 2"><a>表3</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 3}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 3" ng-hide="Report[Attr.NameSpace].Current.ReportTitle.UnitCode.indexOf('000000') == 2">
+        <a>表4</a>
+    </li>
+</ul>

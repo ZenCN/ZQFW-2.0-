@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="Login">
+<head>
+    <title>Debug-登录页面</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--------------------------CSS-------------------------->
+    <link href="../../CSS/Public/Body.css" rel="stylesheet"/>
+    <link href="../../CSS/Pages/LoginMaster.css" rel="stylesheet"/>
+    <link href="../../CSS/Plugins/Easydialog.css" rel="stylesheet" type="text/css"/>
+    <!-----------------------------JavaScript-------------------------------->
+    <!--Base Library-->
+    <script type="text/javascript">
+        if (navigator.userAgent.indexOf('MSIE') >= 0 && navigator.userAgent.indexOf('Opera') < 0) {
+            alert("本系统不支持该浏览器，请在该界面下方选择并下载安装所支持的浏览器");
+        }
+    </script>
+    <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
+    <!--Plugin-->
+    <script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/easydialog.min.js" type="text/javascript"></script>
+    <!--Angular MVC-->
+    <script src="../../Scripts/Application/LoginApp.js" type="text/javascript"></script>
+    <!--Custom-->
+    <script src="../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Extend/String.js" type="text/javascript"></script>
+    <script src="../../Scripts/Others/Tools.js" type="text/javascript"></script>
+</head>
+<body class="Scenery" ng-controller="Main">
+    <div class="Main">
+        <div class="M-Top">
+            <ul>
+                <li>
+                    <label class="lbl">省&nbsp;&nbsp;级：</label>
+                    <label>{{Attr.District.Province.Left.UnitName}}</label>
+                </li>
+                <li>
+                    <label>市&nbsp;&nbsp;级：</label>
+                    <label class="lbl" ng-show="Attr.Login.Quick.Enable">{{Attr.Login.Quick.City.Left}}&nbsp;&nbsp;{{Attr.Login.Quick.City.Right}}</label> 
+                    <select ng-hide="Attr.Login.Quick.Enable" name="City.Left" ng-model="Attr.District.City.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.City.Left.Select" ng-change="Fn.OnChange.Select()">
+                    </select>
+                </li>
+                <li>
+                    <label>县&nbsp;&nbsp;级：</label>
+                    <label class="lbl" ng-show="Attr.Login.Quick.Enable">{{Attr.Login.Quick.County.Left}}&nbsp;&nbsp;{{Attr.Login.Quick.County.Right}}</label> 
+                    <select ng-hide="Attr.Login.Quick.Enable" name="County.Left" ng-model="Attr.District.County.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.County.Left.Select" ng-change="Fn.OnChange.Select()">
+                    </select>
+                </li>
+                <li ng-hide="['15','22','23','33','35','44','45'].In_Array(Attr.UserCode)">
+                    <label>乡&nbsp;&nbsp;级：</label>
+                    <label class="lbl" ng-show="Attr.Login.Quick.Enable">{{Attr.Login.Quick.Town.Left}}</label>
+                    <select ng-hide="Attr.Login.Quick.Enable" name="Town.Left" ng-model="Attr.District.Town.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.Town.Left.Select" ng-change="Fn.OnChange.Select()">
+                    </select>
+                </li>
+                <li>
+                    <label>密&nbsp;&nbsp;码：</label>
+                    <input not-allow oncontextmenu="return false" type="password" ng-model="Attr.Login.User.Password" disable-key="space" />
+                </li>
+                <li class="Error">
+                    <p></p>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <input id="Login" type="button" ng-click="Fn.Login.In()" />
+                    </a>
+                </li>
+            </ul>
+            <div ng-if="Attr.UserCode != 15" class="LoginTab Normal" ng-show="Attr.Login.Quick.Show" toggle><!--快速登录-->
+                <a href="javascript:void(0);"></a>
+            </div>
+            <div ng-if="Attr.UserCode == 15" class="LoginTab HL" ng-class="{Selected: Attr.CurrentTab == 'HL'}" ng-click="Attr.CurrentTab = 'HL'"><!--快速登录-->
+            </div>
+            <div ng-if="Attr.UserCode == 15" class="LoginTab SH" ng-class="{Selected: Attr.CurrentTab == 'SH'}" ng-click="Attr.CurrentTab = 'SH'"><!--快速登录-->
+            </div>
+        </div>
+        <div class="M-Bottom"></div>
+    </div>
+    <div class="Footer">
+        <div class="Footer-Top">
+            <a ng-if="Attr.CurrentTab != 'SH'" href="../../Document/Helper/{{Attr.District.Province.Left.UnitCode.slice(0,2)}}/用户手册.doc">
+                <span></span> 下载用户手册
+            </a>
+            <a ng-if="Attr.CurrentTab == 'SH'" href="../../Document/Helper/15_SH/用户手册.doc">
+                <span></span> 下载用户手册
+            </a>
+        </div>
+        <div class="Footer-Bottom">
+            <p>技术支持：长沙至卓信息科技有限公司</p>
+            <p>(为了获得更好的浏览效果，建议您使用
+               <a href="../../Document/File/谷歌浏览器（点击安装）.exe" title="点击下载安装">谷歌</a>、
+               <a href="../../Document/File/360极速浏览器（点击安装）.exe" title="点击下载安装">360极速</a>、
+               <a href="../../Document/File/360安全浏览器（点击安装）.exe" title="点击下载安装">360安全（极速模式）</a>、
+            等非IE内核浏览器)</p>
+        </div>
+    </div>
+</body>
+</html>

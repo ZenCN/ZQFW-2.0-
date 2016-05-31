@@ -1,0 +1,50 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.ToolBar, .Main {
+    width: 975px;
+    margin: auto;
+    font-size: 18px;
+    overflow: hidden;
+}
+.Main{
+    font-family: FangSong_GB2312;
+}
+.Main h1{
+    margin: 0 auto;
+    font-size: 50px;
+    color: red;
+    font-family: STZhongsong;
+    width: 307px;
+}
+.Main .Head{
+    margin-top: 55px;
+    height: 84px;
+    border-bottom: 5px solid red;
+}
+.Main .Head .Head-Top{
+    width: 60px;
+    margin: 0 auto;
+    font-family: SimSun;
+    margin-bottom: 25px;
+}
+.Main .Head .Head-Left{
+    float: left;
+}
+.Main .Head .Head-Right{
+    float: right;
+    margin-right: 70px;
+}
+.Main .Caption{
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: SimSun;
+    margin: 55px auto;
+    width: 188px;
+}
+.Main .Body{
+    font-size: 20px;
+    line-height: 42px;
+}

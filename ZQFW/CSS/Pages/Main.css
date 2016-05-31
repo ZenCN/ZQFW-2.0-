@@ -1,0 +1,70 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Head .Top{
+    background-color: #4d4d4d;
+}
+.Main{
+    width: 1180px;
+    height: 213px;
+    margin: 300px auto 0;
+    text-align: center;
+}
+.Main div{
+    width: 226px;
+    height: 213px;
+    margin: 0 5px;
+    background-image: url(../img/Pages/Main/Menu.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    float: left;
+}
+.Main div:hover{
+    background-position:-226px bottom;
+}
+.Main a{
+    width: 226px;
+    height: 213px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.Main li{
+    width: 226px;
+    height: 213px;
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/Pages/Main/Menu.png);
+    background-repeat: no-repeat;
+    list-style: none;
+    float:left;
+}
+.Main a#DisasterReport li{
+    background-position: 0px 0px;
+}
+.Main a#DisasterHistory li {
+	background-position: -226px 0px;
+}
+.Main a#StatisticAnalysis li{
+    background-position: -452px 0px;
+}
+.Main a#BaseData li{
+    background-position: -678px 0px;
+}
+.Main a#SystemSetting li{
+    background-position: -904px 0px;
+}
+.Main a#ReservoirReport li {
+	background-position: -449px -214px;
+}
+
+div.Head div.Top {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+div.Head div.Bottom, div.Head div.Bottom div.Image {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

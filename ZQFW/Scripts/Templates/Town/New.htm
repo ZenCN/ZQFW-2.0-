@@ -1,0 +1,201 @@
+﻿<div class="LeftTree">
+    <div class="Left">
+        <div class="Title">
+            <span>我的报表</span>
+        </div>
+        <div class="Box">
+            <p>
+                <input ng-wdatepicker='{"maxDate":"New.Attr.SearchEndTime"}' style=" width: 94px" type="text" ng-model="New.Attr.SearchStartTime" readonly/>
+                <span>至</span>
+                <input ng-wdatepicker='{"minDate":"New.Attr.SearchStartTime"}' ng-wdatepicker ng-model="New.Attr.SearchEndTime" style=" width: 94px" type="text" readonly/>
+                <input type="button" value="查询" class="DarkBlue" ng-click="New.Report.Fn.Search()" />
+            </p>
+            <ul>
+                <li ng-repeat="rpt in New.Report.List" ng-click="New.Report.Fn.Open(rpt.PageNO)" ng-class="{Selected: New.Report.Current.ReportTitle.PageNO == rpt.PageNO}">
+                    <a>
+                        <i></i>{{rpt.StartDateTime}}至{{rpt.EndDateTime}}{{rpt.State == 3 ? "[已报送]" : "[未报送]"}}
+                    </a>
+                </li>
+            </ul>
+            <div class="Jumper" style="display: none">
+                <i ng-click="New.Report.Fn.Jumper('ToFirst')" title="最前一页" ></i>
+                <i ng-click="New.Report.Fn.Jumper('ToPrevious')" title="上一页" class="ToPrevious" ></i>
+                <span class="PageText">
+                    第<span>{{New.Attr.Page.Index + 1}}</span>页/
+                    <span ng-init="PageCount = Number((New.Report.List.length/New.Attr.Page.Count).toFixed(0))">
+                        {{PageCount > 0 ? PageCount : 1}}
+                    </span>页
+                </span>
+                <i ng-click="New.Report.Fn.Jumper('ToNext')" title="下一页" class="ToNext" ></i>
+                <i ng-click="New.Report.Fn.Jumper('ToLast')" title="最后一页" class="ToLast" ></i>
+            </div>
+        </div>
+    </div>
+    <div class="Right">
+        <div class="ToolBar">
+            <ul>
+                <li class="New" ng-click="New.Report.Fn.Create()" ng-hide="New.Report.Current.ReportTitle.PageNO == 0"><i></i>录入</li>
+                <li class="Save" ng-click="New.Report.Fn.Save()" ng-show="New.Report.Current.ReportTitle.State == 0 && !New.Attr.Readonly"><i></i>保存</li>
+                <li class="Send" ng-click="New.Report.Fn.Send()" ng-show="New.Report.Current.ReportTitle.PageNO != 0 && New.Report.Current.ReportTitle.State == 0"><i></i>报送</li>
+                <li class="Delete" ng-click="New.Report.Fn.Delete.Report()" ng-show="New.Report.Current.ReportTitle.PageNO != 0 && New.Report.Current.ReportTitle.State == 0"><i></i>删除</li>
+                <li class="Modify" ng-click="New.Report.Fn.Modify()" ng-show="New.Attr.Readonly && New.Report.Current.ReportTitle.State == 0"><i></i>修改</li>
+            </ul>
+        </div>
+        <div class="Report">
+            <p>
+                <span>起止日期：</span>
+                <input ng-model="New.Report.Current.ReportTitle.StartDateTime" name="time" ng-disabled="New.Attr.Readonly" ng-wdatepicker='{"maxDate":"New.Report.Current.ReportTitle.EndDateTime"}' type="text" readonly />
+                <span>至</span>
+                <input ng-model="New.Report.Current.ReportTitle.EndDateTime" name="time" ng-disabled="New.Attr.Readonly" ng-wdatepicker='{"minDate":"New.Report.Current.ReportTitle.StartDateTime"}' type="text" readonly />
+                <span>备注：</span>
+                <textarea class="Stretch" title="{{New.Report.Current.ReportTitle.Remark}}" ng-blur="Fn.Check.Quot();Fn.Check.Length(250)" stretch="18-140" ng-model="New.Report.Current.ReportTitle.Remark" ng-disabled="New.Attr.Readonly" ng-class="{ReadOnly:New.Attr.Readonly}">
+                    {{New.Report.Current.ReportTitle.Remark}}
+                </textarea>
+            </p>
+            <hr/>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>农作物受灾面积：</td>
+                        <td><input type="text" ng-readonly="New.Attr.Readonly" tooltipster ng-model="New.Report.Current.HL011[0].SHMJXJ" ng-blur="NRFC(4)" /></td>
+                        <td>{{ BaseData.Field.SHMJXJ.MeasureName ? BaseData.Field.SHMJXJ.MeasureName : '（亩）' }}</td>
+                        <td style="color: red; text-align: left;">{{ New.Report.Current.Attr.Message.SHMJXJ }}</td>
+                    </tr>
+                    <tr>
+                        <td>受灾人口：</td>
+                        <td><input type="text" ng-readonly="New.Attr.Readonly" tooltipster ng-model="New.Report.Current.HL011[0].SZRK" ng-blur="NRFC(0)" /></td>
+                        <td>{{ BaseData.Field.SZRK.MeasureName ? BaseData.Field.SZRK.MeasureName : '（人）' }}</td>
+                        <td style="color: red; text-align: left;">{{ New.Report.Current.Attr.Message.SZRK }}</td>
+                    </tr>
+                    <tr>
+                        <td>死亡人口：</td>
+                        <td>
+                            <input type="text" readonly name="SWRK" tooltipster="SWRK" ng-model="New.Report.Current.HL011[0].SWRK" />
+                            <input type="button" class="DarkBlue" value="{{New.Attr.Readonly ? '查看' : '编辑'}}" ng-click="New.Report.Fn.DeadPeople.Show()" />
+                        </td>
+                        <td>{{ BaseData.Field.SWRK.MeasureName ? BaseData.Field.SWRK.MeasureName : '（人）' }}</td>
+                        <td style="color: red;  text-align: left;">{{ New.Report.Current.Attr.Message.SWRK }}</td>
+                    </tr>
+                    <tr>
+                        <td>失踪人口：</td>
+                        <td><input type="text" name="SZRKR" ng-model="New.Report.Current.HL011[0].SZRKR" tooltipster readonly /></td>
+                        <td>{{ BaseData.Field.SZRKR.MeasureName ? BaseData.Field.SZRKR.MeasureName : '（人）' }}</td>
+                        <td style="color: red;  text-align: left;">{{ New.Report.Current.Attr.Message.SZRKR }}</td>
+                    </tr>
+                    <tr>
+                        <td>转移人口：</td>
+                        <td><input type="text" ng-model="New.Report.Current.HL011[0].ZYRK" tooltipster ng-readonly="New.Attr.Readonly" ng-blur="NRFC(0)" /></td>
+                        <td>{{ BaseData.Field.ZYRK.MeasureName ? BaseData.Field.ZYRK.MeasureName : '（人）' }}</td>
+                        <td style="color: red;  text-align: left;">{{ New.Report.Current.Attr.Message.ZYRK }}</td>
+                    </tr>
+                    <tr>
+                        <td>倒塌房屋：</td>
+                        <td><input type="text" ng-model="New.Report.Current.HL011[0].DTFW" tooltipster ng-readonly="New.Attr.Readonly" ng-blur="NRFC(0)" /></td>
+                        <td>{{ BaseData.Field.DTFW.MeasureName ? BaseData.Field.DTFW.MeasureName : '（间）' }}</td>
+                        <td style="color: red;  text-align: left;">{{ New.Report.Current.Attr.Message.DTFW }}</td>
+                    </tr>
+                    <tr>
+                        <td>直接经济损失：</td>
+                        <td><input type="text" ng-model="New.Report.Current.HL011[0].ZJJJZSS" tooltipster ng-readonly="New.Attr.Readonly" ng-blur="NRFC(4)" /></td>
+                        <td>{{ BaseData.Field.ZJJJZSS.MeasureName ? BaseData.Field.ZJJJZSS.MeasureName : '（万元）' }}</td>
+                        <td style="color: red;  text-align: left;">{{ New.Report.Current.Attr.Message.ZJJJZSS }}</td>
+                    </tr>
+                    <tr>
+                        <td>水利设施损失：</td>
+                        <td><input type="text" ng-model="New.Report.Current.HL011[0].SLSSZJJJSS" tooltipster ng-readonly="New.Attr.Readonly" ng-blur="NRFC(4)" /></td>
+                        <td>{{ BaseData.Field.SLSSZJJJSS.MeasureName ? BaseData.Field.SLSSZJJJSS.MeasureName : '（万元）' }}</td>
+                        <td style="color: red;  text-align: left;">{{ New.Report.Current.Attr.Message.SLSSZJJJSS }}</td>
+                    </tr>
+                    <tr class="File">
+                        <td colspan="4">
+                            <ul>
+                                <li ng-repeat="affix in New.Report.Current.Affix">
+                                    <img src="../../../CSS/Img/Public/Close.png" title="删除" ng-hide="New.Attr.Readonly" ng-click="New.Report.Fn.Delete.Affix($index,affix.tbno,affix.url)"/>
+                                    <a href="{{'/AffixOperater/DownFiles?name=' + affix.name + '&url=' + affix.url}}">
+                                        {{affix.name}}
+                                    </a>
+                                </li>
+                            </ul>
+                            <input type="file" id="file_upload" name="file_upload" ng-fileupload />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="font-size: 16px; font-weight: bolder; color: rgb(52, 52, 187); position: absolute; left: 689px; right: 0; top: 406px;">
+        {{New.Report.Current.Attr.Notice}}
+    </div>
+</div>
+
+<div class="Shadow" style="width: 0px;"></div>
+<div ng-initdeathtree class="DeathTree"></div>
+<div class="OpenLayer" style="width: 0px;">
+    <span class="Close" title="关闭" ng-click="New.Report.Fn.DeadPeople.Hide()"></span>
+    <div class="Container">
+        <center>
+            <div class="Head">
+                <div class="ToolBar">
+                    <ul>
+                        <li class="AddRow" ng-click="New.Report.Fn.DeadPeople.Add()" ng-hide="New.Attr.Readonly" ><i></i>增加行</li>
+                        <li class="DelRow" ng-click="New.Report.Fn.DeadPeople.Del()" ng-hide="New.Attr.Readonly" ><i></i>删除行</li>
+                    </ul>
+                </div>
+            </div>
+            <table class="DeadPersonList">
+                <thead>
+                    <tr>
+                        <th style="width: 14px;">
+                            <input type="checkbox" ng-disabled="New.Attr.Readonly" ng-model="New.Attr.CheckedAll" ng-click="New.Report.Fn.DeadPeople.SelectAll()"/>
+                        </th>
+                        <th style="width: 100px;">
+                            姓名
+                        </th>
+                        <th style="width: 70px;">
+                            死亡/失踪
+                        </th>
+                        <th style="width: 70px;">
+                            性别
+                        </th>
+                        <th style="width: 210px;">
+                            死亡/失踪原因
+                        </th>
+                        <th style="width: 70px;">
+                            年龄
+                        </th>
+                        <th style="width: 100px;">
+                            死亡/失踪时间
+                        </th>
+                        <th style="min-width: width: 220px;">
+                            户籍所在地
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="hl012 in New.Report.Current.HL012">
+                        <td><input type="checkbox" ng-disabled="New.Attr.Readonly" ng-model="hl012.Checked" /></td>
+                        <td><input type="text" ng-disabled="New.Attr.Readonly" ng-model="hl012.SWXM"  ng-blur="FCQ();FCL(8)"/></td>
+                        <td>
+                            <select ng-disabled="New.Attr.Readonly" ng-model="hl012.DataType" ng-change="New.Report.Fn.OnChange.DataType()">
+                                <option value="死亡">死亡</option>
+                                <option value="失踪">失踪</option>       
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-disabled="New.Attr.Readonly" ng-model="hl012.SWXB">
+                                <option value="未知">未知</option>
+                                <option value="男">男</option> 
+                                <option value="女">女</option>       
+                            </select>
+                        </td>
+                        <td><input type="text" ng-disabled="New.Attr.Readonly" ng-deathtree ng-model="hl012.DeathReason" /></td>
+                        <td><input type="text" ng-disabled="New.Attr.Readonly" ng-model="hl012.SWNL" ng-blur="FCN(3)" /></td>
+                        <td><input type="text" ng-disabled="New.Attr.Readonly" ng-model="hl012.SWSJ" ng-wdatepicker /></td>
+                        <td><input type="text" ng-disabled="New.Attr.Readonly" ng-model="hl012.SWHJ" ng-blur="FCQ();FCL(50);"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+</div>

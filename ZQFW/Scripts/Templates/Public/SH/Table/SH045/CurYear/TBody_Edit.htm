@@ -1,0 +1,22 @@
+﻿<tbody>
+    <tr ng-repeat="sh045 in Open.Report.Current.SH045">
+        <th>
+            {{$index + 1}}
+        </th>
+        <th>
+            <span class="txt_center">{{sh045.XZQMC}}</span>
+        </th>
+        <td class="ReadOnly">
+            {{sh045.PXCSJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh045.PXCSJH > 0)}">
+            <input type="text" ng-readonly="!(sh045.PXCSJH > 0)" ng-model="sh045.PXCSWC" ng-blur="FCN()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh045.PXRSJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh045.PXRSJH > 0)}">
+            <input type="text" ng-readonly="!(sh045.PXRSJH > 0)" ng-model="sh045.PXRSWC" ng-blur="FCN()"/>
+        </td>
+    </tr>
+</tbody>

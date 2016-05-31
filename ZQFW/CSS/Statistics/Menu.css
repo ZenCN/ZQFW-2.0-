@@ -1,0 +1,131 @@
+﻿/*-------------------------------------
+#Description:      页面上部标题加状态栏
+#Version:          1.0
+#Author:           xiemumu
+#Recent:           2012-12-05
+-------------------------------------*/
+/*菜单部分*/
+.menu
+{
+	position:absolute;
+	top: 88px;
+	left:9px;
+	right:0;
+	height:30px;
+	background-image:url(top_menu_bg.png);
+	background-repeat:no-repeat;
+	background-position:right -35px;
+	padding:5px 5px 0 0;
+	min-width:946px;
+	z-index:2;	
+	}
+.menu ul
+{
+	position:absolute;
+	height:30px;
+	left:-9px;
+	top:0;
+	z-index:4;
+	display:block;
+	list-style:none;
+	background-image:url(top_menu_bg.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+	margin:0;
+	padding:5px 0 0 0;
+	}
+.menu ul li
+{
+	float:left;
+	display:block;
+	padding:0 10px 0 10px;
+	height:30px;
+	cursor:pointer;
+	}
+.menu ul li.flo
+{
+	padding:0;
+	margin:0;
+	}
+.menu ul li span
+{
+	z-index:4;
+	font-weight:bold;
+	font-size:14px;
+	color:#2f609e;
+	line-height:30px;
+	height:30px;
+	position:relative;
+	}
+.menu ul li.selected span
+{
+	color:#fbfbfb;
+	}
+.menu ul li span i
+{
+	height:24px;
+	width:24px;
+	margin:3px;
+	display:block;
+	float:left;	
+	background-image:url(menu_items.png);
+	background-repeat:no-repeat;
+	position:relative;
+	z-index:4;
+	}
+.menu .floatblock
+{
+	position:absolute;
+	top:5px;
+	left:5px;
+	background-image:url(top_menu_bg.png);
+	background-repeat:no-repeat;
+	background-position:-5px -70px;
+	display:block;
+	height:30px;
+	width:80px;
+	}
+.menu ul li span i.create
+{
+	background-position:0 0;	
+	}
+.menu ul li span i.inbox
+{
+	background-position:-96px 0;	
+	}
+.menu ul li span i.trash
+{
+	background-position:-24px 0;	
+	}
+.menu ul li span i.secretary
+{
+	background-position:-48px 0;	
+	}
+.menu ul li.selected span i
+{
+	background-position-y:-24px;	
+	}
+.menu ul li span i.open
+{
+	background-position:0 -240px;
+	background-image:url(menu_ico.png);	
+	}
+.menu ul li span i.map
+{
+	background-position:0 -168px;
+	background-image:url(menu_ico.png);	
+	}
+.menu ul li span i.analysis
+{
+	background-position:0 -192px;
+	background-image:url(menu_ico.png);
+	}
+.menu ul li span i.assessment
+{
+	background-position:0 -216px;
+	background-image:url(menu_ico.png);
+	}
+.menu ul li.selected span i.map,.menu ul li.selected span i.analysis,.menu ul li.selected span i.assessment,.menu ul li.selected span i.open
+{
+	background-position-x:-24px;
+	}

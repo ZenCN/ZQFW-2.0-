@@ -1,0 +1,42 @@
+.ListHorizontal{
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: auto;
+}
+.ListHorizontal ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+	clear: both;
+}
+.ListHorizontal ul.Head li{
+    background-color: #C7C7C7;
+}
+.ListHorizontal .Boxes ul li{
+    background-color: #fff;
+}
+.ListHorizontal .Boxes ul:hover li{
+	background: #E3E3E3;
+}
+.ListHorizontal .Boxes ul.Selected li {
+	background: #B9B7B7;
+}
+.ListHorizontal ul li{
+    list-style: none;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    display: block;
+    text-align: center;
+    border-right: 1px #a8a8a8 solid;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.ListHorizontal .Boxes ul{
+    cursor: pointer;
+}

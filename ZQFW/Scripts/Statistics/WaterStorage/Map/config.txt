@@ -1,0 +1,14 @@
+component = Map
+copyright = Copyright (C) 2013. All rights reserved.
+cx = 600
+cy = 400
+file = E:\代码\洪涝灾情信息服务系统\湖南2.0\ZQFW\Scripts\Statistics\WaterStorage\Map\HunanMap.map
+hyperlinks = false
+hyperlinksNew = false
+imageDesc = false
+logo = false
+ogcWmsCaps = 
+queries = 
+refreshLinks = 60
+subtitle = 
+title = Map

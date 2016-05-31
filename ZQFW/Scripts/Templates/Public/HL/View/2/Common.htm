@@ -1,0 +1,144 @@
+﻿<table ng-show="Report.TableIndex == 1">
+    <caption>
+        农林牧渔业洪涝灾害统计表
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="3" nowrap="">
+                地区
+            </th>
+            <th colspan="2" scope="col">
+                农作物受灾面积
+            </th>
+            <th colspan="2" scope="col" rolspan="2">
+                农作物成灾面积
+            </th>
+            <th colspan="2" scope="col" rolspan="2">
+                农作物绝收面积
+            </th>
+            <th rowspan="2" scope="col">
+                因灾减产粮食
+            </th>
+            <th rowspan="2" scope="col">
+                经济作物损失
+            </th>
+            <th rowspan="2" scope="col">
+                死亡大牲畜
+            </th>
+            <th colspan="2" scope="col">
+                水产养殖损失
+            </th>
+            <th rowspan="2" scope="col">
+                农林牧渔业直接经济损失
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                小计
+            </th>
+            <th scope="col">
+                其中粮食作物
+            </th>
+            <th scope="col">
+                小计
+            </th>
+            <th scope="col">
+                其中粮食作物
+            </th>
+            <th scope="col">
+                小计
+            </th>
+            <th scope="col">
+                其中粮食作物
+            </th>
+            <th scope="col">
+                面积
+            </th>
+            <th scope="col">
+                数量
+            </th>
+        </tr>
+        <tr>
+            <th scope="col" name="SHMJXJ">
+                {{BaseData.Field.SHMJXJ.MeasureName ? BaseData.Field.SHMJXJ.MeasureName : "（千公顷）"}}
+            </th>
+            <th scope="col" name="SHMJLS">
+                {{BaseData.Field.SHMJLS.MeasureName ? BaseData.Field.SHMJLS.MeasureName : "（千公顷）"}}
+            </th>
+            <th scope="col" name="CZMJXJ">
+                {{BaseData.Field.CZMJXJ.MeasureName ? BaseData.Field.CZMJXJ.MeasureName : "（千公顷）"}}
+            </th>
+            <th scope="col" name="CZMJLS">
+                {{BaseData.Field.CZMJLS.MeasureName ? BaseData.Field.CZMJLS.MeasureName : " （千公顷）"}}
+            </th>
+            <th scope="col" name="JSMJXJ">
+                {{BaseData.Field.JSMJXJ.MeasureName ? BaseData.Field.JSMJXJ.MeasureName : "（千公顷）"}}
+            </th>
+            <th scope="col" name="JSMJLS">
+                {{BaseData.Field.JSMJLS.MeasureName ? BaseData.Field.JSMJLS.MeasureName : "（千公顷）"}}
+            </th>
+            <th scope="col" name="YZJCLS">
+                {{BaseData.Field.YZJCLS.MeasureName ? BaseData.Field.YZJCLS.MeasureName : "（万吨）"}}
+            </th>
+            <th scope="col" name="JJZWSS">
+                {{BaseData.Field.JJZWSS.MeasureName ? BaseData.Field.JJZWSS.MeasureName : "（万元）"}}
+            </th>
+            <th scope="col" name="SWDSC">
+                {{BaseData.Field.SWDSC.MeasureName ? BaseData.Field.SWDSC.MeasureName : " （万头）"}}
+            </th>
+            <th scope="col" name="SCYZMJ">
+                {{BaseData.Field.SCYZMJ.MeasureName ? BaseData.Field.SCYZMJ.MeasureName : "（千公顷）"}}
+            </th>
+            <th scope="col" name="SCYZSL">
+                {{BaseData.Field.SCYZSL.MeasureName ? BaseData.Field.SCYZSL.MeasureName : "（万吨）"}}
+            </th>
+            <th scope="col" name="NLMYZJJJSS">
+                {{BaseData.Field.NLMYZJJJSS.MeasureName ? BaseData.Field.NLMYZJJJSS.MeasureName
+                : "（亿元）"}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="hl011 in Report.HL011">
+            <th>
+                {{hl011.DW}}
+            </th>
+            <td>
+                {{hl011.SHMJXJ}}
+            </td>
+            <td>
+                {{hl011.SHMJLS}}
+            </td>
+            <td>
+                {{hl011.CZMJXJ}}
+            </td>
+            <td>
+                {{hl011.CZMJLS}}
+            </td>
+            <td>
+                {{hl011.JSMJXJ}}
+            </td>
+            <td>
+                {{hl011.JSMJLS}}
+            </td>
+            <td>
+                {{hl011.YZJCLS}}
+            </td>
+            <td>
+                {{hl011.JJZWSS}}
+            </td>
+            <td>
+                {{hl011.SWDSC}}
+            </td>
+            <td>
+                {{hl011.SCYZMJ}}
+            </td>
+            <td>
+                {{hl011.SCYZSL}}
+            </td>
+            <td>
+                {{hl011.NLMYZJJJSS}}
+            </td>
+        </tr>
+    </tbody>
+</table>

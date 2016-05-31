@@ -1,0 +1,28 @@
+﻿<div class="UrgeReport">
+    <table>
+        <tr>
+            <td align="center">
+                <select id="unit-select" mutiselect multiple="multiple">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <fieldset>
+                    <legend>催报内容:</legend>
+                    <textarea ng-model="UrgeReport.Attr.Content" rows="10" cols="20" ng-blur="Fn.Check.Quot();Fn.Check.Length(500);" placeholder="催报内容"></textarea>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                催报人:<input type="text" placeholder="催报人" style="font-size: 14px;" ng-model="UrgeReport.Attr.PersonName" ng-blur="Fn.Check.Quot();Fn.Check.Length(8);" />
+            </td>
+        </tr>
+        <tr>
+            <td align='center'>
+                <input type='button' class='DarkBlue' value='催报' ng-click="UrgeReport.Fn.Urge()" />
+            </td>
+        </tr>
+    </table>
+</div>

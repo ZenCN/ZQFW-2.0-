@@ -1,0 +1,14 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.TableName,.SendTime{
+    width: 17%;
+}
+.BeginTime,.EndTime,.WriteTime{
+    width: 14%;
+}
+.Remark{
+    width: 23%;
+}

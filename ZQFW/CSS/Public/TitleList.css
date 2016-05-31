@@ -1,0 +1,76 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.TitleList{
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 230px;
+    border: 1px solid #2f609e;
+    border-top: none;
+}
+.TitleList .Title{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    overflow: hidden;
+    background-image: url(../img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+.TitleList .Title span{
+    line-height: 26px;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-image: url(../img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    display: block;
+    margin: 0;
+    height: 26px;
+}
+.TitleList .Boxes li{
+    cursor: pointer;
+    border-bottom: 1px #e3e3e3 solid;
+    font-size: 12px;
+}
+.TitleList ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.TitleList ul li{
+    height: 26px;
+    line-height: 26px;
+}
+.TitleList ul li.Selected{
+    background-color: #e3e3e3;
+    color: #333;
+}
+.TitleList ul li span{
+    display: block;
+    float: left;
+    text-align: center;
+}
+.TitleList ul.Head li span{
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    background-image: url(../img/Public/White-X.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.TitleList ul.Head li span.Last{
+    background-position: 0 0;
+}
+.TitleList-Operate {
+	margin-top: 5px;
+	text-align: center;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html ng-app="SimpleReport">
+<head>
+    <title>Debug-洪涝灾情简报</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--------------------------CSS------------------------------>
+    <link rel="stylesheet" href="../../../../CSS/Public/ToolBar.css"/>
+    <link rel="stylesheet" href="../../../../CSS/Pages/Index/SimpleReport.css"/>
+    <!--------------------------JavaScript------------------------------>
+    <!--Base Library-->
+    <script src="../../../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
+    <!--Plugin-->
+    <script src="../../../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Application/ReportDetails/HL01/33.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Models/DisasterModel.js" type="text/javascript"></script>
+</head>
+<body ng-controller="MainCtrl">
+    <div class="ToolBar" style="visibility: hidden;">
+        <ul>
+            <!--<li class="Export" ng-click="Fn.Export()"><i></i>导出</li>-->
+            <li class="Copy"><i></i>复制</li>
+        </ul>
+    </div>
+    <div class="Main">
+        <h1>洪涝灾情简报</h1>
+        <div class="Head">
+            <div class="Head-Top">
+                第&nbsp;&nbsp;&nbsp;期
+            </div>
+            <div class="Head-Left">
+                {{Report.Writer}}     <!--江西防汛抗旱指挥部办公室-->
+            </div>
+            <div class="Head-Right">
+                {{Report.TBRQ}}
+            </div>
+        </div>
+        <div class="Caption">
+            洪涝灾情汇报
+        </div>
+        <div class="Body">
+            &nbsp;&nbsp;&nbsp;&nbsp;据{{Report.QSRQ}}至{{Report.JSRQ}}统计，{{Report.SZFW}}受灾人口{{Report.SZRK}}{{Field.SZRK.MeasureName ? Field.SZRK.MeasureName : '人'}}，
+            被水围困人数{{Report.GCHSWKRK}}{{Field.GCHSWKRK.MeasureName ? Field.GCHSWKRK.MeasureName : '人'}}，转移人口{{Report.ZYRK}}{{Field.ZYRK.MeasureName ? Field.ZYRK.MeasureName : '人'}}，
+            紧急转移{{Report.GCJJZYRK}}{{Field.GCJJZYRK.MeasureName ? Field.GCJJZYRK.MeasureName : '人'}}；倒塌房屋{{Report.DTFW}}{{Field.DTFW.MeasureName ? Field.DTFW.MeasureName : '间'}}；
+            农作物受灾面积{{Report.SHMJXJ}}{{Field.SHMJXJ.MeasureName ? Field.SHMJXJ.MeasureName : '千公顷'}}，成灾面积{{Report.CZMJXJ}}{{Field.CZMJXJ.MeasureName ? Field.CZMJXJ.MeasureName : '千公顷'}}，
+            绝收面积{{Report.JSMJXJ}}{{Field.JSMJXJ.MeasureName ? Field.JSMJXJ.MeasureName : '千公顷'}}，减产粮食{{Report.YZJCLS}}{{Field.YZJCLS.MeasureName ? Field.YZJCLS.MeasureName : '万吨'}}，
+            经济作物损失{{Report.JJZWSS}}{{Field.JJZWSS.MeasureName ? Field.JJZWSS.MeasureName : '万元'}}，死亡大牲畜{{Report.SWDSC}}{{Field.SWDSC.MeasureName ? Field.SWDSC.MeasureName : '万头'}}，
+            水产养殖损失{{Report.SCYZSL}}{{Field.SCYZSL.MeasureName ? Field.SCYZSL.MeasureName : '万吨'}}；停产企业{{Report.TCGKQY}}家，公路中断{{Report.GLZD}}条次,供电中断{{Report.GDZD}}条次，
+            通讯中断{{Report.TXZD}}条次；损坏堤防{{Report.SHDFCS}}处、{{Report.SHDFCD}}千米，损坏护岸{{Report.SHHAC}}处，损坏水闸{{Report.SHSZ}}座，损坏机电井{{Report.SHJDJ}}眼，损坏机电泵站
+            {{Report.SHJDBZ}}座,损坏水文设施{{Report.SHSWCZ}}个。因洪涝灾害造成的直接经济损失{{Report.ZJJJZSS}}{{Field.ZJJJZSS.MeasureName ? Field.ZJJJZSS.MeasureName : '亿元'}}，
+            其中:农业直接经济损失{{Report.NLMYZJJJSS}}{{Field.NLMYZJJJSS.MeasureName ? Field.NLMYZJJJSS.MeasureName : '亿元'}}，工业交通业直接经济损失{{Report.GJYSZJJJSS}}
+            {{Field.GJYSZJJJSS.MeasureName ? Field.GJYSZJJJSS.MeasureName : '亿元'}}，水利工程直接经济损失{{Report.SLSSZJJJSS}}{{Field.SLSSZJJJSS.MeasureName ? Field.SLSSZJJJSS.MeasureName : '亿元'}}。<br/>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;在抗御灾害中，投入抢险人数{{Report.QXHJ}}{{Field.QXHJ.MeasureName ? Field.QXHJ.MeasureName : '人次'}}；投入机械设备{{Report.SBJX}}台班；投入编织袋{{Report.WZBZD}}
+            {{Field.WZBZD.MeasureName ? Field.WZBZD.MeasureName : '万条'}}，编织布{{Report.WZBZB}}{{Field.WZBZB.MeasureName ? Field.WZBZB.MeasureName : '万平方米'}}，砂石料{{Report.WZSSL}}
+            {{Field.WZSSL.MeasureName ? Field.WZSSL.MeasureName : '万立方米'}}，木材{{Report.WZMC}}{{Field.WZMC.MeasureName ? Field.WZMC.MeasureName : '万立方米'}}，钢材{{Report.WZGC}}
+            {{Field.WZGC.MeasureName ? Field.WZGC.MeasureName : '吨'}}，抗灾用油{{Report.WZY}}{{Field.WZY.MeasureName ? Field.WZY.MeasureName : '吨'}}，用电{{Report.WZD}}
+            {{Field.WZD.MeasureName ? Field.WZD.MeasureName : '万度'}}，总物资消耗折算资金{{Report.WZZXH}}{{Field.WZZXH.MeasureName ? Field.WZZXH.MeasureName : '万元'}}。<br/>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;防洪减灾效益：减淹耕地面积{{Report.XYJYGD}}{{Field.XYJYGD.MeasureName ? Field.XYJYGD.MeasureName : '千公顷'}}，避免粮食减收{{Report.XYJMLSJS}}
+            {{Field.XYJMLSJS.MeasureName ? Field.XYJMLSJS.MeasureName : '万吨'}}，减少受灾人口{{Report.XYJSSZRK}}{{Field.XYJSSZRK.MeasureName ? Field.XYJSSZRK.MeasureName : '人'}}，
+            解救洪水围困群众{{Report.XYJJQZ}}{{Field.XYJJQZ.MeasureName ? Field.XYJJQZ.MeasureName : '人'}}，减灾经济效益{{Report.XYJZJJXY}}{{Field.XYJZJJXY.MeasureName ? Field.XYJZJJXY.MeasureName : '亿元'}}。
+        </div>
+    </div>
+</body>
+</html>

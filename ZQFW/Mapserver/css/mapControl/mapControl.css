@@ -1,0 +1,230 @@
+﻿BODY
+{
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 8pt;
+    margin:0px 0px 0px 0px;
+    border: 0px;
+}
+
+#top
+{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	height:0;
+	z-index:10;	
+}
+
+#facebox .floatbox{width:700px; height:400px;}
+
+.divChart
+{
+	/*left:25%;
+	top:25%;display:none;*/
+	width: 0px; 
+	height:0px; 
+	margin: 0; 
+	position:absolute; 
+	
+	z-index:2
+}
+
+FORM
+{
+	MARGIN: 0pt;
+	background-color:White;
+	    border: 0px;
+}
+
+.aboutMap
+{
+	/*width:100%;
+	height:100%;
+	text-align:center;
+    overflow:hidden;
+	position:absolute;*/
+	margin:0px;
+	top:-1px;
+	left:-1px;
+	right:0px;
+	bottom:0px;
+    border:solid 0px #BFBFBF;
+    background-color:White;
+}
+
+input
+{
+	margin:0;
+	border:0;
+	padding:0;
+}
+TABLE
+{
+	border-spacing: 0px;
+	/*cellspacing:0px;*/
+	padding:0px;
+}
+TR
+{
+	border-spacing: 0px;
+	padding:0px;
+}
+TD
+{
+	border-spacing: 0px;
+	padding:0px;
+}
+TBODY
+{
+	border-spacing: 0px;
+    padding:0px;
+}
+INPUT
+{
+	FONT-FAMILY: Verdana, Arial;
+	FONT-SIZE: 8pt;
+}
+SELECT
+{
+	FONT-FAMILY: Verdana, Arial;
+	FONT-SIZE: 8pt;
+}
+TD
+{
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 8pt;
+}
+.footer
+{
+    FONT-SIZE: 7pt;
+}
+.header
+{
+    FONT-SIZE: 12pt;
+    FONT-WEIGHT: bold;
+}
+.map
+{
+	position:absolute;
+    BORDER-BOTTOM: white 0px solid;
+    BORDER-LEFT: White 0px solid;
+    BORDER-RIGHT: White 0px solid;
+    BORDER-TOP: White 0px solid;
+    CURSOR:pointer;
+    margin:auto;
+    top:0px;
+    left:0px;
+    background-color:White
+}
+.pane
+{
+    BORDER-BOTTOM: black 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    FONT-SIZE: 8pt;
+}
+.panearrow
+{
+    BACKGROUND-COLOR: black;
+	COLOR: white;
+	CURSOR: hand;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+}
+.panecaption
+{
+    BACKGROUND-COLOR: black;
+    COLOR: white;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+}
+.panetext
+{
+    FONT-SIZE: 8pt;
+}
+.stat
+{
+    BACKGROUND-COLOR: silver;
+    BORDER-BOTTOM: gray 1px solid;
+    BORDER-LEFT: gray 1px solid;
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+    FONT-SIZE: 8pt;
+}
+.statspace
+{
+    WIDTH: 1pt;
+}
+.subheader
+{
+    FONT-SIZE: 8pt;
+}
+.text
+{
+    FONT-SIZE: 8pt;
+}
+.textr
+{
+    FONT-SIZE: 8pt;
+    TEXT-ALIGN: right;
+}
+.tool
+{
+    BACKGROUND-COLOR: silver;
+    CURSOR: hand;
+    WIDTH: 24px;
+}
+.toolbar
+{
+    BORDER-BOTTOM: gray 1px solid;
+    BORDER-LEFT: gray 1px solid;
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+}
+.toolfiller
+{
+    BACKGROUND-COLOR: silver;
+}
+
+.nhzd{ position:absolute; right:10px; bottom:5px; width:100px; height:123px; background-image:url('../../images/map/NZQD.png');border:solid 1px #c3c3c3;}
+/*#Legend{width:100px; height:120px; position:absolute; left:0;bottom:0px; z-index:100;border:solid  #9ff;background-color:White;
+                                background:url('../images/NZQD.png') center  no-repeat;border-width:1px 1px 0 0  }*/
+
+
+.shield
+{
+	filter: alpha(opacity=50); 
+	opacity: 0.5;
+	background-color:#eeeeee;
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	display:none
+	
+	/*width:0;
+	height:0	top:0;
+	bottom:0;
+	left:0;
+	right:0; 
+display:none;*/
+}
+
+.mapBottom
+{
+	background-color:#FFFFFF;
+	position:absolute;
+	bottom:0px;
+	width: 100%;
+	height: 20px;
+	
+	/*width:0;
+	height:0	top:0;
+	bottom:0;
+	left:0;
+	right:0; 
+display:none;*/
+}
+
+@media print {.notprint {display:none;}}

@@ -1,0 +1,43 @@
+﻿<tbody>
+    <tr ng-repeat="hl011 in Report[Attr.NameSpace].Current.HL011" ng-firstreadonly>
+        <th ng-init="isUnder = BaseData.Unit.Local.Limit > 2 && (!(hl011.DW.Contains('本级') && BaseData.Unit.Local.Limit == 3) || !hl011.DW.Contains('本级')) || BaseData.Unit.Local.Limit == 4 && !hl011.DW.Contains('本级') || BaseData.Unit.Local.Limit <= 2"><!--是否是市级或县级本级-->
+            <span class="txt_center">{{hl011.DW}}</span>
+        </th>
+        <td ng-class="{ReadOnly:!$index || BaseData.Unit.Local.Limit > 2 && (!(hl011.DW.Contains('本级') && BaseData.Unit.Local.Limit == 3) || !hl011.DW.Contains('本级')),WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWX']}">
+            <input ng-if="!isUnder" type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2 && (!(hl011.DW.Contains('本级') && BaseData.Unit.Local.Limit == 3) || !hl011.DW.Contains('本级'))" ng-model="hl011.SZFWX" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="hl011.SZFWX = N(hl011.SZFWX, true)"/>
+            <input ng-if="isUnder" type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2 && (!(hl011.DW.Contains('本级') && BaseData.Unit.Local.Limit == 3) || !hl011.DW.Contains('本级'))" ng-model="hl011.SZFWX" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCS(0,0,0)"/>
+        </td>
+        <td ng-class="{ReadOnly:BaseData.Unit.Local.Limit == 4 && !hl011.DW.Contains('本级'),WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWZ']}">
+            <input ng-if="!isUnder" type="text" ng-model="hl011.SZFWZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB" ng-readonly="BaseData.Unit.Local.Limit == 4 && !hl011.DW.Contains('本级')"
+                   ng-focus="FCOF()" ng-blur="hl011.SZFWZ = N(hl011.SZFWZ, true)"/>
+            <input ng-if="isUnder" type="text" ng-model="hl011.SZFWZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB" ng-readonly="BaseData.Unit.Local.Limit == 4 && !hl011.DW.Contains('本级')"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,0)"/>
+        </td>
+        <td ng-class="{Custom:Report[Attr.NameSpace].Current.ReportTitle.SourceType == 2 && $index,WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SZRK']}">
+            <input type="text" ng-model="hl011.SZRK" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SZRK.DecimalCount))" />
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.SYCS" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-DTFW']}">
+            <input type="text" ng-model="hl011.DTFW" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.DTFW.DecimalCount))" />
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.SWRK" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.SZRKR" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.ZYRK" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-ZJJJZSS']}">
+            <input type="text" ng-model="hl011.ZJJJZSS" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.ZJJJZSS.DecimalCount))" />
+        </td>
+    </tr>
+</tbody>

@@ -1,0 +1,376 @@
+﻿<div class="Rpt-Content" ng-switch on="Open.Report.Current.Attr.TableIndex">
+    <table id="HP011-1" ng-show="Open.Report.Current.Attr.TableIndex == 0" table-fixed>
+        <caption>
+            湖南省水利工程蓄水情况表(一)<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></caption>
+        <thead>
+            <tr>
+                <th rowspan="3">
+                    单位
+                </th>
+                <th colspan="7">
+                    总计
+                </th>
+                <th colspan="5">
+                    大型水库
+                </th>
+                <th colspan="5">
+                    中型水库
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    处数{{BaseData.Field.XSCSZJ.MeasureName ? BaseData.Field.XSCSZJ.MeasureName : "（万处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.XZYBFB.MeasureName ? BaseData.Field.XZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    与上期比{{BaseData.Field.SQZJ.MeasureName ? BaseData.Field.SQZJ.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    与历年比{{BaseData.Field.LNZJ.MeasureName ? BaseData.Field.LNZJ.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.DZXKCS.MeasureName ? BaseData.Field.DZXKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.KXZYBFB.MeasureName ? BaseData.Field.KXZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.ZZXKCS.MeasureName ? BaseData.Field.ZZXKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.ZXZYBFB.MeasureName ? BaseData.Field.ZXZYBFB.MeasureName : "（%）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hp011 in Open.Report.Current.HP011" ng-firstreadonly>
+                <th>
+                    {{((hp011.DW != '全区/县' && hp011.DW != '合计') && BaseData.Unit.Local.Limit == 4) ? '' : hp011.DW}}
+                </th>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XSCSZJ" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.YXSLZJ" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XXSLZJ" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XZKYSL" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.SQZJ" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.LNZJ" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.DZXKCS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.DZKYXSL" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.DZKXXSL" ng-disabled="Open.Report.Current.Attr.HB" readonly="readonly">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.DXKKYSL" ng-disabled="Open.Report.Current.Attr.HB" readonly="readonly">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.KXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.ZZXKCS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.ZZKYXSL" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td ng-class="{ReadOnly:BaseData.Unit.Local.Limit != 2}">
+                    <input type="text" ng-model="hp011.ZZKXXSL" ng-disabled="Open.Report.Current.Attr.HB" ng-readonly="BaseData.Unit.Local.Limit != 2"
+                        ng-blur="FCS(0,0,2);FCRC('XXSLZJ');FCRC('XZYBFB',Divide(hp011.XXSLZJ,hp011.YXSLZJ)*100,'%');FCRC('ZXZYBFB',Divide(hp011.ZZKXXSL,hp011.ZZKYXSL)*100,'%');FCHOX();hp011.ZXKKYSL = hp011.ZZKXXSL;FCS(['HP011','ZXKKYSL'],0,2);FCRC('ZXKKYSL','',0,2);FCRC('XZKYSL');">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.ZXKKYSL" ng-disabled="Open.Report.Current.Attr.HB" readonly="readonly">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.ZXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="1" table-fixed>
+        <caption>
+            湖南省水利工程蓄水情况表（二）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></caption>
+        <thead>
+            <tr>
+                <th rowspan="3">
+                    单位
+                </th>
+                <th colspan="5">
+                    小(一)型水库
+                </th>
+                <th colspan="5">
+                    小(二)型水库
+                </th>
+                <th colspan="5">
+                    山坪塘总计
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    处数{{BaseData.Field.XYSKCS.MeasureName ? BaseData.Field.XYSKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.XKXZYBFB.MeasureName ? BaseData.Field.XKXZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.XRSKCS.MeasureName ? BaseData.Field.XRSKCS.MeasureName : "（处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.XRXZYBFB.MeasureName ? BaseData.Field.XRXZYBFB.MeasureName : "（%）"}}
+                </th>
+                <th>
+                    处数{{BaseData.Field.SPTHJCS.MeasureName ? BaseData.Field.SPTHJCS.MeasureName : "（万处)"}}
+                </th>
+                <th>
+                    计划蓄水
+                </th>
+                <th>
+                    实际蓄水
+                </th>
+                <th>
+                    可用水量
+                </th>
+                <th>
+                    实际占计划{{BaseData.Field.TXZYBFB.MeasureName ? BaseData.Field.TXZYBFB.MeasureName : "（%）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hp011 in Open.Report.Current.HP011" ng-firstreadonly ng-init="readonly = (hp011.DW != '全区/县' && BaseData.Unit.Local.Limit == 4)">
+                <th>
+                    {{((hp011.DW != '全区/县' && hp011.DW != '合计') && BaseData.Unit.Local.Limit == 4) ? '' : hp011.DW}}
+                </th>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XYSKCS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XYKYXS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td ng-class="{ReadOnly:readonly}">
+                    <input type="text" ng-model="hp011.XYKXXS" ng-disabled="Open.Report.Current.Attr.HB" ng-readonly="readonly"
+                        ng-blur="FCS(0,0,2);FCRC('XXSLZJ');FCRC('XZYBFB',Divide(hp011.XXSLZJ,hp011.YXSLZJ)*100,'%');FCRC('XKXZYBFB',Divide(hp011.XYKXXS,hp011.XYKYXS)*100,'%');FCRC('XYKKYS','',0,2);FCRC('XZKYSL');FCHOX()">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XYKKYS" ng-disabled="Open.Report.Current.Attr.HB" readonly="readonly">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XKXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XRSKCS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XRKYXS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td ng-class="{ReadOnly:readonly}">
+                    <input type="text" ng-model="hp011.XRKXXS" ng-disabled="Open.Report.Current.Attr.HB" ng-readonly="readonly"
+                        ng-blur="FCS(0,0,2);FCRC('XXSLZJ');FCRC('XZYBFB',Divide(hp011.XXSLZJ,hp011.YXSLZJ)*100,'%');FCRC('XRXZYBFB',Divide(hp011.XRKXXS,hp011.XRKYXS)*100,'%');FCRC('XRKKYS','',0,2);FCRC('XZKYSL');FCHOX()">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XRKKYS" ng-disabled="Open.Report.Current.Attr.HB" readonly="readonly">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.XRXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.SPTHJCS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.SPTYXS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+                <td ng-class="{ReadOnly:readonly}">
+                    <input type="text" ng-model="hp011.SPTXXS" ng-disabled="Open.Report.Current.Attr.HB" ng-readonly="readonly"
+                        ng-blur="FCS(0,0,2);FCRC('XXSLZJ');FCRC('XZYBFB',Divide(hp011.XXSLZJ,hp011.YXSLZJ)*100,'%');FCRC('TXZYBFB',Divide(hp011.SPTXXS,hp011.SPTYXS)*100,'%');FCRC('SPTKYS','',0,2);FCRC('XZKYSL');FCHOX()">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.SPTKYS" ng-disabled="Open.Report.Current.Attr.HB" readonly="readonly">
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hp011.TXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-switch-when="2" class="FloatTable">
+        <span>湖南省水利工程蓄水情况表（三）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></span>
+        <table ng-repeat="arr in Open.Report.Current.HP012.Fake.Large" ng-autowidth>
+            <thead>
+                <tr>
+                    <th rowspan="3">
+                        水库
+                    </th>
+                    <th colspan="5">
+                        大型水库
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        计划蓄水
+                    </th>
+                    <th>
+                        实际蓄水
+                    </th>
+                    <th>
+                        可用水量
+                    </th>
+                    <th>
+                        实际占计划{{BaseData.Field.DXZYBFB.MeasureName ? BaseData.Field.DXZYBFB.MeasureName : "（%）"}}
+                    </th>
+                    <th>
+                        去年同期
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-init="$pIndex = $index">
+                <tr ng-repeat="hp012 in arr" ng-class="{WhiteSapce:hp012.isEmpty}" ng-init="readonly = ($pIndex == 0 && $index == 0 || hp012.isEmpty) ? true : false">
+                    <th>
+                        {{hp012.DXSKMC}}
+                    </th>
+                    <td class="ReadOnly"> <!--ng-class="{ReadOnly:readonly}"-->
+                        <input type="text" ng-if="!hp012.isEmpty" readonly="readonly" ng-model="hp012.DXKYXSL" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                    <td ng-class="{ReadOnly:readonly}">
+                        <input type="text" ng-if="!hp012.isEmpty" ng-readonly="readonly" ng-model="hp012.DXKXXSL" ng-disabled="Open.Report.Current.Attr.HB"
+                            ng-blur="FCS(false,['Real','Large'],2);FCRC('DXZYBFB',Divide(hp012.DXKXXSL,hp012.DXKYXSL)*100,'%');FCRC('Large.DXKKYS','',0,2);FCHSR();">
+                    </td>
+                    <td class="ReadOnly">
+                        <input type="text" ng-if="!hp012.isEmpty" readonly="readonly" ng-model="hp012.DXKKYS" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                    <td class="ReadOnly">
+                        <input type="text" ng-if="!hp012.isEmpty" ng-model="hp012.DXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                    <td class="ReadOnly">
+                        <input type="text" ng-if="!hp012.isEmpty" ng-model="hp012.QNTQDXS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-switch-when="3" class="FloatTable">
+        <span>湖南省水利工程蓄水情况表（四）<label>[单位：{{BaseData.Field.YXSLZJ.MeasureName ? BaseData.Field.YXSLZJ.MeasureName : "万立方米"}}]</label></span>
+        <table ng-repeat="arr in Open.Report.Current.HP012.Fake.Middle" ng-autowidth>
+            <thead>
+                <tr>
+                    <th rowspan="3">
+                        水库
+                    </th>
+                    <th colspan="5">
+                        中型水库
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        计划蓄水
+                    </th>
+                    <th>
+                        实际蓄水
+                    </th>
+                    <th>
+                        可用水量
+                    </th>
+                    <th>
+                        实际占计划{{BaseData.Field.DXZYBFB.MeasureName ? BaseData.Field.DXZYBFB.MeasureName : "（%）"}}
+                    </th>
+                    <th>
+                        去年同期
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-init="$pIndex = $index">
+                <tr ng-repeat="hp012 in arr" ng-class="{WhiteSapce:hp012.isEmpty}" ng-init="readonly = ($pIndex == 0 && $index == 0 || hp012.isEmpty) ? true : false">
+                    <th>
+                        {{hp012.DXSKMC}}
+                    </th>
+                    <td class="ReadOnly">  <!--ng-class="{ReadOnly:readonly}"-->
+                        <input type="text" ng-if="!hp012.isEmpty" readonly="readonly" ng-model="hp012.DXKYXSL" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                    <td ng-class="{ReadOnly:readonly}">
+                        <input type="text" ng-if="!hp012.isEmpty" ng-readonly="readonly" ng-model="hp012.DXKXXSL" ng-disabled="Open.Report.Current.Attr.HB"
+                            ng-blur="FCS(false,['Real','Middle'],2);FCRC('DXZYBFB',Divide(hp012.DXKXXSL,hp012.DXKYXSL)*100,'%');FCRC('Middle.DXKKYS','',0,2);FCHSR()">
+                    </td>
+                    <td class="ReadOnly">
+                        <input type="text" ng-if="!hp012.isEmpty" readonly="readonly" ng-model="hp012.DXKKYS" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                    <td class="ReadOnly">
+                        <input type="text" ng-if="!hp012.isEmpty" ng-model="hp012.DXZYBFB" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                    <td class="ReadOnly">
+                        <input type="text" ng-if="!hp012.isEmpty" ng-model="hp012.QNTQDXS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ul class="Rpt-Tags">
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 0}" ng-click="Open.Report.Current.Attr.TableIndex = 0">
+        <a>表1</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 1}" ng-click="Open.Report.Current.Attr.TableIndex = 1">
+        <a>表2</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 2}" ng-click="Open.Report.Current.Attr.TableIndex = 2">
+        <a>表3</a></li>
+    <li ng-hide="BaseData.Unit.Local.Limit == 2" ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 3}" ng-click="Open.Report.Current.Attr.TableIndex = 3">
+        <a>表4</a></li>
+</ul>

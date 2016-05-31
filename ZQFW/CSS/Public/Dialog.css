@@ -1,0 +1,198 @@
+﻿.dialog{
+	position: absolute;
+	z-index: 150;
+	width: 315px;
+	left: 43%;
+	top: 30%;
+	font-size: 14px;
+}
+
+.dialog div.middle, dialog div.bottom {
+    cursor: default;
+}
+
+.dialog table{
+	margin:10px;	
+}
+
+.dialog .top_title_left{
+	position:absolute;
+	left:0;
+	top:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:top left;
+	height:36px;
+	width:20px;
+}
+
+.dialog .top_title_middle{
+	position:absolute;
+	left:20px;
+	right:20px;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:0 -36px;
+	background-repeat:repeat-x;
+	padding-top:10px;
+	height:26px;
+	cursor: move;
+}
+
+.dialog .top_title_middle span{
+	display:block;
+	height:26px;
+	line-height:26px;
+}
+
+.dialog .top_title_right{
+	position:absolute;
+	right:0;
+	top:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:top right;
+	height:36px;
+	width:20px;
+}
+
+.dialog .top_title_right .Close {
+	position: absolute;
+	top: 14px;
+	right: 13px;
+	cursor: pointer;
+}
+
+.dialog .bottom_left{
+	position:absolute;
+	left:0;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:left -72px;
+	height:16px;
+	width:20px;	
+}
+
+.dialog .bottom_middle{
+	position:absolute;
+	left:20px;
+	right:20px;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:16px;	
+}
+
+.dialog .bottom_right{
+	position:absolute;
+	right:0;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:right -72px;
+	height:16px;
+	width:20px;	
+}
+
+.dialog .middle_left{
+	position:absolute;
+	left:0;
+	top:36px;
+	bottom:16px;
+	background-image:url(../../CSS/Img/Public/Float_Box/2.png);
+	background-repeat:repeat-y;
+	background-position:left;
+	width:20px;	
+}
+
+.dialog .middle_middle{
+	margin:36px 20px 16px 20px;
+	padding:5px;
+	background-color:#fcfcfc;
+}
+
+.dialog .middle_middle .div {
+	text-align: center;
+}
+
+.dialog .middle_middle .div ul {
+	list-style: none;
+	padding: 0px;
+}
+
+.dialog .middle_middle .div ul li {
+	line-height: 26px;
+	cursor: pointer;
+}
+
+.dialog .middle_middle .div ul li:hover {
+	text-decoration: underline;
+	color: blue;
+}
+
+.dialog .middle_right{
+	position:absolute;
+	right:0;
+	top:36px;
+	bottom:16px;
+	background-image:url(../../CSS/Img/Public/Float_Box/2.png);
+	background-repeat:repeat-y;
+	background-position:right;
+	width:20px;	
+}
+
+.dialog .Message ul {
+	list-style: none;
+	float: left;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.dialog .Message ul li {
+	float: left;
+}
+.dialog .Message ul li.UnitName,.dialog .Message ul li.PersonName,.dialog .Message ul li.DateTime {
+	text-align: center;
+	line-height: 20px;
+	border-right: 1px #a8a8a8 solid;
+	float: left;
+	white-space: nowrap;
+}
+.dialog .Message ul li.UnitName {
+	min-width: 180px;
+	
+}
+.dialog .Message ul li.PersonName {
+	min-width: 108px;
+}
+.dialog .Message ul li.DateTime {
+	min-width: 158px;
+}
+.dialog .Message textarea {
+	margin: 0px; 
+	border: 0px; 
+	width: 99%;
+	text-align: center;
+	resize: none;
+	font-size: 15px;
+}
+.dialog .Message .Content ul:hover li {
+	background: #E3E3E3;
+	cursor: pointer;
+}
+.dialog .Message ul.Selected li {
+	background: #E3E3E3;
+}
+
+.dialog .Refuse textarea{
+    position: relative;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    margin: 0px;
+    min-height: 65px;
+    min-width: 245px;
+}
+.dialog .Refuse input {
+    position: relative;
+    top: 5px;
+    display: block;
+    margin: 0 auto;
+}

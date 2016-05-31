@@ -1,0 +1,39 @@
+﻿<tbody>
+    <tr ng-repeat="hl011 in Report[Attr.NameSpace].Current.HL011" ng-firstreadonly>
+        <th>
+            <span class="txt_center">{{hl011.DW}}</span>
+        </th>
+        <td ng-class="{ReadOnly:!$index || BaseData.Unit.Local.Limit > 2,WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWX']}">
+            <input type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2" ng-model="hl011.SZFWX" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWZ'],ReadOnly:BaseData.Unit.Local.Limit == 4 || BaseData.Unit.Local.UnitCode == '35100000'}">
+            <input type="text" ng-model="hl011.SZFWZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB" ng-readonly="BaseData.Unit.Local.Limit == 4"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-SZRK']}">
+            <input type="text" ng-model="hl011.SZRK" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.SZRK.DecimalCount))" />
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.SYCS" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-DTFW']}">
+            <input type="text" ng-model="hl011.DTFW" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.DTFW.DecimalCount))" />
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.SWRK" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.SZRKR" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td class="ReadOnly">
+            <input type="text" ng-model="hl011.ZYRK" readonly="readonly" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </td>
+        <td ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors[hl011.UnitCode + '-ZJJJZSS']}">
+            <input type="text" ng-model="hl011.ZJJJZSS" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                    ng-focus="FCOF()" ng-blur="FCS(0,0,N(BaseData.Field.ZJJJZSS.DecimalCount))" />
+        </td>
+    </tr>
+</tbody>

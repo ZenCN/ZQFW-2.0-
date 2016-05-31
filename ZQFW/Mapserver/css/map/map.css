@@ -1,0 +1,70 @@
+﻿#map_frame
+{
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:240px;	
+	background-color:#fff;
+	}
+#map_frame #map
+{
+	position:absolute;
+	top: 10%;
+	/*bottom:0;*/
+	right:0;
+	left:0;	
+	width:100%;
+	height: 89%;
+	bottom: 1%;
+}
+#loading
+{
+	position:absolute;
+	top: 10%;
+	right:0;
+	left:0;	
+	width:100%;
+	height: 90%;
+	background:#FFF url(../../facebox/loading.gif) no-repeat center center;
+}
+#top
+{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	height:0;
+	z-index:10;	
+	}
+#top .inline_table
+{
+	position:relative;
+	display:block;
+	float:left;	
+	margin:0;
+	padding:0;
+	height:60px;
+	margin:0 10px;
+	
+	}
+#top .inline_table.wbg
+{
+	background-color:#fff;
+}
+/*#selectors
+{
+	position: absolute;
+	top: 100px;
+	float: left;
+	z-index: 1;
+}*/
+#selectors #BBType
+{
+	width:64px;
+	height:24px;
+	line-height:24px;
+	margin:18px 0;
+}
+
+#facebox .floatbox{width:700px; height:400px;}

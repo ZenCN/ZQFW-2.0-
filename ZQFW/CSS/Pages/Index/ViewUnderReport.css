@@ -1,0 +1,109 @@
+﻿body {
+	font-size: 12px;
+}
+.Report {
+	position: absolute;
+	top: 25px;
+	right: 0px;
+	bottom: 140px;
+	left: 2px;
+}
+.Report-Footer {
+	position: absolute;
+	top: auto;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	height: 140px;
+}
+.Affix {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.Affix li {
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.Affix li img {
+	float: left;
+}
+.Affix li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.Affix li a:hover {
+	text-decoration: underline;
+}
+.ReportTitle table {
+	margin: 10px auto 10px 10px;
+	font-size: 14px;
+	color: #333;
+}
+.ReportTitle table td {
+	height: 20px;
+	width: 25%;
+	min-width: 235px;
+	text-align: left;
+}
+body div.Rpt-Content {
+    top: 10px;
+    border-top: initial;
+}
+body div.Rpt-Content table caption {
+    margin-bottom: 5px;
+}
+.Boxes .Affix ul {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.Boxes .Affix ul li {
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.Boxes .Affix ul li img {
+	float: left;
+}
+.Boxes .Affix ul li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.Boxes .Affix ul li a:hover {
+	text-decoration: underline;
+}
+
+.Report table td{
+	/*position: relative;*/
+    margin: 0;
+    padding: 0 5px;
+    text-align: right;
+    vert-align: middle;
+	border: 1px solid #888888;
+    height:24px;
+    line-height:24px;
+    background-color:#FFF;
+    min-width:60px;
+}
+.Report table td.txt_center {
+    text-align: center;
+    vert-align: middle;
+}
+.Report table td input[type=text]{
+    padding: 0;
+    margin: 0;
+    width:100%;
+    height:24px;
+    border: none;
+	text-align: right;
+    vert-align: middle;
+}
+.Report table td input.txt_center {
+    text-align: center;
+    vert-align: middle;
+}
+div.Report table td.ReadOnly,div.Report table tr td.ReadOnly input{
+    background-color: #F7F2F2;
+}

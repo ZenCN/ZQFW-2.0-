@@ -1,0 +1,45 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.ToolBar,.Main{
+    margin: auto;
+    width: 800px;
+}
+.Main table{
+    width: 100%;
+    border: 1px solid #333;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: center
+}
+.Main table caption h2{
+    font-size: 24px;
+}
+.Main caption{
+    margin-bottom: 5px;
+}
+.Main caption .Title{
+    font-size: 14px;
+    height: 18px;
+}
+.Main caption .Title .Left{
+    float: left;
+}
+.Main caption .Title .Right{
+    float: right;
+}
+.Main table thead th{
+    border: 1px solid #333;
+    background-color: #fff;
+    width: 70px;
+    min-width: 70px;
+    color: #000000;
+    text-align: center;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0 5px;
+    white-space: nowrap;
+    line-height: 24px;
+}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html xmlns:ng="http://angularjs.org" ng-app="Index" id="ng-app">
+<head>
+    <title>Debug-报表操作</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--------------------------CSS-------------------------->
+    <!--Public-->
+    <link rel="stylesheet" href="../../CSS/Public/Body.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Head.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/PSW.css" />
+    <link rel="stylesheet" href="../../CSS/Public/MenuBar.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/LeftTree.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Tabs.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/ToolBar.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Report.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/TitleList.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Search.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/ListHorizontal.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Button.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Dialog.css"/>
+    <!--Plugin-->
+    <link rel="stylesheet" href="../../CSS/Plugins/zTree/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/zTree/TreeItems.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/Easydialog.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/Uploadify/uploadify.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/MultiSelect/multi-select.css"/>
+    <link rel="stylesheet" href="../../CSS/Plugins/JGrowl/JGrowl.min.css"/>
+    <!--Page-->
+    <link rel="stylesheet" href="../../CSS/Pages/Index/Frame.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/New.css"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/Open.css"/>
+    <!--------------------------JavaScript----------------------->
+    <!--Base Library-->
+    <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    @*<script src="../../Scripts/Library/Plugins/preloader.js" type="text/javascript"></script>*@ <!--Preloader-->
+    <script src="../../Scripts/Library/Angular/angular.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Angular/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Angular/Scope.SafeApply.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Extend/String.js" type="text/javascript"></script>
+    <!--Angular Application-->
+    <script src="../../Scripts/Application/Index.SH.App.js" type="text/javascript"></script>
+    <!--Head-->
+    <script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../Scripts/Others/Head.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.initData = @Html.Raw(ViewData["InitData"].ToString());
+    </script>
+</head>
+    <body class="DarkGray">
+        <div ui-view>
+
+        </div>
+    </body>
+    <!--Plugin-->
+    <script src="../../Scripts/Library/Plugins/easydialog.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/table-fixed.js" type="text/javascript"></script>
+    <!--Tool-->
+    <script src="../../Scripts/Others/Tools.js" type="text/javascript"></script>
+    <!--Angular-->
+    <script src="../../Scripts/Models/TreeNodeModel.js" type="text/javascript"></script>
+    <script src="../../Scripts/Models/ReportTitleModel.js" type="text/javascript"></script>
+    <script src="../../Scripts/Models/SH_Model.js" type="text/javascript"></script>
+    <script src="../../Scripts/Directives/SH/Index.directive.js" type="text/javascript"></script>
+    <script src="../../Scripts/Factories/PublicFactory.js" type="text/javascript"></script>
+    <script src="../../Scripts/Controllers/Index/Index.SH.Controller.js" type="text/javascript"></script>
+    <script src="../../Scripts/Configuration/SH.js" type="text/javascript"></script>
+</html>

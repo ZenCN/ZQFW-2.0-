@@ -1,0 +1,53 @@
+.Head a{
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.Head a:hover{
+    color:#ccc;
+    text-decoration: underline;
+}
+.Head .Top {
+    height: 25px;
+    border-radius: 10px;
+	margin: 0 5px 0 5px;
+	font-family: STKaiti;
+}
+.Head .TopLeft {
+    height:25px;
+    color:#fbfbfb;
+    line-height:25px;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    font-size: 15px;
+}
+.Head .TopRight {
+    padding-left: 0;
+    height:25px;
+    font-size:13px;
+    color:#fbfbfb;
+    line-height:25px;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+}
+.Head .Bottom {
+    position:absolute;
+    top: 25px;
+    left:0;
+    right:0;
+    height:67px;
+    background-image:url(../Img/Public/Logo/background.png);
+    background-repeat: repeat-x;
+    min-width:960px;
+    z-index:0;
+	margin: auto 5px;
+	border-radius: 10px;
+}
+.Head .Bottom .Image {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+}

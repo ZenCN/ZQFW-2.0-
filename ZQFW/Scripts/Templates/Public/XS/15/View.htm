@@ -1,0 +1,74 @@
+﻿<div class="Rpt-Content" ng-switch on="Open.Report.Current.Attr.TableIndex" ajax-load>
+    <table table-fixed="Head">
+        <caption>
+            内蒙古自治区蓄水情况统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="2">序号</th>
+                <th rowspan="2">水库名称</th>
+                <th rowspan="2">所在地点</th>
+                <th>总库容</th>
+                <th>死库容</th>
+                <th>死水位</th>
+                <th>汛限水位</th>
+                <th>正常蓄水位</th>
+                <th>当前水位</th>
+                <th>当前蓄水量</th>
+                <th>是否超&nbsp;汛限水位</th>
+            </tr>
+            <tr>
+                <th>（万立方米）</th>
+                <th>（万立方米）</th>
+                <th>（米）</th>
+                <th>（米）</th>
+                <th>（米）</th>
+                <th>（米）</th>
+                <th>（万立方米）</th>
+                <th>（是/否）</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="np011 in Report[Attr.NameSpace].Current.NP011" ng-init="ReadOnly = !$index || Fn.isNaN(np011.No)" ng-class="{Split:Fn.isNaN(np011.No)}">
+                <th>
+                    {{np011.No}}
+                </th>
+                <th>
+                    {{np011.RSName}}
+                </th>
+                <td class="txt_center">
+                    {{np011.UnitName}}
+                </td>
+                <td>
+                    {{np011.ZKR}}
+                </td>
+                <td class="ReadOnly">
+                    {{np011.SKR}}
+                </td>
+                <td class="ReadOnly">
+                    {{np011.SSW}}
+                </td>
+                <td>
+                    {{np011.XXSW}}
+                </td>
+                <td>
+                    {{np011.ZCXSW}}
+                </td>
+                <td ng-class="{Warning:np011.SFCXXSW == '是'}">
+                    {{np011.DQSW}}
+                </td>
+                <td>
+                    {{np011.DQSW}}
+                </td>
+                <td class="txt_center" ng-class="{Warning:np011.SFCXXSW == '是'}">
+                    {{np011.SFCXXSW}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="10" class="Loader">
+                    <span>数据加载中，请稍候...</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

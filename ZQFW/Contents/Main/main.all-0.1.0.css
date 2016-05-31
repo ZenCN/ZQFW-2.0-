@@ -1,0 +1,528 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+body{
+    margin: 0;
+    padding: 0;
+}
+.None{
+    font-size: 12px;
+    color: #333;
+    background-color: #f0f0f0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+.DarkGray {
+    font-size:12px;
+    color:#333;
+    background-color:#f0f0f0;
+    background-image:url(../../CSS/img/Public/DarkGray.png);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+.Scenery{
+    padding:0;
+    margin:0;
+    background-color:#f0f0f0;
+    font-family:Arial;
+    background-image:url(../../CSS/img/Public/Scenery-BackGround.jpg);
+    background-position:center top;
+    background-repeat:no-repeat;
+}
+
+.Link {
+	color: white;
+	text-decoration: none; 
+}
+.Link:hover {
+	color: gainsboro;
+}
+.Shadow{
+	position:absolute;
+	top: 0px;
+	right:0;
+	bottom:0;
+	left:0;
+	z-index:10;
+	background-image:url(../../CSS/Img/Public/Shadow.png);
+	overflow: hidden;
+}
+.Head a{
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.Head a:hover{
+    color:#ccc;
+    text-decoration: underline;
+}
+.Head .Top {
+    height: 25px;
+    border-radius: 10px;
+	margin: 0 5px 0 5px;
+	font-family: STKaiti;
+}
+.Head .TopLeft {
+    height:25px;
+    color:#fbfbfb;
+    line-height:25px;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    font-size: 15px;
+}
+.Head .TopRight {
+    padding-left: 0;
+    height:25px;
+    font-size:13px;
+    color:#fbfbfb;
+    line-height:25px;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+}
+.Head .Bottom {
+    position:absolute;
+    top: 25px;
+    left:0;
+    right:0;
+    height:67px;
+    background-image:url(../../CSS/Img/Public/Logo/background.png);
+    background-repeat: repeat-x;
+    min-width:960px;
+    z-index:0;
+	margin: auto 5px;
+	border-radius: 10px;
+}
+.Head .Bottom .Image {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+}
+/*刘志添加
+用于进入基础数据的弹出框
+*/
+#PWD,#OpenRiver,#divSend,#RiverRate43
+{
+	position:absolute;
+	z-index:150;
+	width: 310px;
+	left:50%;
+	top:50%;
+	margin-left:-155px;
+	margin-top:-80px;
+	}
+#PWD table
+{
+	margin:10px;	
+	}
+#OpenRiver p a
+{
+	margin:0px 10px;
+}
+.top_title_left
+{
+	position:absolute;
+	left:0;
+	top:0;
+	background-position:top left;
+	height:36px;
+	width:20px;
+	}
+.top_title_middle
+{
+	position:absolute;
+	left:20px;
+	right:20px;
+	background-position:0 -36px;
+	background-repeat:repeat-x;
+	padding-top:10px;
+	height:26px;
+	}
+.top_title_middle span
+{
+	display:block;
+	height:26px;
+	line-height:26px;
+	}
+.top_title_right
+{
+	position:absolute;
+	right:0;
+	top:0;
+	background-position:top right;
+	height:36px;
+	width:20px;
+	}
+.bottom_left
+{
+	position:absolute;
+	left:0;
+	bottom:0;
+	background-position:left -72px;
+	height:16px;
+	width:20px;	
+	}
+.bottom_middle
+{
+	position:absolute;
+	left:20px;
+	right:20px;
+	bottom:0;
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:16px;	
+	}
+.bottom_right
+{
+	position:absolute;
+	right:0;
+	bottom:0;
+	background-position:right -72px;
+	height:16px;
+	width:20px;	
+	}
+.middle_left
+{
+	position:absolute;
+	left:0;
+	top:36px;
+	bottom:16px;
+	background-repeat:repeat-y;
+	background-position:left;
+	width:20px;	
+	}
+.middle_middle
+{
+	margin:36px 20px 16px 20px;
+	padding:5px;
+	background-color:#fcfcfc;
+	}
+.middle_right
+{
+	position:absolute;
+	right:0;
+	top:36px;
+	bottom:16px;
+	background-repeat:repeat-y;
+	background-position:right;
+	width:20px;	
+	}
+	
+#tblSend td
+{
+	width:60px;
+	height: 30px;
+}	
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.DarkBlue{
+    height: 25px;
+    background-color: rgb(47, 96, 158);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    text-align: center;
+    border: 1px rgb(47, 96, 158) solid;
+    color: rgb(255, 255, 255);
+}
+.DarkBlue:hover{
+    background-image: linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -o-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -moz-linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -ms-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    border: 1px rgb(47, 96, 158) solid;
+    cursor: pointer;
+}
+input.DarkBlue[name=Search] {
+	margin-left: 40px;
+}
+.Keyboard i {
+	width: 18px;
+	height: 18px;
+	background-image: url(../../CSS/img/Public/MenuIcons/2.png);
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+}
+.Keyboard i.Delete {
+	background-position: -170px -26px;  /*background-position: -168px -24px;*/
+}
+.Keyboard i.Reset {
+	background-position: -530px -26px;  /*background-position: -168px -24px;*/
+}
+.dialog{
+	position: absolute;
+	z-index: 150;
+	width: 315px;
+	left: 43%;
+	top: 30%;
+	font-size: 14px;
+}
+
+.dialog div.middle, dialog div.bottom {
+    cursor: default;
+}
+
+.dialog table{
+	margin:10px;	
+}
+
+.dialog .top_title_left{
+	position:absolute;
+	left:0;
+	top:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:top left;
+	height:36px;
+	width:20px;
+}
+
+.dialog .top_title_middle{
+	position:absolute;
+	left:20px;
+	right:20px;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:0 -36px;
+	background-repeat:repeat-x;
+	padding-top:10px;
+	height:26px;
+	cursor: move;
+}
+
+.dialog .top_title_middle span{
+	display:block;
+	height:26px;
+	line-height:26px;
+}
+
+.dialog .top_title_right{
+	position:absolute;
+	right:0;
+	top:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:top right;
+	height:36px;
+	width:20px;
+}
+
+.dialog .top_title_right .Close {
+	position: absolute;
+	top: 14px;
+	right: 13px;
+	cursor: pointer;
+}
+
+.dialog .bottom_left{
+	position:absolute;
+	left:0;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:left -72px;
+	height:16px;
+	width:20px;	
+}
+
+.dialog .bottom_middle{
+	position:absolute;
+	left:20px;
+	right:20px;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:16px;	
+}
+
+.dialog .bottom_right{
+	position:absolute;
+	right:0;
+	bottom:0;
+	background-image:url(../../CSS/Img/Public/Float_Box/1.png);
+	background-position:right -72px;
+	height:16px;
+	width:20px;	
+}
+
+.dialog .middle_left{
+	position:absolute;
+	left:0;
+	top:36px;
+	bottom:16px;
+	background-image:url(../../CSS/Img/Public/Float_Box/2.png);
+	background-repeat:repeat-y;
+	background-position:left;
+	width:20px;	
+}
+
+.dialog .middle_middle{
+	margin:36px 20px 16px 20px;
+	padding:5px;
+	background-color:#fcfcfc;
+}
+
+.dialog .middle_middle .div {
+	text-align: center;
+}
+
+.dialog .middle_middle .div ul {
+	list-style: none;
+	padding: 0px;
+}
+
+.dialog .middle_middle .div ul li {
+	line-height: 26px;
+	cursor: pointer;
+}
+
+.dialog .middle_middle .div ul li:hover {
+	text-decoration: underline;
+	color: blue;
+}
+
+.dialog .middle_right{
+	position:absolute;
+	right:0;
+	top:36px;
+	bottom:16px;
+	background-image:url(../../CSS/Img/Public/Float_Box/2.png);
+	background-repeat:repeat-y;
+	background-position:right;
+	width:20px;	
+}
+
+.dialog .Message ul {
+	list-style: none;
+	float: left;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.dialog .Message ul li {
+	float: left;
+}
+.dialog .Message ul li.UnitName,.dialog .Message ul li.PersonName,.dialog .Message ul li.DateTime {
+	text-align: center;
+	line-height: 20px;
+	border-right: 1px #a8a8a8 solid;
+	float: left;
+	white-space: nowrap;
+}
+.dialog .Message ul li.UnitName {
+	min-width: 180px;
+	
+}
+.dialog .Message ul li.PersonName {
+	min-width: 108px;
+}
+.dialog .Message ul li.DateTime {
+	min-width: 158px;
+}
+.dialog .Message textarea {
+	margin: 0px; 
+	border: 0px; 
+	width: 99%;
+	text-align: center;
+	resize: none;
+	font-size: 15px;
+}
+.dialog .Message .Content ul:hover li {
+	background: #E3E3E3;
+	cursor: pointer;
+}
+.dialog .Message ul.Selected li {
+	background: #E3E3E3;
+}
+
+.dialog .Refuse textarea{
+    position: relative;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    margin: 0px;
+    min-height: 65px;
+    min-width: 245px;
+}
+.dialog .Refuse input {
+    position: relative;
+    top: 5px;
+    display: block;
+    margin: 0 auto;
+}
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Head .Top{
+    background-color: #4d4d4d;
+}
+.Main{
+    width: 1180px;
+    height: 213px;
+    margin: 300px auto 0;
+    text-align: center;
+}
+.Main div{
+    width: 226px;
+    height: 213px;
+    margin: 0 5px;
+    background-image: url(../../CSS/img/Pages/Main/Menu.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    float: left;
+}
+.Main div:hover{
+    background-position:-226px bottom;
+}
+.Main a{
+    width: 226px;
+    height: 213px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.Main li{
+    width: 226px;
+    height: 213px;
+    margin: 0;
+    padding: 0;
+    background-image: url(../../CSS/img/Pages/Main/Menu.png);
+    background-repeat: no-repeat;
+    list-style: none;
+    float:left;
+}
+.Main a#DisasterReport li{
+    background-position: 0px 0px;
+}
+.Main a#DisasterHistory li {
+	background-position: -226px 0px;
+}
+.Main a#StatisticAnalysis li{
+    background-position: -452px 0px;
+}
+.Main a#BaseData li{
+    background-position: -678px 0px;
+}
+.Main a#SystemSetting li{
+    background-position: -904px 0px;
+}
+.Main a#ReservoirReport li {
+	background-position: -449px -214px;
+}
+
+div.Head div.Top {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+div.Head div.Bottom, div.Head div.Bottom div.Image {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

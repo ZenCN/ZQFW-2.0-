@@ -1,0 +1,46 @@
+﻿<tbody>
+    <tr ng-repeat="sh031 in Open.Report.Current.SH031" ng-first-readonly>
+        <th>
+            {{$index + 1}}
+        </th>
+        <th>
+            <span class="txt_center">{{sh031.SSX}}</span>
+        </th>
+        <td class="ReadOnly">
+             {{sh031.YLZJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh031.YLZJH > 0)}">
+            <input type="text" ng-readonly="!(sh031.YLZJH > 0)" ng-model="sh031.YLZWC" ng-blur="FCN();FCS()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh031.SWZJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh031.SWZJH > 0)}">
+            <input type="text" ng-readonly="!(sh031.SWZJH > 0)" ng-model="sh031.SWZJH" ng-blur="FCN();FCS()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh031.WXTDJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh031.WXTDJH > 0)}">
+            <input type="text" ng-readonly="!(sh031.WXTDJH > 0)" ng-model="sh031.WXTHWC" ng-blur="FCN();FCS()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh031.WXJCJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh031.WXJCJH > 0)}">
+            <input type="text" ng-readonly="!(sh031.WXJCJH > 0)" ng-model="sh031.WXJSWC" ng-blur="FCN();FCS()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh031.TXSPJCZJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh031.TXSPJCZJH > 0)}">
+            <input type="text" ng-readonly="!(sh031.TXSPJCZJH > 0)" ng-model="sh031.TXSPJCZWC" ng-blur="FCN();FCS()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh031.TXSPJCZCJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh031.TXSPJCZCJH > 0)}">
+            <input type="text" ng-readonly="!(sh031.TXSPJCZCJH > 0)" ng-model="sh031.TXSPJCZCWC" ng-blur="FCN();FCS()"/>
+        </td>
+    </tr>
+</tbody>

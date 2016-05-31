@@ -1,0 +1,182 @@
+body
+{
+	margin:0 auto;
+	width:740px;
+	padding:0;
+	}
+#evaluatetitle{
+	width:700px;
+	padding: 0;
+	position: relative;
+	color: #333;
+	margin: 0 auto;
+	}
+#evaluatetitle h1{
+	font-size:25px;
+	line-height:25px;
+	text-align:center;
+	}
+#evaluatetitle p{
+	font-size:18px;
+	line-height:21px;
+	}
+#evaluatesheet {
+	width:700px;
+	padding: 0;
+	position: relative;
+	color: #333;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+	border-image: initial;
+	border-color: #E5E5E5 #DBDBDB #D2D2D2;
+	margin: 0 auto;
+}
+#evaluatesheet .evaluatetable {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 13px;
+	line-height: 25px;
+	word-spacing: -1px;
+	width:100%;
+}
+#evaluatesheet .evaluatetable thead th {
+	padding: 24px 0px 14px;
+	text-align: center;
+	border-bottom: 1px solid #BFBFBF;
+	background: whiteSmoke;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#F2F2F2));
+	background: -moz-linear-gradient(top, white, #F2F2F2);
+	border-left: 1px solid #DADADA;
+	-webkit-box-shadow: inset 1px 0 #fff;
+	-moz-box-shadow: inset 1px 0 #fff;
+	box-shadow: inset 1px 0 #fff;
+}
+#evaluatesheet .evaluatetable thead th:first-child {
+	border-top-left-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-left: 0px;
+	-webkit-box-shadow: inset 1px 0 #fff;
+	-moz-box-shadow: inset 1px 0 #fff;
+	box-shadow: inset 1px 0 #fff;
+	width:180px;
+}
+#evaluatesheet .evaluatetable thead th:last-child {
+	border-top-right-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	width:310px;
+}
+#evaluatesheet .evaluatetable tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+#evaluatesheet .evaluatetable tbody tr th {
+	padding: 5px 25px;
+	vertical-align:middle;
+	border-bottom: 1px solid #BFBFBF;
+	line-height:23px;
+}
+#evaluatesheet .evaluatetable tbody tr th a.hyperlink{ color: blue;text-decoration: none;}
+#evaluatesheet .evaluatetable tbody tr th a.hyperlink:link { color: blue; text-decoration: none;}
+#evaluatesheet .evaluatetable tbody tr th a.hyperlink:visited { text-decoration: none; color: purple;}
+#evaluatesheet .evaluatetable tbody tr th a.hyperlink:hover { text-decoration: underline; color: red;}
+#evaluatesheet .evaluatetable tbody tr th a.hyperlink:active { text-decoration: none; color: red;} 
+#evaluatesheet .evaluatetable tbody tr td {
+	padding: 5px 10px 5px 10px;
+	font-size: 0.9em;
+	vertical-align:middle;
+	border-bottom: 1px solid #BFBFBF;
+	line-height:23px;
+	color:#666;
+}
+
+#evaluatesheet .evaluatetable tbody tr td:nth-of-type(1) {
+	
+	background-image:url(img/specs_column_gradient.png);
+	background-repeat:repeat-y;
+	text-align:center;
+}
+#evaluatesheet .evaluatetable tbody tr td:nth-of-type(2) {
+	border-left:1px solid #bfbfbf;
+	text-align:center;
+}
+#evaluatesheet .evaluatetable tbody tr td:nth-of-type(3) {
+	border-left:1px solid #bfbfbf;
+}
+#evaluatesheet .evaluatetable tbody tr:last-child th {
+	border-bottom: 0px;
+}
+#evaluatesheet .evaluatetable tbody tr:last-child td {
+	border-bottom: 0px;
+}
+
+#evaluatesheet .evaluatetable tbody .double th{ background-color:#F6F6F6;}
+#evaluatesheet .evaluatetable tbody .double td{ background-color:#F6F6F6;}
+
+#functionbutton
+{	
+    width:700px;
+	padding: 0;
+	position: relative;
+	margin: 15px auto;   
+    }
+   
+#functionbutton .googlebuttons{
+	display:table;
+	width:670px;
+	margin:0 30px;
+	}
+#functionbutton .googlebuttons .googlebutton{
+	display:table-cell;
+	}
+#functionbutton .googlebuttons .googlebutton .publish {
+	height:25px;
+	width:56px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: inset 1px 1px 5px #6a90D6,1px 2px 3px #c1c1c1;
+	-webkit-box-shadow: inset 1px 1px 5px #6a90D6,1px 2px 3px #c1c1c1;
+	border:1px solid #1C5AC4;
+	background-color:#4D7BD6;
+	display:block;
+	padding:0 5px;
+	margin:0 auto;
+	line-height:25px;
+	font-size:13px;
+	color:#fff;
+	text-align:center;	
+	text-decoration:none;
+}
+
+#img_warn
+{
+	width:200px;
+	height:130px;
+	position:absolute;
+	right:-50px;
+	top:-20px;
+	display:none;
+	background-image:url(img/big.png);
+	background-repeat:no-repeat;
+	}
+#img_warn.Large
+{
+	background-position:0 0;	
+	}
+#img_warn.Big
+{
+	background-position:0 -130px;	
+	}
+#img_warn.Normal
+{
+	background-position:0 -260px;	
+	}
+#img_warn.Bit
+{
+	background-position:0 -390px;	
+	}

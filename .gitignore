@@ -1,0 +1,9 @@
+packages/
+DBHelper/bin/
+DBHelper/obj/
+EntityModel/bin/
+EntityModel/obj/
+LogicProcessingClass/bin/
+LogicProcessingClass/obj/
+ZQFW/bin/
+ZQFW/obj/

@@ -1,0 +1,21 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.ListHorizontal .Check{
+    width: 30px;
+    clear: left;
+}
+.ListHorizontal .UnitName,.ListHorizontal .TableName{
+    width: 14%;
+}
+.ListHorizontal .CycName{
+    width: 8%;
+}
+.ListHorizontal .BeginTime,.ListHorizontal .EndTime,.ListHorizontal .WriteTime,.ListHorizontal .LastUpdateTime{
+    width: 10%;
+}
+.ListHorizontal .Remark{
+    width: 19%;
+}

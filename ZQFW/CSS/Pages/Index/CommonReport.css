@@ -1,0 +1,35 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+ 
+.ToolBar,.Top,.Main{
+    width: 975px;
+    margin: auto;
+    font-size: 16px;
+    overflow: hidden;
+}
+input[type=text] {
+    text-align: center;
+    border: 1px solid white;
+    background-color: transparent;
+    border-bottom: 1px solid #7FA1CE;
+    overflow: visible;
+    width: 150px;
+}
+.Top{
+    margin-top: 20px;
+}
+.Top .Right{
+    float: right;
+}
+table caption{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0px 20px 0px;
+}
+table tr td{
+    padding: 10px;
+}

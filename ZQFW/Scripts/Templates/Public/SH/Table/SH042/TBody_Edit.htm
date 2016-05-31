@@ -1,0 +1,46 @@
+﻿<tbody>
+    <tr ng-repeat="sh042 in Open.Report.Current.SH042">
+        <th>
+            {{$index + 1}}
+        </th>
+        <th>
+            <span class="txt_center">{{sh042.SSX}}</span>
+        </th>
+        <td>
+            <span class="pointer" ng-bind="sh042.DCDX" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh042.SWJC" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh042.DXLS" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh042.LSSH" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <input type="text" ng-model="sh042.XLYJCXX" ng-blur="FCN()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh042.SHJJDCJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh042.SHJJDCJH > 0)}">
+            <input type="text" ng-readonly="!(sh042.SHJJDCJH > 0)" ng-model="sh042.SHJJDCWC" ng-blur="FCN()"/>
+        </td>
+        <td class="ReadOnly">
+            {{sh042.SHWXQYJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh042.SHWXQYJH > 0)}">
+            <input type="text" ng-readonly="!(sh042.SHWXQYJH > 0)" ng-model="sh042.SHWXQYWC" ng-blur="FCN()"/>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh042.SSGC" ng-click="FCK()"></span>
+        </td>
+        <td class="ReadOnly">
+            {{sh042.YHCCLJH}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh042.YHCCLJH > 0)}">
+            <input type="text" ng-readonly="!(sh042.YHCCLJH > 0)" ng-model="sh042.YHCCLWC" ng-blur="FCN()"/>
+        </td>
+    </tr>
+</tbody>

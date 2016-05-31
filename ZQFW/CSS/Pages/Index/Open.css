@@ -1,0 +1,277 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.LeftTree[name=Open] .Left{
+    width: 260px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.LeftTree[name=Open] .Left p{
+    color: #023A5A;
+    margin: 0px auto 5px 25px;
+}
+.LeftTree[name=Open] .Right, .LeftTree[name=New] .Right{
+    position: fixed;
+	top: 122px;
+	left: 266px;
+	right: 5px;
+	bottom: 5px;
+	z-index: 9;
+}
+.LeftTree[name=New] .Right {
+	left: 246px;
+}
+.LeftTree[name=Open] .TreeBoxes{
+    position: absolute;
+    top: 88px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+}
+.LeftTree[name=Open] .TreeBoxes .UnitName {
+	width: 196px;
+	margin-left: 35px;
+	font-size: 12px;
+	margin-top: 5px;
+}
+.LeftTree[name=Open] .TreeBoxes .UnitName select {
+	height: 19px;
+	font-size: 12px;
+}
+.LeftTree[name=Open] .Left .ShowAggAcc {
+	bottom: 250px;
+}
+#Report{
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    bottom: 137px;
+    right: 0px;
+    font-size: 12px;
+    background-color: #F9F9F6;
+    border-bottom: #C09A9A 1px solid;
+    z-index: 4;
+}
+#Report table .ReadOnly {
+	background-color: #F0ECEC;
+}
+#Report table .ReadOnly input {
+	background-color: #F0ECEC;
+}
+#Report table .WrongData {
+	background-color: #60A3C7;   /*#BDE0F3;*/
+	border: 1px solid rgb(113, 115, 128);
+}
+#Report table .WrongData input,#Report table .WrongData select {
+	background-color: #60A3C7;  /*#BDE0F3;*/
+	font-weight: bolder;
+	color: #050505;
+}
+#Report table td.ReadOnly-WrongData{
+	color:red;
+}
+#Report-Footer{
+    position: absolute;
+    top: auto;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 136px;
+}
+.LeftTree[name=Open] .Boxes{
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: auto;
+    font-size: 12px;
+    color: #333;
+    border-radius: 10px;
+}
+.LeftTree[name=Open] .Boxes p{
+    margin: 0px 0px 5px 0px;
+    line-height: 22px;
+}
+.LeftTree[name=Open] .Boxes textarea{
+    height: 60px;
+    width: 260px;
+    resize: none;
+}
+.LeftTree[name=Open] .CycType input {
+	margin: 0px;
+	padding: 0px;
+}
+.LeftTree[name=Open] .Boxes .CheckAlert ul {
+	margin: 8px 8px 8px 8px;
+	padding: 0;
+	list-style: none;
+	font-size: 13.5px;
+	color: #333;
+	line-height: 17px;
+	vertical-align: top;
+}
+.LeftTree[name=Open] .Boxes .CheckAlert ul li {
+	margin-bottom: 1px;
+	border-bottom: 1px #a8a8a8 solid;
+	cursor: pointer;
+}
+.LeftTree[name=Open] .Boxes .CheckAlert ul li:hover {
+	background: #EEE6E6;
+}
+.LeftTree[name=Open] .Boxes .CheckAlert ul li.Selected {
+	background: #BDE0F3;
+}
+.LeftTree[name=Open] .Boxes .Explain {
+	overflow: visible;
+	font-size: larger;
+	margin: 10px;
+	width: auto;
+	height: auto;
+}
+.LeftTree[name=Open] .Boxes .Explain,.LeftTree[name=Open] .Boxes .CheckAlert {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+}
+.LeftTree[name=Open] .Boxes .Affix ul {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.LeftTree[name=Open] .Boxes .Affix ul li {
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.LeftTree[name=Open] .Boxes .Affix ul li img {
+	float: left;
+}
+.LeftTree[name=Open] .Boxes .Affix ul li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.LeftTree[name=Open] .Boxes .Affix ul li a:hover {
+	text-decoration: underline;
+}
+.LeftTree[name=Open] .Boxes .ReportTitle{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+}
+.LeftTree[name=Open] .ReportTitle div{
+    float: left;
+    padding-right: 5px;
+}
+.LeftTree[name=Open] .UnitPrincipal,.LeftTree[name=Open] .StatisticsPrincipal,.LeftTree[name=Open] .WriterName,.LeftTree[name=Open] .CheckPerson{
+    width: 55px;
+}
+.LeftTree[name=Open] .UnitName{
+    width: 198px;
+}
+.LeftTree[name=Open] .datepicker{
+    width: 120px;
+}
+.LeftTree[name=Open] .AggAccBox {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 250px;
+	font-size: 14px;
+	z-index: 4;
+}
+.LeftTree[name=Open] .AggAccBox .AggAcc-Menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30px;
+	overflow: hidden;
+	background-image: url(../../Img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	z-index: 31;
+}
+.LeftTree[name=Open] .AggAccBox .AggAcc-Menu ul {
+	background-image: url(../../Img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+	background-position: top;
+	background-repeat: repeat-x;
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 26px;
+	overflow: hidden;
+}
+.LeftTree[name=Open] .AggAccBox .AggAcc-Menu ul li {
+	background-image: url(../../Img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+	background-position: right top;
+	background-repeat: repeat-x;
+	line-height: 26px;
+	color: #fff;
+	margin: 0 0 0 5px;
+	padding: 0 5px;
+	font-weight: bold;
+	float: left;
+	cursor: pointer;
+	font-size: 14px;
+	border-left: 1px solid transparent;
+}
+.LeftTree[name=Open] .AggAccBox .AggAcc-Menu ul li:hover{
+	background-position:right -26px;
+	border-left:1px solid #466081;
+}
+.LeftTree[name=Open] .AggAccBox .AggAcc-Menu ul li i {
+	width: 24px;
+	height: 24px;
+	margin: 2px 2px 0px 0;
+	background-image: url(../../img/Public/MenuIcons/2.png);
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+}
+.AggAccBox .AggAcc-Menu ul li.Add i {
+	background-position: -360px -24px;
+}
+.AggAccBox .AggAcc-Menu ul li.Del i {
+	background-position: -384px -24px;
+}
+.AggAccBox .AggAcc-Content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 26px;
+	overflow: auto;
+}
+.AggAccBox .AggAcc-Content ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.AggAccBox .AggAcc-Content ul li {
+	background-color: #FFF;
+	cursor: pointer;
+	border-bottom: 1px #e3e3e3 solid;
+}
+.AggAccBox .AggAcc-Content ul li.Selected {
+	background-color: #e3e3e3;
+	color: #333;
+}
+.AggAccBox .AggAcc-Content ul li a {
+	display: block;
+	padding-left: 10px;
+	height: 21px;
+	line-height: 20px;
+	font-size: 12px;
+	overflow: hidden;
+}

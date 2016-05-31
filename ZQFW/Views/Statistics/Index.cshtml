@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta content="webkit" name="renderer"/>
+    <title>统计分析</title>
+    <link rel="stylesheet" href="../../CSS/Public/Body.css"/>
+    <link rel="stylesheet" href="../../CSS/Public/Head.css"/>
+    <link href="../../CSS/Statistics/Main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../CSS/Statistics/Menu.css" rel="stylesheet" type="text/css"/>
+
+    <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../Scripts/Others/Head.js" type="text/javascript"></script>
+    <script src="../../Scripts/Statistics/MenuGoto.js" type="text/javascript"></script>
+</head>
+<body class="DarkGray">
+    @Html.Partial("~/Views/Partial/_Head.cshtml");
+     <%--模块菜单--%>
+    <div class="menu">
+        <ul>
+            <li class="flo"><span class="floatblock" style="width:110px;"></span></li>
+            <li class="selected"><span><i class="map"></i>灾情分布</span></li>
+            <li><span><i class="analysis"></i>灾情分析</span></li>
+            <li><span><i class="assessment"></i>灾情评估</span></li>
+        </ul>        
+    </div>
+    <%--模块--%>
+    <div class="main">
+        <div id="map" class="slide_page">
+            <iframe height="100%" width="100%" style=" background-color:White;" frameborder="0" src="/Statistics/Map"></iframe>
+        </div>
+        <div id="analysis" class="slide_page" style="display: none;">
+        </div>
+        <div id="assessment" class="slide_page" style="display: none;">
+        </div>
+    </div>
+    <%--模块阴影效果--%>
+    <div class="main_shadows">
+        <div class="leftshadow">
+        </div>
+        <div class="rightshadow">
+        </div>
+        <div class="leftbottomshadow">
+        </div>
+        <div class="rightbottomshadow">
+        </div>
+    </div>
+</body>
+</html>

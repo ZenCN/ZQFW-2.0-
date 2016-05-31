@@ -1,0 +1,2869 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FXCLDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FXCLDModelStoreContainer">
+          <EntitySet Name="Affix" EntityType="FXCLDModel.Store.Affix" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AggAccRecord" EntityType="FXCLDModel.Store.AggAccRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AnnualDisasterAssessment" EntityType="FXCLDModel.Store.AnnualDisasterAssessment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Benefit" EntityType="FXCLDModel.Store.Benefit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DisasterCheck" EntityType="FXCLDModel.Store.DisasterCheck" store:Type="Tables" store:Schema="dbo" store:Name="DisasterCheck">
+            <DefiningQuery>SELECT 
+      [DisasterCheck].[TBNO] AS [TBNO], 
+      [DisasterCheck].[PageNO] AS [PageNO], 
+      [DisasterCheck].[UnitCode] AS [UnitCode], 
+      [DisasterCheck].[CheckOpinion] AS [CheckOpinion], 
+      [DisasterCheck].[CheckPerson] AS [CheckPerson], 
+      [DisasterCheck].[CheckDate] AS [CheckDate], 
+      [DisasterCheck].[UnitName] AS [UnitName]
+      FROM [dbo].[DisasterCheck] AS [DisasterCheck]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HL011" EntityType="FXCLDModel.Store.HL011" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HL012" EntityType="FXCLDModel.Store.HL012" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HL013" EntityType="FXCLDModel.Store.HL013" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HL014" EntityType="FXCLDModel.Store.HL014" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HP011" EntityType="FXCLDModel.Store.HP011" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HP012" EntityType="FXCLDModel.Store.HP012" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LGN" EntityType="FXCLDModel.Store.LGN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LSTQLJ" EntityType="FXCLDModel.Store.LSTQLJ" store:Type="Tables" store:Schema="dbo" store:Name="LSTQLJ">
+            <DefiningQuery>SELECT 
+      [LSTQLJ].[LSNO] AS [LSNO], 
+      [LSTQLJ].[LSYEAR] AS [LSYEAR], 
+      [LSTQLJ].[LSMONTH] AS [LSMONTH], 
+      [LSTQLJ].[LSXUN] AS [LSXUN], 
+      [LSTQLJ].[SHMJXJ] AS [SHMJXJ], 
+      [LSTQLJ].[CZMJXJ] AS [CZMJXJ], 
+      [LSTQLJ].[SZRK] AS [SZRK], 
+      [LSTQLJ].[SWRK] AS [SWRK], 
+      [LSTQLJ].[SZRKR] AS [SZRKR], 
+      [LSTQLJ].[DTFW] AS [DTFW], 
+      [LSTQLJ].[ZJJJZSS] AS [ZJJJZSS], 
+      [LSTQLJ].[SLSSZJJJSS] AS [SLSSZJJJSS], 
+      [LSTQLJ].[ZYRK] AS [ZYRK]
+      FROM [dbo].[LSTQLJ] AS [LSTQLJ]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="NP011" EntityType="FXCLDModel.Store.NP011" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReportFillContent" EntityType="FXCLDModel.Store.ReportFillContent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReportTitle" EntityType="FXCLDModel.Store.ReportTitle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleTab" EntityType="FXCLDModel.Store.RoleTab" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH011" EntityType="FXCLDModel.Store.SH011" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sh016" EntityType="FXCLDModel.Store.sh016" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH021" EntityType="FXCLDModel.Store.SH021" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH031" EntityType="FXCLDModel.Store.SH031" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH032" EntityType="FXCLDModel.Store.SH032" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH033" EntityType="FXCLDModel.Store.SH033" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH034" EntityType="FXCLDModel.Store.SH034" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH035" EntityType="FXCLDModel.Store.SH035" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH036" EntityType="FXCLDModel.Store.SH036" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH037" EntityType="FXCLDModel.Store.SH037" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH038" EntityType="FXCLDModel.Store.SH038" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH041" EntityType="FXCLDModel.Store.SH041" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH042" EntityType="FXCLDModel.Store.SH042" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH043" EntityType="FXCLDModel.Store.SH043" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH044" EntityType="FXCLDModel.Store.SH044" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH045" EntityType="FXCLDModel.Store.SH045" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH051" EntityType="FXCLDModel.Store.SH051" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SingleDisasterAssessment" EntityType="FXCLDModel.Store.SingleDisasterAssessment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TENDENCYCHARTINFO" EntityType="FXCLDModel.Store.TENDENCYCHARTINFO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UrgeReport" EntityType="FXCLDModel.Store.UrgeReport" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AFFIX_REFERENCE_REPORTTI" Association="FXCLDModel.Store.FK_AFFIX_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="Affix" EntitySet="Affix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL011_REFERENCE_REPORTTI" Association="FXCLDModel.Store.FK_HL011_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL011" EntitySet="HL011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL012_REFERENCE_REPORTTI" Association="FXCLDModel.Store.FK_HL012_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL012" EntitySet="HL012" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL013_REFERENCE_REPORTTI" Association="FXCLDModel.Store.FK_HL013_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL013" EntitySet="HL013" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL014_REFERENCE_REPORTTI" Association="FXCLDModel.Store.FK_HL014_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL014" EntitySet="HL014" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Affix">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileData" Type="image" />
+          <Property Name="FileName" Type="varchar" MaxLength="1000" />
+          <Property Name="FileSize" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DownloadURL" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="AggAccRecord">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ORD_Code" Type="varchar" MaxLength="8" />
+          <Property Name="OperateType" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPageNO" Type="int" />
+          <Property Name="PageNo" Type="int" />
+          <Property Name="DBType" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="AnnualDisasterAssessment">
+          <Key>
+            <PropertyRef Name="ADAID" />
+          </Key>
+          <Property Name="ADAID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ADATitle" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ADATheKeeper" Type="varchar" MaxLength="50" />
+          <Property Name="DAASaveDate" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ADAPAGENO" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ADAList" Type="varchar" MaxLength="400" />
+          <Property Name="ADAREMARK" Type="varchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="Benefit">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="20" />
+          <Property Name="BTitle" Type="varchar" MaxLength="255" />
+          <Property Name="BDate" Type="datetime" />
+          <Property Name="BArea" Type="varchar" MaxLength="100" />
+          <Property Name="DQJJ" Type="text" />
+          <Property Name="ZQYQ" Type="text" />
+          <Property Name="ZQSQ" Type="text" />
+          <Property Name="ZQZQ" Type="text" />
+          <Property Name="YJJC" Type="text" />
+          <Property Name="YJYQ" Type="text" />
+          <Property Name="YJYZ" Type="text" />
+          <Property Name="YJXY" Type="text" />
+          <Property Name="XYXJ" Type="text" />
+          <Property Name="ZHZJ" Type="text" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“FXPRV.dbo.DisasterCheck”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="DisasterCheck">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="CheckOpinion" Type="varchar" MaxLength="1000" />
+          <Property Name="CheckPerson" Type="varchar" MaxLength="20" />
+          <Property Name="CheckDate" Type="datetime" />
+          <Property Name="UnitName" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="HL011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="RiverCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="DistributeRate" Type="varchar" MaxLength="255" />
+          <Property Name="DW" Type="varchar" MaxLength="255" />
+          <Property Name="SZFWX" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SZFWZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SZRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SYCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DTFW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SZRKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZYRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJJJZSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHMJXJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHMJLS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CZMJXJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CZMJLS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JSMJXJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JSMJLS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YZJCLS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JJZWSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWDSC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SCYZMJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SCYZSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="NLMYZJJJSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TCGKQY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TLZD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GLZD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JCGKGT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GDZD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TXZD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GJYSZJJJSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHSKD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHSKX" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SKKBD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SKKBX1" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SKKBX2" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHDFCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHDFCD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DFJKCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DFJKCD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHHAC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHSZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CHTB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHGGSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHSWCZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHJDJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHJDBZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHSDZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SLSSZJJJSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SZFWC" Type="numeric" Precision="13" />
+          <Property Name="LYJDGT" Type="numeric" Precision="13" />
+          <Property Name="SHPSCS" Type="numeric" Precision="13" />
+          <Property Name="SHPSCD" Type="numeric" Precision="13" />
+          <Property Name="SHPSBZ" Type="numeric" Precision="13" />
+          <Property Name="SHGSCS" Type="numeric" Precision="13" />
+          <Property Name="SHGSCD" Type="numeric" Precision="13" />
+          <Property Name="SHHTCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHHTCD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="HTJKCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="HTJKCD" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="HL012">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="RiverCode" Type="varchar" MaxLength="40" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DistributeRate" Type="varchar" MaxLength="20" />
+          <Property Name="DW" Type="varchar" MaxLength="255" />
+          <Property Name="SWXM" Type="varchar" MaxLength="20" />
+          <Property Name="SWXB" Type="varchar" MaxLength="10" />
+          <Property Name="SWNL" Type="varchar" MaxLength="5" />
+          <Property Name="SWHJ" Type="varchar" MaxLength="100" />
+          <Property Name="SWSJ" Type="varchar" MaxLength="30" />
+          <Property Name="SWDD" Type="varchar" MaxLength="100" />
+          <Property Name="YYTF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYSH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYHP" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYNSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYFWDT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYLS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYGKZW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YYQT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="BZ" Type="varchar" MaxLength="510" />
+          <Property Name="SourcePageNo" Type="int" />
+          <Property Name="SourceDBType" Type="int" />
+          <Property Name="DeathReason" Type="varchar" MaxLength="100" />
+          <Property Name="DeathReasonCode" Type="varchar" MaxLength="50" />
+          <Property Name="DataType" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="HL013">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="RiverCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="DistributeRate" Type="varchar" MaxLength="20" />
+          <Property Name="DW" Type="varchar" MaxLength="255" />
+          <Property Name="YMFWMJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YMFWBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SZRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GCJSSJ" Type="varchar" MaxLength="40" />
+          <Property Name="GCYMLS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GCLJJYL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GCHSWKRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GCJJZYRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZYZJZDSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SMXGS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SMXGD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SMXGQ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SMXJT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JZWSYFW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JZWSYDX" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CQZJJJSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CSMC" Type="varchar" MaxLength="255" />
+          <Property Name="SourcePageNo" Type="int" />
+          <Property Name="SourceDBType" Type="int" />
+          <Property Name="JZWFWDT" Type="numeric" Precision="13" />
+          <Property Name="JZWFWJS" Type="numeric" Precision="13" />
+          <Property Name="JZWYLJS" Type="numeric" Precision="13" />
+          <Property Name="JZWDXS" Type="numeric" Precision="13" />
+          <Property Name="JZWDXRF" Type="numeric" Precision="13" />
+          <Property Name="JZWDXTD" Type="numeric" Precision="13" />
+          <Property Name="SYGCJSPC" Type="numeric" Precision="13" />
+          <Property Name="SYGCSMDF" Type="numeric" Precision="13" />
+          <Property Name="SYGCJSSD" Type="numeric" Precision="13" />
+        </EntityType>
+        <EntityType Name="HL014">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="RiverCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="DistributeRate" Type="varchar" MaxLength="20" />
+          <Property Name="DW" Type="varchar" MaxLength="255" />
+          <Property Name="WZBZD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZBZB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZDSSS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZSSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZMC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZGC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZJSY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZQT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WZZXH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QXHJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QXBDGB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QXDFRY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QXFXJD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SBQXZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SBYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SBJX" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJXJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJZY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJSJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJSJYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJQZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJYGD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJMLSJS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJSSZRK" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJJQZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJMSWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJMSWR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYZYSH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYZYTF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYZYQT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYBMSY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYJZJJXY" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="HP011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UNITCODE" Type="varchar" MaxLength="20" />
+          <Property Name="RIVERCODE" Type="varchar" MaxLength="50" />
+          <Property Name="PAGENO" Type="int" Nullable="false" />
+          <Property Name="DATAORDER" Type="int" />
+          <Property Name="DISTRIBUTERATE" Type="varchar" MaxLength="50" />
+          <Property Name="DW" Type="varchar" MaxLength="20" />
+          <Property Name="XSCSZJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YXSLZJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XXSLZJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XZKYSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XZYBFB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QNTQZJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SQZJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="LNZJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DZXKCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DZKYXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DZKXXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DXKKYSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="KXZYBFB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZZXKCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZZKYXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZZKXXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZXKKYSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZXZYBFB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYSKCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYKYXS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYKXXS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYKKYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XKXZYBFB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XRSKCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XRKYXS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XRKXXS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XRKKYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XRXZYBFB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPTHJCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPTYXS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPTXXS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPTKYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TXZYBFB" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="HP012">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UNITCODE" Type="varchar" MaxLength="20" />
+          <Property Name="RIVERCODE" Type="varchar" MaxLength="50" />
+          <Property Name="PAGENO" Type="int" Nullable="false" />
+          <Property Name="DATAORDER" Type="int" />
+          <Property Name="DISTRIBUTERATE" Type="varchar" MaxLength="50" />
+          <Property Name="DW" Type="varchar" MaxLength="20" />
+          <Property Name="DXSKMC" Type="varchar" MaxLength="40" />
+          <Property Name="DXKYXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DXKXXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DXKKYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DXZYBFB" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QNTQDXS" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="LGN">
+          <Key>
+            <PropertyRef Name="LoginName" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="RoleName" Type="varchar" MaxLength="20" />
+          <Property Name="PWD" Type="varchar" MaxLength="50" />
+          <Property Name="RealName" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OperateTable" Type="varchar" MaxLength="20" />
+          <Property Name="Authority" Type="int" />
+          <Property Name="PWD_SH" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“FXPRV.dbo.LSTQLJ”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="LSTQLJ">
+          <Key>
+            <PropertyRef Name="LSNO" />
+          </Key>
+          <Property Name="LSNO" Type="int" Nullable="false" />
+          <Property Name="LSYEAR" Type="int" />
+          <Property Name="LSMONTH" Type="int" />
+          <Property Name="LSXUN" Type="int" />
+          <Property Name="SHMJXJ" Type="numeric" Precision="13" />
+          <Property Name="CZMJXJ" Type="numeric" Precision="13" />
+          <Property Name="SZRK" Type="numeric" Precision="13" />
+          <Property Name="SWRK" Type="numeric" Precision="13" />
+          <Property Name="SZRKR" Type="numeric" Precision="13" />
+          <Property Name="DTFW" Type="numeric" Precision="13" />
+          <Property Name="ZJJJZSS" Type="numeric" Precision="13" />
+          <Property Name="SLSSZJJJSS" Type="numeric" Precision="13" />
+          <Property Name="ZYRK" Type="numeric" Precision="13" />
+        </EntityType>
+        <EntityType Name="NP011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RSCode" Type="varchar" MaxLength="20" />
+          <Property Name="RSName" Type="varchar" MaxLength="20" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="DQSW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DQXSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SFCXXSW" Type="varchar" MaxLength="10" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ReportFillContent">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PageNo" Type="int" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="20" />
+          <Property Name="RiverCode" Type="varchar" MaxLength="20" />
+          <Property Name="DBTableCode" Type="varchar" MaxLength="50" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="20" />
+          <Property Name="FillContent" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ReportTitle">
+          <Key>
+            <PropertyRef Name="PageNO" />
+          </Key>
+          <Property Name="PageNO" Type="int" Nullable="false" />
+          <Property Name="ORD_Code" Type="varchar" MaxLength="8" />
+          <Property Name="RPTType_Code" Type="varchar" MaxLength="10" />
+          <Property Name="StatisticalCycType" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="UnitName" Type="varchar" MaxLength="40" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="StartDateTime" Type="datetime" />
+          <Property Name="EndDateTime" Type="datetime" />
+          <Property Name="UnitPrincipal" Type="varchar" MaxLength="20" />
+          <Property Name="StatisticsPrincipal" Type="varchar" MaxLength="20" />
+          <Property Name="WriterName" Type="varchar" MaxLength="20" />
+          <Property Name="WriterTime" Type="datetime" />
+          <Property Name="SendTime" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="255" />
+          <Property Name="Del" Type="int" />
+          <Property Name="ReceiveState" Type="int" />
+          <Property Name="State" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SourceType" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ReceiveTime" Type="datetime" />
+          <Property Name="AssociatedPageNO" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="OperateReportNO" Type="varchar" MaxLength="50" />
+          <Property Name="DisasterTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="DisasterDescribe" Type="varchar" MaxLength="50" />
+          <Property Name="DisasterSummary" Type="varchar" MaxLength="1000" />
+          <Property Name="ExceptPageNo" Type="varchar" MaxLength="50" />
+          <Property Name="RBType" Type="int" />
+          <Property Name="LastUpdateTime" Type="datetime" />
+          <Property Name="CloudPageNO" Type="int" />
+          <Property Name="CopyPageNO" Type="int" />
+          <Property Name="SendOperType" Type="int" />
+          <Property Name="CSPageNO" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleTab">
+          <Key>
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="AuthorityNO" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SH011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="JSNR" Type="varchar" MaxLength="30" />
+          <Property Name="NDZJYS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="NDZJZY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="NDZJDF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DFZJSJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DFZJSX" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZJZF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDWCZY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDZYBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDWCSJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDSJBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDWCSHIJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDSHIJBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDWCXJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JDXJBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFWCZY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFZYBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFWCSJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFSJBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFWCSHIJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFSHIJBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFWCXJ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZFXJBL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DFZJX" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="sh016">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="30" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="CGJYXS" Type="int" />
+          <Property Name="XZXS" Type="int" />
+          <Property Name="BZ" Type="varchar" MaxLength="500" />
+          <Property Name="ZBJD" Type="numeric" Precision="20" Scale="1" />
+          <Property Name="SFKG" Type="int" />
+          <Property Name="JSJD" Type="numeric" Precision="20" Scale="1" />
+        </EntityType>
+        <EntityType Name="SH021">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="GDMC" Type="varchar" MaxLength="60" />
+          <Property Name="SZX" Type="varchar" MaxLength="60" />
+          <Property Name="CBSJBG" Type="varchar" MaxLength="10" />
+          <Property Name="SCTG" Type="varchar" MaxLength="10" />
+          <Property Name="ZBQK" Type="varchar" MaxLength="10" />
+          <Property Name="SFKG" Type="varchar" MaxLength="10" />
+          <Property Name="JHDF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHHA" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHQY" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHJHG" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHQT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHTF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHSF" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JHHNT" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JGYS" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SH031">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="YLZJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLZWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWZJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWZWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WXTDJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WXTHWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WXJCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WXJSWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TXSPJCZJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TXSPJCZWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TXSPJCZCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TXSPJCZCWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH032">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="WXGBJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="WXGBWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLBJJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLBJWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWZJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SWZWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="BJQJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="BJQWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="LGHJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="LGHWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH033">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="XJHS" Type="varchar" MaxLength="10" />
+          <Property Name="XJYJ" Type="varchar" MaxLength="10" />
+          <Property Name="XJPT" Type="varchar" MaxLength="10" />
+          <Property Name="XJPTYSJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XJPTYSWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YDSBJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YDSBWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH034">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="XZQMC" Type="varchar" MaxLength="60" />
+          <Property Name="YJZB" Type="varchar" MaxLength="10" />
+          <Property Name="YJGZ" Type="varchar" MaxLength="10" />
+          <Property Name="RJZB" Type="varchar" MaxLength="10" />
+          <Property Name="RJGZ" Type="varchar" MaxLength="10" />
+          <Property Name="XTJC" Type="varchar" MaxLength="10" />
+          <Property Name="HTYS" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SH035">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="XZQMC" Type="varchar" MaxLength="60" />
+          <Property Name="SWXXGX" Type="varchar" MaxLength="10" />
+          <Property Name="QXXXGX" Type="varchar" MaxLength="10" />
+          <Property Name="GTXXGX" Type="varchar" MaxLength="10" />
+          <Property Name="YJXXGX" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SH036">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="XYAJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYAWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XZYAJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XZYAWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CYAJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CYAWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QTYAJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QTYAWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH037">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="XCLJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XCLWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JSPJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="JSPWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="MBKJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="MBKWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GPJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="GPWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SCWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH038">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="PXCCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PXCCWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PXRSJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PXRSWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLCCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLCCWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLRCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YLRCWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH041">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="ZDYJZB" Type="varchar" MaxLength="10" />
+          <Property Name="ZDYJCG" Type="varchar" MaxLength="10" />
+          <Property Name="ZDYJCGSL" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SJFWSQD" Type="varchar" MaxLength="10" />
+          <Property Name="SJFWSMC" Type="varchar" MaxLength="100" />
+          <Property Name="PX" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SH042">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="DCDX" Type="varchar" MaxLength="10" />
+          <Property Name="SWJC" Type="varchar" MaxLength="10" />
+          <Property Name="DXLS" Type="varchar" MaxLength="10" />
+          <Property Name="LSSH" Type="varchar" MaxLength="10" />
+          <Property Name="XLYJCXX" Type="int" />
+          <Property Name="SHJJDCJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHJJDCWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHWXQYJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SHWXQYWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SSGC" Type="varchar" MaxLength="10" />
+          <Property Name="YHCCLJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YHCCLWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH043">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="SSX" Type="varchar" MaxLength="60" />
+          <Property Name="XLYFX" Type="int" />
+          <Property Name="YHCPJJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YHCPJWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DCBG" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SH044">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="XZQMC" Type="varchar" MaxLength="60" />
+          <Property Name="XJWC" Type="varchar" MaxLength="10" />
+          <Property Name="S1JWC" Type="varchar" MaxLength="10" />
+          <Property Name="S2JWC" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SH045">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="XZQMC" Type="varchar" MaxLength="60" />
+          <Property Name="PXCSJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PXCSWC" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PXRSJH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="PXRSWC" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH051">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="255" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="DW" Type="varchar" MaxLength="40" />
+          <Property Name="YJFBGX" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YJXJFBCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YJDXTS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="YJZRRS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="QDGBZ" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZYRS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="BMSW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DTFW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SSSH" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="BZ" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SingleDisasterAssessment">
+          <Key>
+            <PropertyRef Name="SDAID" />
+          </Key>
+          <Property Name="SDAID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SDATitle" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DACreator" Type="varchar" MaxLength="50" />
+          <Property Name="DACreatime" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DAPageNo" Type="varchar" Nullable="false" MaxLength="400" />
+          <Property Name="SDAREMARK" Type="varchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="TENDENCYCHARTINFO">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TSTARTTIME" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="TENDTIME" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="TREPORTTYPE" Type="varchar" MaxLength="16" />
+          <Property Name="TPAGENO" Type="varchar" MaxLength="100" />
+          <Property Name="TTITLE" Type="varchar" MaxLength="50" />
+          <Property Name="TUNITS" Type="varchar" MaxLength="8" />
+          <Property Name="TDATA" Type="varchar" Nullable="false" MaxLength="4000" />
+          <Property Name="TCATEGORY" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="TDISASTERTYPE" Type="varchar" MaxLength="20" />
+          <Property Name="TDW" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UrgeReport">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiveUnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="SendUnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="SendUnitName" Type="varchar" MaxLength="40" />
+          <Property Name="UrgeRptDateTime" Type="datetime" />
+          <Property Name="UrgeRptPersonName" Type="varchar" MaxLength="40" />
+          <Property Name="UrgeRptContent" Type="varchar" MaxLength="1000" />
+          <Property Name="IsRead" Type="int" />
+          <Property Name="MsgType" Type="int" />
+        </EntityType>
+        <Association Name="FK_AFFIX_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.Store.ReportTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Affix" Type="FXCLDModel.Store.Affix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="Affix">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL011_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.Store.ReportTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HL011" Type="FXCLDModel.Store.HL011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL011">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL012_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.Store.ReportTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HL012" Type="FXCLDModel.Store.HL012" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL012">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL013_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.Store.ReportTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HL013" Type="FXCLDModel.Store.HL013" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL013">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL014_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.Store.ReportTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HL014" Type="FXCLDModel.Store.HL014" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL014">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FXCLDModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BusinessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Affix" EntityType="FXCLDModel.Affix" />
+          <EntitySet Name="AggAccRecord" EntityType="FXCLDModel.AggAccRecord" />
+          <EntitySet Name="AnnualDisasterAssessment" EntityType="FXCLDModel.AnnualDisasterAssessment" />
+          <EntitySet Name="DisasterCheck" EntityType="FXCLDModel.DisasterCheck" />
+          <EntitySet Name="HL011" EntityType="FXCLDModel.HL011" />
+          <EntitySet Name="HL012" EntityType="FXCLDModel.HL012" />
+          <EntitySet Name="HL013" EntityType="FXCLDModel.HL013" />
+          <EntitySet Name="HL014" EntityType="FXCLDModel.HL014" />
+          <EntitySet Name="LGN" EntityType="FXCLDModel.LGN" />
+          <EntitySet Name="LSTQLJ" EntityType="FXCLDModel.LSTQLJ" />
+          <EntitySet Name="ReportFillContent" EntityType="FXCLDModel.ReportFillContent" />
+          <EntitySet Name="ReportTitle" EntityType="FXCLDModel.ReportTitle" />
+          <EntitySet Name="RoleTab" EntityType="FXCLDModel.RoleTab" />
+          <EntitySet Name="SingleDisasterAssessment" EntityType="FXCLDModel.SingleDisasterAssessment" />
+          <EntitySet Name="TENDENCYCHARTINFO" EntityType="FXCLDModel.TENDENCYCHARTINFO" />
+          <EntitySet Name="UrgeReport" EntityType="FXCLDModel.UrgeReport" />
+          <AssociationSet Name="FK_AFFIX_REFERENCE_REPORTTI" Association="FXCLDModel.FK_AFFIX_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="Affix" EntitySet="Affix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL011_REFERENCE_REPORTTI" Association="FXCLDModel.FK_HL011_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL011" EntitySet="HL011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL012_REFERENCE_REPORTTI" Association="FXCLDModel.FK_HL012_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL012" EntitySet="HL012" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL013_REFERENCE_REPORTTI" Association="FXCLDModel.FK_HL013_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL013" EntitySet="HL013" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HL014_REFERENCE_REPORTTI" Association="FXCLDModel.FK_HL014_REFERENCE_REPORTTI">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HL014" EntitySet="HL014" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LGN_REFERENCE_ROLETAB" Association="FXCLDModel.FK_LGN_REFERENCE_ROLETAB">
+            <End Role="RoleTab" EntitySet="RoleTab" />
+            <End Role="LGN" EntitySet="LGN" />
+          </AssociationSet>
+          <AssociationSet Name="ReportTitleAggAccRecord" Association="FXCLDModel.ReportTitleAggAccRecord">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="AggAccRecord" EntitySet="AggAccRecord" />
+          </AssociationSet>
+          <AssociationSet Name="ReportTitleDisasterCheck" Association="FXCLDModel.ReportTitleDisasterCheck">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="DisasterCheck" EntitySet="DisasterCheck" />
+          </AssociationSet>
+          <AssociationSet Name="ReportTitleReportFillContent" Association="FXCLDModel.ReportTitleReportFillContent">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="ReportFillContent" EntitySet="ReportFillContent" />
+          </AssociationSet>
+          <EntitySet Name="HP011" EntityType="FXCLDModel.HP011" />
+          <EntitySet Name="HP012" EntityType="FXCLDModel.HP012" />
+          <AssociationSet Name="ReportTitleHP011" Association="FXCLDModel.ReportTitleHP011">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HP011" EntitySet="HP011" />
+          </AssociationSet>
+          <AssociationSet Name="ReportTitleHP012" Association="FXCLDModel.ReportTitleHP012">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="HP012" EntitySet="HP012" />
+          </AssociationSet>
+          <EntitySet Name="NP011" EntityType="FXCLDModel.NP011" />
+          <AssociationSet Name="ReportTitleNP011" Association="FXCLDModel.ReportTitleNP011">
+            <End Role="ReportTitle" EntitySet="ReportTitle" />
+            <End Role="NP011" EntitySet="NP011" />
+          </AssociationSet>
+          <EntitySet Name="SH021" EntityType="FXCLDModel.SH021" />
+          <EntitySet Name="SH031" EntityType="FXCLDModel.SH031" />
+          <EntitySet Name="SH032" EntityType="FXCLDModel.SH032" />
+          <EntitySet Name="SH033" EntityType="FXCLDModel.SH033" />
+          <EntitySet Name="SH034" EntityType="FXCLDModel.SH034" />
+          <EntitySet Name="SH035" EntityType="FXCLDModel.SH035" />
+          <EntitySet Name="SH036" EntityType="FXCLDModel.SH036" />
+          <EntitySet Name="SH037" EntityType="FXCLDModel.SH037" />
+          <EntitySet Name="SH038" EntityType="FXCLDModel.SH038" />
+          <EntitySet Name="SH042" EntityType="FXCLDModel.SH042" />
+          <EntitySet Name="SH043" EntityType="FXCLDModel.SH043" />
+          <EntitySet Name="SH044" EntityType="FXCLDModel.SH044" />
+          <EntitySet Name="SH045" EntityType="FXCLDModel.SH045" />
+          <EntitySet Name="SH041" EntityType="FXCLDModel.SH041" />
+          <EntitySet Name="Benefit" EntityType="FXCLDModel.Benefit" />
+          <EntitySet Name="SH011" EntityType="FXCLDModel.SH011" />
+          <EntitySet Name="SH051" EntityType="FXCLDModel.SH051" />
+          <EntitySet Name="sh016" EntityType="FXCLDModel.sh016" />
+          </EntityContainer>
+        <EntityType Name="Affix">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="FileSize" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="PageNO" Type="Int32" />
+          <Property Name="DownloadURL" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.FK_AFFIX_REFERENCE_REPORTTI" FromRole="Affix" ToRole="ReportTitle" />
+        </EntityType>
+        <EntityType Name="AggAccRecord">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORD_Code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="OperateType" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SPageNO" Type="Int32" />
+          <Property Name="PageNo" Type="Int32" />
+          <Property Name="DBType" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="UnitCode" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.ReportTitleAggAccRecord" FromRole="AggAccRecord" ToRole="ReportTitle" />
+        </EntityType>
+        <EntityType Name="AnnualDisasterAssessment">
+          <Key>
+            <PropertyRef Name="ADAID" />
+          </Key>
+          <Property Name="ADAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADATitle" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ADATheKeeper" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DAASaveDate" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ADAPAGENO" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ADAList" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="ADAREMARK" Type="String" MaxLength="800" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DisasterCheck">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageNO" Type="Int32" />
+          <Property Name="UnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CheckOpinion" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="CheckPerson" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CheckDate" Type="DateTime" />
+          <Property Name="UnitName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.ReportTitleDisasterCheck" FromRole="DisasterCheck" ToRole="ReportTitle" />
+        </EntityType>
+        <EntityType Name="HL011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="RiverCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PageNO" Type="Int32" />
+          <Property Name="DataOrder" Type="Int32" />
+          <Property Name="DistributeRate" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DW" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SZFWX" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SZFWZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SZRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SYCS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DTFW" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SWRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SZRKR" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZYRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZJJJZSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHMJXJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHMJLS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CZMJXJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CZMJLS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="JSMJXJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="JSMJLS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YZJCLS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="JJZWSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SWDSC" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SCYZMJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SCYZSL" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="NLMYZJJJSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TCGKQY" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TLZD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GLZD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="JCGKGT" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GDZD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TXZD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GJYSZJJJSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHSKD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHSKX" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SKKBD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SKKBX1" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SKKBX2" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHDFCS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHDFCD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DFJKCS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DFJKCD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHHAC" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHSZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CHTB" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHGGSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHSWCZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHJDJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHJDBZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SHSDZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SLSSZJJJSS" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.FK_HL011_REFERENCE_REPORTTI" FromRole="HL011" ToRole="ReportTitle" />
+          <Property Type="Decimal" Name="SZFWC" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="LYJDGT" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SHPSCS" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SHPSCD" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SHPSBZ" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SHGSCS" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SHGSCD" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SHHTCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SHHTCD" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="HTJKCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="HTJKCD" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="HL012">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RiverCode" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="PageNO" Type="Int32" />
+          <Property Name="DataOrder" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DistributeRate" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DW" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SWXM" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SWXB" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SWNL" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="SWHJ" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="SWSJ" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="SWDD" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="YYTF" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYJH" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYSH" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYHP" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYNSL" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYFWDT" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYLS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYGKZW" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YYQT" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="BZ" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="SourcePageNo" Type="Int32" />
+          <Property Name="SourceDBType" Type="Int32" />
+          <Property Name="DeathReason" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DeathReasonCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.FK_HL012_REFERENCE_REPORTTI" FromRole="HL012" ToRole="ReportTitle" />
+          <Property Type="String" Name="DataType" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HL013">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RiverCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PageNO" Type="Int32" />
+          <Property Name="DataOrder" Type="Int32" />
+          <Property Name="DistributeRate" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DW" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="YMFWMJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="YMFWBL" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SZRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SWRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GCJSSJ" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="GCYMLS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GCLJJYL" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GCHSWKRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="GCJJZYRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZYZJZDSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SMXGS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SMXGD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SMXGQ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SMXJT" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="JZWSYFW" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="JZWSYDX" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CQZJJJSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CSMC" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SourcePageNo" Type="Int32" />
+          <Property Name="SourceDBType" Type="Int32" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.FK_HL013_REFERENCE_REPORTTI" FromRole="HL013" ToRole="ReportTitle" />
+          <Property Type="Decimal" Name="JZWFWDT" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="JZWFWJS" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="JZWYLJS" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="JZWDXS" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="JZWDXRF" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SYGCJSPC" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SYGCSMDF" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="SYGCJSSD" Precision="13" Scale="0" />
+          <Property Type="Decimal" Name="JZWDXTD" Precision="13" Scale="0" />
+        </EntityType>
+        <EntityType Name="HL014">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RiverCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PageNO" Type="Int32" />
+          <Property Name="DataOrder" Type="Int32" />
+          <Property Name="DistributeRate" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DW" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="WZBZD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZBZB" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZDSSS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZSSL" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZMC" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZGC" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZJSY" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZY" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZQT" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="WZZXH" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="QXHJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="QXBDGB" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="QXDFRY" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="QXFXJD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SBQXZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SBYS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SBJX" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZJXJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZJZY" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZJSJ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZJSJYS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ZJQZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJYGD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJMLSJS" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJSSZRK" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJJQZ" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJMSWC" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJMSWR" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYZYSH" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYZYTF" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYZYQT" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYBMSY" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="XYJZJJXY" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.FK_HL014_REFERENCE_REPORTTI" FromRole="HL014" ToRole="ReportTitle" />
+        </EntityType>
+        <EntityType Name="LGN">
+          <Key>
+            <PropertyRef Name="LoginName" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="RoleName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PWD" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RealName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Position" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="RoleTab" Relationship="FXCLDModel.FK_LGN_REFERENCE_ROLETAB" FromRole="LGN" ToRole="RoleTab" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OperateTable" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Authority" />
+          <Property Type="String" Name="PWD_SH" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LSTQLJ">
+          <Key>
+            <PropertyRef Name="LSNO" />
+          </Key>
+          <Property Name="LSNO" Type="Int32" Nullable="false" />
+          <Property Name="LSYEAR" Type="Int32" />
+          <Property Name="LSMONTH" Type="Int32" />
+          <Property Name="LSXUN" Type="Int32" />
+          <Property Name="SHMJXJ" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="CZMJXJ" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="SZRK" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="SWRK" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="SZRKR" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="DTFW" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="ZJJJZSS" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="SLSSZJJJSS" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="ZYRK" Type="Decimal" Precision="13" Scale="0" />
+        </EntityType>
+        <EntityType Name="ReportFillContent">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageNo" Type="Int32" />
+          <Property Name="UnitCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="RiverCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DBTableCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FieldCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="FillContent" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.ReportTitleReportFillContent" FromRole="ReportFillContent" ToRole="ReportTitle" />
+        </EntityType>
+        <EntityType Name="ReportTitle">
+          <Key>
+            <PropertyRef Name="PageNO" />
+          </Key>
+          <Property Name="PageNO" Type="Int32" Nullable="false"/>
+          <Property Name="ORD_Code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="RPTType_Code" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="StatisticalCycType" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="UnitName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="UnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="StartDateTime" Type="DateTime" />
+          <Property Name="EndDateTime" Type="DateTime" />
+          <Property Name="UnitPrincipal" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="StatisticsPrincipal" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="WriterName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="WriterTime" Type="DateTime" />
+          <Property Name="SendTime" Type="DateTime" />
+          <Property Name="Remark" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Del" Type="Int32" />
+          <Property Name="ReceiveState" Type="Int32" />
+          <Property Name="State" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="SourceType" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ReceiveTime" Type="DateTime" />
+          <Property Name="AssociatedPageNO" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="OperateReportNO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DisasterTypeName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DisasterDescribe" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DisasterSummary" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="ExceptPageNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RBType" Type="Int32" />
+          <Property Name="LastUpdateTime" Type="DateTime" />
+          <Property Name="CloudPageNO" Type="Int32" />
+          <Property Name="CopyPageNO" Type="Int32" />
+          <NavigationProperty Name="Affix" Relationship="FXCLDModel.FK_AFFIX_REFERENCE_REPORTTI" FromRole="ReportTitle" ToRole="Affix" />
+          <NavigationProperty Name="HL011" Relationship="FXCLDModel.FK_HL011_REFERENCE_REPORTTI" FromRole="ReportTitle" ToRole="HL011" />
+          <NavigationProperty Name="HL012" Relationship="FXCLDModel.FK_HL012_REFERENCE_REPORTTI" FromRole="ReportTitle" ToRole="HL012" />
+          <NavigationProperty Name="HL013" Relationship="FXCLDModel.FK_HL013_REFERENCE_REPORTTI" FromRole="ReportTitle" ToRole="HL013" />
+          <NavigationProperty Name="HL014" Relationship="FXCLDModel.FK_HL014_REFERENCE_REPORTTI" FromRole="ReportTitle" ToRole="HL014" />
+          <NavigationProperty Name="AggAccRecord" Relationship="FXCLDModel.ReportTitleAggAccRecord" FromRole="ReportTitle" ToRole="AggAccRecord" />
+          <NavigationProperty Name="DisasterCheck" Relationship="FXCLDModel.ReportTitleDisasterCheck" FromRole="ReportTitle" ToRole="DisasterCheck" />
+          <NavigationProperty Name="ReportFillContent" Relationship="FXCLDModel.ReportTitleReportFillContent" FromRole="ReportTitle" ToRole="ReportFillContent" />
+          <Property Type="Int32" Name="SendOperType" />
+          <NavigationProperty Name="HP011" Relationship="FXCLDModel.ReportTitleHP011" FromRole="ReportTitle" ToRole="HP011" />
+          <NavigationProperty Name="HP012" Relationship="FXCLDModel.ReportTitleHP012" FromRole="ReportTitle" ToRole="HP012" />
+          <Property Type="Int32" Name="CSPageNO" />
+          <NavigationProperty Name="NP011" Relationship="FXCLDModel.ReportTitleNP011" FromRole="ReportTitle" ToRole="NP011" />
+        </EntityType>
+        <EntityType Name="RoleTab">
+          <Key>
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorityNO" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="LGN" Relationship="FXCLDModel.FK_LGN_REFERENCE_ROLETAB" FromRole="RoleTab" ToRole="LGN" />
+        </EntityType>
+        <EntityType Name="SingleDisasterAssessment">
+          <Key>
+            <PropertyRef Name="SDAID" />
+          </Key>
+          <Property Name="SDAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SDATitle" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DACreator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DACreatime" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DAPageNo" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="SDAREMARK" Type="String" MaxLength="800" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TENDENCYCHARTINFO">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TSTARTTIME" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TENDTIME" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TREPORTTYPE" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="TPAGENO" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="TTITLE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TUNITS" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="TDATA" Type="String" Nullable="false" MaxLength="4000" Unicode="false" FixedLength="false" />
+          <Property Name="TCATEGORY" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="TDISASTERTYPE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TDW" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UrgeReport">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiveUnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SendUnitCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SendUnitName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="UrgeRptDateTime" Type="DateTime" />
+          <Property Name="UrgeRptPersonName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="UrgeRptContent" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="IsRead" Type="Int32" />
+          <Property Name="MsgType" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_AFFIX_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.ReportTitle" Multiplicity="0..1" />
+          <End Role="Affix" Type="FXCLDModel.Affix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="Affix">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL011_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.ReportTitle" Multiplicity="0..1" />
+          <End Role="HL011" Type="FXCLDModel.HL011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL011">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL012_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.ReportTitle" Multiplicity="0..1" />
+          <End Role="HL012" Type="FXCLDModel.HL012" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL012">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL013_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.ReportTitle" Multiplicity="0..1" />
+          <End Role="HL013" Type="FXCLDModel.HL013" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL013">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HL014_REFERENCE_REPORTTI">
+          <End Role="ReportTitle" Type="FXCLDModel.ReportTitle" Multiplicity="0..1" />
+          <End Role="HL014" Type="FXCLDModel.HL014" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HL014">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LGN_REFERENCE_ROLETAB">
+          <End Role="RoleTab" Type="FXCLDModel.RoleTab" Multiplicity="0..1" />
+          <End Role="LGN" Type="FXCLDModel.LGN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTab">
+              <PropertyRef Name="RoleName" />
+            </Principal>
+            <Dependent Role="LGN">
+              <PropertyRef Name="RoleName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReportTitleAggAccRecord">
+          <End Type="FXCLDModel.ReportTitle" Role="ReportTitle" Multiplicity="0..1" />
+          <End Type="FXCLDModel.AggAccRecord" Role="AggAccRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="AggAccRecord">
+              <PropertyRef Name="PageNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReportTitleDisasterCheck">
+          <End Type="FXCLDModel.ReportTitle" Role="ReportTitle" Multiplicity="0..1" />
+          <End Type="FXCLDModel.DisasterCheck" Role="DisasterCheck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="DisasterCheck">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReportTitleReportFillContent">
+          <End Type="FXCLDModel.ReportTitle" Role="ReportTitle" Multiplicity="0..1" />
+          <End Type="FXCLDModel.ReportFillContent" Role="ReportFillContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="ReportFillContent">
+              <PropertyRef Name="PageNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HP011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UNITCODE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIVERCODE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PAGENO" Nullable="false" />
+          <Property Type="Int32" Name="DATAORDER" />
+          <Property Type="String" Name="DISTRIBUTERATE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DW" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="XSCSZJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YXSLZJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XXSLZJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XZKYSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XZYBFB" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="QNTQZJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SQZJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="LNZJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DZXKCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DZKYXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DZKXXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DXKKYSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="KXZYBFB" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZZXKCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZZKYXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZZKXXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZXKKYSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZXZYBFB" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYSKCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYKYXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYKXXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYKKYS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XKXZYBFB" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRSKCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRKYXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRKXXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRKKYS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRXZYBFB" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTHJCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTYXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTXXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTKYS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="TXZYBFB" Precision="20" Scale="5" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.ReportTitleHP011" FromRole="HP011" ToRole="ReportTitle" />
+        </EntityType>
+        <EntityType Name="HP012">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UNITCODE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIVERCODE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PAGENO" Nullable="false" />
+          <Property Type="Int32" Name="DATAORDER" />
+          <Property Type="String" Name="DISTRIBUTERATE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DW" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DXSKMC" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="DXKYXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DXKXXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DXKKYS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DXZYBFB" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="QNTQDXS" Precision="20" Scale="5" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.ReportTitleHP012" FromRole="HP012" ToRole="ReportTitle" />
+        </EntityType>
+        <Association Name="ReportTitleHP011">
+          <End Type="FXCLDModel.ReportTitle" Role="ReportTitle" Multiplicity="1" />
+          <End Type="FXCLDModel.HP011" Role="HP011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HP011">
+              <PropertyRef Name="PAGENO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReportTitleHP012">
+          <End Type="FXCLDModel.ReportTitle" Role="ReportTitle" Multiplicity="1" />
+          <End Type="FXCLDModel.HP012" Role="HP012" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="HP012">
+              <PropertyRef Name="PAGENO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NP011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RSCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RSName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="Decimal" Name="DQSW" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DQXSL" Precision="20" Scale="5" />
+          <Property Type="String" Name="SFCXXSW" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="String" Name="UnitCode" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ReportTitle" Relationship="FXCLDModel.ReportTitleNP011" FromRole="NP011" ToRole="ReportTitle" />
+        </EntityType>
+        <Association Name="ReportTitleNP011">
+          <End Type="FXCLDModel.ReportTitle" Role="ReportTitle" Multiplicity="0..1" />
+          <End Type="FXCLDModel.NP011" Role="NP011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportTitle">
+              <PropertyRef Name="PageNO" />
+            </Principal>
+            <Dependent Role="NP011">
+              <PropertyRef Name="PageNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SH021">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="GDMC" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SZX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CBSJBG" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SCTG" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZBQK" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SFKG" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="JHDF" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHHA" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHQY" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHJHG" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHQT" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHTF" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHSF" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JHHNT" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JD" Precision="20" Scale="5" />
+          <Property Type="String" Name="JGYS" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SH031">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="YLZJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLZWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SWZJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SWZWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="WXTDJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="WXTHWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="WXJCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="WXJSWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="TXSPJCZJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="TXSPJCZWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="TXSPJCZCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="TXSPJCZCWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH032">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="WXGBJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="WXGBWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLBJJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLBJWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SWZJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SWZWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="BJQJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="BJQWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="LGHJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="LGHWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH033">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XJHS" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XJYJ" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XJPT" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="XJPTYSJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XJPTYSWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YDSBJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YDSBWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH034">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="XZQMC" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJZB" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJGZ" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RJZB" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RJGZ" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XTJC" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HTYS" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SH035">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="XZQMC" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SWXXGX" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="QXXXGX" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GTXXGX" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJXXGX" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SH036">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="XYAJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYAWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XZYAJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XZYAWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="CYAJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="CYAWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="QTYAJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="QTYAWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH037">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="XCLJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XCLWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JSPJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JSPWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="MBKJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="MBKWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="GPJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="GPWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SCWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH038">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PXCCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="PXCCWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="PXRSJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="PXRSWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLCCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLCCWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLRCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YLRCWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH042">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DCDX" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SWJC" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DXLS" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LSSH" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="XLYJCXX" />
+          <Property Type="Decimal" Name="SHJJDCJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SHJJDCWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SHWXQYJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SHWXQYWC" Precision="20" Scale="5" />
+          <Property Type="String" Name="SSGC" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="YHCCLJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YHCCLWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH043">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="XLYFX" />
+          <Property Type="Decimal" Name="YHCPJJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YHCPJWC" Precision="20" Scale="5" />
+          <Property Type="String" Name="DCBG" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SH044">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="XZQMC" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XJWC" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="S1JWC" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="S2JWC" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SH045">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="XZQMC" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PXCSJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="PXCSWC" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="PXRSJH" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="PXRSWC" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH041">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="SSX" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZDYJZB" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZDYJCG" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ZDYJCGSL" Precision="20" Scale="5" />
+          <Property Type="String" Name="SJFWSQD" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SJFWSMC" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PX" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Benefit">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BTitle" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="BDate" />
+          <Property Type="String" Name="BArea" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DQJJ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZQYQ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZQSQ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZQZQ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJJC" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJYQ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJYZ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YJXY" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XYXJ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZHZJ" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SH011">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="JSNR" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="NDZJYS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="NDZJZY" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="NDZJDF" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DFZJSJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DFZJSX" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZJZF" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDWCZY" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDZYBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDWCSJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDSJBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDWCSHIJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDSHIJBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDWCXJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="JDXJBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFWCZY" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFZYBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFWCSJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFSJBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFWCSHIJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFSHIJBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFWCXJ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZFXJBL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DFZJX" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="SH051">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="DW" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="YJFBGX" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YJXJFBCS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YJDXTS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="YJZRRS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="QDGBZ" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZYRS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="BMSW" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DTFW" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SSSH" Precision="20" Scale="5" />
+          <Property Type="String" Name="BZ" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sh016">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PageNO" />
+          <Property Type="Int32" Name="DataOrder" />
+          <Property Type="Int32" Name="CGJYXS" />
+          <Property Type="Int32" Name="XZXS" />
+          <Property Type="String" Name="BZ" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ZBJD" Precision="20" Scale="1" />
+          <Property Type="Int32" Name="SFKG" />
+          <Property Type="Decimal" Name="JSJD" Precision="20" Scale="1" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FXCLDModelStoreContainer" CdmEntityContainer="BusinessEntities">
+          <EntitySetMapping Name="Affix"><EntityTypeMapping TypeName="FXCLDModel.Affix"><MappingFragment StoreEntitySet="Affix">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="FileData" ColumnName="FileData" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+            <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="DownloadURL" ColumnName="DownloadURL" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AggAccRecord"><EntityTypeMapping TypeName="FXCLDModel.AggAccRecord"><MappingFragment StoreEntitySet="AggAccRecord">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="ORD_Code" ColumnName="ORD_Code" />
+            <ScalarProperty Name="OperateType" ColumnName="OperateType" />
+            <ScalarProperty Name="SPageNO" ColumnName="SPageNO" />
+            <ScalarProperty Name="PageNo" ColumnName="PageNo" />
+            <ScalarProperty Name="DBType" ColumnName="DBType" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AnnualDisasterAssessment"><EntityTypeMapping TypeName="FXCLDModel.AnnualDisasterAssessment"><MappingFragment StoreEntitySet="AnnualDisasterAssessment">
+            <ScalarProperty Name="ADAID" ColumnName="ADAID" />
+            <ScalarProperty Name="ADATitle" ColumnName="ADATitle" />
+            <ScalarProperty Name="ADATheKeeper" ColumnName="ADATheKeeper" />
+            <ScalarProperty Name="DAASaveDate" ColumnName="DAASaveDate" />
+            <ScalarProperty Name="ADAPAGENO" ColumnName="ADAPAGENO" />
+            <ScalarProperty Name="ADAList" ColumnName="ADAList" />
+            <ScalarProperty Name="ADAREMARK" ColumnName="ADAREMARK" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DisasterCheck"><EntityTypeMapping TypeName="FXCLDModel.DisasterCheck"><MappingFragment StoreEntitySet="DisasterCheck">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="CheckOpinion" ColumnName="CheckOpinion" />
+            <ScalarProperty Name="CheckPerson" ColumnName="CheckPerson" />
+            <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
+            <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HL011"><EntityTypeMapping TypeName="FXCLDModel.HL011"><MappingFragment StoreEntitySet="HL011">
+            <ScalarProperty Name="HTJKCD" ColumnName="HTJKCD" />
+                <ScalarProperty Name="HTJKCS" ColumnName="HTJKCS" />
+                <ScalarProperty Name="SHHTCD" ColumnName="SHHTCD" />
+                <ScalarProperty Name="SHHTCS" ColumnName="SHHTCS" />
+                <ScalarProperty Name="SHGSCD" ColumnName="SHGSCD" />
+                <ScalarProperty Name="SHGSCS" ColumnName="SHGSCS" />
+                <ScalarProperty Name="SHPSBZ" ColumnName="SHPSBZ" />
+                <ScalarProperty Name="SHPSCD" ColumnName="SHPSCD" />
+                <ScalarProperty Name="SHPSCS" ColumnName="SHPSCS" />
+                <ScalarProperty Name="LYJDGT" ColumnName="LYJDGT" />
+                <ScalarProperty Name="SZFWC" ColumnName="SZFWC" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RiverCode" ColumnName="RiverCode" />
+            <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+            <ScalarProperty Name="DistributeRate" ColumnName="DistributeRate" />
+            <ScalarProperty Name="DW" ColumnName="DW" />
+            <ScalarProperty Name="SZFWX" ColumnName="SZFWX" />
+            <ScalarProperty Name="SZFWZ" ColumnName="SZFWZ" />
+            <ScalarProperty Name="SZRK" ColumnName="SZRK" />
+            <ScalarProperty Name="SYCS" ColumnName="SYCS" />
+            <ScalarProperty Name="DTFW" ColumnName="DTFW" />
+            <ScalarProperty Name="SWRK" ColumnName="SWRK" />
+            <ScalarProperty Name="SZRKR" ColumnName="SZRKR" />
+            <ScalarProperty Name="ZYRK" ColumnName="ZYRK" />
+            <ScalarProperty Name="ZJJJZSS" ColumnName="ZJJJZSS" />
+            <ScalarProperty Name="SHMJXJ" ColumnName="SHMJXJ" />
+            <ScalarProperty Name="SHMJLS" ColumnName="SHMJLS" />
+            <ScalarProperty Name="CZMJXJ" ColumnName="CZMJXJ" />
+            <ScalarProperty Name="CZMJLS" ColumnName="CZMJLS" />
+            <ScalarProperty Name="JSMJXJ" ColumnName="JSMJXJ" />
+            <ScalarProperty Name="JSMJLS" ColumnName="JSMJLS" />
+            <ScalarProperty Name="YZJCLS" ColumnName="YZJCLS" />
+            <ScalarProperty Name="JJZWSS" ColumnName="JJZWSS" />
+            <ScalarProperty Name="SWDSC" ColumnName="SWDSC" />
+            <ScalarProperty Name="SCYZMJ" ColumnName="SCYZMJ" />
+            <ScalarProperty Name="SCYZSL" ColumnName="SCYZSL" />
+            <ScalarProperty Name="NLMYZJJJSS" ColumnName="NLMYZJJJSS" />
+            <ScalarProperty Name="TCGKQY" ColumnName="TCGKQY" />
+            <ScalarProperty Name="TLZD" ColumnName="TLZD" />
+            <ScalarProperty Name="GLZD" ColumnName="GLZD" />
+            <ScalarProperty Name="JCGKGT" ColumnName="JCGKGT" />
+            <ScalarProperty Name="GDZD" ColumnName="GDZD" />
+            <ScalarProperty Name="TXZD" ColumnName="TXZD" />
+            <ScalarProperty Name="GJYSZJJJSS" ColumnName="GJYSZJJJSS" />
+            <ScalarProperty Name="SHSKD" ColumnName="SHSKD" />
+            <ScalarProperty Name="SHSKX" ColumnName="SHSKX" />
+            <ScalarProperty Name="SKKBD" ColumnName="SKKBD" />
+            <ScalarProperty Name="SKKBX1" ColumnName="SKKBX1" />
+            <ScalarProperty Name="SKKBX2" ColumnName="SKKBX2" />
+            <ScalarProperty Name="SHDFCS" ColumnName="SHDFCS" />
+            <ScalarProperty Name="SHDFCD" ColumnName="SHDFCD" />
+            <ScalarProperty Name="DFJKCS" ColumnName="DFJKCS" />
+            <ScalarProperty Name="DFJKCD" ColumnName="DFJKCD" />
+            <ScalarProperty Name="SHHAC" ColumnName="SHHAC" />
+            <ScalarProperty Name="SHSZ" ColumnName="SHSZ" />
+            <ScalarProperty Name="CHTB" ColumnName="CHTB" />
+            <ScalarProperty Name="SHGGSS" ColumnName="SHGGSS" />
+            <ScalarProperty Name="SHSWCZ" ColumnName="SHSWCZ" />
+            <ScalarProperty Name="SHJDJ" ColumnName="SHJDJ" />
+            <ScalarProperty Name="SHJDBZ" ColumnName="SHJDBZ" />
+            <ScalarProperty Name="SHSDZ" ColumnName="SHSDZ" />
+            <ScalarProperty Name="SLSSZJJJSS" ColumnName="SLSSZJJJSS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HL012"><EntityTypeMapping TypeName="FXCLDModel.HL012"><MappingFragment StoreEntitySet="HL012">
+            <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RiverCode" ColumnName="RiverCode" />
+            <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+            <ScalarProperty Name="DistributeRate" ColumnName="DistributeRate" />
+            <ScalarProperty Name="DW" ColumnName="DW" />
+            <ScalarProperty Name="SWXM" ColumnName="SWXM" />
+            <ScalarProperty Name="SWXB" ColumnName="SWXB" />
+            <ScalarProperty Name="SWNL" ColumnName="SWNL" />
+            <ScalarProperty Name="SWHJ" ColumnName="SWHJ" />
+            <ScalarProperty Name="SWSJ" ColumnName="SWSJ" />
+            <ScalarProperty Name="SWDD" ColumnName="SWDD" />
+            <ScalarProperty Name="YYTF" ColumnName="YYTF" />
+            <ScalarProperty Name="YYJH" ColumnName="YYJH" />
+            <ScalarProperty Name="YYSH" ColumnName="YYSH" />
+            <ScalarProperty Name="YYHP" ColumnName="YYHP" />
+            <ScalarProperty Name="YYNSL" ColumnName="YYNSL" />
+            <ScalarProperty Name="YYFWDT" ColumnName="YYFWDT" />
+            <ScalarProperty Name="YYLS" ColumnName="YYLS" />
+            <ScalarProperty Name="YYGKZW" ColumnName="YYGKZW" />
+            <ScalarProperty Name="YYQT" ColumnName="YYQT" />
+            <ScalarProperty Name="BZ" ColumnName="BZ" />
+            <ScalarProperty Name="SourcePageNo" ColumnName="SourcePageNo" />
+            <ScalarProperty Name="SourceDBType" ColumnName="SourceDBType" />
+            <ScalarProperty Name="DeathReason" ColumnName="DeathReason" />
+            <ScalarProperty Name="DeathReasonCode" ColumnName="DeathReasonCode" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HL013"><EntityTypeMapping TypeName="FXCLDModel.HL013"><MappingFragment StoreEntitySet="HL013">
+            <ScalarProperty Name="JZWDXTD" ColumnName="JZWDXTD" />
+                <ScalarProperty Name="SYGCJSSD" ColumnName="SYGCJSSD" />
+                <ScalarProperty Name="SYGCSMDF" ColumnName="SYGCSMDF" />
+                <ScalarProperty Name="SYGCJSPC" ColumnName="SYGCJSPC" />
+                <ScalarProperty Name="JZWDXRF" ColumnName="JZWDXRF" />
+                <ScalarProperty Name="JZWDXS" ColumnName="JZWDXS" />
+                <ScalarProperty Name="JZWYLJS" ColumnName="JZWYLJS" />
+                <ScalarProperty Name="JZWFWJS" ColumnName="JZWFWJS" />
+                <ScalarProperty Name="JZWFWDT" ColumnName="JZWFWDT" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RiverCode" ColumnName="RiverCode" />
+            <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+            <ScalarProperty Name="DistributeRate" ColumnName="DistributeRate" />
+            <ScalarProperty Name="DW" ColumnName="DW" />
+            <ScalarProperty Name="YMFWMJ" ColumnName="YMFWMJ" />
+            <ScalarProperty Name="YMFWBL" ColumnName="YMFWBL" />
+            <ScalarProperty Name="SZRK" ColumnName="SZRK" />
+            <ScalarProperty Name="SWRK" ColumnName="SWRK" />
+            <ScalarProperty Name="GCJSSJ" ColumnName="GCJSSJ" />
+            <ScalarProperty Name="GCYMLS" ColumnName="GCYMLS" />
+            <ScalarProperty Name="GCLJJYL" ColumnName="GCLJJYL" />
+            <ScalarProperty Name="GCHSWKRK" ColumnName="GCHSWKRK" />
+            <ScalarProperty Name="GCJJZYRK" ColumnName="GCJJZYRK" />
+            <ScalarProperty Name="ZYZJZDSS" ColumnName="ZYZJZDSS" />
+            <ScalarProperty Name="SMXGS" ColumnName="SMXGS" />
+            <ScalarProperty Name="SMXGD" ColumnName="SMXGD" />
+            <ScalarProperty Name="SMXGQ" ColumnName="SMXGQ" />
+            <ScalarProperty Name="SMXJT" ColumnName="SMXJT" />
+            <ScalarProperty Name="JZWSYFW" ColumnName="JZWSYFW" />
+            <ScalarProperty Name="JZWSYDX" ColumnName="JZWSYDX" />
+            <ScalarProperty Name="CQZJJJSS" ColumnName="CQZJJJSS" />
+            <ScalarProperty Name="CSMC" ColumnName="CSMC" />
+            <ScalarProperty Name="SourcePageNo" ColumnName="SourcePageNo" />
+            <ScalarProperty Name="SourceDBType" ColumnName="SourceDBType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HL014"><EntityTypeMapping TypeName="FXCLDModel.HL014"><MappingFragment StoreEntitySet="HL014">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RiverCode" ColumnName="RiverCode" />
+            <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+            <ScalarProperty Name="DistributeRate" ColumnName="DistributeRate" />
+            <ScalarProperty Name="DW" ColumnName="DW" />
+            <ScalarProperty Name="WZBZD" ColumnName="WZBZD" />
+            <ScalarProperty Name="WZBZB" ColumnName="WZBZB" />
+            <ScalarProperty Name="WZDSSS" ColumnName="WZDSSS" />
+            <ScalarProperty Name="WZSSL" ColumnName="WZSSL" />
+            <ScalarProperty Name="WZMC" ColumnName="WZMC" />
+            <ScalarProperty Name="WZGC" ColumnName="WZGC" />
+            <ScalarProperty Name="WZJSY" ColumnName="WZJSY" />
+            <ScalarProperty Name="WZY" ColumnName="WZY" />
+            <ScalarProperty Name="WZD" ColumnName="WZD" />
+            <ScalarProperty Name="WZQT" ColumnName="WZQT" />
+            <ScalarProperty Name="WZZXH" ColumnName="WZZXH" />
+            <ScalarProperty Name="QXHJ" ColumnName="QXHJ" />
+            <ScalarProperty Name="QXBDGB" ColumnName="QXBDGB" />
+            <ScalarProperty Name="QXDFRY" ColumnName="QXDFRY" />
+            <ScalarProperty Name="QXFXJD" ColumnName="QXFXJD" />
+            <ScalarProperty Name="SBQXZ" ColumnName="SBQXZ" />
+            <ScalarProperty Name="SBYS" ColumnName="SBYS" />
+            <ScalarProperty Name="SBJX" ColumnName="SBJX" />
+            <ScalarProperty Name="ZJXJ" ColumnName="ZJXJ" />
+            <ScalarProperty Name="ZJZY" ColumnName="ZJZY" />
+            <ScalarProperty Name="ZJSJ" ColumnName="ZJSJ" />
+            <ScalarProperty Name="ZJSJYS" ColumnName="ZJSJYS" />
+            <ScalarProperty Name="ZJQZ" ColumnName="ZJQZ" />
+            <ScalarProperty Name="XYJYGD" ColumnName="XYJYGD" />
+            <ScalarProperty Name="XYJMLSJS" ColumnName="XYJMLSJS" />
+            <ScalarProperty Name="XYJSSZRK" ColumnName="XYJSSZRK" />
+            <ScalarProperty Name="XYJJQZ" ColumnName="XYJJQZ" />
+            <ScalarProperty Name="XYJMSWC" ColumnName="XYJMSWC" />
+            <ScalarProperty Name="XYJMSWR" ColumnName="XYJMSWR" />
+            <ScalarProperty Name="XYZYSH" ColumnName="XYZYSH" />
+            <ScalarProperty Name="XYZYTF" ColumnName="XYZYTF" />
+            <ScalarProperty Name="XYZYQT" ColumnName="XYZYQT" />
+            <ScalarProperty Name="XYBMSY" ColumnName="XYBMSY" />
+            <ScalarProperty Name="XYJZJJXY" ColumnName="XYJZJJXY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LGN"><EntityTypeMapping TypeName="FXCLDModel.LGN"><MappingFragment StoreEntitySet="LGN">
+            <ScalarProperty Name="PWD_SH" ColumnName="PWD_SH" />
+                <ScalarProperty Name="Authority" ColumnName="Authority" />
+                <ScalarProperty Name="OperateTable" ColumnName="OperateTable" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+            <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+            <ScalarProperty Name="PWD" ColumnName="PWD" />
+            <ScalarProperty Name="RealName" ColumnName="RealName" />
+            <ScalarProperty Name="Position" ColumnName="Position" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LSTQLJ"><EntityTypeMapping TypeName="FXCLDModel.LSTQLJ"><MappingFragment StoreEntitySet="LSTQLJ">
+            <ScalarProperty Name="LSNO" ColumnName="LSNO" />
+            <ScalarProperty Name="LSYEAR" ColumnName="LSYEAR" />
+            <ScalarProperty Name="LSMONTH" ColumnName="LSMONTH" />
+            <ScalarProperty Name="LSXUN" ColumnName="LSXUN" />
+            <ScalarProperty Name="SHMJXJ" ColumnName="SHMJXJ" />
+            <ScalarProperty Name="CZMJXJ" ColumnName="CZMJXJ" />
+            <ScalarProperty Name="SZRK" ColumnName="SZRK" />
+            <ScalarProperty Name="SWRK" ColumnName="SWRK" />
+            <ScalarProperty Name="SZRKR" ColumnName="SZRKR" />
+            <ScalarProperty Name="DTFW" ColumnName="DTFW" />
+            <ScalarProperty Name="ZJJJZSS" ColumnName="ZJJJZSS" />
+            <ScalarProperty Name="SLSSZJJJSS" ColumnName="SLSSZJJJSS" />
+            <ScalarProperty Name="ZYRK" ColumnName="ZYRK" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ReportFillContent"><EntityTypeMapping TypeName="FXCLDModel.ReportFillContent"><MappingFragment StoreEntitySet="ReportFillContent">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="PageNo" ColumnName="PageNo" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RiverCode" ColumnName="RiverCode" />
+            <ScalarProperty Name="DBTableCode" ColumnName="DBTableCode" />
+            <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+            <ScalarProperty Name="FillContent" ColumnName="FillContent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ReportTitle"><EntityTypeMapping TypeName="FXCLDModel.ReportTitle"><MappingFragment StoreEntitySet="ReportTitle">
+            <ScalarProperty Name="CSPageNO" ColumnName="CSPageNO" />
+                <ScalarProperty Name="SendOperType" ColumnName="SendOperType" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+            <ScalarProperty Name="ORD_Code" ColumnName="ORD_Code" />
+            <ScalarProperty Name="RPTType_Code" ColumnName="RPTType_Code" />
+            <ScalarProperty Name="StatisticalCycType" ColumnName="StatisticalCycType" />
+            <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+            <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+            <ScalarProperty Name="UnitPrincipal" ColumnName="UnitPrincipal" />
+            <ScalarProperty Name="StatisticsPrincipal" ColumnName="StatisticsPrincipal" />
+            <ScalarProperty Name="WriterName" ColumnName="WriterName" />
+            <ScalarProperty Name="WriterTime" ColumnName="WriterTime" />
+            <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+            <ScalarProperty Name="Remark" ColumnName="Remark" />
+            <ScalarProperty Name="Del" ColumnName="Del" />
+            <ScalarProperty Name="ReceiveState" ColumnName="ReceiveState" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+            <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+            <ScalarProperty Name="AssociatedPageNO" ColumnName="AssociatedPageNO" />
+            <ScalarProperty Name="OperateReportNO" ColumnName="OperateReportNO" />
+            <ScalarProperty Name="DisasterTypeName" ColumnName="DisasterTypeName" />
+            <ScalarProperty Name="DisasterDescribe" ColumnName="DisasterDescribe" />
+            <ScalarProperty Name="DisasterSummary" ColumnName="DisasterSummary" />
+            <ScalarProperty Name="ExceptPageNo" ColumnName="ExceptPageNo" />
+            <ScalarProperty Name="RBType" ColumnName="RBType" />
+            <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+            <ScalarProperty Name="CloudPageNO" ColumnName="CloudPageNO" />
+            <ScalarProperty Name="CopyPageNO" ColumnName="CopyPageNO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="RoleTab"><EntityTypeMapping TypeName="FXCLDModel.RoleTab"><MappingFragment StoreEntitySet="RoleTab">
+            <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+            <ScalarProperty Name="AuthorityNO" ColumnName="AuthorityNO" />
+            <ScalarProperty Name="Remark" ColumnName="Remark" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SingleDisasterAssessment"><EntityTypeMapping TypeName="FXCLDModel.SingleDisasterAssessment"><MappingFragment StoreEntitySet="SingleDisasterAssessment">
+            <ScalarProperty Name="SDAID" ColumnName="SDAID" />
+            <ScalarProperty Name="SDATitle" ColumnName="SDATitle" />
+            <ScalarProperty Name="DACreator" ColumnName="DACreator" />
+            <ScalarProperty Name="DACreatime" ColumnName="DACreatime" />
+            <ScalarProperty Name="DAPageNo" ColumnName="DAPageNo" />
+            <ScalarProperty Name="SDAREMARK" ColumnName="SDAREMARK" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TENDENCYCHARTINFO"><EntityTypeMapping TypeName="FXCLDModel.TENDENCYCHARTINFO"><MappingFragment StoreEntitySet="TENDENCYCHARTINFO">
+            <ScalarProperty Name="TID" ColumnName="TID" />
+            <ScalarProperty Name="TSTARTTIME" ColumnName="TSTARTTIME" />
+            <ScalarProperty Name="TENDTIME" ColumnName="TENDTIME" />
+            <ScalarProperty Name="TREPORTTYPE" ColumnName="TREPORTTYPE" />
+            <ScalarProperty Name="TPAGENO" ColumnName="TPAGENO" />
+            <ScalarProperty Name="TTITLE" ColumnName="TTITLE" />
+            <ScalarProperty Name="TUNITS" ColumnName="TUNITS" />
+            <ScalarProperty Name="TDATA" ColumnName="TDATA" />
+            <ScalarProperty Name="TCATEGORY" ColumnName="TCATEGORY" />
+            <ScalarProperty Name="TDISASTERTYPE" ColumnName="TDISASTERTYPE" />
+            <ScalarProperty Name="TDW" ColumnName="TDW" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UrgeReport"><EntityTypeMapping TypeName="FXCLDModel.UrgeReport"><MappingFragment StoreEntitySet="UrgeReport">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="ReceiveUnitCode" ColumnName="ReceiveUnitCode" />
+            <ScalarProperty Name="SendUnitCode" ColumnName="SendUnitCode" />
+            <ScalarProperty Name="SendUnitName" ColumnName="SendUnitName" />
+            <ScalarProperty Name="UrgeRptDateTime" ColumnName="UrgeRptDateTime" />
+            <ScalarProperty Name="UrgeRptPersonName" ColumnName="UrgeRptPersonName" />
+            <ScalarProperty Name="UrgeRptContent" ColumnName="UrgeRptContent" />
+            <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+            <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HP011">
+            <EntityTypeMapping TypeName="FXCLDModel.HP011">
+              <MappingFragment StoreEntitySet="HP011">
+                <ScalarProperty Name="TXZYBFB" ColumnName="TXZYBFB" />
+                <ScalarProperty Name="SPTKYS" ColumnName="SPTKYS" />
+                <ScalarProperty Name="SPTXXS" ColumnName="SPTXXS" />
+                <ScalarProperty Name="SPTYXS" ColumnName="SPTYXS" />
+                <ScalarProperty Name="SPTHJCS" ColumnName="SPTHJCS" />
+                <ScalarProperty Name="XRXZYBFB" ColumnName="XRXZYBFB" />
+                <ScalarProperty Name="XRKKYS" ColumnName="XRKKYS" />
+                <ScalarProperty Name="XRKXXS" ColumnName="XRKXXS" />
+                <ScalarProperty Name="XRKYXS" ColumnName="XRKYXS" />
+                <ScalarProperty Name="XRSKCS" ColumnName="XRSKCS" />
+                <ScalarProperty Name="XKXZYBFB" ColumnName="XKXZYBFB" />
+                <ScalarProperty Name="XYKKYS" ColumnName="XYKKYS" />
+                <ScalarProperty Name="XYKXXS" ColumnName="XYKXXS" />
+                <ScalarProperty Name="XYKYXS" ColumnName="XYKYXS" />
+                <ScalarProperty Name="XYSKCS" ColumnName="XYSKCS" />
+                <ScalarProperty Name="ZXZYBFB" ColumnName="ZXZYBFB" />
+                <ScalarProperty Name="ZXKKYSL" ColumnName="ZXKKYSL" />
+                <ScalarProperty Name="ZZKXXSL" ColumnName="ZZKXXSL" />
+                <ScalarProperty Name="ZZKYXSL" ColumnName="ZZKYXSL" />
+                <ScalarProperty Name="ZZXKCS" ColumnName="ZZXKCS" />
+                <ScalarProperty Name="KXZYBFB" ColumnName="KXZYBFB" />
+                <ScalarProperty Name="DXKKYSL" ColumnName="DXKKYSL" />
+                <ScalarProperty Name="DZKXXSL" ColumnName="DZKXXSL" />
+                <ScalarProperty Name="DZKYXSL" ColumnName="DZKYXSL" />
+                <ScalarProperty Name="DZXKCS" ColumnName="DZXKCS" />
+                <ScalarProperty Name="LNZJ" ColumnName="LNZJ" />
+                <ScalarProperty Name="SQZJ" ColumnName="SQZJ" />
+                <ScalarProperty Name="QNTQZJ" ColumnName="QNTQZJ" />
+                <ScalarProperty Name="XZYBFB" ColumnName="XZYBFB" />
+                <ScalarProperty Name="XZKYSL" ColumnName="XZKYSL" />
+                <ScalarProperty Name="XXSLZJ" ColumnName="XXSLZJ" />
+                <ScalarProperty Name="YXSLZJ" ColumnName="YXSLZJ" />
+                <ScalarProperty Name="XSCSZJ" ColumnName="XSCSZJ" />
+                <ScalarProperty Name="DW" ColumnName="DW" />
+                <ScalarProperty Name="DISTRIBUTERATE" ColumnName="DISTRIBUTERATE" />
+                <ScalarProperty Name="DATAORDER" ColumnName="DATAORDER" />
+                <ScalarProperty Name="PAGENO" ColumnName="PAGENO" />
+                <ScalarProperty Name="RIVERCODE" ColumnName="RIVERCODE" />
+                <ScalarProperty Name="UNITCODE" ColumnName="UNITCODE" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HP012">
+            <EntityTypeMapping TypeName="FXCLDModel.HP012">
+              <MappingFragment StoreEntitySet="HP012">
+                <ScalarProperty Name="QNTQDXS" ColumnName="QNTQDXS" />
+                <ScalarProperty Name="DXZYBFB" ColumnName="DXZYBFB" />
+                <ScalarProperty Name="DXKKYS" ColumnName="DXKKYS" />
+                <ScalarProperty Name="DXKXXSL" ColumnName="DXKXXSL" />
+                <ScalarProperty Name="DXKYXSL" ColumnName="DXKYXSL" />
+                <ScalarProperty Name="DXSKMC" ColumnName="DXSKMC" />
+                <ScalarProperty Name="DW" ColumnName="DW" />
+                <ScalarProperty Name="DISTRIBUTERATE" ColumnName="DISTRIBUTERATE" />
+                <ScalarProperty Name="DATAORDER" ColumnName="DATAORDER" />
+                <ScalarProperty Name="PAGENO" ColumnName="PAGENO" />
+                <ScalarProperty Name="RIVERCODE" ColumnName="RIVERCODE" />
+                <ScalarProperty Name="UNITCODE" ColumnName="UNITCODE" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NP011">
+            <EntityTypeMapping TypeName="FXCLDModel.NP011">
+              <MappingFragment StoreEntitySet="NP011">
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="SFCXXSW" ColumnName="SFCXXSW" />
+                <ScalarProperty Name="DQXSL" ColumnName="DQXSL" />
+                <ScalarProperty Name="DQSW" ColumnName="DQSW" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="RSName" ColumnName="RSName" />
+                <ScalarProperty Name="RSCode" ColumnName="RSCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH021">
+            <EntityTypeMapping TypeName="FXCLDModel.SH021">
+              <MappingFragment StoreEntitySet="SH021">
+                <ScalarProperty Name="JGYS" ColumnName="JGYS" />
+                <ScalarProperty Name="JD" ColumnName="JD" />
+                <ScalarProperty Name="JHHNT" ColumnName="JHHNT" />
+                <ScalarProperty Name="JHSF" ColumnName="JHSF" />
+                <ScalarProperty Name="JHTF" ColumnName="JHTF" />
+                <ScalarProperty Name="JHQT" ColumnName="JHQT" />
+                <ScalarProperty Name="JHJHG" ColumnName="JHJHG" />
+                <ScalarProperty Name="JHQY" ColumnName="JHQY" />
+                <ScalarProperty Name="JHHA" ColumnName="JHHA" />
+                <ScalarProperty Name="JHDF" ColumnName="JHDF" />
+                <ScalarProperty Name="SFKG" ColumnName="SFKG" />
+                <ScalarProperty Name="ZBQK" ColumnName="ZBQK" />
+                <ScalarProperty Name="SCTG" ColumnName="SCTG" />
+                <ScalarProperty Name="CBSJBG" ColumnName="CBSJBG" />
+                <ScalarProperty Name="SZX" ColumnName="SZX" />
+                <ScalarProperty Name="GDMC" ColumnName="GDMC" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH031">
+            <EntityTypeMapping TypeName="FXCLDModel.SH031">
+              <MappingFragment StoreEntitySet="SH031">
+                <ScalarProperty Name="TXSPJCZCWC" ColumnName="TXSPJCZCWC" />
+                <ScalarProperty Name="TXSPJCZCJH" ColumnName="TXSPJCZCJH" />
+                <ScalarProperty Name="TXSPJCZWC" ColumnName="TXSPJCZWC" />
+                <ScalarProperty Name="TXSPJCZJH" ColumnName="TXSPJCZJH" />
+                <ScalarProperty Name="WXJSWC" ColumnName="WXJSWC" />
+                <ScalarProperty Name="WXJCJH" ColumnName="WXJCJH" />
+                <ScalarProperty Name="WXTHWC" ColumnName="WXTHWC" />
+                <ScalarProperty Name="WXTDJH" ColumnName="WXTDJH" />
+                <ScalarProperty Name="SWZWC" ColumnName="SWZWC" />
+                <ScalarProperty Name="SWZJH" ColumnName="SWZJH" />
+                <ScalarProperty Name="YLZWC" ColumnName="YLZWC" />
+                <ScalarProperty Name="YLZJH" ColumnName="YLZJH" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH032">
+            <EntityTypeMapping TypeName="FXCLDModel.SH032">
+              <MappingFragment StoreEntitySet="SH032">
+                <ScalarProperty Name="LGHWC" ColumnName="LGHWC" />
+                <ScalarProperty Name="LGHJH" ColumnName="LGHJH" />
+                <ScalarProperty Name="BJQWC" ColumnName="BJQWC" />
+                <ScalarProperty Name="BJQJH" ColumnName="BJQJH" />
+                <ScalarProperty Name="SWZWC" ColumnName="SWZWC" />
+                <ScalarProperty Name="SWZJH" ColumnName="SWZJH" />
+                <ScalarProperty Name="YLBJWC" ColumnName="YLBJWC" />
+                <ScalarProperty Name="YLBJJH" ColumnName="YLBJJH" />
+                <ScalarProperty Name="WXGBWC" ColumnName="WXGBWC" />
+                <ScalarProperty Name="WXGBJH" ColumnName="WXGBJH" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH033">
+            <EntityTypeMapping TypeName="FXCLDModel.SH033">
+              <MappingFragment StoreEntitySet="SH033">
+                <ScalarProperty Name="YDSBWC" ColumnName="YDSBWC" />
+                <ScalarProperty Name="YDSBJH" ColumnName="YDSBJH" />
+                <ScalarProperty Name="XJPTYSWC" ColumnName="XJPTYSWC" />
+                <ScalarProperty Name="XJPTYSJH" ColumnName="XJPTYSJH" />
+                <ScalarProperty Name="XJPT" ColumnName="XJPT" />
+                <ScalarProperty Name="XJYJ" ColumnName="XJYJ" />
+                <ScalarProperty Name="XJHS" ColumnName="XJHS" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH034">
+            <EntityTypeMapping TypeName="FXCLDModel.SH034">
+              <MappingFragment StoreEntitySet="SH034">
+                <ScalarProperty Name="HTYS" ColumnName="HTYS" />
+                <ScalarProperty Name="XTJC" ColumnName="XTJC" />
+                <ScalarProperty Name="RJGZ" ColumnName="RJGZ" />
+                <ScalarProperty Name="RJZB" ColumnName="RJZB" />
+                <ScalarProperty Name="YJGZ" ColumnName="YJGZ" />
+                <ScalarProperty Name="YJZB" ColumnName="YJZB" />
+                <ScalarProperty Name="XZQMC" ColumnName="XZQMC" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH035">
+            <EntityTypeMapping TypeName="FXCLDModel.SH035">
+              <MappingFragment StoreEntitySet="SH035">
+                <ScalarProperty Name="YJXXGX" ColumnName="YJXXGX" />
+                <ScalarProperty Name="GTXXGX" ColumnName="GTXXGX" />
+                <ScalarProperty Name="QXXXGX" ColumnName="QXXXGX" />
+                <ScalarProperty Name="SWXXGX" ColumnName="SWXXGX" />
+                <ScalarProperty Name="XZQMC" ColumnName="XZQMC" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH036">
+            <EntityTypeMapping TypeName="FXCLDModel.SH036">
+              <MappingFragment StoreEntitySet="SH036">
+                <ScalarProperty Name="QTYAWC" ColumnName="QTYAWC" />
+                <ScalarProperty Name="QTYAJH" ColumnName="QTYAJH" />
+                <ScalarProperty Name="CYAWC" ColumnName="CYAWC" />
+                <ScalarProperty Name="CYAJH" ColumnName="CYAJH" />
+                <ScalarProperty Name="XZYAWC" ColumnName="XZYAWC" />
+                <ScalarProperty Name="XZYAJH" ColumnName="XZYAJH" />
+                <ScalarProperty Name="XYAWC" ColumnName="XYAWC" />
+                <ScalarProperty Name="XYAJH" ColumnName="XYAJH" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH037">
+            <EntityTypeMapping TypeName="FXCLDModel.SH037">
+              <MappingFragment StoreEntitySet="SH037">
+                <ScalarProperty Name="SCWC" ColumnName="SCWC" />
+                <ScalarProperty Name="SCJH" ColumnName="SCJH" />
+                <ScalarProperty Name="GPWC" ColumnName="GPWC" />
+                <ScalarProperty Name="GPJH" ColumnName="GPJH" />
+                <ScalarProperty Name="MBKWC" ColumnName="MBKWC" />
+                <ScalarProperty Name="MBKJH" ColumnName="MBKJH" />
+                <ScalarProperty Name="JSPWC" ColumnName="JSPWC" />
+                <ScalarProperty Name="JSPJH" ColumnName="JSPJH" />
+                <ScalarProperty Name="XCLWC" ColumnName="XCLWC" />
+                <ScalarProperty Name="XCLJH" ColumnName="XCLJH" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH038">
+            <EntityTypeMapping TypeName="FXCLDModel.SH038">
+              <MappingFragment StoreEntitySet="SH038">
+                <ScalarProperty Name="YLRCWC" ColumnName="YLRCWC" />
+                <ScalarProperty Name="YLRCJH" ColumnName="YLRCJH" />
+                <ScalarProperty Name="YLCCWC" ColumnName="YLCCWC" />
+                <ScalarProperty Name="YLCCJH" ColumnName="YLCCJH" />
+                <ScalarProperty Name="PXRSWC" ColumnName="PXRSWC" />
+                <ScalarProperty Name="PXRSJH" ColumnName="PXRSJH" />
+                <ScalarProperty Name="PXCCWC" ColumnName="PXCCWC" />
+                <ScalarProperty Name="PXCCJH" ColumnName="PXCCJH" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH042">
+            <EntityTypeMapping TypeName="FXCLDModel.SH042">
+              <MappingFragment StoreEntitySet="SH042">
+                <ScalarProperty Name="YHCCLWC" ColumnName="YHCCLWC" />
+                <ScalarProperty Name="YHCCLJH" ColumnName="YHCCLJH" />
+                <ScalarProperty Name="SSGC" ColumnName="SSGC" />
+                <ScalarProperty Name="SHWXQYWC" ColumnName="SHWXQYWC" />
+                <ScalarProperty Name="SHWXQYJH" ColumnName="SHWXQYJH" />
+                <ScalarProperty Name="SHJJDCWC" ColumnName="SHJJDCWC" />
+                <ScalarProperty Name="SHJJDCJH" ColumnName="SHJJDCJH" />
+                <ScalarProperty Name="XLYJCXX" ColumnName="XLYJCXX" />
+                <ScalarProperty Name="LSSH" ColumnName="LSSH" />
+                <ScalarProperty Name="DXLS" ColumnName="DXLS" />
+                <ScalarProperty Name="SWJC" ColumnName="SWJC" />
+                <ScalarProperty Name="DCDX" ColumnName="DCDX" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH043">
+            <EntityTypeMapping TypeName="FXCLDModel.SH043">
+              <MappingFragment StoreEntitySet="SH043">
+                <ScalarProperty Name="DCBG" ColumnName="DCBG" />
+                <ScalarProperty Name="YHCPJWC" ColumnName="YHCPJWC" />
+                <ScalarProperty Name="YHCPJJH" ColumnName="YHCPJJH" />
+                <ScalarProperty Name="XLYFX" ColumnName="XLYFX" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH044">
+            <EntityTypeMapping TypeName="FXCLDModel.SH044">
+              <MappingFragment StoreEntitySet="SH044">
+                <ScalarProperty Name="S2JWC" ColumnName="S2JWC" />
+                <ScalarProperty Name="S1JWC" ColumnName="S1JWC" />
+                <ScalarProperty Name="XJWC" ColumnName="XJWC" />
+                <ScalarProperty Name="XZQMC" ColumnName="XZQMC" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH045">
+            <EntityTypeMapping TypeName="FXCLDModel.SH045">
+              <MappingFragment StoreEntitySet="SH045">
+                <ScalarProperty Name="PXRSWC" ColumnName="PXRSWC" />
+                <ScalarProperty Name="PXRSJH" ColumnName="PXRSJH" />
+                <ScalarProperty Name="PXCSWC" ColumnName="PXCSWC" />
+                <ScalarProperty Name="PXCSJH" ColumnName="PXCSJH" />
+                <ScalarProperty Name="XZQMC" ColumnName="XZQMC" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH041">
+            <EntityTypeMapping TypeName="FXCLDModel.SH041">
+              <MappingFragment StoreEntitySet="SH041">
+                <ScalarProperty Name="PX" ColumnName="PX" />
+                <ScalarProperty Name="SJFWSMC" ColumnName="SJFWSMC" />
+                <ScalarProperty Name="SJFWSQD" ColumnName="SJFWSQD" />
+                <ScalarProperty Name="ZDYJCGSL" ColumnName="ZDYJCGSL" />
+                <ScalarProperty Name="ZDYJCG" ColumnName="ZDYJCG" />
+                <ScalarProperty Name="ZDYJZB" ColumnName="ZDYJZB" />
+                <ScalarProperty Name="SSX" ColumnName="SSX" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Benefit">
+            <EntityTypeMapping TypeName="FXCLDModel.Benefit">
+              <MappingFragment StoreEntitySet="Benefit">
+                <ScalarProperty Name="ZHZJ" ColumnName="ZHZJ" />
+                <ScalarProperty Name="XYXJ" ColumnName="XYXJ" />
+                <ScalarProperty Name="YJXY" ColumnName="YJXY" />
+                <ScalarProperty Name="YJYZ" ColumnName="YJYZ" />
+                <ScalarProperty Name="YJYQ" ColumnName="YJYQ" />
+                <ScalarProperty Name="YJJC" ColumnName="YJJC" />
+                <ScalarProperty Name="ZQZQ" ColumnName="ZQZQ" />
+                <ScalarProperty Name="ZQSQ" ColumnName="ZQSQ" />
+                <ScalarProperty Name="ZQYQ" ColumnName="ZQYQ" />
+                <ScalarProperty Name="DQJJ" ColumnName="DQJJ" />
+                <ScalarProperty Name="BArea" ColumnName="BArea" />
+                <ScalarProperty Name="BDate" ColumnName="BDate" />
+                <ScalarProperty Name="BTitle" ColumnName="BTitle" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH011">
+            <EntityTypeMapping TypeName="FXCLDModel.SH011">
+              <MappingFragment StoreEntitySet="SH011">
+                <ScalarProperty Name="DFZJX" ColumnName="DFZJX" />
+                <ScalarProperty Name="ZFXJBL" ColumnName="ZFXJBL" />
+                <ScalarProperty Name="ZFWCXJ" ColumnName="ZFWCXJ" />
+                <ScalarProperty Name="ZFSHIJBL" ColumnName="ZFSHIJBL" />
+                <ScalarProperty Name="ZFWCSHIJ" ColumnName="ZFWCSHIJ" />
+                <ScalarProperty Name="ZFSJBL" ColumnName="ZFSJBL" />
+                <ScalarProperty Name="ZFWCSJ" ColumnName="ZFWCSJ" />
+                <ScalarProperty Name="ZFZYBL" ColumnName="ZFZYBL" />
+                <ScalarProperty Name="ZFWCZY" ColumnName="ZFWCZY" />
+                <ScalarProperty Name="JDXJBL" ColumnName="JDXJBL" />
+                <ScalarProperty Name="JDWCXJ" ColumnName="JDWCXJ" />
+                <ScalarProperty Name="JDSHIJBL" ColumnName="JDSHIJBL" />
+                <ScalarProperty Name="JDWCSHIJ" ColumnName="JDWCSHIJ" />
+                <ScalarProperty Name="JDSJBL" ColumnName="JDSJBL" />
+                <ScalarProperty Name="JDWCSJ" ColumnName="JDWCSJ" />
+                <ScalarProperty Name="JDZYBL" ColumnName="JDZYBL" />
+                <ScalarProperty Name="JDWCZY" ColumnName="JDWCZY" />
+                <ScalarProperty Name="ZJZF" ColumnName="ZJZF" />
+                <ScalarProperty Name="DFZJSX" ColumnName="DFZJSX" />
+                <ScalarProperty Name="DFZJSJ" ColumnName="DFZJSJ" />
+                <ScalarProperty Name="NDZJDF" ColumnName="NDZJDF" />
+                <ScalarProperty Name="NDZJZY" ColumnName="NDZJZY" />
+                <ScalarProperty Name="NDZJYS" ColumnName="NDZJYS" />
+                <ScalarProperty Name="JSNR" ColumnName="JSNR" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH051">
+            <EntityTypeMapping TypeName="FXCLDModel.SH051">
+              <MappingFragment StoreEntitySet="SH051">
+                <ScalarProperty Name="BZ" ColumnName="BZ" />
+                <ScalarProperty Name="SSSH" ColumnName="SSSH" />
+                <ScalarProperty Name="DTFW" ColumnName="DTFW" />
+                <ScalarProperty Name="BMSW" ColumnName="BMSW" />
+                <ScalarProperty Name="ZYRS" ColumnName="ZYRS" />
+                <ScalarProperty Name="QDGBZ" ColumnName="QDGBZ" />
+                <ScalarProperty Name="YJZRRS" ColumnName="YJZRRS" />
+                <ScalarProperty Name="YJDXTS" ColumnName="YJDXTS" />
+                <ScalarProperty Name="YJXJFBCS" ColumnName="YJXJFBCS" />
+                <ScalarProperty Name="YJFBGX" ColumnName="YJFBGX" />
+                <ScalarProperty Name="DW" ColumnName="DW" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sh016">
+            <EntityTypeMapping TypeName="FXCLDModel.sh016">
+              <MappingFragment StoreEntitySet="sh016">
+                <ScalarProperty Name="JSJD" ColumnName="JSJD" />
+                <ScalarProperty Name="SFKG" ColumnName="SFKG" />
+                <ScalarProperty Name="ZBJD" ColumnName="ZBJD" />
+                <ScalarProperty Name="BZ" ColumnName="BZ" />
+                <ScalarProperty Name="XZXS" ColumnName="XZXS" />
+                <ScalarProperty Name="CGJYXS" ColumnName="CGJYXS" />
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BusinessEntities" ZoomLevel="77">
+        <EntityTypeShape EntityType="FXCLDModel.Affix" Width="1.5" PointX="3" PointY="2.5" Height="2.1280729166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.AggAccRecord" Width="1.5" PointX="5.75" PointY="3" Height="2.2966927083333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.AnnualDisasterAssessment" Width="1.5" PointX="10.75" PointY="7.625" Height="2.1280729166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.DisasterCheck" Width="1.5" PointX="8.75" PointY="3.75" Height="2.5430916341145817" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.HL011" Width="1.5" PointX="3" PointY="11.875" Height="10.053203124999998" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.HL012" Width="1.5" PointX="3" PointY="5.375" Height="5.6690885416666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.HL013" Width="1.5" PointX="5.75" PointY="15.625" Height="7.186666666666671" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.HL014" Width="1.5" PointX="8.5" PointY="11" Height="8.0297656250000067" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.LGN" Width="1.5" PointX="8" PointY="0.625" Height="1.9594531249999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.LSTQLJ" Width="1.5" PointX="10.5" PointY="0.875" Height="3.1397916666666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.ReportFillContent" Width="1.5" PointX="8.25" PointY="6.625" Height="2.2966927083333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.ReportTitle" Width="1.5" PointX="5.75" PointY="6.625" Height="6.6808072916666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.RoleTab" Width="1.5" PointX="5.75" PointY="0.5" Height="1.6222135416666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.SingleDisasterAssessment" Width="1.5" PointX="0.875" PointY="5.125" Height="1.9594531250000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.TENDENCYCHARTINFO" Width="1.5" PointX="0.875" PointY="9.125" Height="2.8025520833333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXCLDModel.UrgeReport" Width="1.5" PointX="10.75" PointY="11" Height="2.4653125000000031" IsExpanded="true" />
+        <AssociationConnector Association="FXCLDModel.FK_AFFIX_REFERENCE_REPORTTI" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.75" PointY="6.625" />
+          <ConnectorPoint PointX="5.375" PointY="6.25" />
+          <ConnectorPoint PointX="5.375" PointY="3.5640364583333337" />
+          <ConnectorPoint PointX="4.5" PointY="3.5640364583333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.FK_HL011_REFERENCE_REPORTTI" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.75" PointY="12.590403645833334" />
+          <ConnectorPoint PointX="4.5" PointY="12.590403645833334" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.FK_HL012_REFERENCE_REPORTTI" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.75" PointY="8.8657967708333274" />
+          <ConnectorPoint PointX="4.5" PointY="8.8657967708333274" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.FK_HL013_REFERENCE_REPORTTI" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.5" PointY="14.317526041666666" />
+          <ConnectorPoint PointX="6.5" PointY="15.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.FK_HL014_REFERENCE_REPORTTI" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="12.405833333333334" />
+          <ConnectorPoint PointX="8.5" PointY="12.405833333333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.FK_LGN_REFERENCE_ROLETAB" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="1.3736067708333337" />
+          <ConnectorPoint PointX="8" PointY="1.3736067708333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.ReportTitleAggAccRecord">
+          <ConnectorPoint PointX="6.5312525" PointY="6.625" />
+          <ConnectorPoint PointX="6.5312525" PointY="5.2966927083333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.ReportTitleDisasterCheck">
+          <ConnectorPoint PointX="7.25" PointY="9.86529581705729" />
+          <ConnectorPoint PointX="10.15625" PointY="9.86529581705729" />
+          <ConnectorPoint PointX="10.15625" PointY="6.2930916341145817" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.ReportTitleReportFillContent">
+          <ConnectorPoint PointX="7.25" PointY="7.7733463541666659" />
+          <ConnectorPoint PointX="8.25" PointY="7.7733463541666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXCLDModel.HP011" Width="1.5" PointX="13.375" PointY="0.75" Height="8.8467415364583317" />
+        <EntityTypeShape EntityType="FXCLDModel.HP012" Width="1.5" PointX="13.375" PointY="10.75" Height="3.6892097981770817" />
+        <AssociationConnector Association="FXCLDModel.ReportTitleHP011">
+          <ConnectorPoint PointX="7.25" PointY="11.143880615234373" />
+          <ConnectorPoint PointX="8.25" PointY="11.143880615234373" />
+          <ConnectorPoint PointX="8.25" PointY="10.5" />
+          <ConnectorPoint PointX="14.125" PointY="10.5" />
+          <ConnectorPoint PointX="14.125" PointY="9.5967415364583317" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXCLDModel.ReportTitleHP012">
+          <ConnectorPoint PointX="7.25" PointY="10.84375" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="10.84375" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="10.84375" />
+          <ConnectorPoint PointX="13.375" PointY="10.84375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXCLDModel.NP011" Width="1.5" PointX="15.375" PointY="0.75" Height="3.0289925130208331" />
+        <AssociationConnector Association="FXCLDModel.ReportTitleNP011">
+          <ConnectorPoint PointX="7.25" PointY="11.202442082331729" />
+          <ConnectorPoint PointX="8.25" PointY="11.202442082331729" />
+          <ConnectorPoint PointX="8.25" PointY="10.5" />
+          <ConnectorPoint PointX="16.125" PointY="10.5" />
+          <ConnectorPoint PointX="16.125" PointY="3.7789925130208331" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXCLDModel.SH021" Width="1.5" PointX="21.5" PointY="8.75" Height="4.6921394856770746" />
+        <EntityTypeShape EntityType="FXCLDModel.SH031" Width="1.5" PointX="11.375" PointY="15.75" Height="4.1377571614583246" />
+        <EntityTypeShape EntityType="FXCLDModel.SH032" Width="1.5" PointX="13.375" PointY="15.75" Height="3.7681689453125102" />
+        <EntityTypeShape EntityType="FXCLDModel.SH033" Width="1.5" PointX="15.375" PointY="11.75" Height="3.2137866210937602" />
+        <EntityTypeShape EntityType="FXCLDModel.SH034" Width="1.5" PointX="17.375" PointY="0.75" Height="3.0289925130208246" />
+        <EntityTypeShape EntityType="FXCLDModel.SH035" Width="1.5" PointX="17.375" PointY="4.75" Height="2.6594042968750102" />
+        <EntityTypeShape EntityType="FXCLDModel.SH036" Width="1.5" PointX="17.375" PointY="8.75" Height="3.3985807291666674" />
+        <EntityTypeShape EntityType="FXCLDModel.SH037" Width="1.5" PointX="17.375" PointY="13.75" Height="3.7681689453125102" />
+        <EntityTypeShape EntityType="FXCLDModel.SH038" Width="1.5" PointX="15.375" PointY="18.75" Height="3.3985807291666674" />
+        <EntityTypeShape EntityType="FXCLDModel.SH042" Width="1.5" PointX="19.375" PointY="0.75" Height="4.1377571614583246" />
+        <EntityTypeShape EntityType="FXCLDModel.SH043" Width="1.5" PointX="19.375" PointY="5.75" Height="2.6594042968749818" />
+        <EntityTypeShape EntityType="FXCLDModel.SH044" Width="1.5" PointX="19.375" PointY="9.75" Height="2.4746101888020746" />
+        <EntityTypeShape EntityType="FXCLDModel.SH045" Width="1.5" PointX="19.375" PointY="13.75" Height="2.6594042968749818" />
+        <EntityTypeShape EntityType="FXCLDModel.SH041" Width="1.5" PointX="17.375" PointY="18.75" Height="3.0289925130208246" />
+        <EntityTypeShape EntityType="FXCLDModel.Benefit" Width="1.5" PointX="19.375" PointY="17.75" Height="3.7681689453125102" />
+        <EntityTypeShape EntityType="FXCLDModel.SH011" Width="1.5" PointX="8.375" PointY="20.75" Height="6.1704923502604174" />
+        <EntityTypeShape EntityType="FXCLDModel.SH051" Width="1.5" PointX="10.375" PointY="20.75" Height="3.7681689453125102" />
+        <EntityTypeShape EntityType="FXCLDModel.sh016" Width="1.5" PointX="12.375" PointY="20.75" Height="2.8441984049479174" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,86 @@
+a {text-decoration:none;}
+.tableCss
+{
+	font-size:12px;
+    BORDER-TOP-WIDTH: 0px;
+    FONT-WEIGHT: normal; 
+    BORDER-LEFT-WIDTH: 0px; 
+    BORDER-LEFT-COLOR: #cccccc; 
+    BORDER-BOTTOM-WIDTH: 0px; 
+    BORDER-BOTTOM-COLOR: #cccccc; 
+    WIDTH:800px; 
+    BORDER-TOP-COLOR: #cccccc; 
+    FONT-STYLE: normal; 
+    BACKGROUND-COLOR: #cccccc; 
+    BORDER-RIGHT-WIDTH: 0px; 
+    TEXT-DECORATION: none; 
+    BORDER-RIGHT-COLOR: #cccccc;
+    margin-left:3px;
+    text-align:center;
+    text-decoration:none;
+    background-color:#FFF;
+}
+.tableTrTitleCss
+{
+	FONT-WEIGHT:bold;
+	FONT-STYLE: normal;
+	BACKGROUND-COLOR: #eeeeee; 
+	background-color:#687fab; color:#FFF;
+	TEXT-DECORATION: none;
+    text-align:center;
+    line-height:22px;
+}
+.tableTrCss
+{
+	FONT-WEIGHT: normal; 
+	FONT-STYLE: normal; 
+	BACKGROUND-COLOR: white; 
+	TEXT-DECORATION: none;
+	text-align:right;
+	background-color:#b8c4dd;
+	line-height:22px;
+}
+.tableTrCss td{cursor:pointer;text-align:right }
+.tableTrCss1
+{
+	FONT-WEIGHT: normal; 
+	FONT-STYLE: normal; 
+	BACKGROUND-COLOR: white; 
+	TEXT-DECORATION: none;
+	text-align:right;
+	background-color:#dbe2f2;
+}
+.tableTrCss2
+{
+	FONT-WEIGHT: normal; 
+	FONT-STYLE: normal; 
+	BACKGROUND-COLOR: white; 
+	TEXT-DECORATION: none;
+	text-align:right;
+	background-color:#e6ebf6
+}
+.tableTrCss3
+{
+	FONT-WEIGHT: normal; 
+	FONT-STYLE: normal; 
+	BACKGROUND-COLOR: white; 
+	TEXT-DECORATION: none;
+	text-align:right;
+	background-color:#f1f3fa
+}
+.centerCss
+{
+    color:Black;
+	font-size:16px;
+    font-weight:bolder;
+}
+.Box
+{
+	height:800px;
+}
+.tdSpan{ text-align:right; FONT-WEIGHT: normal; FONT-STYLE: normal;margin-right:-12px; }
+.tdDistrict{text-align:left;	FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none; padding-left:30px;background-color:#dbe2f2; }	
+.tdDistrict1{text-align:left;	FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none; padding-left:60px; background-color:#e6ebf6;}	
+.tdDistrict2{text-align:left;	FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none; padding-left:90px; background-color:#f1f3fa;}	
+
+#dTab7_B{ margin-right:5px;}

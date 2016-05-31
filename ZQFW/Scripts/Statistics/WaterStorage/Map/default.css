@@ -1,0 +1,111 @@
+BODY
+{
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 8pt;
+}
+FORM
+{
+	MARGIN: 4pt;
+}
+INPUT
+{
+	FONT-FAMILY: Verdana, Arial;
+	FONT-SIZE: 8pt;
+}
+SELECT
+{
+	FONT-FAMILY: Verdana, Arial;
+	FONT-SIZE: 8pt;
+}
+TD
+{
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 8pt;
+}
+.footer
+{
+    FONT-SIZE: 7pt;
+}
+.header
+{
+    FONT-SIZE: 12pt;
+    FONT-WEIGHT: bold;
+}
+.map
+{
+    BORDER-BOTTOM: black 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    CURSOR: hand;
+}
+.pane
+{
+    BORDER-BOTTOM: black 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    FONT-SIZE: 8pt;
+}
+.panearrow
+{
+    BACKGROUND-COLOR: black;
+	COLOR: white;
+	CURSOR: hand;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+}
+.panecaption
+{
+    BACKGROUND-COLOR: black;
+    COLOR: white;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+}
+.panetext
+{
+    FONT-SIZE: 8pt;
+}
+.stat
+{
+    BACKGROUND-COLOR: silver;
+    BORDER-BOTTOM: gray 1px solid;
+    BORDER-LEFT: gray 1px solid;
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+    FONT-SIZE: 8pt;
+}
+.statspace
+{
+    WIDTH: 1pt;
+}
+.subheader
+{
+    FONT-SIZE: 8pt;
+}
+.text
+{
+    FONT-SIZE: 8pt;
+}
+.textr
+{
+    FONT-SIZE: 8pt;
+    TEXT-ALIGN: right;
+}
+.tool
+{
+    BACKGROUND-COLOR: silver;
+    CURSOR: hand;
+    WIDTH: 24px;
+}
+.toolbar
+{
+    BORDER-BOTTOM: gray 1px solid;
+    BORDER-LEFT: gray 1px solid;
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+}
+.toolfiller
+{
+    BACKGROUND-COLOR: silver;
+}

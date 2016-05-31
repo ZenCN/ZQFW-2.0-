@@ -1,0 +1,19 @@
+﻿<tbody>
+    <tr ng-repeat="sh044 in Open.Report.Current.SH044">
+        <th>
+            {{$index + 1}}
+        </th>
+        <th>
+            <span class="txt_center">{{sh044.XZQMC}}</span>
+        </th>
+        <td>
+            <span class="pointer" ng-bind="sh044.XJWC" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh044.S1JWC" ng-click="FCK()"></span>
+        </td>
+        <td>
+            <span class="pointer" ng-bind="sh044.S2JWC" ng-click="FCK()"></span>
+        </td>
+    </tr>
+</tbody>

@@ -1,0 +1,62 @@
+﻿.mapTools
+{
+	position: absolute;
+	Top: 10%;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 60px;
+	z-index: 1;
+}
+
+#buttons .chartbutton {
+	list-style:none;
+	margin:14px 0px;
+	padding:0;
+	list-style:noen outside;
+}
+#buttons .chartbutton li {
+	background-image:url(../../images/button/button.gif);
+	width:30px;
+	height:30px;
+	display:block;
+	float:left;
+	cursor:pointer;
+}
+#buttons .chartbutton #leftbutton {
+	background-position:top left;
+}
+#buttons .chartbutton #leftbutton:hover {
+	background-position:left -33px;
+}
+#buttons .chartbutton #midl_button {
+	background-position:top center;
+}
+#buttons .chartbutton #midl_button:hover {
+	background-position:center -33px;
+}
+#buttons .chartbutton #midr_button {
+	background-position:top center;
+}
+#buttons .chartbutton #midr_button:hover {
+	background-position:center -33px;
+}
+#buttons .chartbutton #rightbutton {
+	background-position:top right;
+}
+#buttons .chartbutton #rightbutton:hover {
+	background-position:right -33px;
+}
+#buttons .chartbutton #leftbutton img {
+	margin:4px 0 0 6px;	
+}
+#buttons .chartbutton #midl_button img {
+	margin:4px 0 0 2px;	
+}
+#buttons .chartbutton #midr_button img {
+	margin:4px 0 0 2px;	
+}
+#buttons .chartbutton #rightbutton img {
+	margin:4px 0 0 2px;
+}

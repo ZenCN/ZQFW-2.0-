@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapParams>
+  <topRegion>
+    <code>43000000</code>
+    <name>湖南省</name>
+    <level>2</level>
+  </topRegion>
+  <mapTypes>
+    <mapType type="0">
+      <name>直观图</name>
+      <mapFile>HunanMap.map</mapFile>
+      <component>Map</component>
+      <disasterInfoTypes>SZRK,SWRK,SZRKR,ZYRK,SHMJXJ,DTFW,ZJJJZSS,SLSSZJJJSS</disasterInfoTypes>
+    </mapType>
+  </mapTypes>
+  <layers>
+    <layer>
+      <rank>1</rank>
+      <labels>Province Labels</labels>
+      <drawing>Province Drawing</drawing>
+      <table>Province Table</table>
+      <line>Province_Line Drawing</line>
+      <lineTable>Province_Line Table</lineTable>
+      <fields>
+        <code>CODE</code>
+        <name>NAME</name>
+        <superiorCode>SUPERIOR_CODE</superiorCode>
+        <adminRank>ADMIN_RANK</adminRank>
+        <id>FID</id>
+      </fields>
+    </layer>
+    <layer>
+      <rank>2</rank>
+      <labels>City Labels</labels>
+      <drawing>City Drawing</drawing>
+      <table>City Table</table>
+      <line>City_Line Drawing</line>
+      <lineTable>City_Line Table</lineTable>
+      <fields>
+        <code>CODE</code>
+        <name>NAME</name>
+        <superiorCode>SUPERIOR_CODE</superiorCode>
+        <adminRank>ADMIN_RANK</adminRank>
+        <id>FID</id>
+      </fields>
+    </layer>
+    <layer>
+      <rank>3</rank>
+      <labels>County Labels</labels>
+      <drawing>County Drawing</drawing>
+      <table>County Table</table>
+      <fields>
+        <code>CODE</code>
+        <name>NAME</name>
+        <superiorCode>SUPERIOR_CODE</superiorCode>
+        <adminRank>ADMIN_RANK</adminRank>
+        <id>FID</id>
+      </fields>
+    </layer>
+  </layers>
+</mapParams>

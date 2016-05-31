@@ -1,0 +1,91 @@
+﻿#left_side 
+{
+	position:absolute;
+	right:0;
+	top:0;
+	bottom:0;
+	width:200px;
+	background-color:#f6f6f6;
+	background-image:url(../../Img/Statistics/Analysis/analysis_right.png);
+	background-repeat:no-repeat;
+	background-position:left center;
+	display:none;
+}
+.info_box {
+	
+}
+.info_title 
+{
+	font-size:14px;
+	height:40px;
+	display:block;
+	text-align:center;
+	line-height:34px;
+	color:#FFF;
+	font-weight:bold;
+	background-color:#2F609E;
+	background-image:url(../../Img/Statistics/Analysis/box_title.png);
+	background-repeat:repeat-x;
+}
+._list {
+	width:200px;
+	height:100px;
+	overflow:hidden;
+}
+._list ul {
+	width:200px;
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+._list ul li {
+	width:200px;
+	height:45px;
+	display:block;
+	border-bottom:1px solid #DDD;
+}
+._list ul li img {
+	margin:6px 5px 0 5px;
+	float:left;
+}
+._info {
+	height:33px;
+	padding:6px;
+	float:left;
+}
+._title {
+	font-size:12px;
+	width:146px;
+	line-height:16px;
+	height:16px;
+	display:block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color:#333;
+}
+._subtitle{
+	font-size:12px;
+	width:110px;
+	line-height:16px;
+	height:16px;
+	display:block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	float:left;
+	color:#999;
+	}
+._operation {
+	margin:2px 0 0 0;
+	display:block;
+	width: 45px;
+	float: left;
+}
+._operation a {
+	font-size:12px;
+	line-height:14px;
+	margin-right:8px;
+	color:#2A586F;
+	cursor:pointer;
+}

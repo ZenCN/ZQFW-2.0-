@@ -1,0 +1,35 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Search-Condition,.Search-Tabs{
+    font-size: 12px;
+    color: #333;
+}
+.Search-Condition{
+    background-color: #FFF;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    right: 0;
+    margin-left: 20px;
+}
+.Search-Condition p {
+	height: 26px;
+}
+.Search-Condition select{
+    width: 150px;
+}
+#Search{
+    margin-left: 40px;
+}
+.Search-Tabs{
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 100%;
+}
+

@@ -1,0 +1,23 @@
+﻿@{
+    if(Request.Cookies["unitname"] == null)
+    {
+        Response.Redirect("/Login");
+    }
+    else
+    {
+        ViewBag.UnitName = System.Web.HttpUtility.UrlDecode(Request.Cookies["realname"].Value);
+    }
+}
+<div class="Head">
+    <div class="Top">
+        <span class="TopLeft">您好,尊敬的&nbsp;<span style="font-weight: bolder;">@ViewBag.UnitName</span>&nbsp;用户</span>
+        <span class="TopRight">
+            <a id="BackToMain" style=" display: none;" href="javascript:App.System.BackToMain()">返回主界面</a>
+            <a href="javascript:App.System.Exit();">退出</a>
+        </span>
+    </div>
+    <div class="Bottom">
+        <div class="Image">
+        </div>
+    </div>
+</div>

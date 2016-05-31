@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UploadReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiveUnit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadReportResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReportList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnitCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ORDCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReportListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getReportListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownLoadReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnitCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLFileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownLoadReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownLoadReportResult" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownReportConfirm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLFileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownReportConfirmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiveTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AMsgType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AContent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ASender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AReceiver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AUnitCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadReportSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadReport" />
+  </wsdl:message>
+  <wsdl:message name="UploadReportSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReportListSoapIn">
+    <wsdl:part name="parameters" element="tns:getReportList" />
+  </wsdl:message>
+  <wsdl:message name="getReportListSoapOut">
+    <wsdl:part name="parameters" element="tns:getReportListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadReportSoapIn">
+    <wsdl:part name="parameters" element="tns:DownLoadReport" />
+  </wsdl:message>
+  <wsdl:message name="DownLoadReportSoapOut">
+    <wsdl:part name="parameters" element="tns:DownLoadReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownReportConfirmSoapIn">
+    <wsdl:part name="parameters" element="tns:DownReportConfirm" />
+  </wsdl:message>
+  <wsdl:message name="DownReportConfirmSoapOut">
+    <wsdl:part name="parameters" element="tns:DownReportConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:getMessage" />
+  </wsdl:message>
+  <wsdl:message name="getMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:getMessageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsRptTransSoap">
+    <wsdl:operation name="UploadReport">
+      <wsdl:input message="tns:UploadReportSoapIn" />
+      <wsdl:output message="tns:UploadReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReportList">
+      <wsdl:input message="tns:getReportListSoapIn" />
+      <wsdl:output message="tns:getReportListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadReport">
+      <wsdl:input message="tns:DownLoadReportSoapIn" />
+      <wsdl:output message="tns:DownLoadReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownReportConfirm">
+      <wsdl:input message="tns:DownReportConfirmSoapIn" />
+      <wsdl:output message="tns:DownReportConfirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input message="tns:SendMessageSoapIn" />
+      <wsdl:output message="tns:SendMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <wsdl:input message="tns:getMessageSoapIn" />
+      <wsdl:output message="tns:getMessageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsRptTransSoap" type="tns:wsRptTransSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadReport">
+      <soap:operation soapAction="http://tempuri.org/UploadReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReportList">
+      <soap:operation soapAction="http://tempuri.org/getReportList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadReport">
+      <soap:operation soapAction="http://tempuri.org/DownLoadReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownReportConfirm">
+      <soap:operation soapAction="http://tempuri.org/DownReportConfirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <soap:operation soapAction="http://tempuri.org/getMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsRptTransSoap12" type="tns:wsRptTransSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadReport">
+      <soap12:operation soapAction="http://tempuri.org/UploadReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReportList">
+      <soap12:operation soapAction="http://tempuri.org/getReportList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadReport">
+      <soap12:operation soapAction="http://tempuri.org/DownLoadReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownReportConfirm">
+      <soap12:operation soapAction="http://tempuri.org/DownReportConfirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <soap12:operation soapAction="http://tempuri.org/getMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsRptTrans">
+    <wsdl:port name="wsRptTransSoap" binding="tns:wsRptTransSoap">
+      <soap:address location="http://www.zizo.com.cn:222/wsRptTrans.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsRptTransSoap12" binding="tns:wsRptTransSoap12">
+      <soap12:address location="http://www.zizo.com.cn:222/wsRptTrans.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

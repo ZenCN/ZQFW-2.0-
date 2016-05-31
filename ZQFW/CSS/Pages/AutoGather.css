@@ -1,0 +1,56 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.Parent{
+    background-color: #fcfcfc;
+    width: 800px;
+    margin: auto;
+    padding-top: 20px;
+    font-size: 14px;
+}
+.Parent .Head{
+    height: 40px;
+    padding-left: 30px;
+}
+.Main{
+    background-color: #fcfcfc;
+    height: 400px;
+}
+.Main .zTree{
+    margin: 0;
+    padding: 5px;
+    color: #333;
+}
+.Main .Move{
+    position: absolute;
+    left: 22%;
+}
+.Main .ToLeft{
+    top: 45%;
+}
+.Main .ToRight{
+    top: 55%;
+}
+.Main .Left{
+    width: 45%;
+    float: left;
+    height: 400px;
+}
+.Main .Middle{
+    width: 10%;
+    background-color: silver;
+    float: left;
+    height: 400px;
+    position: relative;
+}
+.Main .Right{
+    width: 45%;
+    height: 400px;
+    float: left;
+}
+.Bottom{
+    background-color: silver;
+    height: 200px;
+}

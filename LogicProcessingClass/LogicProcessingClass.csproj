@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D317B444-3F5A-44C1-A5F6-CE2BC89E712B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LogicProcessingClass</RootNamespace>
+    <AssemblyName>LogicProcessingClass</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words, Version=11.7.0.0, Culture=neutral, PublicKeyToken=f0cad6ec951377d2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>NPOIDlls\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>NPOIDlls\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>NPOIDlls\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuxiliaryClass\CommonFunction.cs" />
+    <Compile Include="AuxiliaryClass\Demo.cs" />
+    <Compile Include="AuxiliaryClass\TableFieldBaseData.cs" />
+    <Compile Include="AuxiliaryClass\OperateApplication.cs" />
+    <Compile Include="AuxiliaryClass\Tools.cs" />
+    <Compile Include="AuxiliaryClass\TransformJSON.cs" />
+    <Compile Include="LoginCorrelation\CacheAndVersion.cs" />
+    <Compile Include="LoginCorrelation\LoginSystem.cs" />
+    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Model\XsqkBean.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportOperate\AuxiliaryFunction.cs" />
+    <Compile Include="ReportOperate\BaseData.cs" />
+    <Compile Include="ReportOperate\CacheContext.cs" />
+    <Compile Include="ReportOperate\CacheHelper.cs" />
+    <Compile Include="ReportOperate\CreateXML.cs" />
+    <Compile Include="ReportOperate\CSReportOperate.cs" />
+    <Compile Include="ReportOperate\DeleteOrSendReport.cs" />
+    <Compile Include="ReportOperate\DifferentialReport.cs" />
+    <Compile Include="ReportOperate\DocOper.cs" />
+    <Compile Include="ReportOperate\ExcelOper.cs" />
+    <Compile Include="ReportOperate\ExcelOperate.cs" />
+    <Compile Include="ReportOperate\ExportWord.cs" />
+    <Compile Include="ReportOperate\GetHP01Const.cs" />
+    <Compile Include="ReportOperate\GetTreeNote.cs" />
+    <Compile Include="ReportOperate\HP01SKR.cs" />
+    <Compile Include="ReportOperate\HPSummarizeReport.cs" />
+    <Compile Include="ReportOperate\Message.cs" />
+    <Compile Include="ReportOperate\ReadHtm.cs" />
+    <Compile Include="ReportOperate\ReportHelpClass.cs" />
+    <Compile Include="ReportOperate\RiverDistribute.cs" />
+    <Compile Include="ReportOperate\SaveOrUpdateReport.cs" />
+    <Compile Include="ReportOperate\InBox.cs" />
+    <Compile Include="ReportOperate\SendXMLFile.cs" />
+    <Compile Include="ReportOperate\SummaryReportForm.cs" />
+    <Compile Include="ReportOperate\TownReport.cs" />
+    <Compile Include="ReportOperate\UrgeAndReadReport.cs" />
+    <Compile Include="ReportOperate\ViewReportForm.cs" />
+    <Compile Include="Service References\WS_Deliver\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_Affix\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_BS_CS_XML\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_XML\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\Analysis\AnalysisBean.cs" />
+    <Compile Include="Statistics\Analysis\DisasterAnalysis.cs" />
+    <Compile Include="Statistics\Analysis\DisasterAnalysisMasterControl.cs" />
+    <Compile Include="Statistics\Assessment\AnnualEvaluation.cs" />
+    <Compile Include="Statistics\Assessment\AssessmentBean.cs" />
+    <Compile Include="Statistics\Assessment\DisasterAssessment_Content.cs" />
+    <Compile Include="Statistics\Assessment\DisasterAssessment_title.cs" />
+    <Compile Include="Statistics\Assessment\Evaluation.cs" />
+    <Compile Include="Statistics\Assessment\getDisasterLevelForMap.cs" />
+    <Compile Include="Statistics\Assessment\SingleEvaluation.cs" />
+    <Compile Include="Statistics\Map\GetBBData.cs" />
+    <Compile Include="Statistics\Map\GetImage.cs" />
+    <Compile Include="Statistics\Map\MapBean.cs" />
+    <Compile Include="Statistics\PieChart\GraphicsUtil.cs" />
+    <Compile Include="Statistics\PieChart\PieChart.cs" />
+    <Compile Include="Statistics\PieChart\PieSlice.cs" />
+    <Compile Include="Statistics\PieChart\Quadrilateral.cs" />
+    <Compile Include="Statistics\PieChart\Util.cs" />
+    <Compile Include="XMMZH\XMMSetZHClass.cs" />
+    <Compile Include="XMMZH\XMMZHClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBHelper\DBHelper.csproj">
+      <Project>{EB8DD962-7A54-4565-8B73-CB3C798D230E}</Project>
+      <Name>DBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityModel\EntityModel.csproj">
+      <Project>{61EA76FE-F474-4BFD-A882-0521504CA498}</Project>
+      <Name>EntityModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\WS_Deliver\Deliver.wsdl" />
+    <None Include="Service References\WS_Affix\FxbbSendAffix.wsdl" />
+    <None Include="Service References\WS_BS_CS_XML\RptTrans.wsdl" />
+    <None Include="Service References\WS_XML\wsRptTrans.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WS_Deliver\" />
+    <WCFMetadataStorage Include="Service References\WS_Affix\" />
+    <WCFMetadataStorage Include="Service References\WS_BS_CS_XML\" />
+    <WCFMetadataStorage Include="Service References\WS_XML\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_XML\wsRptTrans.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_XML\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_XML\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_XML\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_Affix\FxbbSendAffix.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_Affix\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_Affix\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_Affix\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="NPOIDlls\Aspose.Words.dll" />
+    <Content Include="NPOIDlls\Ionic.Zip.dll" />
+    <Content Include="NPOIDlls\itextsharp.dll" />
+    <Content Include="NPOIDlls\NPOI.dll" />
+    <Content Include="NPOIDlls\NPOI.XML" />
+    <Content Include="NPOIDlls\Svg.dll" />
+    <None Include="Service References\WS_Deliver\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WS_Deliver\configuration.svcinfo" />
+    <None Include="Service References\WS_Deliver\configuration91.svcinfo" />
+    <None Include="Service References\WS_Deliver\Deliver.disco" />
+    <None Include="Service References\WS_BS_CS_XML\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WS_BS_CS_XML\configuration.svcinfo" />
+    <None Include="Service References\WS_BS_CS_XML\configuration91.svcinfo" />
+    <None Include="Service References\WS_BS_CS_XML\RptTrans.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

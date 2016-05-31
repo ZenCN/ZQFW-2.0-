@@ -1,0 +1,10 @@
+﻿copyright = Copyright (C) 2012. All rights reserved.
+cx = 805
+cy = 600
+hyperlinks = false
+hyperlinksNew = false
+imageDesc = false
+logo = false
+renderFormat = gif
+renderOptions = dither 
+renderQuality = 30

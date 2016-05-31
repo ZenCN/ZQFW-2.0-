@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="ViewUnderReport">
+<head>
+    <title>查看下级表</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href="../../Contents/ViewUnderReport/view_rpt.all-0.1.0.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        window.basedata = {
+            Report: @Html.Raw(ViewData["Report"].ToString()),
+            Unders: @Html.Raw(@ViewData["Unders"].ToString()),
+            Field: @Html.Raw(ViewData["Field"].ToString()),
+            Reservoir: @Html.Raw(ViewData["Reservoir"].ToString()),
+            RiverUnits: @Html.Raw(ViewData["RiverUnits"].ToString())
+        };
+    </script>
+</head>
+<body ng-controller="MainCtrl">
+    <div class="ToolBar">
+        <ul>
+            @*<li class="Save" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Save()"><i></i>保存</li>
+                    <li class="Delete" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Delete.Report()"><i></i>删除</li>
+                    <li class="Send" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Send()"><i></i>报送</li>
+                    <li class="Export">
+                        <a ng-if="BaseData.isRiverRpt" href="{{'/ReportOperate/ExportExcel?pageno=' + Report[Attr.NameSpace].Current.ReportTitle.PageNO + '&rpttype=' + 
+                                Report[Attr.NameSpace].Current.ReportTitle.ORD_Code + '&limit=' + BaseData.Unit.Local.Limit + '&unitcode=' + 
+                                Report[Attr.NameSpace].Current.ReportTitle.UnitCode + '&sTime=' + Report[Attr.NameSpace].Current.ReportTitle.StartDateTime + 
+                                '&ord_name=' + Report.Current.Attr.RiverName + '&eTime=' + Report[Attr.NameSpace].Current.ReportTitle.EndDateTime}}">
+                            <i></i>导出
+                        </a>
+                        <a ng-if="!BaseData.isRiverRpt" href="{{'/ReportOperate/ExportExcel?pageno=' + Report[Attr.NameSpace].Current.ReportTitle.PageNO + '&rpttype=' + 
+                                Report[Attr.NameSpace].Current.ReportTitle.ORD_Code + '&limit=' + BaseData.Unit.Local.Limit + '&unitcode=' + 
+                                Report[Attr.NameSpace].Current.ReportTitle.UnitCode + '&sTime=' + Report[Attr.NameSpace].Current.ReportTitle.StartDateTime + 
+                                '&eTime=' + Report[Attr.NameSpace].Current.ReportTitle.EndDateTime + '&unitname=' + Report[Attr.NameSpace].Current.ReportTitle.UnitName}}">
+                            <i></i>导出
+                        </a>
+                    </li>*@
+        </ul>
+    </div>
+    <div class="Report" ng-include="'GetTemplate?rptType=' + Open.Report.Current.ReportTitle.ORD_Code + '&tableType=Edit&isCurYear=' + $parentScope.Open.Fn.Common.isCurYear(Open.Report.Current.ReportTitle.EndDateTime)">
+
+    </div>
+    <div class="Report-Footer">
+        <div class="Tabs">
+            <ul>
+                <li class="ReportTitle Selected">
+                    <span><i></i>表头尾信息</span>
+                </li>
+            </ul>
+        </div>
+        <div class="Boxes">
+            <div class="ReportTitle">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>时段类型：半月报</td>
+                        <td>&nbsp;&nbsp;填报单位：{{Open.Report.Current.ReportTitle.UnitName}}</td>
+                        <td>填报人：{{Open.Report.Current.ReportTitle.WriterName}}</td>
+                    </tr>
+                    <tr>
+                        <td>起止日期：{{Open.Report.Current.ReportTitle.StartDateTime}}&nbsp;至&nbsp;{{Open.Report.Current.ReportTitle.EndDateTime}}</td>
+                        <td>单位负责人：{{Open.Report.Current.ReportTitle.UnitPrincipal}}</td>
+                        <td><!--校核人：--></td>
+                    </tr>
+                    <tr>
+                        <td>填报日期：{{Open.Report.Current.ReportTitle.WriterTime}}</td>
+                        <td>统计负责人：{{Open.Report.Current.ReportTitle.StatisticsPrincipal}}</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<!--------------------------JavaScript----------------------->
+<!--Base Library-->
+<script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
+<script src="../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
+<script src="../../Scripts/Library/Plugins/easydialog.min.js" type="text/javascript"></script>
+<script src="../../Scripts/Library/Plugins/jquery.uploadify.min.js" type="text/javascript"></script>
+<script src="../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+<script src="../../Scripts/Library/Extend/String.js" type="text/javascript"></script>
+<script src="../../Scripts/Application/SH.ViewUnderReport.js" type="text/javascript"></script>
+<script src="../../Scripts/Directives/PublicDirective.js" type="text/javascript"></script>
+<script src="../../Scripts/Others/Tools.js" type="text/javascript"></script>
+</html>

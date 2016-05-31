@@ -1,0 +1,95 @@
+﻿#chart_shower
+{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color:#fff;
+	overflow-y:auto;
+	overflow-x:auto;
+	background-image:url(../../Img/Statistics/Analysis/analysis_left.png);
+	background-repeat:no-repeat;
+	background-position:right center;
+	border-right:1px solid #d5d5d5;
+	}
+#chart
+{
+	position:absolute;
+	left:50px;
+	right:50px;
+	top:50px;
+	bottom:100px;	
+	}
+.buttonBack
+{
+	position:absolute;
+	left:50%;
+	bottom:20px;
+	height:43px;
+	background-image:url(../../Img/Statistics/Analysis/button.png);
+	background-position:left -129px;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	}
+.buttonBack span
+{
+	height:100%;
+	display:block;
+	margin:0 0 0 10px;
+	padding:0 18px 0 8px;
+	line-height:43px;
+	font-weight:bold;
+	background-image:url(../../Img/Statistics/Analysis/button.png);
+	background-position:right 0;
+	background-repeat:no-repeat;
+	}
+.buttonBack:hover
+{
+	background-position-y:-172px;
+	}
+.buttonBack:hover span
+{
+	background-position-y:-43px;
+	}
+.buttonBack:active
+{
+	background-position-y:-215px;
+	}
+.buttonBack:active span
+{
+	background-position-y:-86px;
+	}
+#back
+{
+
+	}
+#save
+{
+	margin-left:100px;
+	}
+	
+#table
+{
+	position:absolute;
+	left:50px;
+	right:50px;
+	top:100px;
+	bottom:100px;
+	display:none;
+	overflow-y:auto;
+	}
+#chart.show
+{
+	bottom:40%;	
+	}
+#table.show
+{
+	top:60%;
+	display:block;
+}
+#table table 
+{
+	width:100%;
+	margin:0 auto;	
+	}

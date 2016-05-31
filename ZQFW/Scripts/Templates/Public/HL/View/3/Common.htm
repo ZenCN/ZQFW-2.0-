@@ -1,0 +1,58 @@
+﻿<table ng-show="Report.TableIndex == 2">
+    <caption>
+        工业信息交通运输业洪涝灾害统计表
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2" nowrap="">
+                地区
+            </th>
+            <th scope="col">
+                停产工矿企业
+            </th>
+            <th scope="col">
+                铁路中断
+            </th>
+            <th scope="col">
+                公路中断
+            </th>
+            <th scope="col">
+                机场关停
+            </th>
+            <th scope="col">
+                供电中断
+            </th>
+            <th scope="col">
+                通讯中断
+            </th>
+            <th scope="col">
+                工业信息交通运输业直接经济损失
+            </th>
+        </tr>
+        <tr>
+            <th scope="col" name="TCGKQY">
+                {{BaseData.Field.TCGKQY.MeasureName ? BaseData.Field.TCGKQY.MeasureName : "（个）"}}
+            </th>
+            <th scope="col" name="TLZD">
+                {{BaseData.Field.TLZD.MeasureName ? BaseData.Field.TLZD.MeasureName : "（条次）"}}
+            </th>
+            <th scope="col" name="GLZD">
+                {{BaseData.Field.GLZD.MeasureName ? BaseData.Field.GLZD.MeasureName : "（条次）"}}
+            </th>
+            <th scope="col" name="JCGKGT">
+                {{BaseData.Field.JCGKGT.MeasureName ? BaseData.Field.JCGKGT.MeasureName : "（个次）"}}
+            </th>
+            <th scope="col" name="GDZD">
+                {{BaseData.Field.GDZD.MeasureName ? BaseData.Field.GDZD.MeasureName : "（条次）"}}
+            </th>
+            <th scope="col" name="TXZD">
+                {{BaseData.Field.TXZD.MeasureName ? BaseData.Field.TXZD.MeasureName : " （条次）"}}
+            </th>
+            <th scope="col" name="GJYSZJJJSS">
+                {{BaseData.Field.GJYSZJJJSS.MeasureName ? BaseData.Field.GJYSZJJJSS.MeasureName
+                : "（万元）"}}
+            </th>
+        </tr>
+    </thead>
+
+</table>

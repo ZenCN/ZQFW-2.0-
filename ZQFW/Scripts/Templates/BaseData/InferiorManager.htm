@@ -1,0 +1,53 @@
+﻿<table class="Table">
+    <caption>
+        行政单位管理
+    </caption>
+    <thead>
+        <tr>
+            <th class="blue">
+                单位名称
+            </th>
+            <th class="blue">
+                行政区划码
+            </th>
+            <th class="blue">
+                上级行政区划码
+            </th>
+            <th class="blue">
+                一级流域代码
+            </th>
+            <th class="blue">
+                单位顺序
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="_this in Unit.Unders.Array" ng-form="tr">
+            <td>
+                <input type="text" ng-model="_this.Name" ng-blur="FCU('Name', _this.Name);FCS();"/>
+            </td>
+            <td>
+                <input type="text" ng-model="_this.Code" ng-blur="FCU('Code', _this.Code)"/>
+            </td>
+            <td>
+                <!--<input type="text" ng-model=""/>-->
+                {{_this.ParentCode}}
+            </td>
+            <td>
+                <input type="text" ng-model="_this.RiverCode"/>
+            </td>
+            <td>
+                <input type="text" ng-model="_this.Order" ng-blur="FCU('Order', _this.Order);Unit.Unders.Array.BubbleSort('Order', 'asc')" required/>
+            </td>
+            <th>
+                <button class="DarkBlue Keyboard" title="重置密码" ng-hide="_this.ID >= 0" ng-click="Unit.Fn.Reset(0, _this.Code)">
+                    <i class="Reset"></i>
+                </button>
+                <button class="DarkBlue Keyboard" title="删除" ng-click="Unit.Fn.Delete(_this)">
+                    <i class="Delete"></i>
+                </button>
+            </th>
+        </tr>
+    </tbody>
+</table>

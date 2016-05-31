@@ -1,0 +1,1060 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.1.411-EAP\build\JetBrains.ReSharper.SDK.Props" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.411-EAP\build\JetBrains.ReSharper.SDK.Props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E793EEE9-5243-4024-93D6-13256EDB3217}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZQFW</RootNamespace>
+    <AssemblyName>ZQFW</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LogicProcessingClass\NPOIDlls\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\insurance\packages\Newtonsoft.Json.8.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg, Version=0.5.2.17984, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LogicProcessingClass\NPOIDlls\Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AffixOperaterController.cs" />
+    <Compile Include="Controllers\BaseDataController.cs" />
+    <Compile Include="Controllers\HightchartsController.cs" />
+    <Compile Include="Controllers\HistoryDisasterController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\Index\InboxAndRecycleController.cs" />
+    <Compile Include="Controllers\Index\IndexOldController.cs" />
+    <Compile Include="Controllers\Index\OpenController.cs" />
+    <Compile Include="Controllers\Index\UrgeReportController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\HeadController.cs" />
+    <Compile Include="Controllers\ReportOperateController.cs" />
+    <Compile Include="Controllers\SHController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\SystemMaintainController.cs" />
+    <Compile Include="Controllers\TownController.cs" />
+    <Compile Include="Mapserver\MMControl\Movie.aspx.cs">
+      <DependentUpon>Movie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mapserver\MMControl\Picture.aspx.cs">
+      <DependentUpon>Picture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service References\WS_Affix\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_BS_CS_XML\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_Deliver\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_XML\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginSession.aspx.cs">
+      <DependentUpon>LoginSession.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LoginSession.aspx.designer.cs">
+      <DependentUpon>LoginSession.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Analysis.aspx.cs">
+      <DependentUpon>Analysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\Analysis.aspx.designer.cs">
+      <DependentUpon>Analysis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Assessment.aspx.cs">
+      <DependentUpon>Assessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\Assessment.aspx.designer.cs">
+      <DependentUpon>Assessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\ChartP3.aspx.cs">
+      <DependentUpon>ChartP3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\ChartP3.aspx.designer.cs">
+      <DependentUpon>ChartP3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\EvaluateTable.aspx.cs">
+      <DependentUpon>EvaluateTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\EvaluateTable.aspx.designer.cs">
+      <DependentUpon>EvaluateTable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\EvaluateTableOfYear.aspx.cs">
+      <DependentUpon>EvaluateTableOfYear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\EvaluateTableOfYear.aspx.designer.cs">
+      <DependentUpon>EvaluateTableOfYear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Map.aspx.cs">
+      <DependentUpon>Map.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\Map.aspx.designer.cs">
+      <DependentUpon>Map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\PieChart.aspx.cs">
+      <DependentUpon>PieChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Statistics\PieChart.aspx.designer.cs">
+      <DependentUpon>PieChart.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Affix\说明.txt" />
+    <Content Include="App_Code\AssemblyInfo.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Contents\BaseData\basedata.all-0.1.0.css" />
+    <Content Include="Contents\BaseData\basedata.all-0.1.0.js" />
+    <Content Include="Contents\BaseData\basedata.all-0.1.0.min.css" />
+    <Content Include="Contents\BaseData\basedata.all-0.1.0.min.js" />
+    <Content Include="Contents\HistoryDisaster\history.all-0.1.0.css" />
+    <Content Include="Contents\HistoryDisaster\history.all-0.1.0.js" />
+    <Content Include="Contents\HistoryDisaster\history.all-0.1.0.min.css" />
+    <Content Include="Contents\HistoryDisaster\history.all-0.1.0.min.js" />
+    <Content Include="Contents\Index\index.all-0.1.0.css" />
+    <Content Include="Contents\Index\index.all-0.1.0.js" />
+    <Content Include="Contents\Index\index.all-0.1.0.min.css" />
+    <Content Include="Contents\Index\index.all-0.1.0.min.js" />
+    <Content Include="Contents\Index\index.sh.all-0.1.0.js" />
+    <Content Include="Contents\Index\index.sh.all-0.1.0.min.js" />
+    <Content Include="Contents\Login\login.all-0.1.0.css" />
+    <Content Include="Contents\Login\login.all-0.1.0.js" />
+    <Content Include="Contents\Login\login.all-0.1.0.min.css" />
+    <Content Include="Contents\Login\login.all-0.1.0.min.js" />
+    <Content Include="Contents\Main\main.all-0.1.0.css" />
+    <Content Include="Contents\Main\main.all-0.1.0.js" />
+    <Content Include="Contents\Main\main.all-0.1.0.min.css" />
+    <Content Include="Contents\Main\main.all-0.1.0.min.js" />
+    <Content Include="Contents\Print\print.all-0.1.0.css" />
+    <Content Include="Contents\Print\print.all-0.1.0.js" />
+    <Content Include="Contents\Print\print.all-0.1.0.min.css" />
+    <Content Include="Contents\Print\print.all-0.1.0.min.js" />
+    <Content Include="Contents\ReportDetails\HL01\15\rpt_details.all-0.1.0.css" />
+    <Content Include="Contents\ReportDetails\HL01\15\rpt_details.all-0.1.0.min.css" />
+    <Content Include="Contents\ReportDetails\HL01\Common\rpt_details.all-0.1.0.css" />
+    <Content Include="Contents\ReportDetails\HL01\Common\rpt_details.all-0.1.0.js" />
+    <Content Include="Contents\ReportDetails\HL01\Common\rpt_details.all-0.1.0.min.css" />
+    <Content Include="Contents\ReportDetails\HL01\Common\rpt_details.all-0.1.0.min.js" />
+    <Content Include="Contents\SystemMaintain\system.all-0.1.0.css" />
+    <Content Include="Contents\SystemMaintain\system.all-0.1.0.js" />
+    <Content Include="Contents\SystemMaintain\system.all-0.1.0.min.css" />
+    <Content Include="Contents\SystemMaintain\system.all-0.1.0.min.js" />
+    <Content Include="Contents\Town\town.all-0.1.0.css" />
+    <Content Include="Contents\Town\town.all-0.1.0.js" />
+    <Content Include="Contents\Town\town.all-0.1.0.min.css" />
+    <Content Include="Contents\Town\town.all-0.1.0.min.js" />
+    <Content Include="Contents\ViewUnderReport\view_rpt.all-0.1.0.css" />
+    <Content Include="Contents\ViewUnderReport\view_rpt.all-0.1.0.min.css" />
+    <Content Include="CSS\Img\Pages\Error\404.png" />
+    <Content Include="CSS\Img\Pages\Error\500.png" />
+    <Content Include="CSS\Img\Pages\Error\501.png" />
+    <Content Include="CSS\Img\Pages\Error\600.png" />
+    <Content Include="CSS\Img\Pages\LoginMaster\login_tab.png" />
+    <Content Include="CSS\Img\Pages\Main\Menu2.png" />
+    <Content Include="CSS\Img\Pages\System\BackUp.png" />
+    <Content Include="CSS\Img\Public\Helper.png" />
+    <Content Include="CSS\Img\Pages\LoginMaster\Login.png" />
+    <Content Include="CSS\Img\Pages\LoginMaster\M-Top.png" />
+    <Content Include="CSS\Img\Pages\LoginMaster\Main.png" />
+    <Content Include="CSS\Img\Pages\LoginMaster\QuickLogin.png" />
+    <Content Include="CSS\Img\Pages\LoginMaster\QuickOrNormalLogin.png" />
+    <Content Include="CSS\Img\Pages\Main\Menu.png" />
+    <Content Include="CSS\Img\Public\Balloon.png" />
+    <Content Include="CSS\Img\Public\Blue.png" />
+    <Content Include="CSS\Img\Public\Close.png" />
+    <Content Include="CSS\Img\Public\DarkGray.png" />
+    <Content Include="CSS\Img\Public\Dot.png" />
+    <Content Include="CSS\Img\Public\Float_Box\1.png" />
+    <Content Include="CSS\Img\Public\Float_Box\2.png" />
+    <Content Include="CSS\Img\Public\JumperIcons.png" />
+    <Content Include="CSS\Img\Public\Logo\15.png" />
+    <Content Include="CSS\Img\Public\Logo\15_SH.png" />
+    <Content Include="CSS\Img\Public\Logo\22.png" />
+    <Content Include="CSS\Img\Public\Logo\23.png" />
+    <Content Include="CSS\Img\Public\Logo\35.png" />
+    <Content Include="CSS\Img\Public\Logo\36.png" />
+    <Content Include="CSS\Img\Public\Logo\43.png" />
+    <Content Include="CSS\Img\Public\Logo\33.png" />
+    <Content Include="CSS\Img\Public\Logo\44.png" />
+    <Content Include="CSS\Img\Public\Logo\45.png" />
+    <Content Include="CSS\Img\Public\Logo\background.png" />
+    <Content Include="CSS\Img\Public\MenuIcons\1.png" />
+    <Content Include="CSS\Img\Public\MenuIcons\2.png" />
+    <Content Include="CSS\Img\Public\MenuIcons\3.jpg" />
+    <Content Include="CSS\Img\Public\OpenLayer\close.png" />
+    <Content Include="CSS\Img\Public\OpenLayer\shadow_hor.png" />
+    <Content Include="CSS\Img\Public\Scenery-BackGround.jpg" />
+    <Content Include="CSS\Img\Public\Shadow.png" />
+    <Content Include="CSS\Img\Public\Tab_BackGround.png" />
+    <Content Include="CSS\Img\Public\TBlue_MDarkBlue-BWhite-Y.png" />
+    <Content Include="CSS\Img\Public\TWhite_BBlue-Y.png" />
+    <Content Include="CSS\Img\Public\UnderConstruction.jpg" />
+    <Content Include="CSS\Img\Public\up_down_arrow.png" />
+    <Content Include="CSS\Img\Public\White-X.png" />
+    <Content Include="CSS\Img\Public\White-Y.png" />
+    <Content Include="CSS\Img\Statistics\Analysis\analysis_left.png" />
+    <Content Include="CSS\Img\Statistics\Analysis\analysis_right.png" />
+    <Content Include="CSS\Img\Statistics\Analysis\box_title.png" />
+    <Content Include="CSS\Img\Statistics\Analysis\button.png" />
+    <Content Include="CSS\Img\Statistics\Analysis\title_bg.png" />
+    <Content Include="CSS\Img\Statistics\Assessment\1.png" />
+    <Content Include="CSS\Img\Statistics\Assessment\2.png" />
+    <Content Include="CSS\Img\Statistics\Assessment\3.png" />
+    <Content Include="CSS\Img\Statistics\Assessment\4.png" />
+    <Content Include="CSS\Img\Statistics\Assessment\loader.gif" />
+    <Content Include="CSS\Pages\AutoGather.css" />
+    <Content Include="CSS\Pages\BaseData.css" />
+    <Content Include="CSS\Pages\Benefit.css" />
+    <Content Include="CSS\Pages\DisasterReview.css" />
+    <Content Include="CSS\Pages\Error.css" />
+    <Content Include="CSS\Pages\HistoryDisaster\View.css" />
+    <Content Include="CSS\Pages\Index\CommonReport.css" />
+    <Content Include="CSS\Pages\Index\Frame.css" />
+    <Content Include="CSS\Pages\Index\Receive.css" />
+    <Content Include="CSS\Pages\Index\New.css" />
+    <Content Include="CSS\Pages\Index\Open.css" />
+    <Content Include="CSS\Pages\Index\RecycleBin.css" />
+    <Content Include="CSS\Pages\Index\SimpleReport.css" />
+    <Content Include="CSS\Pages\Index\UrgeReport.css" />
+    <Content Include="CSS\Pages\Index\ViewUnderReport.css" />
+    <Content Include="CSS\Pages\LeaderAudit.css" />
+    <Content Include="CSS\Pages\LoginMaster.css" />
+    <Content Include="CSS\Pages\Main.css" />
+    <Content Include="CSS\Pages\Print.css" />
+    <Content Include="CSS\Pages\SingleSheet.css" />
+    <Content Include="CSS\Pages\SystemManintain.css" />
+    <Content Include="CSS\Pages\Town\Frame.css" />
+    <Content Include="CSS\Pages\Town\New.css" />
+    <Content Include="CSS\Pages\ViewInferiorData.css" />
+    <Content Include="CSS\Plugins\Easydialog.css" />
+    <Content Include="CSS\Plugins\JGrowl.min.css" />
+    <Content Include="CSS\Plugins\JGrowl\iphone.png" />
+    <Content Include="CSS\Plugins\JGrowl\JGrowl.min.css" />
+    <Content Include="CSS\Plugins\MultiSelect\multi-select.css" />
+    <Content Include="CSS\Plugins\MultiSelect\switch.png" />
+    <Content Include="CSS\Plugins\Tooltipster.css" />
+    <Content Include="CSS\Plugins\Uploadify\uploadify.css" />
+    <Content Include="CSS\Plugins\Uploadify\uploadify.swf" />
+    <Content Include="CSS\Plugins\zTree\img\diy\1_close.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\1_open.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\2.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\3.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\4.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\5.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\6.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\7.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\8.png" />
+    <Content Include="CSS\Plugins\zTree\img\diy\9.png" />
+    <Content Include="CSS\Plugins\zTree\img\line_conn.gif" />
+    <Content Include="CSS\Plugins\zTree\img\loading.gif" />
+    <Content Include="CSS\Plugins\zTree\img\treeico.png" />
+    <Content Include="CSS\Plugins\zTree\img\zTreeStandard.gif" />
+    <Content Include="CSS\Plugins\zTree\img\zTreeStandard.png" />
+    <Content Include="CSS\Plugins\zTree\TreeItems.css" />
+    <Content Include="CSS\Plugins\zTree\zTreeStyle.css" />
+    <Content Include="CSS\Public\Body.css" />
+    <Content Include="CSS\Public\Button.css" />
+    <Content Include="CSS\Public\Dialog.css" />
+    <Content Include="CSS\Public\Float.css" />
+    <Content Include="CSS\Public\Head.css" />
+    <Content Include="CSS\Public\LeftTree.css" />
+    <Content Include="CSS\Public\ListHorizontal.css" />
+    <Content Include="CSS\Public\MenuBar.css" />
+    <Content Include="CSS\Public\OpenLayer.css" />
+    <Content Include="CSS\Public\PSW.css" />
+    <Content Include="CSS\Public\Report.css" />
+    <Content Include="CSS\Public\Search.css" />
+    <Content Include="CSS\Public\Shadow.css" />
+    <Content Include="CSS\Public\Tabs.css" />
+    <Content Include="CSS\Public\TitleList.css" />
+    <Content Include="CSS\Public\ToolBar.css" />
+    <Content Include="CSS\Statistics\Analysis\chart_left_side.css" />
+    <Content Include="CSS\Statistics\Analysis\chart_shower.css" />
+    <Content Include="CSS\Statistics\Analysis\right_step_shower.css" />
+    <Content Include="CSS\Statistics\Analysis\TableCss.css" />
+    <Content Include="CSS\Statistics\Assessment\evaluateTable.css" />
+    <Content Include="CSS\Statistics\Assessment\img\big.png" />
+    <Content Include="CSS\Statistics\Assessment\img\evalbg.png" />
+    <Content Include="CSS\Statistics\Assessment\img\shadowfoot.png" />
+    <Content Include="CSS\Statistics\Assessment\img\sidebarnav_arrow.png" />
+    <Content Include="CSS\Statistics\Assessment\img\specs_column_gradient.png" />
+    <Content Include="CSS\Statistics\Assessment\img\upshadow.png" />
+    <Content Include="CSS\Statistics\Assessment\userView.css" />
+    <Content Include="CSS\Statistics\Main.css" />
+    <Content Include="CSS\Statistics\main_shadow_bg.png" />
+    <Content Include="CSS\Statistics\Menu.css" />
+    <Content Include="CSS\Statistics\menu_ico.png" />
+    <Content Include="CSS\Statistics\menu_items.png" />
+    <Content Include="CSS\Statistics\top_menu_bg.png" />
+    <Content Include="Document\File\说明.txt" />
+    <Content Include="ExcelFile\说明.txt" />
+    <Content Include="ExcelModel\说明.txt" />
+    <Content Include="Mapserver\config.txt" />
+    <Content Include="Mapserver\css\loginDiv.css" />
+    <Content Include="Mapserver\css\mapControl\button.css" />
+    <Content Include="Mapserver\css\mapControl\fs_img_g_bg.png" />
+    <Content Include="Mapserver\css\mapControl\legend.css" />
+    <Content Include="Mapserver\css\mapControl\mapControl.css" />
+    <Content Include="Mapserver\css\mapControl\mapinfo.css" />
+    <Content Include="Mapserver\css\mapControl\picture.css" />
+    <Content Include="Mapserver\css\mapControl\sidebox-bottom2.png" />
+    <Content Include="Mapserver\css\mapControl\sidebox-top2.png" />
+    <Content Include="Mapserver\css\mapControl\legendEditor.css" />
+    <Content Include="Mapserver\css\map\infoTable.css" />
+    <Content Include="Mapserver\css\map\map.css" />
+    <Content Include="Mapserver\css\map\ruler.css" />
+    <Content Include="Mapserver\css\map\side_bar.css" />
+    <Content Include="Mapserver\css\map\Stylebody.css" />
+    <Content Include="Mapserver\css\table\TableCss.css" />
+    <Content Include="Mapserver\facebox\closelabel.png" />
+    <Content Include="Mapserver\facebox\facebox.css" />
+    <Content Include="Mapserver\facebox\facebox.js" />
+    <Content Include="Mapserver\facebox\loading.gif" />
+    <Content Include="Mapserver\fancybox\blank.gif" />
+    <Content Include="Mapserver\fancybox\fancybox_loading.gif" />
+    <Content Include="Mapserver\fancybox\fancybox_sprite.png" />
+    <Content Include="Mapserver\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="Mapserver\fancybox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Mapserver\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Mapserver\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="Mapserver\fancybox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Mapserver\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Mapserver\fancybox\jquery.fancybox.css" />
+    <Content Include="Mapserver\fancybox\jquery.fancybox.js" />
+    <Content Include="Mapserver\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="Mapserver\flv\CuPlayer\CuPlayerMiniV3_Black_S.swf" />
+    <Content Include="Mapserver\flv\CuPlayer\Images\common.css" />
+    <Content Include="Mapserver\flv\CuPlayer\Images\flashChangfa2.jpg" />
+    <Content Include="Mapserver\flv\CuPlayer\Images\Ico_01.gif" />
+    <Content Include="Mapserver\flv\CuPlayer\Images\Logo.png" />
+    <Content Include="Mapserver\flv\CuPlayer\Images\swfobject.js" />
+    <Content Include="Mapserver\flv\CuPlayer\Images\Vico.jpg" />
+    <Content Include="Mapserver\handlingMap.asp" />
+    <Content Include="Mapserver\images\ajax-loader_dark.gif" />
+    <Content Include="Mapserver\images\button\button.gif" />
+    <Content Include="Mapserver\images\button\button.png" />
+    <Content Include="Mapserver\images\button\chart_bar.gif" />
+    <Content Include="Mapserver\images\button\chart_bar.png" />
+    <Content Include="Mapserver\images\button\chart_p3.gif" />
+    <Content Include="Mapserver\images\button\chart_p3.png" />
+    <Content Include="Mapserver\images\button\chart_pie.gif" />
+    <Content Include="Mapserver\images\button\chart_pie.png" />
+    <Content Include="Mapserver\images\button\table.gif" />
+    <Content Include="Mapserver\images\button\table.png" />
+    <Content Include="Mapserver\images\chart\chartshow\save&amp;back.png" />
+    <Content Include="Mapserver\images\chart\dloadmout.png" />
+    <Content Include="Mapserver\images\chart\dloadmover.png" />
+    <Content Include="Mapserver\images\chart\left\chart_line.png" />
+    <Content Include="Mapserver\images\chart\left\sidebarnav_arrow.png" />
+    <Content Include="Mapserver\images\chart\printmout.png" />
+    <Content Include="Mapserver\images\chart\printmover.png" />
+    <Content Include="Mapserver\images\chart\settingssteps\creatqst.png" />
+    <Content Include="Mapserver\images\close.gif" />
+    <Content Include="Mapserver\images\default\main-navi-hover.gif" />
+    <Content Include="Mapserver\images\default\main-navi.gif" />
+    <Content Include="Mapserver\images\default\top-navi-hover.gif" />
+    <Content Include="Mapserver\images\default\top-navi-white.gif" />
+    <Content Include="Mapserver\images\icons\delete-user.gif" />
+    <Content Include="Mapserver\images\icons\delete-user.png" />
+    <Content Include="Mapserver\images\icons\home.gif" />
+    <Content Include="Mapserver\images\icons\home.png" />
+    <Content Include="Mapserver\images\icons\money.gif" />
+    <Content Include="Mapserver\images\icons\money.png" />
+    <Content Include="Mapserver\images\icons\search-user.gif" />
+    <Content Include="Mapserver\images\icons\search-user.png" />
+    <Content Include="Mapserver\images\icons\send-user.gif" />
+    <Content Include="Mapserver\images\icons\send-user.png" />
+    <Content Include="Mapserver\images\icons\side_space.gif" />
+    <Content Include="Mapserver\images\icons\side_space.png" />
+    <Content Include="Mapserver\images\icons\user.gif" />
+    <Content Include="Mapserver\images\icons\user.png" />
+    <Content Include="Mapserver\images\icons\water.gif" />
+    <Content Include="Mapserver\images\icons\water.png" />
+    <Content Include="Mapserver\images\icons\xx.gif" />
+    <Content Include="Mapserver\images\icons\xx.png" />
+    <Content Include="Mapserver\images\index\bg.gif" />
+    <Content Include="Mapserver\images\index\chart.png" />
+    <Content Include="Mapserver\images\index\goback.png" />
+    <Content Include="Mapserver\images\index\header_background.gif" />
+    <Content Include="Mapserver\images\index\ico_text.png" />
+    <Content Include="Mapserver\images\index\loading.gif" />
+    <Content Include="Mapserver\images\index\login.png" />
+    <Content Include="Mapserver\images\index\logo.gif" />
+    <Content Include="Mapserver\images\index\map.png" />
+    <Content Include="Mapserver\images\index\table.png" />
+    <Content Include="Mapserver\images\legend\mail14c5d6.png" />
+    <Content Include="Mapserver\images\legend\shico.png" />
+    <Content Include="Mapserver\images\map\NZQD.png" />
+    <Content Include="Mapserver\images\map\switchMap.gif" />
+    <Content Include="Mapserver\images\packed-1.png" />
+    <Content Include="Mapserver\images\packed-2.gif" />
+    <Content Include="Mapserver\images\packed-2.png" />
+    <Content Include="Mapserver\images\ruler\bottom_tip.gif" />
+    <Content Include="Mapserver\images\ruler\bottom_tip.png" />
+    <Content Include="Mapserver\images\ruler\bottom_tip1.png" />
+    <Content Include="Mapserver\images\ruler\left_pointer.gif" />
+    <Content Include="Mapserver\images\ruler\left_pointer.png" />
+    <Content Include="Mapserver\images\ruler\line-bk.gif" />
+    <Content Include="Mapserver\images\ruler\line-bk.png" />
+    <Content Include="Mapserver\images\ruler\pointer.gif" />
+    <Content Include="Mapserver\images\ruler\pointer.png" />
+    <Content Include="Mapserver\images\ruler\right_pointer.gif" />
+    <Content Include="Mapserver\images\ruler\right_pointer.png" />
+    <Content Include="Mapserver\images\ruler\top_tip.gif" />
+    <Content Include="Mapserver\images\ruler\top_tip.png" />
+    <Content Include="Mapserver\images\table\toexcl.png" />
+    <Content Include="Mapserver\images\title_bg.png" />
+    <Content Include="Mapserver\JQuery\jquery.contextmenu.r2.packed.js" />
+    <Content Include="Mapserver\JQuery\jquery.easing.1.3.js" />
+    <Content Include="Mapserver\js\index\pageLoader.js" />
+    <Content Include="Mapserver\js\main.js" />
+    <Content Include="Mapserver\js\mapControl\chart.js" />
+    <Content Include="Mapserver\js\mapControl\disasterTypeChange.js" />
+    <Content Include="Mapserver\js\mapControl\getOffset.js" />
+    <Content Include="Mapserver\js\mapControl\legend.js" />
+    <Content Include="Mapserver\js\mapControl\refreshMap.js" />
+    <Content Include="Mapserver\js\mapControl\showInfo.js" />
+    <Content Include="Mapserver\js\mapControl\legendEditor.js" />
+    <Content Include="Mapserver\js\map\autoloadmap.js" />
+    <Content Include="Mapserver\js\map\chart\chart.js" />
+    <Content Include="Mapserver\js\map\chart\TableDate.js" />
+    <Content Include="Mapserver\js\map\chart\TableTitle_JS.js" />
+    <Content Include="Mapserver\js\map\getData.js" />
+    <Content Include="Mapserver\js\map\loadMap.js" />
+    <Content Include="Mapserver\js\map\ruler\ruler.js" />
+    <Content Include="Mapserver\js\map\switchMap.js" />
+    <Content Include="Mapserver\js\map\virtualData.js" />
+    <Content Include="Mapserver\js\printMap.js" />
+    <Content Include="Mapserver\js\public.js" />
+    <Content Include="Mapserver\map.asp" />
+    <Content Include="Mapserver\mapControl.asp" />
+    <Content Include="Mapserver\mapControl1.asp" />
+    <Content Include="Mapserver\mapParams\mapParams.asp" />
+    <Content Include="Mapserver\mapParams\mapParams.js" />
+    <Content Include="Mapserver\mapParams\mapParams.txt" />
+    <Content Include="Mapserver\mapParams\mapParams.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Mapserver\mapParams\mapParams1.asp" />
+    <Content Include="Mapserver\mapParams\mapParams1.js" />
+    <Content Include="Mapserver\MMControl\Movie.aspx" />
+    <Content Include="Mapserver\MMControl\Picture.aspx" />
+    <Content Include="Mapserver\public.asp" />
+    <Content Include="Scripts\Application\BaseDataApp.js" />
+    <Content Include="Scripts\Application\BenefitApp.js" />
+    <Content Include="Scripts\Application\HistoryDisaster.SH.App.js" />
+    <Content Include="Scripts\Application\Index.SH.App.js" />
+    <Content Include="Scripts\Application\Main.SH.App.js" />
+    <Content Include="Scripts\Application\MainApp.js" />
+    <Content Include="Scripts\Application\ReportDetails\HL01\15.js" />
+    <Content Include="Scripts\Application\ReportDetails\HL01\33.js" />
+    <Content Include="Scripts\Application\ReportDetails\HL01\Common.js" />
+    <Content Include="Scripts\Application\HistoryDisasterApp.js" />
+    <Content Include="Scripts\Application\LoginApp.js" />
+    <Content Include="Scripts\Application\IndexApp.js" />
+    <Content Include="Scripts\Application\ReportDetails\HP01\Common.js" />
+    <Content Include="Scripts\Application\SH.ViewUnderReport.js" />
+    <Content Include="Scripts\Application\SystemManintain.js" />
+    <Content Include="Scripts\Application\TownApp.js" />
+    <Content Include="Scripts\Application\ViewReport.js" />
+    <Content Include="Scripts\Configuration\Field.js" />
+    <Content Include="Scripts\Configuration\SH.js" />
+    <Content Include="Scripts\Controllers\BaseData\BaseDataController.js" />
+    <Content Include="Scripts\Controllers\HistoryDisaster\HistoryDisasterController.js" />
+    <Content Include="Scripts\Controllers\HistoryDisaster\HistoryDisasterSHController.js" />
+    <Content Include="Scripts\Controllers\Index\Index.SH.Controller.js" />
+    <Content Include="Scripts\Controllers\Index\IndexController.js" />
+    <Content Include="Scripts\Controllers\PublicController.js" />
+    <Content Include="Scripts\Controllers\Town\TownController.js" />
+    <Content Include="Scripts\Directives\HistoryDisaster\HistoryDisasterDirective.js" />
+    <Content Include="Scripts\Directives\Index\IndexDirective.js" />
+    <Content Include="Scripts\Directives\PublicDirective.js" />
+    <Content Include="Scripts\Directives\SH\Index.directive.js" />
+    <Content Include="Scripts\Directives\Town\NewDirective.js" />
+    <Content Include="Scripts\Factories\Index\IndexFactory.js" />
+    <Content Include="Scripts\Factories\PublicFactory.js" />
+    <Content Include="Scripts\Library\Angular\angular-resource.js" />
+    <Content Include="Scripts\Library\Angular\angular-resource.min.js" />
+    <Content Include="Scripts\Library\Angular\angular-ui-router.js" />
+    <Content Include="Scripts\Library\Angular\angular-ui-router.min.js" />
+    <Content Include="Scripts\Library\Angular\angular.js" />
+    <Content Include="Scripts\Library\Angular\angular.min.js" />
+    <Content Include="Scripts\Library\Angular\Scope.SafeApply.js" />
+    <Content Include="Scripts\Library\Extend\Object.js" />
+    <Content Include="Scripts\Library\Extend\String.js" />
+    <Content Include="Scripts\Library\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\Library\Plugins\preloader.js" />
+    <Content Include="CSS\Img\Public\Sprites.png" />
+    <Content Include="Scripts\Library\Plugins\table-fixed.js" />
+    <Content Include="Scripts\Library\Plugins\highchart\highcharts-3d.js" />
+    <Content Include="Scripts\Library\Plugins\highchart\highcharts.js" />
+    <Content Include="Scripts\Library\Plugins\highchart\modules\exporting.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.jgrowl.min.js" />
+    <Content Include="Scripts\Library\Extend\Array.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.form.min.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.multi-select.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.quicksearch.js" />
+    <Content Include="Scripts\Application\ReportDetails\NP01\BenefitController.js" />
+    <Content Include="Scripts\Models\ReportDetails\45.js" />
+    <Content Include="Scripts\Models\SH_Model.js" />
+    <Content Include="Scripts\Models\TreeNodeModel.js" />
+    <Content Include="Scripts\Models\HP_RptModel.js" />
+    <Content Include="Scripts\Models\HLModel.js" />
+    <Content Include="Scripts\Models\HPModel.js" />
+    <Content Include="Scripts\Models\DisasterModel.js" />
+    <Content Include="Scripts\Models\NPModel.js" />
+    <Content Include="Scripts\Models\ReportTitleModel.js" />
+    <Content Include="Scripts\Models\TownRptModel.js" />
+    <Content Include="Scripts\Others\Head.js" />
+    <Content Include="Scripts\Others\IndexReady.js" />
+    <Content Include="Scripts\Others\Print.js" />
+    <Content Include="Scripts\Others\PublicReady.js" />
+    <Content Include="Scripts\Others\Tools.js" />
+    <Content Include="Scripts\Statistics\Analysis\Analysis1.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\new.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\blueFresh\datepicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\blueFresh\img.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\twoer\datepicker-dev.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\twoer\datepicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\twoer\img.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\twoer\img.png" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\Statistics\Analysis\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\Statistics\Analysis\TableDate.js" />
+    <Content Include="Scripts\Statistics\Analysis\TableTitle_JS.js" />
+    <Content Include="Scripts\Statistics\Assessment\evalChart.js" />
+    <Content Include="Scripts\Statistics\Assessment\evalList.js" />
+    <Content Include="Scripts\Statistics\Assessment\evaluateTable.js" />
+    <Content Include="Scripts\Statistics\Assessment\evaluateTableOfYear.js" />
+    <Content Include="Scripts\Statistics\MenuGoto.js" />
+    <Content Include="Scripts\Statistics\WaterStorage\Chart.js" />
+    <Content Include="Scripts\Statistics\WaterStorage\config.txt" />
+    <Content Include="Scripts\Statistics\WaterStorage\legend.css" />
+    <Content Include="Scripts\Statistics\WaterStorage\legend.js" />
+    <Content Include="Scripts\Statistics\WaterStorage\map.asp" />
+    <Content Include="Scripts\Statistics\WaterStorage\mapControl.asp" />
+    <Content Include="Scripts\Statistics\WaterStorage\mapParams.asp" />
+    <Content Include="Scripts\Statistics\WaterStorage\mapParams.js" />
+    <Content Include="Scripts\Statistics\WaterStorage\mapParams.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\Statistics\WaterStorage\Map\config.txt" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\default.asp" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\default.css" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\Arrow.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ArrowP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolCenter.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolCenterP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolInfo.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolInfoP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomBox.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomBoxP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomIn.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomInP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomOut.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomOutP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomToFit.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\ToolZoomToFitP.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\images\waterLegend.png" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\map.asp" />
+    <Content Include="Scripts\Statistics\WaterStorage\Map\table.asp" />
+    <Content Include="Scripts\Statistics\WaterStorage\public.asp" />
+    <Content Include="Scripts\Templates\BaseData\BaseData.htm" />
+    <Content Include="Scripts\Templates\BaseData\InferiorManager.htm" />
+    <Content Include="Scripts\Templates\BaseData\Main.htm" />
+    <Content Include="Scripts\Templates\BaseData\Reservoir.htm" />
+    <Content Include="Scripts\Templates\HistoryDisaster_SH\Main.htm" />
+    <Content Include="Scripts\Templates\HistoryDisaster_SH\Menu.htm" />
+    <Content Include="Scripts\Templates\HistoryDisaster\Main.htm" />
+    <Content Include="Scripts\Templates\HistoryDisaster\Menu.htm" />
+    <Content Include="Scripts\Templates\Public\Head.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Tab.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\22\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\33\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\33\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\35\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\2\22\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\2\33\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\2\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\2\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\2\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\3\22\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\3\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\3\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\3\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\22\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\33\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\33\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\33\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\4\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\5\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\5\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\5\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\33\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\33\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\7\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\7\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\7\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\8\33\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\8\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\8\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\8\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\22\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\33\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\35\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\Common\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\Common\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\Common\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Head.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Menu.htm" />
+    <Content Include="Scripts\Templates\Public\SH\New.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Open.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Receive.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH046\CurYear\ReadMe.txt" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH046\CurYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH046\CurYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH011\OverYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH011\OverYear\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH011\OverYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH011\CurYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH011\CurYear\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH011\CurYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH021\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH021\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH021\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH031\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH031\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH031\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH032\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH032\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH032\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH033\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH033\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH033\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH034\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH034\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH034\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH035\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH035\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH035\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH036\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH036\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH036\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH037\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH037\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH037\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH038\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH038\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH038\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH041\CurYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH041\CurYear\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH041\CurYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH041\OverYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH041\OverYear\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH041\OverYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH042\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH042\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH042\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH043\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH043\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH043\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH044\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH044\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH044\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH045\OverYear\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH045\OverYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH045\OverYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH045\CurYear\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH045\CurYear\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH045\CurYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH051\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH051\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH051\THead.htm" />
+    <Content Include="Scripts\Templates\Public\XS\15\Edit.htm" />
+    <Content Include="Scripts\Templates\Public\XS\15\View.htm" />
+    <Content Include="Scripts\Templates\Public\Menu.htm" />
+    <Content Include="Scripts\Templates\Index\RecycleBin.htm" />
+    <Content Include="Scripts\Templates\Index\UrgeReport.htm" />
+    <Content Include="Scripts\Templates\Public\Dialog.htm" />
+    <Content Include="Scripts\Templates\Index\Receive.htm" />
+    <Content Include="Scripts\Templates\Index\New.htm" />
+    <Content Include="Scripts\Templates\Index\Open.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Preview.htm" />
+    <Content Include="Scripts\Templates\Public\XS\43\Edit.htm" />
+    <Content Include="Scripts\Templates\Public\XS\43\View.htm" />
+    <Content Include="Scripts\Templates\Index\Menu.htm" />
+    <Content Include="Scripts\Templates\Public\UnderConstruction.htm" />
+    <Content Include="Scripts\Templates\Town\Menu.htm" />
+    <Content Include="Scripts\Templates\Town\New.htm" />
+    <None Include="DocModel\Benefit.doc" />
+    <None Include="Document\Helper\15_SH\用户手册.doc" />
+    <None Include="Document\Helper\35\用户手册.doc" />
+    <None Include="Document\Helper\45\用户手册.doc" />
+    <None Include="ExcelModel\sh\sh01\cur_year.xls" />
+    <None Include="ExcelModel\sh\sh01\over_year.xls" />
+    <None Include="ExcelModel\sh\sh02\cur_year.xls" />
+    <None Include="ExcelModel\sh\sh03\cur_year.xls" />
+    <None Include="ExcelModel\sh\sh03\_cur_year_.xls" />
+    <None Include="ExcelModel\sh\sh04\cur_year.xls" />
+    <None Include="ExcelModel\sh\sh04\over_year.xls" />
+    <None Include="ExcelModel\sh\sh04\_cur_year.xls" />
+    <None Include="ExcelModel\sh\sh05\cur_year.xls" />
+    <None Include="Mapserver\FujianMap.map" />
+    <None Include="Mapserver\FujianMap1.map" />
+    <None Include="Mapserver\GuangXiMap.map" />
+    <None Include="Mapserver\GuangXiMap1.map" />
+    <None Include="Mapserver\HeilongjiangMap.map" />
+    <None Include="Mapserver\HeilongjiangMap1.map" />
+    <None Include="Scripts\Library\Angular\angular-resource.min.js.map" />
+    <None Include="Scripts\Library\Angular\angular.min.js.map" />
+    <None Include="Service References\WS_Deliver\Deliver.disco" />
+    <None Include="Service References\WS_Deliver\configuration91.svcinfo" />
+    <None Include="Service References\WS_Deliver\configuration.svcinfo" />
+    <None Include="Service References\WS_Deliver\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Debug\ReportDetails\HL01\45.html" />
+    <None Include="Views\Debug\ReportDetails\NP01\Benefit.cshtml" />
+    <Content Include="Views\LoginSession.aspx" />
+    <Content Include="Views\Release\BaseData.html" />
+    <Content Include="Views\Release\Login.html" />
+    <Content Include="Views\Release\Print.html" />
+    <Content Include="Views\Release\ReportDetails\HL01\15.html" />
+    <Content Include="Views\Release\ReportDetails\HL01\33.html" />
+    <Content Include="Views\Release\ReportDetails\HL01\Common.html" />
+    <Content Include="Views\Release\SystemMaintain.html" />
+    <Content Include="Views\Release\Print.SH.html" />
+    <Content Include="Views\Statistics\Analysis.aspx" />
+    <Content Include="Views\Debug\BaseData.html" />
+    <Content Include="Views\Debug\HistoryDisaster.cshtml" />
+    <Content Include="Views\Debug\Index.cshtml" />
+    <Content Include="Views\Debug\Login.html" />
+    <Content Include="Views\Debug\Main.cshtml" />
+    <Content Include="Views\Debug\Print.html" />
+    <Content Include="Views\Debug\SystemMaintain.html" />
+    <Content Include="Views\Debug\Town.cshtml" />
+    <Content Include="Views\Debug\ViewUnderReport.cshtml" />
+    <Content Include="Views\Debug\ReportDetails\HL01\15.html" />
+    <Content Include="Views\Debug\ReportDetails\HL01\33.html" />
+    <Content Include="Views\Debug\ReportDetails\HL01\Common.html" />
+    <Content Include="Views\Debug\ReportDetails\HP01\Common.cshtml" />
+    <Content Include="Views\Release\ReportDetails\HP01\Common.cshtml" />
+    <Content Include="Views\Release\ViewUnderReport.cshtml" />
+    <Content Include="Views\Release\HistoryDisaster.cshtml" />
+    <Content Include="Views\Release\Index.cshtml" />
+    <Content Include="Views\Release\Main.cshtml" />
+    <Content Include="Views\Release\Town.cshtml" />
+    <Content Include="XML\说明.txt" />
+    <None Include="Document\Helper\15\用户手册.doc" />
+    <None Include="Document\Helper\22\用户手册.doc" />
+    <None Include="Document\Helper\23\用户手册.doc" />
+    <None Include="Document\Helper\33\用户手册.doc" />
+    <None Include="Document\Helper\36\用户手册.doc" />
+    <None Include="Document\Helper\43\用户手册.doc" />
+    <None Include="ExcelModel\nmxushui.xls" />
+    <None Include="ExcelModel\zjnewmoban.xls" />
+    <None Include="Mapserver\flv\CuPlayer\Images\Thumbs.db" />
+    <None Include="Mapserver\HunanMap.map" />
+    <None Include="Mapserver\HunanMap1.map" />
+    <None Include="Mapserver\images\ruler\Thumbs.db" />
+    <None Include="Mapserver\JiangxiMap.map" />
+    <None Include="Mapserver\JiangxiMap1.map" />
+    <None Include="Mapserver\JilinMap.map" />
+    <None Include="Mapserver\JilinMap1.map" />
+    <None Include="Mapserver\NeimengMap.map" />
+    <None Include="Mapserver\NeimengMap1.map" />
+    <None Include="Mapserver\ZhejiangMap.map" />
+    <None Include="Mapserver\ZhejiangMap1.map" />
+    <None Include="Scripts\Library\Plugins\jquery.jgrowl.map" />
+    <None Include="Scripts\Statistics\Analysis\My97DatePicker\skin\blueFresh\Thumbs.db" />
+    <None Include="Scripts\Statistics\WaterStorage\Map\HunanMap.map" />
+    <None Include="Service References\WS_Affix\FxbbSendAffix.wsdl" />
+    <None Include="Service References\WS_BS_CS_XML\RptTrans.disco" />
+    <None Include="Service References\WS_BS_CS_XML\configuration91.svcinfo" />
+    <None Include="Service References\WS_BS_CS_XML\configuration.svcinfo" />
+    <None Include="Service References\WS_BS_CS_XML\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WS_Deliver\Deliver.wsdl" />
+    <None Include="Service References\WS_XML\wsRptTrans.disco" />
+    <None Include="Service References\WS_XML\configuration91.svcinfo" />
+    <None Include="Service References\WS_XML\configuration.svcinfo" />
+    <None Include="Service References\WS_XML\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WS_Affix\FxbbSendAffix.disco" />
+    <None Include="Service References\WS_Affix\configuration91.svcinfo" />
+    <None Include="Service References\WS_Affix\configuration.svcinfo" />
+    <None Include="Service References\WS_Affix\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Statistics\Assessment.aspx" />
+    <Content Include="Views\Statistics\ChartP3.aspx" />
+    <Content Include="Views\Statistics\EvaluateTable.aspx" />
+    <Content Include="Views\Statistics\EvaluateTableOfYear.aspx" />
+    <Content Include="Views\Statistics\Map.aspx" />
+    <Content Include="Views\Statistics\NewBB.aspx" />
+    <Content Include="Views\Statistics\PieChart.aspx" />
+    <Content Include="Views\Statistics\printMap.aspx" />
+    <None Include="Service References\WS_BS_CS_XML\RptTrans.wsdl" />
+    <None Include="Service References\WS_XML\wsRptTrans.wsdl" />
+    <None Include="version.xls" />
+    <Content Include="Views\Statistics\printWSMap.aspx" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Debug\Index.SH.cshtml" />
+    <Content Include="Views\Debug\Main.SH.cshtml" />
+    <Content Include="Views\Release\Main.SH.cshtml" />
+    <Content Include="Views\Release\HistoryDisaster.SH.cshtml" />
+    <Content Include="Views\Release\Index.SH.cshtml" />
+    <Content Include="Views\Debug\HistoryDisaster.SH.cshtml" />
+    <None Include="Document\Helper\15_SH\效益上报模板实例.doc" />
+    <Content Include="Views\Debug\SH.ViewUnderReport.cshtml" />
+    <None Include="Views\Release\ReportDetails\HL01\45.doc" />
+    <Content Include="Views\Release\SH.ViewUnderReport.cshtml" />
+    <None Include="Views\Release\ReportDetails\NP01\Benefit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Library\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.tooltipster.min.js" />
+    <Content Include="Scripts\Library\Plugins\easydialog.min.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.cookie.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.uploadify.min.js" />
+    <Content Include="Scripts\Library\Plugins\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\Library\Plugins\My97DatePicker\WdatePicker.js" />
+    <EmbeddedResource Include="Web.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contents\ReportDetails\HL01\33\" />
+    <Folder Include="Contents\ReportDetails\HP01\" />
+    <Folder Include="CSS\StatisticAlanalysis\DisasterAnalysis\" />
+    <Folder Include="Scripts\Library\Plugins\preloader\" />
+    <Folder Include="Scripts\Templates\Public\XS\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBHelper\DBHelper.csproj">
+      <Project>{EB8DD962-7A54-4565-8B73-CB3C798D230E}</Project>
+      <Name>DBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityModel\EntityModel.csproj">
+      <Project>{61EA76FE-F474-4BFD-A882-0521504CA498}</Project>
+      <Name>EntityModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicProcessingClass\LogicProcessingClass.csproj">
+      <Project>{D317B444-3F5A-44C1-A5F6-CE2BC89E712B}</Project>
+      <Name>LogicProcessingClass</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partial\_Head.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ExcelModel\newmoban.xls" />
+    <None Include="ExcelModel\someNewmoban.xls" />
+    <None Include="ExcelModel\xushui.xls" />
+    <None Include="ExcelModel\xushuizongji.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WS_Affix\" />
+    <WCFMetadataStorage Include="Service References\WS_BS_CS_XML\" />
+    <WCFMetadataStorage Include="Service References\WS_Deliver\" />
+    <WCFMetadataStorage Include="Service References\WS_XML\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>15075</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.1.411-EAP\build\JetBrains.ReSharper.SDK.Targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.411-EAP\build\JetBrains.ReSharper.SDK.Targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+</Project>

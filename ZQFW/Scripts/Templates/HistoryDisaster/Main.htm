@@ -1,0 +1,175 @@
+﻿<div class="LeftTree" name="View">
+    <div class="Left">
+        <div>
+            <p>
+                <label>报表类型：</label>
+                <select ng-model="View.ReportTitle.ORD_Code" ng-options="op.code as op.name for op in BaseData.Select.RptClass" style="width: 129px;">
+                </select>
+            </p>
+            <p>
+                <label>时段类型：</label>
+                <select ng-model="View.ReportTitle.StatisticalCycType" ng-options="op.value as op.name for op in BaseData.Select.CycType[View.ReportTitle.ORD_Code]" style="width: 129px;">
+                    <option value="">全部时段类型</option>
+                </select>
+            </p>
+        </div>
+        <div class="Tabs">
+            <ul>
+                <li class="Inbox" ng-class="{Selected:View.Selected.Box.Tree == 'MyRptTree'}" ng-click="View.Tree.Switch('MyRptTree')">
+                    <span><i></i>我的表箱</span>
+                </li>
+                <li ng-if="!View.Attr.Hide.Cased" class="Cased" ng-class="{Selected:View.Selected.Box.Tree == 'ReceivedRptTree'}"  ng-click="View.Tree.Switch('ReceivedRptTree')">
+                    <span><i></i>已收表箱</span>
+                </li>
+            </ul>
+        </div>
+        <div class="TreeBoxes" ng-switch on="View.ReportTitle.ORD_Code" ng-class="{ShowAggAcc: View.Report.Current.ReportTitle.SourceType > 0}">
+            <div ng-switch-when="HL01" ng-switch on="View.Selected.Box.Tree">
+                <div ng-switch-when="MyRptTree">
+                    <ul ng-tree id="HL01MyRptTree" class="ztree">
+                    </ul>
+                </div>
+                <div ng-switch-when="ReceivedRptTree">
+                    <div class="UnitName">
+                        <label>单位名称：</label>
+                        <select ng-model="View.ReportTitle.UnitCode">
+                            <option value="{{BaseData.Unit.Local.UnitCode}}" ng-selected="View.ReportTitle.UnitCode == BaseData.Unit.Local.UnitCode">所有单位</option>
+                            <option ng-repeat="obj in BaseData.Unit.Unders" value="{{obj.UnitCode}}" ng-selected="View.ReportTitle.UnitCode == obj.UnitCode">{{obj.UnitName}}</option>
+                        </select>
+                    </div>
+                    <ul ng-tree id="HL01ReceivedRptTree" class="ztree">
+                    </ul>
+                </div>
+            </div>
+            <div ng-switch-when="HP01" ng-switch on="View.Selected.Box.Tree">
+                <div ng-switch-when="MyRptTree">
+                    <ul ng-tree id="HP01MyRptTree" class="ztree">
+                    </ul>
+                </div>
+                <div ng-switch-when="ReceivedRptTree">
+                    <div class="UnitName">
+                        <label>单位名称：</label>
+                        <select ng-model="View.ReportTitle.UnitCode">
+                            <option value="{{BaseData.Unit.Local.UnitCode}}" ng-selected="View.ReportTitle.UnitCode == BaseData.Unit.Local.UnitCode">所有单位</option>
+                            <option ng-repeat="obj in BaseData.Unit.Unders" value="{{obj.UnitCode}}" ng-selected="View.ReportTitle.UnitCode == obj.UnitCode">{{obj.UnitName}}</option>
+                        </select>
+                    </div>
+                    <ul ng-tree id="HP01ReceivedRptTree" class="ztree">
+                    </ul>
+                </div>
+            </div>
+            <div ng-switch-when="NP01">
+                <div>
+                    <ul ng-tree id="NP01MyRptTree" class="ztree">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="AggAccBox" ng-show="View.Report.Current.ReportTitle.SourceType > 0">
+            <div class="AggAcc-Menu">
+                <ul>
+                </ul>
+            </div>
+            <div class="AggAcc-Content">
+                <ul>
+                    <li ng-repeat="rpt in View.Report.Current.SourceReport">
+                        <a ng-if="View.Report.Current.ReportTitle.SourceType == '1'">
+                            [{{BaseData.Unit.Unders.Find("UnitCode",rpt.UnitCode,"UnitName")}}][{{Tools.CN_Name("SourceType",rpt.SourceType)}}][{{Tools.CN_Name("SendOperType",rpt.SendOperType)}}]{{rpt.StartDate}}-{{rpt.EndDate}}
+                        </a>
+                        <a ng-if="View.Report.Current.ReportTitle.SourceType == '2'">
+                            [{{Tools.CN_Name("SourceType",rpt.SourceType)}}][{{rpt.State == '3' ? Tools.CN_Name("SendOperType",rpt.SendOperType) : '未报送'}}]{{rpt.StartDate}}-{{rpt.EndDate}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Right" pos-top="56" ng-if="View.Report.Current">
+        <div class="ToolBar">
+            <ul>
+                <li class="Export">
+                    <a href="{{'ReportOperate/ExportExcel?pageno=' + View.Report.Current.ReportTitle.PageNO + '&rpttype=' + View.Report.Current.ReportTitle.ORD_Code +
+                                 '&sTime=' + View.Report.Current.ReportTitle.StartDateTime + '&eTime=' + View.Report.Current.ReportTitle.EndDateTime}}">
+                        <i></i>导出
+                    </a>
+                </li>
+                <li class="Print" ng-click="View.Report.Fn.Core.Print()"><i></i>打印</li>
+                <li class="Maximize" title="最大化" ng-show="View.Report.Screen.State == 'inhreit'" ng-click="View.Report.Screen.Fn.Maximize('.Right',View.Report.Screen)">
+                    <i></i>
+                </li>
+                <li class="Restore" title="还原" ng-show="View.Report.Screen.State == 'full'" ng-click="View.Report.Screen.Fn.Restore('.Right',View.Report.Screen)">
+                    <i></i>
+                </li>
+            </ul>
+        </div>
+        <div id="Report">
+            <ul id="ReportTabs">
+                <li ng-repeat="rpt in View.Report.Opened" ng-class="{Selected:rpt.ReportTitle.PageNO == View.Report.Current.ReportTitle.PageNO}" ng-click="View.Report.Current = rpt; View.Report.Fn.Comm.SelectNode()">
+                    <span class="title">
+                        <span name="icon" ng-class="'cycType' + rpt.ReportTitle.StatisticalCycType"></span>
+                        <span>
+                            [{{Tools.CN_Name("ORD_Code",rpt.ReportTitle.ORD_Code)}}][{{Tools.CN_Name("SourceType",rpt.ReportTitle.SourceType)}}]
+                            {{rpt.ReportTitle.StartDateTime}}至{{rpt.ReportTitle.EndDateTime}}
+                            <a class="TabClose" title="关闭" href="javascript:void(0)" ng-click="View.Report.Fn.Core.Close(rpt.ReportTitle.PageNO)">x</a>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+            <div ng-include="'Index/GetTemmplate?type=rpt&url=' + View.Report.Current.ReportTitle.ORD_Code.slice(0,2) + '.View'">
+                
+            </div>
+        </div>
+        <div id="Report-Footer">
+            <div class="Tabs">
+                <ul>
+                    <li class="ReportTitle" ng-class="{Selected:View.Report.Current.Attr.ReportFooter == 'ReportTitle'}" ng-click="View.Report.Current.Attr.ReportFooter='ReportTitle'"><span><i></i>表头尾信息</span></li>
+                    <li class="Affix" ng-class="{Selected:View.Report.Current.Attr.ReportFooter == 'Affix'}" ng-click="View.Report.Current.Attr.ReportFooter='Affix'"><span><i></i>附件</span></li>
+                </ul>
+                <div style=" float: right; font-size: 16px; font-weight: bolder; color: red; margin-right: 50%;">
+                    当前报表的页号：{{View.Report.Current.ReportTitle.PageNO}}
+                </div>
+            </div>
+            <div class="Boxes">
+                <div class="ReportTitle" ng-show="View.Report.Current.Attr.ReportFooter == 'ReportTitle'">
+                    <div style="min-width: 250px; padding-left: 10px; padding-top: 10px;">
+                        <p class="CycType">
+                            <label>
+                                时段类型：{{BaseData.Select.CycType[View.Report.Current.ReportTitle.ORD_Code].Find("value",View.Report.Current.ReportTitle.StatisticalCycType,"name")}}
+                            </label>
+                        </p>
+                        <p>
+                            <label>起止日期：{{View.Report.Current.ReportTitle.StartDateTime}}&nbsp;至&nbsp;{{View.Report.Current.ReportTitle.EndDateTime}}</label>
+                        </p>
+                        <p>
+                            <label>填报日期：{{View.Report.Current.ReportTitle.WriterTime}}</label>
+                        </p>
+                    </div>
+                    <div style="min-width: 400px; padding-left: 10px; padding-top: 10px;">
+                        <p>
+                            <label>&nbsp; 填报单位：{{View.Report.Current.ReportTitle.UnitName}}</label>
+                        </p>
+                        <p>
+                            <label>单位负责人：{{View.Report.Current.ReportTitle.UnitPrincipal}}</label>
+                            <label style="position: relative; left: 90px; ">统计负责人：{{View.Report.Current.ReportTitle.StatisticsPrincipal}}</label>
+                        </p>
+                        <p>
+                            <label>&nbsp; &nbsp; 填报人：{{View.Report.Current.ReportTitle.WriterName}}</label>
+                            <!--<label>&nbsp; &nbsp; 校核人：</label> $1$数据库里没有与“校核人”对应的字段，因此暂时不指定模型#1#
+                                <input class="CheckPerson" type="text" />-->
+                        </p>
+                    </div>
+                </div>
+                <div ng-show="View.Report.Current.Attr.ReportFooter == 'Affix'" class="Affix">
+                    <ul>
+                        <li ng-repeat="affix in View.Report.Current.Affix">
+                            <a href="{{'/AffixOperater/DownFiles?name=' + affix.name + '&url=' + affix.url}}">
+                                {{affix.name}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

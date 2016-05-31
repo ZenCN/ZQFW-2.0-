@@ -1,0 +1,42 @@
+﻿body {
+}
+.mapinfo
+{
+	position:absolute;
+	background:transparent url('sidebox-bottom2.png') no-repeat bottom;  /*	*/
+	margin:0px;
+	padding:0px;
+	border:0px;
+	z-index:9999
+}
+
+/*.mapinfoBackground
+{
+	position:absolute;
+	background:transparent url('../images/sidebox-top2.png') no-repeat top; 
+	margin:0px;
+	padding:0px;
+	border:0px;
+}*/
+
+.mapinfo span{
+	width:180px;
+	float:left;
+	display:block;
+	background:transparent url('sidebox-top2.png') no-repeat top;
+	margin:0px;
+	padding:0px;
+}
+.mapinfo span li
+{
+	list-style:none;
+	display:block;
+	font:12px 宋体;
+	color:#069;
+	line-height:20px;
+	border-bottom:1px white solid;
+	margin-left:-20px;
+	width:150px;
+	margin-top:1px;
+}
+

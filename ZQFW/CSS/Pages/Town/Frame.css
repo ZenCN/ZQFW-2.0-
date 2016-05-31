@@ -1,0 +1,41 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.MenuBar{
+    position: absolute;
+}
+.Middle{
+    position: absolute;
+    top: 135px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0 5px 5px 5px;
+    overflow: hidden;
+    min-width: 950px;
+    min-height: 510px;
+    z-index: 1;
+}
+.Frame{
+    position: absolute;
+    top: 123px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #FFF;
+    margin: 0 5px 5px 5px;
+}
+.Frame iframe{
+    height: 100%;
+    width: 100%;
+    min-height: 445px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    left:0px;
+    bottom: 0px;
+}

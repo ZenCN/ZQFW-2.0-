@@ -1,0 +1,60 @@
+﻿<tbody ng-init="Units = [{UnitCode:BaseData.Unit.Local.UnitCode,UnitName:'—————'}]; Units = Units.concat(BaseData.Unit.Unders).RemoveBy('UnitName','全区/县')">
+    <tr ng-repeat="hl012 in Report[Attr.NameSpace].Current.HL012">
+        <th style="width: 24px; min-width: 24px;">
+            <input type="checkbox" style="width: 24px; text-align: center" ng-model="hl012.Checked" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"/>
+        </th>
+        <td style="padding: 0px;" ng-class="{WrongData:Report[Attr.NameSpace].Current.Attr.CheckErrors['HL012-Select'].TRIndex[$index]}">
+            <select ng-model="hl012.UnitCode" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB" class="txt_center" index="{{$index}}" ng-change="FCOD(hl012.DataType)">
+                <option ng-repeat="Unit in Units" index="{{$index}}" value="{{Unit.UnitCode}}" ng-selected="Unit.UnitCode == hl012.UnitCode">
+                    {{Unit.UnitName}}
+                </option>
+            </select>
+        </td>
+        <td>
+            <select ng-model="hl012.DataType" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB" ng-change="FCOT(hl012.DataType,hl012.UnitCode)">
+                <option value="死亡" ng-selected="hl012.DataType == '死亡'">死亡</option>
+                <option value="失踪" ng-selected="hl012.DataType == '失踪'">失踪</option>
+            </select>
+        </td>
+        <td>
+            <input type="text" ng-model="hl012.SWXM" class="txt_center" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCQ();FCL(8)"/>
+        </td>
+        <td style="padding: 0px;">
+            <select ng-model="hl012.SWXB" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB" class="txt_center">
+                <option value="未知" ng-selected="hl012.SWXB == '未知'">未知</option>
+                <option value="男" ng-selected="hl012.SWXB == '男'">男</option>
+                <option value="女" ng-selected="hl012.SWXB == '女'">女</option>
+            </select>
+        </td>
+        <td>
+            <input type="text" ng-model="hl012.SWNL" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCN(3,0);" />
+        </td>
+        <td>
+            <input type="text" title="{{hl012.SWHJ}}" ng-model="hl012.SWHJ" class="txt_center" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCQ();FCL(50);"/>
+        </td>
+        <td>
+            <input type="text" ng-model="hl012.SWSJ" ng-wdatepicker="" class="txt_center" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" />
+        </td>
+        <td>
+            <input type="text" ng-model="hl012.SWDD" class="txt_center" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-blur="FCQ();FCL(50);"/>
+        </td>
+        <td style="width: 140px;">
+            <input type="text" title="{{hl012.DeathReason}}" ng-model="hl012.DeathReason" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                   ng-focus="FCOF()" ng-deathtree="" class="txt_center" readonly="" />
+        </td>
+        <td style="width: 140px; position: relative;">
+            <textarea class="Stretch txt_center" stretch="18-140" disable-key="enter" ng-model="hl012.BZ" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB"
+                      ng-focus="FCOF()" ng-blur="FCQ();FCE();FCL(250);">{{hl012.BZ}}</textarea>
+        </td>
+        <td style="padding: 0px;">
+            <select ng-model="hl012.RiverCode" ng-disabled="Report[Attr.NameSpace].Current.Attr.HB">
+                <option ng-repeat="River in hl012.RiverSelect" value="{{River.Code}}"  ng-selected="hl012.RiverCode == River.Code">{{River.Name}}</option>
+            </select>
+        </td>
+    </tr>
+</tbody>

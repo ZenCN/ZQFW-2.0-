@@ -1,0 +1,18 @@
+﻿<div class="Head">
+    <div class="Top">
+        <span class="TopLeft">您好，尊敬的&nbsp;<span style="font-weight: bolder;">{{SysUser.Name}}</span>&nbsp;用户</span>
+        <span class="TopRight">
+            <a href="javascript:if(confirm('确定要返回主界面？')) location.href = location.href.indexOf('?debug=1') > 0 ? '/sh/main?debug=1' : '/sh/main';;" ng-show="CurrentUrl != '/Main' && BaseData.Unit.Local.Limit < 5">返回主界面</a>
+            <a href="javascript:void(0);" ng-hide="Attr.NameSpace == 'View'" ng-click="Fn.UpdatePassword()">修改密码</a>
+            <a href="javascript:void(0);" onclick="App.System.Exit()">退出</a>
+        </span>
+    </div>
+    <div class="Bottom">
+        <div class="Image" style="{{'background-image: url(../CSS/Img/Public/Logo/15_SH.png'+')'}}">
+        </div>
+    </div>
+</div>
+
+<div ui-view>
+
+</div>

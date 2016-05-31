@@ -1,0 +1,93 @@
+﻿.OpenLayer{
+	position:absolute;
+	right:0;
+	top: 0px;
+	width:0px;
+	bottom:0;
+	background-image:url(../../../CSS/Img/Public/OpenLayer/shadow_hor.png);
+	background-position:0px;
+	background-repeat:repeat-y;
+	overflow:auto;
+	z-index:10;
+}
+.OpenLayer .Container{	
+	position:absolute;
+	right:0;
+	top:0;
+	left:10px;
+	bottom:0;
+	background-color:#fff;
+	overflow:auto;
+}
+.OpenLayer .Container center{
+	margin: 40px 10px;
+}
+.OpenLayer .Close{
+	width:32px;
+	height:32px;
+	display:block;
+	background-position:left;
+	background-repeat:no-repeat;
+	background-image:url(../../../CSS/Img/Public/OpenLayer/close.png);
+	position:absolute;
+	cursor:pointer;
+	top:0;
+	right:0;
+	z-index:11;
+}
+.OpenLayer .Close:hover{
+	background-position:right;
+}
+.OpenLayer .Head{
+	text-align: left; 
+	margin-bottom: 5px;
+}
+.OpenLayer .DeadPersonList{
+	clear:both;
+	border: 1px solid #5F6F7E;
+	border-collapse: collapse;
+	font-size:13px;
+	text-align:center;
+	width:100%;
+	margin-bottom:10px;
+}
+.OpenLayer .DeadPersonList tr{
+	height:18px;
+	line-height:18px;
+	text-align:center;
+	}
+.OpenLayer .DeadPersonList th{
+	border: 1px solid #5F6F7E;
+	background-color:#B0D8FF;
+	color: #000000;
+	text-align: center;
+	font-weight: normal;
+	margin: 0;
+	line-height:18px;
+}
+.OpenLayer .DeadPersonList td{
+	margin: 0;
+	padding: 0;
+	text-align:center;
+	border: 1px solid #E2E2E2;
+}
+.OpenLayer .DeadPersonList td input{
+	padding:0;
+	margin: 0;
+	width:95%;
+/*	height:95%;*/
+	border: 0px solid #ffffff;
+	text-align:center;
+	vertical-align: middle;
+}
+.OpenLayer input:focus{
+	border: 0px solid #fff;
+}
+.OpenLayer select{
+	border:1px #fff solid;
+	width:95%;
+	height:95%;
+}
+.OpenLayer tbody input[disabled]{
+	background-color: white;
+}

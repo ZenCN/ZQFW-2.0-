@@ -1,0 +1,1611 @@
+﻿<div class="Rpt-Content" ng-switch on="Open.Report.Current.Attr.TableIndex">
+    <table ng-switch-when="0">
+        <caption>
+            洪涝灾害基本情况统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="3" nowrap="">
+                    地区
+                </th>
+                <th colspan="2" scope="col">
+                    受灾范围
+                </th>
+                <th rowspan="2" scope="col">
+                    受灾人口
+                </th>
+                <th rowspan="2" scope="col">
+                    受淹城镇
+                </th>
+                <th rowspan="2" scope="col">
+                    倒塌房屋
+                </th>
+                <th rowspan="2" scope="col">
+                    死亡人口
+                </th>
+                <th rowspan="2" scope="col">
+                    失踪人口
+                </th>
+                <th rowspan="2" scope="col">
+                    转移人口
+                </th>
+                <th rowspan="2" scope="col">
+                    直接经济总损失
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    县（市、区）
+                </th>
+                <th scope="col">
+                    乡（镇、街道）
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="SZFWX">
+                    {{BaseData.Field.SZFWX.MeasureName ? BaseData.Field.SZFWX.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="SZFWZ">
+                    {{BaseData.Field.SZFWZ.MeasureName ? BaseData.Field.SZFWZ.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="SZRK">
+                    {{BaseData.Field.SZRK.MeasureName ? BaseData.Field.SZRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="" name="SYCS">
+                    {{BaseData.Field.SYCS.MeasureName ? BaseData.Field.SYCS.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="DTFW">
+                    {{BaseData.Field.DTFW.MeasureName ? BaseData.Field.DTFW.MeasureName : "（间）"}}
+                </th>
+                <th scope="col" name="SWRK">
+                    {{BaseData.Field.SWRK.MeasureName ? BaseData.Field.SWRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="SZRKR">
+                    {{BaseData.Field.SZRKR.MeasureName ? BaseData.Field.SZRKR.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="ZYRK">
+                    {{BaseData.Field.ZYRK.MeasureName ? BaseData.Field.ZYRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="ZJJJZSS">
+                    {{BaseData.Field.ZJJJZSS.MeasureName ? BaseData.Field.ZJJJZSS.MeasureName : "（万元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl011 in Open.Report.Current.HL011" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl011.DW}}</span>
+                </th>
+                <td ng-if="Open.Report.Current.ReportTitle.SourceType == '2' && (BaseData.Unit.Local.Limit == 2 || BaseData.Unit.Local.Limit == 3)" ng-class="{ReadOnly:!$index || BaseData.Unit.Local.Limit > 2,WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWX']}">
+                    <!--<input type="text" ng-model="hl011.SZFWX.Real" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,0)"/>-->
+                    <input type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2" ng-model="hl011.SZFWX" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+                </td>
+                <td ng-if="Open.Report.Current.ReportTitle.SourceType != '2' || BaseData.Unit.Local.Limit == 4" ng-class="{ReadOnly:!$index || BaseData.Unit.Local.Limit > 2,WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWX']}">
+                    <input type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2" ng-model="hl011.SZFWX" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWZ'],ReadOnly:BaseData.Unit.Local.Limit == 4}"> 
+                    <input type="text" ng-model="hl011.SZFWZ" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB" ng-readonly="BaseData.Unit.Local.Limit == 4"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZRK']}">
+                    <input type="text" ng-model="hl011.SZRK" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" />
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl011.SYCS" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        readonly="readonly" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-DTFW']}">
+                    <input type="text" ng-model="hl011.DTFW" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" />
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl011.SWRK" class="AlignCenter" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl011.SZRKR" class="AlignCenter" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl011.ZYRK" class="AlignRight" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZJJJZSS']}">
+                    <input type="text" ng-model="hl011.ZJJJZSS" class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="1">
+        <caption>
+            农林牧渔业洪涝灾害统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="3" nowrap="">
+                    地区
+                </th>
+                <th colspan="2" scope="col">
+                    农作物受灾面积
+                </th>
+                <th colspan="2" scope="col" rolspan="2">
+                    农作物成灾面积
+                </th>
+                <th colspan="2" scope="col" rolspan="2">
+                    农作物绝收面积
+                </th>
+                <th rowspan="2" scope="col">
+                    因灾减产粮食
+                </th>
+                <th rowspan="2" scope="col">
+                    经济作物损失
+                </th>
+                <th rowspan="2" scope="col">
+                    死亡大牲畜
+                </th>
+                <th colspan="2" scope="col">
+                    水产养殖损失
+                </th>
+                <th rowspan="2" scope="col">
+                    农林牧渔业直接经济损失
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    小计
+                </th>
+                <th scope="col">
+                    其中粮食作物
+                </th>
+                <th scope="col">
+                    小计
+                </th>
+                <th scope="col">
+                    其中粮食作物
+                </th>
+                <th scope="col">
+                    小计
+                </th>
+                <th scope="col">
+                    其中粮食作物
+                </th>
+                <th scope="col">
+                    面积
+                </th>
+                <th scope="col">
+                    数量
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="SHMJXJ">
+                    {{BaseData.Field.SHMJXJ.MeasureName ? BaseData.Field.SHMJXJ.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="SHMJLS">
+                    {{BaseData.Field.SHMJLS.MeasureName ? BaseData.Field.SHMJLS.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="CZMJXJ">
+                    {{BaseData.Field.CZMJXJ.MeasureName ? BaseData.Field.CZMJXJ.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="CZMJLS">
+                    {{BaseData.Field.CZMJLS.MeasureName ? BaseData.Field.CZMJLS.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="JSMJXJ">
+                    {{BaseData.Field.JSMJXJ.MeasureName ? BaseData.Field.JSMJXJ.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="JSMJLS">
+                    {{BaseData.Field.JSMJLS.MeasureName ? BaseData.Field.JSMJLS.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="YZJCLS">
+                    {{BaseData.Field.YZJCLS.MeasureName ? BaseData.Field.YZJCLS.MeasureName : "（万吨）"}}
+                </th>
+                <th scope="col" name="JJZWSS">
+                    {{BaseData.Field.JJZWSS.MeasureName ? BaseData.Field.JJZWSS.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="SWDSC">
+                    {{BaseData.Field.SWDSC.MeasureName ? BaseData.Field.SWDSC.MeasureName : "（万头）"}}
+                </th>
+                <th scope="col" name="SCYZMJ">
+                    {{BaseData.Field.SCYZMJ.MeasureName ? BaseData.Field.SCYZMJ.MeasureName : "（千公顷）"}}
+                </th>
+                <th scope="col" name="SCYZSL">
+                    {{BaseData.Field.SCYZSL.MeasureName ? BaseData.Field.SCYZSL.MeasureName : "（万吨）"}}
+                </th>
+                <th scope="col" name="NLMYZJJJSS">
+                    {{BaseData.Field.NLMYZJJJSS.MeasureName ? BaseData.Field.NLMYZJJJSS.MeasureName
+                    : "（亿元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl011 in Open.Report.Current.HL011" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl011.DW}}</span>
+                </th>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHMJXJ']}">
+                    <input type="text" ng-model="hl011.SHMJXJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHMJLS']}">
+                    <input type="text" ng-model="hl011.SHMJLS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-CZMJXJ']}">
+                    <input type="text" ng-model="hl011.CZMJXJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-CZMJLS']}">
+                    <input type="text" ng-model="hl011.CZMJLS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-JSMJXJ']}">
+                    <input type="text" ng-model="hl011.JSMJXJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-JSMJLS']}">
+                    <input type="text" ng-model="hl011.JSMJLS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-YZJCLS']}">
+                    <input type="text" ng-model="hl011.YZJCLS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-JJZWSS']}">
+                    <input type="text" ng-model="hl011.JJZWSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SWDSC']}">
+                    <input type="text" ng-model="hl011.SWDSC" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SCYZMJ']}">
+                    <input type="text" ng-model="hl011.SCYZMJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SCYZSL']}">
+                    <input type="text" ng-model="hl011.SCYZSL" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-NLMYZJJJSS']}">
+                    <input type="text" ng-model="hl011.NLMYZJJJSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="2">
+        <caption>
+            工业信息交通运输业洪涝灾害统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="2" nowrap="">
+                    地区
+                </th>
+                <th scope="col">
+                    停产工矿企业
+                </th>
+                <th scope="col">
+                    铁路中断
+                </th>
+                <th scope="col">
+                    公路中断
+                </th>
+                <th scope="col">
+                    机场关停
+                </th>
+                <th scope="col">
+                    供电中断
+                </th>
+                <th scope="col">
+                    通讯中断
+                </th>
+                <th scope="col">
+                    工业信息交通运输业直接经济损失
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="TCGKQY">
+                    {{BaseData.Field.TCGKQY.MeasureName ? BaseData.Field.TCGKQY.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="TLZD">
+                    {{BaseData.Field.TLZD.MeasureName ? BaseData.Field.TLZD.MeasureName : "（条次）"}}
+                </th>
+                <th scope="col" name="GLZD">
+                    {{BaseData.Field.GLZD.MeasureName ? BaseData.Field.GLZD.MeasureName : "（条次）"}}
+                </th>
+                <th scope="col" name="JCGKGT">
+                    {{BaseData.Field.JCGKGT.MeasureName ? BaseData.Field.JCGKGT.MeasureName : "（个次）"}}
+                </th>
+                <th scope="col" name="GDZD">
+                    {{BaseData.Field.GDZD.MeasureName ? BaseData.Field.GDZD.MeasureName : "（条次）"}}
+                </th>
+                <th scope="col" name="TXZD">
+                    {{BaseData.Field.TXZD.MeasureName ? BaseData.Field.TXZD.MeasureName : "（条次）"}}
+                </th>
+                <th scope="col" name="GJYSZJJJSS">
+                    {{BaseData.Field.GJYSZJJJSS.MeasureName ? BaseData.Field.GJYSZJJJSS.MeasureName
+                    : "（万元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl011 in Open.Report.Current.HL011" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl011.DW}}</span>
+                </th>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-TCGKQY']}">
+                    <input type="text" ng-model="hl011.TCGKQY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-TLZD']}">
+                    <input type="text" ng-model="hl011.TLZD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GLZD']}">
+                    <input type="text" ng-model="hl011.GLZD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-JCGKGT']}">
+                    <input type="text" ng-model="hl011.JCGKGT" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GDZD']}">
+                    <input type="text" ng-model="hl011.GDZD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-TXZD']}">
+                    <input type="text" ng-model="hl011.TXZD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GJYSZJJJSS']}">
+                    <input type="text" ng-model="hl011.GJYSZJJJSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="3">
+        <caption>
+            水利设施洪涝灾害统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="3" nowrap="">
+                    地区
+                </th>
+                <th colspan="2" scope="col">
+                    损坏水库
+                </th>
+                <th colspan="3" scope="col" rolspan="2">
+                    水库垮坝
+                </th>
+                <th colspan="2" scope="col" rolspan="2">
+                    损坏堤防
+                </th>
+                <th colspan="2" scope="col" rolspan="2">
+                    堤防决口
+                </th>
+                <th scope="col" class="noborder">
+                    损坏
+                </th>
+                <th scope="col" class="noborder">
+                    损坏
+                </th>
+                <th scope="col" class="noborder">
+                    冲毁
+                </th>
+                <th scope="col" class="noborder">
+                    损坏灌
+                </th>
+                <th scope="col" class="noborder">
+                    损坏水
+                </th>
+                <th scope="col" class="noborder">
+                    损坏
+                </th>
+                <th scope="col" class="noborder">
+                    损坏机
+                </th>
+                <th scope="col" class="noborder">
+                    损坏
+                </th>
+                <th scope="col" class="noborder">
+                    水利设施
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    大中型
+                </th>
+                <th scope="col">
+                    小型
+                </th>
+                <th scope="col">
+                    大中型
+                </th>
+                <th scope="col">
+                    小一
+                </th>
+                <th scope="col">
+                    小二
+                </th>
+                <th scope="col">
+                    处数
+                </th>
+                <th scope="col">
+                    长度
+                </th>
+                <th scope="col">
+                    处数
+                </th>
+                <th scope="col">
+                    长度
+                </th>
+                <th scope="col" class="noborder">
+                    护岸
+                </th>
+                <th scope="col" class="noborder">
+                    水闸
+                </th>
+                <th scope="col" class="noborder">
+                    塘坝
+                </th>
+                <th scope="col" class="noborder">
+                    溉设施
+                </th>
+                <th scope="col" class="noborder">
+                    文测站
+                </th>
+                <th scope="col" class="noborder">
+                    机电井
+                </th>
+                <th scope="col" class="noborder">
+                    电泵站
+                </th>
+                <th scope="col" class="noborder">
+                    水电站
+                </th>
+                <th scope="col" class="noborder">
+                    直接经济损失
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="SHSKD">
+                    {{BaseData.Field.SHSKD.MeasureName ? BaseData.Field.SHSKD.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SHSKX">
+                    {{BaseData.Field.SHSKX.MeasureName ? BaseData.Field.SHSKX.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SKKBD">
+                    {{BaseData.Field.SKKBD.MeasureName ? BaseData.Field.SKKBD.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SKKBX1">
+                    {{BaseData.Field.SKKBX1.MeasureName ? BaseData.Field.SKKBX1.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SKKBX2">
+                    {{BaseData.Field.SKKBX2.MeasureName ? BaseData.Field.SKKBX2.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SHDFCS">
+                    {{BaseData.Field.SHDFCS.MeasureName ? BaseData.Field.SHDFCS.MeasureName : "（处）"}}
+                </th>
+                <th scope="col" name="SHDFCD">
+                    {{BaseData.Field.SHDFCD.MeasureName ? BaseData.Field.SHDFCD.MeasureName : "（米）"}}
+                </th>
+                <th scope="col" name="DFJKCS">
+                    {{BaseData.Field.DFJKCS.MeasureName ? BaseData.Field.DFJKCS.MeasureName : "（处）"}}
+                </th>
+                <th scope="col" name="DFJKCD">
+                    {{BaseData.Field.DFJKCD.MeasureName ? BaseData.Field.DFJKCD.MeasureName : "（米）"}}
+                </th>
+                <th scope="col" name="SHHAC">
+                    {{BaseData.Field.SHHAC.MeasureName ? BaseData.Field.SHHAC.MeasureName : "（处）"}}
+                </th>
+                <th scope="col" name="SHSZ">
+                    {{BaseData.Field.SHSZ.MeasureName ? BaseData.Field.SHSZ.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="CHTB">
+                    {{BaseData.Field.CHTB.MeasureName ? BaseData.Field.CHTB.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SHGGSS">
+                    {{BaseData.Field.SHGGSS.MeasureName ? BaseData.Field.SHGGSS.MeasureName : "（处）"}}
+                </th>
+                <th scope="col" name="SHSWCZ">
+                    {{BaseData.Field.SHSWCZ.MeasureName ? BaseData.Field.SHSWCZ.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="SHJDJ">
+                    {{BaseData.Field.SHJDJ.MeasureName ? BaseData.Field.SHJDJ.MeasureName : "（眼）"}}
+                </th>
+                <th scope="col" name="SHJDBZ">
+                    {{BaseData.Field.SHJDBZ.MeasureName ? BaseData.Field.SHJDBZ.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SHSDZ">
+                    {{BaseData.Field.SHSDZ.MeasureName ? BaseData.Field.SHSDZ.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="SLSSZJJJSS">
+                    {{BaseData.Field.SLSSZJJJSS.MeasureName ? BaseData.Field.SLSSZJJJSS.MeasureName
+                    : "（万元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl011 in Open.Report.Current.HL011" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl011.DW}}</span>
+                </th>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHSKD']}">
+                    <input type="text" ng-model="hl011.SHSKD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHSKX']}">
+                    <input type="text" ng-model="hl011.SHSKX" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SKKBD']}">
+                    <input type="text" ng-model="hl011.SKKBD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SKKBX1']}">
+                    <input type="text" ng-model="hl011.SKKBX1" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SKKBX2']}">
+                    <input type="text" ng-model="hl011.SKKBX2" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHDFCS']}">
+                    <input type="text" ng-model="hl011.SHDFCS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHDFCD']}">
+                    <input type="text" ng-model="hl011.SHDFCD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,3)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-DFJKCS']}">
+                    <input type="text" ng-model="hl011.DFJKCS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-DFJKCD']}">
+                    <input type="text" ng-model="hl011.DFJKCD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,3)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHHAC']}">
+                    <input type="text" ng-model="hl011.SHHAC" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHSZ']}">
+                    <input type="text" ng-model="hl011.SHSZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-CHTB']}">
+                    <input type="text" ng-model="hl011.CHTB" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHGGSS']}">
+                    <input type="text" ng-model="hl011.SHGGSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHSWCZ']}">
+                    <input type="text" ng-model="hl011.SHSWCZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHJDJ']}">
+                    <input type="text" ng-model="hl011.SHJDJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHJDBZ']}">
+                    <input type="text" ng-model="hl011.SHJDBZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHSDZ']}">
+                    <input type="text" ng-model="hl011.SHSDZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SLSSZJJJSS']}">
+                    <input type="text" ng-model="hl011.SLSSZJJJSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="4">
+        <caption>
+            死亡/失踪人员基本情况统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="2" nowrap="" style="width: 24px; min-width: 24px;">
+                    选择
+                </th>
+                <th rowspan="2" nowrap="">
+                    地区
+                </th>
+                <th colspan="7" scope="col">
+                    死亡/失踪人员基本信息
+                </th>
+                <th rowspan="2" scope="col">
+                    死亡/失踪原因
+                </th>
+                <th rowspan="2" scope="col">
+                    备注
+                </th>
+                <th rowspan="2" scope="col">
+                    流域
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    类别
+                </th>
+                <th scope="col">
+                    姓名
+                </th>
+                <th scope="col">
+                    性别
+                </th>
+                <th scope="col">
+                    年龄
+                </th>
+                <th scope="col">
+                    户籍所在地（落实到乡）
+                </th>
+                <th scope="col">
+                    死亡/失踪时间
+                </th>
+                <th scope="col">
+                    死亡/失踪地点
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-init="Units = [{UnitCode:BaseData.Unit.Local.UnitCode,UnitName:'请选择'}]; Units = Units.concat(BaseData.Unit.Unders).RemoveBy('UnitName','全区/县')">
+            <tr ng-repeat="hl012 in Open.Report.Current.HL012">
+                <th style="width: 24px; min-width: 24px;">
+                    <input type="checkbox" style="width: 24px; text-align: center" ng-model="hl012.Checked" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </th>
+                <td style="padding: 0px;" ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors['HL012-Select'].TRIndex[$index]}">
+                    <select ng-model="hl012.UnitCode" ng-disabled="Open.Report.Current.Attr.HB" class="AlignCenter" index="{{$index}}" ng-change="FCOD(hl012.DataType)">
+                        <option ng-repeat="Unit in Units" index="{{$index}}" value="{{Unit.UnitCode}}" ng-selected="Unit.UnitCode == hl012.UnitCode">
+                            {{Unit.UnitName}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select ng-model="hl012.DataType" ng-disabled="Open.Report.Current.Attr.HB" ng-change="FCOT(hl012.DataType,hl012.UnitCode)">
+                        <option value="死亡">死亡</option>
+                        <option value="失踪">失踪</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" ng-model="hl012.SWXM" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" />
+                </td>
+                <td style="padding: 0px;">
+                    <select ng-model="hl012.SWXB" ng-disabled="Open.Report.Current.Attr.HB" class="AlignCenter">
+                        <option value="未知">未知</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" ng-model="hl012.SWNL" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" />
+                </td>
+                <td>
+                    <input type="text" ng-model="hl012.SWHJ" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" />
+                </td>
+                <td>
+                    <input type="text" ng-model="hl012.SWSJ" ng-wdatepicker class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" />
+                </td>
+                <td>
+                    <input type="text" ng-model="hl012.SWDD" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" />
+                </td>
+                <td style="width: 140px;">
+                    <input type="text" ng-model="hl012.DeathReason" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-deathtree class="AlignCenter" readonly />
+                </td>
+                <td>
+                    <input type="text" ng-model="hl012.BZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" class="AlignLeft" />
+                </td>
+                <td style="padding: 0px;">
+                    <select ng-model="hl012.RiverCode" ng-disabled="Open.Report.Current.Attr.HB" ng-options="River.Code as River.Name for River in hl012.RiverSelect">
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="5">
+        <caption>
+            城市受淹情况统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="4" nowrap="" style="width: 24px; min-width: 24px;">
+                    选择
+                </th>
+                <th rowspan="4" nowrap="">
+                    地区
+                </th>
+                <th rowspan="4" scope="col">
+                    街道(城镇)名称
+                </th>
+                <th colspan="2" scope="col">
+                    淹没范围
+                </th>
+                <th rowspan="2" scope="col" class="noborder">
+                    受灾
+                </th>
+                <th rowspan="2" scope="col" class="noborder">
+                    死亡
+                </th>
+                <th colspan="5" scope="col">
+                    受淹过程
+                </th>
+                <th scope="col" class="noborder">
+                    主要街道
+                </th>
+                <th colspan="4" scope="col">
+                    生命线工程中断历时
+                </th>
+                <th colspan="2" scope="col">
+                    建筑物受淹
+                </th>
+                <th scope="col" class="noborder">
+                    城区直接
+                </th>
+                <th rowspan="4" scope="col">
+                    所属流域
+                </th>
+            </tr>
+            <tr>
+                <th rowspan="2" scope="col">
+                    面积
+                </th>
+                <th rowspan="2" scope="col">
+                    淹没比例
+                </th>
+                <th rowspan="2" scope="col">
+                    进水时间
+                </th>
+                <th rowspan="2" scope="col">
+                    淹没历时
+                </th>
+                <th scope="col" class="noborder">
+                    累积
+                </th>
+                <th scope="col" class="noborder">
+                    洪水围
+                </th>
+                <th scope="col" class="noborder">
+                    紧急转
+                </th>
+                <th rowspan="2" scope="col" class="noborder">
+                    最大水深
+                </th>
+                <th rowspan="2" scope="col">
+                    供水
+                </th>
+                <th rowspan="2" scope="col">
+                    供电
+                </th>
+                <th rowspan="2" scope="col">
+                    供气
+                </th>
+                <th rowspan="2" scope="col">
+                    交通
+                </th>
+                <th rowspan="2" scope="col" class="noborder">
+                    房屋
+                </th>
+                <th scope="col" class="noborder">
+                    地下
+                </th>
+                <th rowspan="2" scope="col" class="noborder">
+                    经济损失
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" class="noborder">
+                    人口
+                </th>
+                <th scope="col" class="noborder">
+                    人口
+                </th>
+                <th scope="col" class="noborder">
+                    降雨量
+                </th>
+                <th scope="col" class="noborder">
+                    困人口
+                </th>
+                <th scope="col" class="noborder">
+                    移人口
+                </th>
+                <th scope="col" class="noborder">
+                    设施
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="YMFWMJ">
+                    {{BaseData.Field.YMFWMJ.MeasureName ? BaseData.Field.YMFWMJ.MeasureName : "（平方公里）"}}
+                </th>
+                <th scope="col" name="YMFWBL">
+                    （%）
+                </th>
+                <th scope="col" name="SZRK">
+                    {{BaseData.Field.SZRK.MeasureName ? BaseData.Field.SZRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="SWRK">
+                    {{BaseData.Field.SWRK.MeasureName ? BaseData.Field.SWRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="GCJSSJ">
+                    {{BaseData.Field.GCJSSJ.MeasureName ? BaseData.Field.GCJSSJ.MeasureName : "（月日时）"}}
+                </th>
+                <th scope="col" name="GCYMLS">
+                    {{BaseData.Field.GCYMLS.MeasureName ? BaseData.Field.GCYMLS.MeasureName : "（小时）"}}
+                </th>
+                <th scope="col" name="GCLJJYL">
+                    {{BaseData.Field.GCLJJYL.MeasureName ? BaseData.Field.GCLJJYL.MeasureName : "（毫米）"}}
+                </th>
+                <th scope="col" name="GCHSWKRK">
+                    {{BaseData.Field.GCHSWKRK.MeasureName ? BaseData.Field.GCHSWKRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="GCJJZYRK">
+                    {{BaseData.Field.GCJJZYRK.MeasureName ? BaseData.Field.GCJJZYRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="ZYZJZDSS">
+                    {{BaseData.Field.ZYZJZDSS.MeasureName ? BaseData.Field.ZYZJZDSS.MeasureName : "（米）"}}
+                </th>
+                <th scope="col" name="SMXGS">
+                    {{BaseData.Field.SMXGS.MeasureName ? BaseData.Field.SMXGS.MeasureName : "（小时）"}}
+                </th>
+                <th scope="col" name="SMXGD">
+                    {{BaseData.Field.SMXGD.MeasureName ? BaseData.Field.SMXGD.MeasureName : "（小时）"}}
+                </th>
+                <th scope="col" name="SMXGQ">
+                    {{BaseData.Field.SMXGQ.MeasureName ? BaseData.Field.SMXGQ.MeasureName : "（小时）"}}
+                </th>
+                <th scope="col" name="SMXJT">
+                    {{BaseData.Field.SMXJT.MeasureName ? BaseData.Field.SMXJT.MeasureName : "（小时）"}}
+                </th>
+                <th scope="col" name="JZWSYFW">
+                    {{BaseData.Field.JZWSYFW.MeasureName ? BaseData.Field.JZWSYFW.MeasureName : "（万户）"}}
+                </th>
+                <th scope="col" name="JZWSYDX">
+                    {{BaseData.Field.JZWSYDX.MeasureName ? BaseData.Field.JZWSYDX.MeasureName : "（平方米）"}}
+                </th>
+                <th scope="col" name="CQZJJJSS">
+                    {{BaseData.Field.CQZJJJSS.MeasureName ? BaseData.Field.CQZJJJSS.MeasureName : "（万元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-init="Units = [{UnitCode:BaseData.Unit.Local.UnitCode,UnitName:'请选择'}]; Units = Units.concat(BaseData.Unit.Unders).RemoveBy('UnitName','全区/县')">
+            <tr>
+                <th style="width: 24px; min-width: 24px;">
+                </th>
+                <th style="padding: 0px;">
+                    <span>合计</span>
+                </th>
+                <td>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].YMFWMJ" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].YMFWBL" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].SZRK" readonly class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].SWRK" readonly class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].GCYMLS" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].GCLJJYL" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].GCHSWKRK" readonly class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].GCJJZYRK" readonly class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].ZYZJZDSS" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].SMXGS" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].SMXGD" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].SMXGQ" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].SMXJT" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].JZWSYFW" readonly class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].JZWSYDX" readonly class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="Open.Report.Current.HL013[0].CQZJJJSS" readonly class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td style="padding: 0px;">
+                </td>
+            </tr>
+            <tr ng-repeat="hl013 in Open.Report.Current.HL013" ng-if="hl013.DW != '合计'">
+                <th style="width: 24px; min-width: 24px;">
+                    <input type="checkbox" style="width: 24px; text-align: center" ng-model="hl013.Checked" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </th>
+                <td style="padding: 0px;" ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors['HL013-Select'].TRIndex[$index]}">
+                    <select ng-model="hl013.UnitCode" ng-disabled="Open.Report.Current.Attr.HB" class="AlignCenter" index="{{$index}}" ng-change="FCOD()">
+                        <option ng-repeat="Unit in Units" index="{{$index}}" value="{{Unit.UnitCode}}" ng-selected="Unit.UnitCode == hl013.UnitCode">
+                            {{Unit.UnitName}}</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" ng-model="hl013.CSMC" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-YMFWMJ']}">
+                    <input type="text" ng-model="hl013.YMFWMJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-YMFWBL']}">
+                    <input type="text" ng-model="hl013.YMFWBL" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,2)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZRK']}">
+                    <input type="text" ng-model="hl013.SZRK" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SWRK']}">
+                    <input type="text" ng-model="hl013.SWRK" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td>
+                    <input type="text" ng-model="hl013.GCJSSJ" readonly style="width: 82px;" ng-wdatepicker='{"dateFmt":"yyyy-MM-dd HH"}'
+                        class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GCYMLS']}">
+                    <input type="text" ng-model="hl013.GCYMLS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCM(1)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GCLJJYL']}">
+                    <input type="text" ng-model="hl013.GCLJJYL" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,1)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GCHSWKRK']}">
+                    <input type="text" ng-model="hl013.GCHSWKRK" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-GCJJZYRK']}">
+                    <input type="text" ng-model="hl013.GCJJZYRK" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZYZJZDSS']}">
+                    <input type="text" ng-model="hl013.ZYZJZDSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCM()" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SMXGS']}">
+                    <input type="text" ng-model="hl013.SMXGS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,1)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SMXGD']}">
+                    <input type="text" ng-model="hl013.SMXGD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,1)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SMXGQ']}">
+                    <input type="text" ng-model="hl013.SMXGQ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,1)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SMXJT']}">
+                    <input type="text" ng-model="hl013.SMXJT" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,1)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-JZWSYFW']}">
+                    <input type="text" ng-model="hl013.JZWSYFW" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-JZWSYDX']}">
+                    <input type="text" ng-model="hl013.JZWSYDX" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,1)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-CQZJJJSS']}">
+                    <input type="text" ng-model="hl013.CQZJJJSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td style="padding: 0px;">
+                    <select ng-model="hl013.RiverCode" ng-options="River.Code as River.Name for River in hl013.RiverSelect">
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="6">
+        <caption>
+            抗洪抢险综合情况统计表一
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="4" nowrap="">
+                    地区
+                </th>
+                <th colspan="11" scope="col">
+                    防汛物资消耗
+                </th>
+                <th colspan="7" scope="col">
+                    出动情况
+                </th>
+            </tr>
+            <tr>
+                <th rowspan="2" scope="col">
+                    编织袋
+                </th>
+                <th rowspan="2" scope="col">
+                    编织布
+                </th>
+                <th rowspan="2" scope="col">
+                    挡水设施
+                </th>
+                <th rowspan="2" scope="col">
+                    砂石料
+                </th>
+                <th rowspan="2" scope="col">
+                    木材
+                </th>
+                <th rowspan="2" scope="col">
+                    钢材
+                </th>
+                <th rowspan="2" scope="col">
+                    救生衣
+                </th>
+                <th rowspan="2" scope="col">
+                    抗灾用油
+                </th>
+                <th rowspan="2" scope="col">
+                    抗灾用电
+                </th>
+                <th scope="col" class="noborder">
+                    其他物资
+                </th>
+                <th scope="col" class="noborder">
+                    总物资
+                </th>
+                <th colspan="4" scope="col">
+                    投入抢险人数
+                </th>
+                <th colspan="3" scope="col">
+                    抢险设备情况
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" class="noborder">
+                    消耗折算资金
+                </th>
+                <th scope="col" class="noborder">
+                    消耗折算资金
+                </th>
+                <th scope="col">
+                    合计
+                </th>
+                <th scope="col">
+                    部队官兵
+                </th>
+                <th scope="col">
+                    地方人员
+                </th>
+                <th scope="col">
+                    防汛机动抢险队员
+                </th>
+                <th scope="col">
+                    抢险舟（船）
+                </th>
+                <th scope="col">
+                    运输设备
+                </th>
+                <th scope="col">
+                    机械设备
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="WZBZD">
+                    {{BaseData.Field.WZBZD.MeasureName ? BaseData.Field.WZBZD.MeasureName : "（条）"}}
+                </th>
+                <th scope="col" name="WZBZB">
+                    {{BaseData.Field.WZBZB.MeasureName ? BaseData.Field.WZBZB.MeasureName : "（平方米）"}}
+                </th>
+                <th scope="col" name="WZDSSS">
+                    {{BaseData.Field.WZDSSS.MeasureName ? BaseData.Field.WZDSSS.MeasureName : "（延米）"}}
+                </th>
+                <th scope="col" name="WZSSL">
+                    {{BaseData.Field.WZSSL.MeasureName ? BaseData.Field.WZSSL.MeasureName : "（立方米）"}}
+                </th>
+                <th scope="col" name="WZMC">
+                    {{BaseData.Field.WZMC.MeasureName ? BaseData.Field.WZMC.MeasureName : "（立方米）"}}
+                </th>
+                <th scope="col" name="WZGC">
+                    {{BaseData.Field.WZGC.MeasureName ? BaseData.Field.WZGC.MeasureName : "（吨）"}}
+                </th>
+                <th scope="col" name="WZJSY">
+                    {{BaseData.Field.WZJSY.MeasureName ? BaseData.Field.WZJSY.MeasureName : "（件）"}}
+                </th>
+                <th scope="col" name="WZY">
+                    {{BaseData.Field.WZY.MeasureName ? BaseData.Field.WZY.MeasureName : "（吨）"}}
+                </th>
+                <th scope="col" name="WZD">
+                    {{BaseData.Field.WZD.MeasureName ? BaseData.Field.WZD.MeasureName : "（度）"}}
+                </th>
+                <th scope="col" name="WZQT">
+                    {{BaseData.Field.WZQT.MeasureName ? BaseData.Field.WZQT.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="WZZXH">
+                    {{BaseData.Field.WZZXH.MeasureName ? BaseData.Field.WZZXH.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="QXHJ">
+                    {{BaseData.Field.QXHJ.MeasureName ? BaseData.Field.QXHJ.MeasureName : "（人次）"}}
+                </th>
+                <th scope="col" name="QXBDGB">
+                    {{BaseData.Field.QXBDGB.MeasureName ? BaseData.Field.QXBDGB.MeasureName : "（人次）"}}
+                </th>
+                <th scope="col" name="QXDFRY">
+                    {{BaseData.Field.QXDFRY.MeasureName ? BaseData.Field.QXDFRY.MeasureName : "（人次）"}}
+                </th>
+                <th scope="col" name="QXFXJD">
+                    {{BaseData.Field.QXFXJD.MeasureName ? BaseData.Field.QXFXJD.MeasureName : "（人次）"}}
+                </th>
+                <th scope="col" name="SBQXZ">
+                    {{BaseData.Field.SBQXZ.MeasureName ? BaseData.Field.SBQXZ.MeasureName : "（舟次）"}}
+                </th>
+                <th scope="col" name="SBYS">
+                    {{BaseData.Field.SBYS.MeasureName ? BaseData.Field.SBYS.MeasureName : "（班次）"}}
+                </th>
+                <th scope="col" name="SBJX">
+                    {{BaseData.Field.SBJX.MeasureName ? BaseData.Field.SBJX.MeasureName : "（台班）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl014 in Open.Report.Current.HL014" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl014.DW}}</span>
+                </th>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZBZD']}">
+                    <input type="text" ng-model="hl014.WZBZD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZBZB']}">
+                    <input type="text" ng-model="hl014.WZBZB" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZDSSS']}">
+                    <input type="text" ng-model="hl014.WZDSSS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,2)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZSSL']}">
+                    <input type="text" ng-model="hl014.WZSSL" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZMC']}">
+                    <input type="text" ng-model="hl014.WZMC" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZGC']}">
+                    <input type="text" ng-model="hl014.WZGC" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZJSY']}">
+                    <input type="text" ng-model="hl014.WZJSY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZY']}">
+                    <input type="text" ng-model="hl014.WZY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZD']}">
+                    <input type="text" ng-model="hl014.WZD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZQT']}">
+                    <input type="text" ng-model="hl014.WZQT" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-WZZXH']}">
+                    <input type="text" ng-model="hl014.WZZXH" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl014.QXHJ" readonly="readonly" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-QXBDGB']}">
+                    <input type="text" ng-model="hl014.QXBDGB" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0);FCRC('QXHJ')" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-QXFXJD']}">
+                    <input type="text" ng-model="hl014.QXFXJD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0);FCRC('QXHJ')" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-QXDFRY']}">
+                    <input type="text" ng-model="hl014.QXDFRY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0);FCRC('QXHJ')" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SBQXZ']}">
+                    <input type="text" ng-model="hl014.SBQXZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SBYS']}">
+                    <input type="text" ng-model="hl014.SBYS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SBJX']}">
+                    <input type="text" ng-model="hl014.SBJX" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="7">
+        <caption>
+            抗洪抢险综合情况统计表二
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="4" nowrap="">
+                    地区
+                </th>
+                <th colspan="5" scope="col">
+                    资金投入
+                </th>
+                <th colspan="11" scope="col">
+                    防洪减灾效益
+                </th>
+            </tr>
+            <tr>
+                <th rowspan="2" scope="col">
+                    小计
+                </th>
+                <th rowspan="2" scope="col">
+                    中央
+                </th>
+                <th rowspan="2" scope="col">
+                    省级
+                </th>
+                <th rowspan="2" scope="col">
+                    省级以下
+                </th>
+                <th rowspan="2" scope="col">
+                    群众投劳折资
+                </th>
+                <th rowspan="2" scope="col">
+                    减淹耕地
+                </th>
+                <th rowspan="2" scope="col">
+                    避免粮食减收
+                </th>
+                <th rowspan="2" scope="col">
+                    减少受灾人口
+                </th>
+                <th rowspan="2" scope="col">
+                    解救洪水围困群众
+                </th>
+                <th colspan="2" scope="col">
+                    避免人员伤亡
+                </th>
+                <th colspan="3" scope="col">
+                    转移人员
+                </th>
+                <th scope="col" class="noborder">
+                    避免县级以上
+                </th>
+                <th rowspan="2" scope="col">
+                    减灾经济效益
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    次数
+                </th>
+                <th scope="col">
+                    人数
+                </th>
+                <th scope="col">
+                    山洪
+                </th>
+                <th scope="col">
+                    台风
+                </th>
+                <th scope="col">
+                    其他
+                </th>
+                <th scope="col" class="noborder">
+                    城区受淹
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="ZJXJ">
+                    {{BaseData.Field.ZJXJ.MeasureName ? BaseData.Field.ZJXJ.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="ZJZY">
+                    {{BaseData.Field.ZJZY.MeasureName ? BaseData.Field.ZJZY.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="ZJSJ">
+                    {{BaseData.Field.ZJSJ.MeasureName ? BaseData.Field.ZJSJ.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="ZJSJYS">
+                    {{BaseData.Field.ZJSJYS.MeasureName ? BaseData.Field.ZJSJYS.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="ZJQZ">
+                    {{BaseData.Field.ZJQZ.MeasureName ? BaseData.Field.ZJQZ.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="XYJYGD">
+                    {{BaseData.Field.XYJYGD.MeasureName ? BaseData.Field.XYJYGD.MeasureName : "（公顷）"}}
+                </th>
+                <th scope="col" name="XYJMLSJS">
+                    {{BaseData.Field.XYJMLSJS.MeasureName ? BaseData.Field.XYJMLSJS.MeasureName : "（吨）"}}
+                </th>
+                <th scope="col" name="XYJSSZRK">
+                    {{BaseData.Field.XYJSSZRK.MeasureName ? BaseData.Field.XYJSSZRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="XYJJQZ">
+                    {{BaseData.Field.XYJJQZ.MeasureName ? BaseData.Field.XYJJQZ.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="XYJMSWC">
+                    {{BaseData.Field.XYJMSWC.MeasureName ? BaseData.Field.XYJMSWC.MeasureName : "（起）"}}
+                </th>
+                <th scope="col" name="XYJMSWR">
+                    {{BaseData.Field.XYJMSWR.MeasureName ? BaseData.Field.XYJMSWR.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="XYZYSH">
+                    {{BaseData.Field.XYZYSH.MeasureName ? BaseData.Field.XYZYSH.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="XYZYTF">
+                    {{BaseData.Field.XYZYTF.MeasureName ? BaseData.Field.XYZYTF.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="XYZYQT">
+                    {{BaseData.Field.XYZYQT.MeasureName ? BaseData.Field.XYZYQT.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="XYBMSY">
+                    {{BaseData.Field.XYBMSY.MeasureName ? BaseData.Field.XYBMSY.MeasureName : "（座）"}}
+                </th>
+                <th scope="col" name="XYJZJJXY">
+                    {{BaseData.Field.XYJZJJXY.MeasureName ? BaseData.Field.XYJZJJXY.MeasureName : "（元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl014 in Open.Report.Current.HL014" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl014.DW}}</span>
+                </th>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl014.ZJXJ" readonly="readonly" class="AlignRight" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZJZY']}">
+                    <input type="text" ng-model="hl014.ZJZY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('ZJXJ')" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZJSJ']}">
+                    <input type="text" ng-model="hl014.ZJSJ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('ZJXJ')" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZJSJYS']}">
+                    <input type="text" ng-model="hl014.ZJSJYS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('ZJXJ')" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZJQZ']}">
+                    <input type="text" ng-model="hl014.ZJQZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('ZJXJ')" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJYGD']}">
+                    <input type="text" ng-model="hl014.XYJYGD" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJMLSJS']}">
+                    <input type="text" ng-model="hl014.XYJMLSJS" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJSSZRK']}">
+                    <input type="text" ng-model="hl014.XYJSSZRK" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJJQZ']}">
+                    <input type="text" ng-model="hl014.XYJJQZ" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJMSWC']}">
+                    <input type="text" ng-model="hl014.XYJMSWC" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJMSWR']}">
+                    <input type="text" ng-model="hl014.XYJMSWR" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYZYSH']}">
+                    <input type="text" ng-model="hl014.XYZYSH" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('HL011.ZYRK')" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYZYTF']}">
+                    <input type="text" ng-model="hl014.XYZYTF" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('HL011.ZYRK')" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYZYQT']}">
+                    <input type="text" ng-model="hl014.XYZYQT" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCRC('HL011.ZYRK')" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYBMSY']}">
+                    <input type="text" ng-model="hl014.XYBMSY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-XYJZJJXY']}">
+                    <input type="text" ng-model="hl014.XYJZJJXY" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,4)" class="AlignRight" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table ng-switch-when="8">
+        <caption>
+            洪涝灾害实时统计表
+        </caption>
+        <thead>
+            <tr>
+                <th rowspan="3" nowrap="">
+                    地区
+                </th>
+                <th colspan="2" scope="col">
+                    受灾范围
+                </th>
+                <th rowspan="2" scope="col">
+                    农作物受灾面积
+                </th>
+                <th rowspan="2" scope="col">
+                    受灾人口
+                </th>
+                <th rowspan="2" scope="col">
+                    死亡人口
+                </th>
+                <th rowspan="2" scope="col">
+                    失踪人口
+                </th>
+                <th rowspan="2" scope="col">
+                    转移人口
+                </th>
+                <th rowspan="2" scope="col">
+                    倒塌房屋
+                </th>
+                <th rowspan="2" scope="col">
+                    直接经济总损失
+                </th>
+                <th rowspan="2" scope="col">
+                    其中水利设施直接经济损失
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">
+                    县（市、区）
+                </th>
+                <th scope="col">
+                    乡（镇、街道）
+                </th>
+            </tr>
+            <tr>
+                <th scope="col" name="SZFWX">
+                    {{BaseData.Field.SZFWX.MeasureName ? BaseData.Field.SZFWX.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="SZFWZ">
+                    {{BaseData.Field.SZFWZ.MeasureName ? BaseData.Field.SZFWZ.MeasureName : "（个）"}}
+                </th>
+                <th scope="col" name="SHMJXJ">
+                    {{BaseData.Field.SHMJXJ.MeasureName ? BaseData.Field.SHMJXJ.MeasureName : "（公顷）"}}
+                </th>
+                <th scope="col" name="SZRK">
+                    {{BaseData.Field.SZRK.MeasureName ? BaseData.Field.SZRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="SWRK">
+                    {{BaseData.Field.SWRK.MeasureName ? BaseData.Field.SWRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="SZRKR">
+                   {{BaseData.Field.SZRKR.MeasureName ? BaseData.Field.SZRKR.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="ZYRK">
+                    {{BaseData.Field.ZYRK.MeasureName ? BaseData.Field.ZYRK.MeasureName : "（人）"}}
+                </th>
+                <th scope="col" name="DTFW">
+                    {{BaseData.Field.DTFW.MeasureName ? BaseData.Field.DTFW.MeasureName : "（间）"}}
+                </th>
+                <th scope="col" name="ZJJJZSS">
+                    {{BaseData.Field.ZJJJZSS.MeasureName ? BaseData.Field.ZJJJZSS.MeasureName : "（万元）"}}
+                </th>
+                <th scope="col" name="SLSSZJJJSS">
+                    {{BaseData.Field.SLSSZJJJSS.MeasureName ? BaseData.Field.SLSSZJJJSS.MeasureName : "（万元）"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hl011 in Open.Report.Current.HL011" ng-firstreadonly>
+                <th>
+                    <span class="AlignCenter">{{hl011.DW}}</span>
+                </th>
+                <td ng-if="Open.Report.Current.ReportTitle.SourceType == '2' && (BaseData.Unit.Local.Limit == 2 || BaseData.Unit.Local.Limit == 3)" ng-class="{ReadOnly:!$index || BaseData.Unit.Local.Limit > 2}">
+                    <!--<input type="text" ng-model="hl011.SZFWX.Real" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,0)"/>-->
+                    <input type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2" ng-model="hl011.SZFWX" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+                </td>
+                <td ng-if="Open.Report.Current.ReportTitle.SourceType != '2' || BaseData.Unit.Local.Limit == 4" ng-class="{ReadOnly:!$index || BaseData.Unit.Local.Limit > 2}">
+                    <input type="text" ng-readonly="!$index || BaseData.Unit.Local.Limit > 2" ng-model="hl011.SZFWX" class="AlignCenter" ng-disabled="Open.Report.Current.Attr.HB"
+                        ng-focus="FCOF()" ng-blur="FCS(0,0,0)" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZFWZ'],ReadOnly:BaseData.Unit.Local.Limit == 4}">
+                    <input type="text" ng-model="hl011.SZFWZ"
+                        ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,0)"
+                        class="AlignCenter" ng-readonly="BaseData.Unit.Local.Limit == 4" />   <!--ng-readonly="(Open.Report.Current.Attr.SSB && !$index ? true : false)"-->
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SHMJXJ']}">
+                    <input type="text" ng-model="hl011.SHMJXJ"
+                        ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,4)"
+                        class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SZRK']}">
+                    <input type="text" ng-model="hl011.SZRK"
+                        ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,4)"
+                        class="AlignCenter" />
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl011.SWRK" class="AlignCenter" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td class="ReadOnly">
+                    <input type="text" ng-model="hl011.SZRKR" class="AlignCenter" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td ng-class="{ReadOnly:!Open.Report.Current.Attr.SSB && $index}">
+                    <input type="text" ng-model="hl011.ZYRK" class="AlignRight" ng-readonly="!Open.Report.Current.Attr.SSB || !$index" ng-focus="FCOF()" ng-blur="FCS(0,0,4);FCHS()" ng-disabled="Open.Report.Current.Attr.HB"/>
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-DTFW']}">
+                    <input type="text" ng-model="hl011.DTFW"
+                        ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,4)"
+                        class="AlignCenter" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-ZJJJZSS']}">
+                    <input type="text" ng-model="hl011.ZJJJZSS"
+                        ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,4)"
+                        class="AlignRight" />
+                </td>
+                <td ng-class="{WrongData:Open.Report.Current.Attr.CheckErrors[hl011.UnitCode + '-SLSSZJJJSS']}">
+                    <input type="text" ng-model="hl011.SLSSZJJJSS"
+                        ng-disabled="Open.Report.Current.Attr.HB" ng-focus="FCOF()" ng-blur="FCS(0,0,4)"
+                        class="AlignRight" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-switch-when="4" ng-initdeathtree class="DeathTree">
+    </div>
+</div>
+<ul class="Rpt-Tags">
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 0}" ng-click="Open.Report.Current.Attr.TableIndex = 0"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表1</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 1}" ng-click="Open.Report.Current.Attr.TableIndex = 1"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表2</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 2}" ng-click="Open.Report.Current.Attr.TableIndex = 2"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表3</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 3}" ng-click="Open.Report.Current.Attr.TableIndex = 3"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表4</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 4}" ng-click="Open.Report.Current.Attr.TableIndex = 4">
+        <a>{{Open.Report.Current.Attr.SSB ? "死亡/失踪人员明细" : "表5"}}</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 5}" ng-click="Open.Report.Current.Attr.TableIndex = 5"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表6</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 6}" ng-click="Open.Report.Current.Attr.TableIndex = 6"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表7</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 7}" ng-click="Open.Report.Current.Attr.TableIndex = 7"
+        ng-hide="Open.Report.Current.Attr.SSB"><a>表8</a></li>
+    <li ng-class="{Selected:Open.Report.Current.Attr.TableIndex == 8}" ng-click="Open.Report.Current.Attr.TableIndex = 8">
+        <a>{{Open.Report.Current.Attr.SSB ? "数据表" : "表9"}}</a></li>
+</ul>

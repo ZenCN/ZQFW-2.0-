@@ -1,0 +1,74 @@
+﻿<tbody>
+    <tr ng-repeat="sh011 in Open.Report.Current.SH011" ng-first-readonly>
+        <th>
+            <span class="txt_center">{{sh011.JSNR}}</span>
+        </th>
+        <td class="ReadOnly">
+            {{sh011.NDZJYS}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh011.NDZJYS > 0)}">
+            <input type="text" ng-readonly="!(sh011.NDZJYS > 0)" ng-model="sh011.NDZJZY"
+                   ng-blur="FCD(2);FCS();FCS('NDZJDF');FCDVD(['JDWCZY','NDZJZY','JDZYBL']);FCDVD(['ZFWCZY','NDZJZY','ZFZYBL'])"/>
+        </td>
+        <td ng-class="{ ReadOnly: !(sh011.NDZJYS > 0)}">
+            <input type="text" ng-readonly="!(sh011.NDZJYS > 0)" ng-model="sh011.NDZJDF" ng-blur="FCD(2);FCS();FCS('NDZJZY')" />
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-DFZJSJ')}">
+            <input type="text" ng-model="sh011.DFZJSJ" ng-blur="FCN(2);FCS();FCDVD(['JDWCSJ','DFZJSJ','JDSJBL']);FCDVD(['ZFWCSJ','DFZJSJ','ZFSJBL']);FCKD();" />
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-DFZJSX')}">
+            <input type="text" ng-model="sh011.DFZJSX" ng-blur="FCN(2);FCS();FCDVD(['JDWCSHIJ','DFZJSX','JDSHIJBL']);FCDVD(['ZFWCSHIJ','DFZJSX','ZFSHIJBL']);FCKD();" />
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-DFZJX')}">
+            <input type="text" ng-model="sh011.DFZJX" ng-blur="FCN(2);FCS();FCDVD(['JDWCXJ','DFZJX','JDXJBL']);FCDVD(['ZFWCXJ','DFZJX','ZFXJBL']);FCKD();" />
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-JDWCZY')}">
+            <input type="text" ng-model="sh011.JDWCZY" ng-blur="FCN(2);FCS();FCDVD(['JDWCZY','NDZJZY','JDZYBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.JDZYBL > 100}">
+            {{sh011.JDZYBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-JDWCSJ')}">
+            <input type="text" ng-model="sh011.JDWCSJ" ng-blur="FCN(2);FCS();FCDVD(['JDWCSJ','DFZJSJ','JDSJBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.JDSJBL > 100}">
+            {{sh011.JDSJBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-JDWCSHIJ')}">
+            <input type="text" ng-model="sh011.JDWCSHIJ" ng-blur="FCN(2);FCS();FCDVD(['JDWCSHIJ','DFZJSX','JDSHIJBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.JDSHIJBL > 100}">
+            {{sh011.JDSHIJBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-JDWCXJ')}">
+            <input type="text" ng-model="sh011.JDWCXJ" ng-blur="FCN(2);FCS();FCDVD(['JDWCXJ','DFZJX','JDXJBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.JDXJBL > 100}">
+            {{sh011.JDXJBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-ZFWCZY')}">
+            <input type="text" ng-model="sh011.ZFWCZY" ng-blur="FCN(2);FCS();FCDVD(['ZFWCZY','NDZJZY','ZFZYBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.ZFZYBL > 100}">
+            {{sh011.ZFZYBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-ZFWCSJ')}">
+            <input type="text" ng-model="sh011.ZFWCSJ" ng-blur="FCN(2);FCS();FCDVD(['ZFWCSJ','DFZJSJ','ZFSJBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.ZFSJBL > 100}">
+            {{sh011.ZFSJBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-ZFWCSHIJ')}">
+            <input type="text" ng-model="sh011.ZFWCSHIJ" ng-blur="FCN(2);FCS();FCDVD(['ZFWCSHIJ','DFZJSX','ZFSHIJBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.ZFSHIJBL > 100}">
+            {{sh011.ZFSHIJBL}}
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh011.UnitCode + '-ZFWCXJ')}">
+            <input type="text" ng-model="sh011.ZFWCXJ" ng-blur="FCN(2);FCS();FCDVD(['ZFWCXJ','DFZJX','ZFXJBL']);FCKD();" />
+        </td>
+        <td class="ReadOnly" ng-class="{WrongData: sh011.ZFXJBL > 100}">
+            {{sh011.ZFXJBL}}
+        </td>
+    </tr>
+</tbody>

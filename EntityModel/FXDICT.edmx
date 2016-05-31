@@ -1,0 +1,2092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FXDICTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FXDICTModelStoreContainer">
+          <EntitySet Name="TB01_Base" EntityType="FXDICTModel.Store.TB01_Base" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB02_Measure" EntityType="FXDICTModel.Store.TB02_Measure" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB03_Modulus" EntityType="FXDICTModel.Store.TB03_Modulus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB04_CheckBase" EntityType="FXDICTModel.Store.TB04_CheckBase" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB06_Formula" EntityType="FXDICTModel.Store.TB06_Formula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB07_District" EntityType="FXDICTModel.Store.TB07_District" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB08_RiverOrgan" EntityType="FXDICTModel.Store.TB08_RiverOrgan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB09_RiverDict" EntityType="FXDICTModel.Store.TB09_RiverDict" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB10_RiverDistribute" EntityType="FXDICTModel.Store.TB10_RiverDistribute" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB11_RptType" EntityType="FXDICTModel.Store.TB11_RptType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB14_Cyc" EntityType="FXDICTModel.Store.TB14_Cyc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB15_RptClass" EntityType="FXDICTModel.Store.TB15_RptClass" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB16_OperateReportDefine" EntityType="FXDICTModel.Store.TB16_OperateReportDefine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB17_TableDefine" EntityType="FXDICTModel.Store.TB17_TableDefine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB18_TableStyle" EntityType="FXDICTModel.Store.TB18_TableStyle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB20_FieldDefine" EntityType="FXDICTModel.Store.TB20_FieldDefine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB24_ExcelRptDataTemplate" EntityType="FXDICTModel.Store.TB24_ExcelRptDataTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB27_DISASTERTYPE" EntityType="FXDICTModel.Store.TB27_DISASTERTYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB28_OprRptType" EntityType="FXDICTModel.Store.TB28_OprRptType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB30_RptTitleInfo" EntityType="FXDICTModel.Store.TB30_RptTitleInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB31_BriefIndex" EntityType="FXDICTModel.Store.TB31_BriefIndex" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB32_BriefTemplate" EntityType="FXDICTModel.Store.TB32_BriefTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB35_FieldUnitTrans" EntityType="FXDICTModel.Store.TB35_FieldUnitTrans" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB43_Reservoir" EntityType="FXDICTModel.Store.TB43_Reservoir" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB44_ReservoirDistrict" EntityType="FXDICTModel.Store.TB44_ReservoirDistrict" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB47_DeathReason" EntityType="FXDICTModel.Store.TB47_DeathReason" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB48_MeasureUnit" EntityType="FXDICTModel.Store.TB48_MeasureUnit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB51_HunanDistrictConst" EntityType="FXDICTModel.Store.TB51_HunanDistrictConst" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB52_Formula" EntityType="FXDICTModel.Store.TB52_Formula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB55_FieldDefine" EntityType="FXDICTModel.Store.TB55_FieldDefine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB56_EvaluationType" EntityType="FXDICTModel.Store.TB56_EvaluationType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB57_EvaluationParameter" EntityType="FXDICTModel.Store.TB57_EvaluationParameter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB58_EvaluationFactor" EntityType="FXDICTModel.Store.TB58_EvaluationFactor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB59_EvalFactorThreshold" EntityType="FXDICTModel.Store.TB59_EvalFactorThreshold" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB60_EvaluationGrade" EntityType="FXDICTModel.Store.TB60_EvaluationGrade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB61_HunanHPDate" EntityType="FXDICTModel.Store.TB61_HunanHPDate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB62_NMReservoir" EntityType="FXDICTModel.Store.TB62_NMReservoir" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB63_HunanHisHPData" EntityType="FXDICTModel.Store.TB63_HunanHisHPData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB64_NMSHDate" EntityType="FXDICTModel.Store.TB64_NMSHDate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB66_SHUnits" EntityType="FXDICTModel.Store.TB66_SHUnits" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB67_SHYearPlanData" EntityType="FXDICTModel.Store.TB67_SHYearPlanData" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_TB02_MEA_TB01_BAS" Association="FXDICTModel.Store.FK_TB02_MEA_TB01_BAS">
+            <End Role="TB01_Base" EntitySet="TB01_Base" />
+            <End Role="TB02_Measure" EntitySet="TB02_Measure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB10_RIV_REFERENCE_TB07_DIS" Association="FXDICTModel.Store.FK_TB10_RIV_REFERENCE_TB07_DIS">
+            <End Role="TB07_District" EntitySet="TB07_District" />
+            <End Role="TB10_RiverDistribute" EntitySet="TB10_RiverDistribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB10_RIV_REFERENCE_TB09_RIV" Association="FXDICTModel.Store.FK_TB10_RIV_REFERENCE_TB09_RIV">
+            <End Role="TB09_RiverDict" EntitySet="TB09_RiverDict" />
+            <End Role="TB10_RiverDistribute" EntitySet="TB10_RiverDistribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB16_OPE_REFERENCE_TB15_RPT" Association="FXDICTModel.Store.FK_TB16_OPE_REFERENCE_TB15_RPT">
+            <End Role="TB15_RptClass" EntitySet="TB15_RptClass" />
+            <End Role="TB16_OperateReportDefine" EntitySet="TB16_OperateReportDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB17_TAB_REFERENCE_TB16_OPE" Association="FXDICTModel.Store.FK_TB17_TAB_REFERENCE_TB16_OPE">
+            <End Role="TB16_OperateReportDefine" EntitySet="TB16_OperateReportDefine" />
+            <End Role="TB17_TableDefine" EntitySet="TB17_TableDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB17_TAB_REFERENCE_TB18_TAB" Association="FXDICTModel.Store.FK_TB17_TAB_REFERENCE_TB18_TAB">
+            <End Role="TB18_TableStyle" EntitySet="TB18_TableStyle" />
+            <End Role="TB17_TableDefine" EntitySet="TB17_TableDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB20_FIE_REFERENCE_TB02_MEA" Association="FXDICTModel.Store.FK_TB20_FIE_REFERENCE_TB02_MEA">
+            <End Role="TB02_Measure" EntitySet="TB02_Measure" />
+            <End Role="TB20_FieldDefine" EntitySet="TB20_FieldDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB20_FIE_REFERENCE_TB03_MOD" Association="FXDICTModel.Store.FK_TB20_FIE_REFERENCE_TB03_MOD">
+            <End Role="TB03_Modulus" EntitySet="TB03_Modulus" />
+            <End Role="TB20_FieldDefine" EntitySet="TB20_FieldDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine" Association="FXDICTModel.Store.FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine">
+            <End Role="TB20_FieldDefine" EntitySet="TB20_FieldDefine" />
+            <End Role="TB24_ExcelRptDataTemplate" EntitySet="TB24_ExcelRptDataTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB28_OPR_REFERENCE_TB11_RPT" Association="FXDICTModel.Store.FK_TB28_OPR_REFERENCE_TB11_RPT">
+            <End Role="TB11_RptType" EntitySet="TB11_RptType" />
+            <End Role="TB28_OprRptType" EntitySet="TB28_OprRptType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB28_OPR_REFERENCE_TB16_OPE" Association="FXDICTModel.Store.FK_TB28_OPR_REFERENCE_TB16_OPE">
+            <End Role="TB16_OperateReportDefine" EntitySet="TB16_OperateReportDefine" />
+            <End Role="TB28_OprRptType" EntitySet="TB28_OprRptType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB44_ReservoirDistrict_TB43_Reservoir" Association="FXDICTModel.Store.FK_TB44_ReservoirDistrict_TB43_Reservoir">
+            <End Role="TB43_Reservoir" EntitySet="TB43_Reservoir" />
+            <End Role="TB44_ReservoirDistrict" EntitySet="TB44_ReservoirDistrict" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TB01_Base">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB02_Measure">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" />
+          <Property Name="Base_NO" Type="int" />
+          <Property Name="MName" Type="varchar" MaxLength="20" />
+          <Property Name="MeasureValue" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB03_Modulus">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MName" Type="varchar" MaxLength="10" />
+          <Property Name="ModulusValue" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB04_CheckBase">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="District_Code" Type="varchar" MaxLength="10" />
+          <Property Name="RiverDict_Code" Type="varchar" MaxLength="10" />
+          <Property Name="FieldDefine_NO" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="BaseData" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB06_Formula">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FieldDefine_No" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="FormulaString" Type="varchar" MaxLength="200" />
+          <Property Name="FormulaType" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB07_District">
+          <Key>
+            <PropertyRef Name="DistrictCode" />
+          </Key>
+          <Property Name="DistrictCode" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="pDistrictCode" Type="varchar" MaxLength="10" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="50" />
+          <Property Name="DistrictClass" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="Uorder" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="RD_RiverCode1" Type="varchar" MaxLength="1000" />
+          <Property Name="RD_RiverCode2" Type="varchar" MaxLength="1000" />
+          <Property Name="Del" Type="int" />
+        </EntityType>
+        <EntityType Name="TB08_RiverOrgan">
+          <Key>
+            <PropertyRef Name="RiverOrganCode" />
+          </Key>
+          <Property Name="RiverOrganCode" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="RiverOrganName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB09_RiverDict">
+          <Key>
+            <PropertyRef Name="RiverCode" />
+          </Key>
+          <Property Name="RiverCode" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="RiverName" Type="varchar" MaxLength="50" />
+          <Property Name="PRiverCode" Type="varchar" MaxLength="10" />
+          <Property Name="RDClass" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="RDOrder" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="isadd" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB10_RiverDistribute">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="D_DistrictCode" Type="varchar" MaxLength="10" />
+          <Property Name="RD_RiverCode" Type="varchar" MaxLength="10" />
+          <Property Name="RDRate" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB11_RptType">
+          <Key>
+            <PropertyRef Name="RptTypeCode" />
+          </Key>
+          <Property Name="RptTypeCode" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="RptTypeName" Type="varchar" MaxLength="80" />
+          <Property Name="RvCode" Type="varchar" MaxLength="255" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="50" />
+          <Property Name="InUse" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="RptOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="TB14_Cyc">
+          <Key>
+            <PropertyRef Name="CycType" />
+          </Key>
+          <Property Name="CycType" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="80" />
+          <Property Name="RemarkDetail" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="TB15_RptClass">
+          <Key>
+            <PropertyRef Name="RptClassCode" />
+          </Key>
+          <Property Name="RptClassCode" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="RptClassName" Type="varchar" MaxLength="40" />
+          <Property Name="RptClassShortName" Type="varchar" MaxLength="40" />
+          <Property Name="Imgindex" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="IsUse" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="IsNew" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="Remark" Type="varchar" MaxLength="1000" />
+          <Property Name="UseRptType" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TB16_OperateReportDefine">
+          <Key>
+            <PropertyRef Name="OperateReportCode" />
+          </Key>
+          <Property Name="OperateReportCode" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="RC_Code" Type="varchar" MaxLength="4" />
+          <Property Name="OperateReportName" Type="varchar" MaxLength="40" />
+          <Property Name="IsNew" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="IsPrivate" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="DefaultCyc" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="OptionalCyc" Type="varchar" MaxLength="20" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="1000" />
+          <Property Name="Remark" Type="varchar" MaxLength="1000" />
+          <Property Name="ParExcelFileNo" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ComParExcelFileNo" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TransRowsOfTotal" Type="int" />
+        </EntityType>
+        <EntityType Name="TB17_TableDefine">
+          <Key>
+            <PropertyRef Name="TabCode" />
+          </Key>
+          <Property Name="TabCode" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ORD_Code" Type="varchar" MaxLength="8" />
+          <Property Name="TabName" Type="varchar" MaxLength="40" />
+          <Property Name="TableStyle_Code" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="TB18_TableStyle">
+          <Key>
+            <PropertyRef Name="TableStyleCode" />
+          </Key>
+          <Property Name="TableStyleCode" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="TableStyleName" Type="varchar" MaxLength="20" />
+          <Property Name="Style1" Type="varchar" MaxLength="20" />
+          <Property Name="Style2" Type="varchar" MaxLength="20" />
+          <Property Name="Style3" Type="varchar" MaxLength="20" />
+          <Property Name="Style4" Type="varchar" MaxLength="20" />
+          <Property Name="Style5" Type="varchar" MaxLength="20" />
+          <Property Name="Style6" Type="varchar" MaxLength="20" />
+          <Property Name="Style7" Type="varchar" MaxLength="20" />
+          <Property Name="Style8" Type="varchar" MaxLength="20" />
+          <Property Name="Style9" Type="varchar" MaxLength="20" />
+          <Property Name="Style10" Type="varchar" MaxLength="20" />
+          <Property Name="Style11" Type="varchar" MaxLength="20" />
+          <Property Name="Style12" Type="varchar" MaxLength="20" />
+          <Property Name="Style13" Type="varchar" MaxLength="20" />
+          <Property Name="Style14" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB20_FieldDefine">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="20" />
+          <Property Name="TD_TabCode" Type="varchar" MaxLength="40" />
+          <Property Name="FieldCNName" Type="varchar" MaxLength="200" />
+          <Property Name="FieldOrder" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="FieldType" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="FieldWidth" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="TotalType" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="Modulus_No" Type="int" />
+          <Property Name="Measure_No" Type="int" />
+          <Property Name="DecimalCount" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ChangeArea" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="CHECKFIELD" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="InputRemark" Type="varchar" MaxLength="1000" />
+          <Property Name="WriteRule" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ChooseContent" Type="varchar" MaxLength="1000" />
+          <Property Name="MeasureUnit" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB24_ExcelRptDataTemplate">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ERDT_NO" Type="int" />
+          <Property Name="ExcelSheetNO" Type="int" />
+          <Property Name="ExcelCol" Type="int" />
+          <Property Name="ExcelRow" Type="int" />
+          <Property Name="FildIndex_NO" Type="int" />
+          <Property Name="DataSource" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TB27_DISASTERTYPE">
+          <Key>
+            <PropertyRef Name="DISASTERNAME" />
+          </Key>
+          <Property Name="DISASTERNAME" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="InUse" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB28_OprRptType">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OprTab_Code" Type="varchar" MaxLength="8" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="8" />
+          <Property Name="RptType_Code" Type="varchar" MaxLength="4" />
+          <Property Name="ExcelFile_NO" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ComExcelFile_NO" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB30_RptTitleInfo">
+          <Key>
+            <PropertyRef Name="UnitCode" />
+          </Key>
+          <Property Name="UnitCode" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="RptClassCode" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="DefUnit" Type="varchar" MaxLength="50" />
+          <Property Name="DefUnitLead" Type="varchar" MaxLength="12" />
+          <Property Name="DefStaticResp" Type="varchar" MaxLength="12" />
+          <Property Name="DefWriter" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="TB31_BriefIndex">
+          <Key>
+            <PropertyRef Name="TBNo" />
+          </Key>
+          <Property Name="TBNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BriefName" Type="varchar" MaxLength="30" />
+          <Property Name="ORD_Code" Type="varchar" MaxLength="4" />
+          <Property Name="DocFile" Type="varchar" MaxLength="100" />
+          <Property Name="IsUse" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB32_BriefTemplate">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BI_No" Type="numeric" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="OrderNo" Type="numeric" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="BookMark" Type="varchar" MaxLength="20" />
+          <Property Name="SrcTab" Type="varchar" MaxLength="15" />
+          <Property Name="MarkType" Type="varchar" MaxLength="12" />
+          <Property Name="FieldName" Type="varchar" MaxLength="30" />
+          <Property Name="DataSource" Type="varchar" MaxLength="255" />
+          <Property Name="FieldExpression" Type="varchar" MaxLength="50" />
+          <Property Name="DecimalCount" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="MarkDescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB35_FieldUnitTrans">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstValue" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="LastValue" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="UseChange" Type="int" />
+          <Property Name="LastDecimalCount" Type="int" />
+        </EntityType>
+        <EntityType Name="TB43_Reservoir">
+          <Key>
+            <PropertyRef Name="RSCode" />
+          </Key>
+          <Property Name="RSCode" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="RSName" Type="varchar" MaxLength="40" />
+          <Property Name="RSType" Type="int" />
+          <Property Name="RSOrder" Type="int" />
+          <Property Name="ZXKYXSL" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="ZXKYXSL1" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="SKR" Type="numeric" Precision="30" Scale="8" />
+        </EntityType>
+        <EntityType Name="TB44_ReservoirDistrict">
+          <Key>
+            <PropertyRef Name="RSCode" />
+            <PropertyRef Name="UnitCode" />
+          </Key>
+          <Property Name="RSCode" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="UnitCode" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TB47_DeathReason">
+          <Key>
+            <PropertyRef Name="ReasonCode" />
+          </Key>
+          <Property Name="ReasonCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PReasonCode" Type="varchar" MaxLength="20" />
+          <Property Name="ReasonName" Type="varchar" MaxLength="20" />
+          <Property Name="ReasonOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="TB48_MeasureUnit">
+          <Key>
+            <PropertyRef Name="MUnit" />
+          </Key>
+          <Property Name="MUnit" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DecimalCount" Type="int" />
+          <Property Name="Modulus_No" Type="int" />
+          <Property Name="Measure_No" Type="int" />
+        </EntityType>
+        <EntityType Name="TB51_HunanDistrictConst">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" />
+          <Property Name="DZXKCS" Type="int" />
+          <Property Name="DZKYXSL" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="DZKYXSL1" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="ZXKCS" Type="int" />
+          <Property Name="ZXKYXSL" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="ZXKYXSL1" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="XYSKCS" Type="int" />
+          <Property Name="XYKYXS" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="XYKYXS1" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="XRSKCS" Type="int" />
+          <Property Name="XRKYXS" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="XRKYXS1" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="SPTHJCS" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPTYXS" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="SPTYXS1" Type="numeric" Precision="30" Scale="8" />
+          <Property Name="DZKSKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZXKSKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XYKSKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XRKSKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SPTSKR" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB52_Formula">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" />
+          <Property Name="FieldDefine_No1" Type="varchar" MaxLength="100" />
+          <Property Name="FormulaString" Type="varchar" MaxLength="100" />
+          <Property Name="FieldDefine_No2" Type="varchar" MaxLength="100" />
+          <Property Name="FormulaType" Type="int" />
+          <Property Name="WrongName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB55_FieldDefine">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCls" Type="int" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="20" />
+          <Property Name="TD_TabCode" Type="varchar" MaxLength="40" />
+          <Property Name="FieldCNName" Type="varchar" MaxLength="100" />
+          <Property Name="FieldOrder" Type="int" />
+          <Property Name="FieldType" Type="int" />
+          <Property Name="TotalType" Type="int" />
+          <Property Name="DecimalCount" Type="int" />
+          <Property Name="InputRemark" Type="varchar" MaxLength="255" />
+          <Property Name="MeasureName" Type="varchar" MaxLength="40" />
+          <Property Name="MeasureValue" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB56_EvaluationType">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB57_EvaluationParameter">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EvaluationType" Type="int" />
+          <Property Name="Parameter" Type="varchar" MaxLength="20" />
+          <Property Name="ParameterName" Type="varchar" MaxLength="100" />
+          <Property Name="Weight" Type="numeric" Scale="2" />
+        </EntityType>
+        <EntityType Name="TB58_EvaluationFactor">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EvaluationType" Type="int" />
+          <Property Name="Parameter" Type="varchar" MaxLength="20" />
+          <Property Name="Factor" Type="varchar" MaxLength="20" />
+          <Property Name="FactorName" Type="varchar" MaxLength="100" />
+          <Property Name="MeasureName" Type="varchar" MaxLength="20" />
+          <Property Name="MeasureValue" Type="numeric" Precision="13" />
+          <Property Name="DecimalCount" Type="int" />
+        </EntityType>
+        <EntityType Name="TB59_EvalFactorThreshold">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EvaluationType" Type="int" />
+          <Property Name="Factor" Type="varchar" MaxLength="20" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="LowerValue" Type="numeric" />
+          <Property Name="HigherValue" Type="numeric" />
+        </EntityType>
+        <EntityType Name="TB60_EvaluationGrade">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EvaluationType" Type="int" />
+          <Property Name="EvaluationMethod" Type="int" />
+          <Property Name="EvalMethodName" Type="varchar" MaxLength="50" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="GradeName" Type="varchar" MaxLength="20" />
+          <Property Name="LowerValue" Type="numeric" />
+          <Property Name="HigherValue" Type="numeric" />
+        </EntityType>
+        <EntityType Name="TB61_HunanHPDate">
+          <Key>
+            <PropertyRef Name="DateOrder" />
+          </Key>
+          <Property Name="DateOrder" Type="int" Nullable="false" />
+          <Property Name="DateSpan" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="TB62_NMReservoir">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RSCode" Type="varchar" MaxLength="20" />
+          <Property Name="RSName" Type="varchar" MaxLength="50" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="20" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" />
+          <Property Name="RSOrder" Type="int" />
+          <Property Name="ZKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="XXSW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZCXSW" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="ZCXSWXYKR" Type="numeric" Precision="20" Scale="5" />
+          <Property Name="SSW" Type="varchar" MaxLength="15" />
+          <Property Name="SKR" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="TB63_HunanHisHPData">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="10" />
+          <Property Name="RptTime" Type="varchar" MaxLength="10" />
+          <Property Name="ZJLNXSL" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="DXLNXSL" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="ZXLNXSL" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="XXLNXSL" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="QTLNXSL" Type="numeric" Precision="20" Scale="2" />
+        </EntityType>
+        <EntityType Name="TB64_NMSHDate">
+          <Key>
+            <PropertyRef Name="DateOrder" />
+          </Key>
+          <Property Name="DateOrder" Type="int" Nullable="false" />
+          <Property Name="DateSpan" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="TB66_SHUnits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SH_Code" Type="varchar" MaxLength="12" />
+          <Property Name="UnitName" Type="varchar" MaxLength="20" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="12" />
+          <Property Name="UnitCls" Type="int" />
+          <Property Name="SH_Year" Type="int" />
+          <Property Name="GD_Name" Type="varchar" MaxLength="40" />
+          <Property Name="DataOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="TB67_SHYearPlanData">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SHYear" Type="int" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="20" />
+          <Property Name="SHTableName" Type="varchar" MaxLength="20" />
+          <Property Name="SHFieldName" Type="varchar" MaxLength="20" />
+          <Property Name="SHFieldVal" Type="numeric" Precision="20" Scale="5" />
+        </EntityType>
+        <Association Name="FK_TB02_MEA_TB01_BAS">
+          <End Role="TB01_Base" Type="FXDICTModel.Store.TB01_Base" Multiplicity="0..1" />
+          <End Role="TB02_Measure" Type="FXDICTModel.Store.TB02_Measure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB01_Base">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB02_Measure">
+              <PropertyRef Name="Base_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB10_RIV_REFERENCE_TB07_DIS">
+          <End Role="TB07_District" Type="FXDICTModel.Store.TB07_District" Multiplicity="0..1" />
+          <End Role="TB10_RiverDistribute" Type="FXDICTModel.Store.TB10_RiverDistribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB07_District">
+              <PropertyRef Name="DistrictCode" />
+            </Principal>
+            <Dependent Role="TB10_RiverDistribute">
+              <PropertyRef Name="D_DistrictCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB10_RIV_REFERENCE_TB09_RIV">
+          <End Role="TB09_RiverDict" Type="FXDICTModel.Store.TB09_RiverDict" Multiplicity="0..1" />
+          <End Role="TB10_RiverDistribute" Type="FXDICTModel.Store.TB10_RiverDistribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB09_RiverDict">
+              <PropertyRef Name="RiverCode" />
+            </Principal>
+            <Dependent Role="TB10_RiverDistribute">
+              <PropertyRef Name="RD_RiverCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB16_OPE_REFERENCE_TB15_RPT">
+          <End Role="TB15_RptClass" Type="FXDICTModel.Store.TB15_RptClass" Multiplicity="0..1" />
+          <End Role="TB16_OperateReportDefine" Type="FXDICTModel.Store.TB16_OperateReportDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB15_RptClass">
+              <PropertyRef Name="RptClassCode" />
+            </Principal>
+            <Dependent Role="TB16_OperateReportDefine">
+              <PropertyRef Name="RC_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB17_TAB_REFERENCE_TB16_OPE">
+          <End Role="TB16_OperateReportDefine" Type="FXDICTModel.Store.TB16_OperateReportDefine" Multiplicity="0..1" />
+          <End Role="TB17_TableDefine" Type="FXDICTModel.Store.TB17_TableDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB16_OperateReportDefine">
+              <PropertyRef Name="OperateReportCode" />
+            </Principal>
+            <Dependent Role="TB17_TableDefine">
+              <PropertyRef Name="ORD_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB17_TAB_REFERENCE_TB18_TAB">
+          <End Role="TB18_TableStyle" Type="FXDICTModel.Store.TB18_TableStyle" Multiplicity="0..1" />
+          <End Role="TB17_TableDefine" Type="FXDICTModel.Store.TB17_TableDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB18_TableStyle">
+              <PropertyRef Name="TableStyleCode" />
+            </Principal>
+            <Dependent Role="TB17_TableDefine">
+              <PropertyRef Name="TableStyle_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB20_FIE_REFERENCE_TB02_MEA">
+          <End Role="TB02_Measure" Type="FXDICTModel.Store.TB02_Measure" Multiplicity="0..1" />
+          <End Role="TB20_FieldDefine" Type="FXDICTModel.Store.TB20_FieldDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB02_Measure">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB20_FieldDefine">
+              <PropertyRef Name="Measure_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB20_FIE_REFERENCE_TB03_MOD">
+          <End Role="TB03_Modulus" Type="FXDICTModel.Store.TB03_Modulus" Multiplicity="0..1" />
+          <End Role="TB20_FieldDefine" Type="FXDICTModel.Store.TB20_FieldDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB03_Modulus">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB20_FieldDefine">
+              <PropertyRef Name="Modulus_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine">
+          <End Role="TB20_FieldDefine" Type="FXDICTModel.Store.TB20_FieldDefine" Multiplicity="0..1" />
+          <End Role="TB24_ExcelRptDataTemplate" Type="FXDICTModel.Store.TB24_ExcelRptDataTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB20_FieldDefine">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB24_ExcelRptDataTemplate">
+              <PropertyRef Name="FildIndex_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB28_OPR_REFERENCE_TB11_RPT">
+          <End Role="TB11_RptType" Type="FXDICTModel.Store.TB11_RptType" Multiplicity="0..1" />
+          <End Role="TB28_OprRptType" Type="FXDICTModel.Store.TB28_OprRptType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB11_RptType">
+              <PropertyRef Name="RptTypeCode" />
+            </Principal>
+            <Dependent Role="TB28_OprRptType">
+              <PropertyRef Name="RptType_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB28_OPR_REFERENCE_TB16_OPE">
+          <End Role="TB16_OperateReportDefine" Type="FXDICTModel.Store.TB16_OperateReportDefine" Multiplicity="0..1" />
+          <End Role="TB28_OprRptType" Type="FXDICTModel.Store.TB28_OprRptType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB16_OperateReportDefine">
+              <PropertyRef Name="OperateReportCode" />
+            </Principal>
+            <Dependent Role="TB28_OprRptType">
+              <PropertyRef Name="OprTab_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB44_ReservoirDistrict_TB43_Reservoir">
+          <End Role="TB43_Reservoir" Type="FXDICTModel.Store.TB43_Reservoir" Multiplicity="1" />
+          <End Role="TB44_ReservoirDistrict" Type="FXDICTModel.Store.TB44_ReservoirDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB43_Reservoir">
+              <PropertyRef Name="RSCode" />
+            </Principal>
+            <Dependent Role="TB44_ReservoirDistrict">
+              <PropertyRef Name="RSCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FXDICTModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FXDICTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB01_Base" EntityType="FXDICTModel.TB01_Base" />
+          <EntitySet Name="TB02_Measure" EntityType="FXDICTModel.TB02_Measure" />
+          <EntitySet Name="TB03_Modulus" EntityType="FXDICTModel.TB03_Modulus" />
+          <EntitySet Name="TB04_CheckBase" EntityType="FXDICTModel.TB04_CheckBase" />
+          <EntitySet Name="TB06_Formula" EntityType="FXDICTModel.TB06_Formula" />
+          <EntitySet Name="TB07_District" EntityType="FXDICTModel.TB07_District" />
+          <EntitySet Name="TB08_RiverOrgan" EntityType="FXDICTModel.TB08_RiverOrgan" />
+          <EntitySet Name="TB09_RiverDict" EntityType="FXDICTModel.TB09_RiverDict" />
+          <EntitySet Name="TB10_RiverDistribute" EntityType="FXDICTModel.TB10_RiverDistribute" />
+          <EntitySet Name="TB11_RptType" EntityType="FXDICTModel.TB11_RptType" />
+          <EntitySet Name="TB14_Cyc" EntityType="FXDICTModel.TB14_Cyc" />
+          <EntitySet Name="TB15_RptClass" EntityType="FXDICTModel.TB15_RptClass" />
+          <EntitySet Name="TB16_OperateReportDefine" EntityType="FXDICTModel.TB16_OperateReportDefine" />
+          <EntitySet Name="TB17_TableDefine" EntityType="FXDICTModel.TB17_TableDefine" />
+          <EntitySet Name="TB18_TableStyle" EntityType="FXDICTModel.TB18_TableStyle" />
+          <EntitySet Name="TB20_FieldDefine" EntityType="FXDICTModel.TB20_FieldDefine" />
+          <EntitySet Name="TB24_ExcelRptDataTemplate" EntityType="FXDICTModel.TB24_ExcelRptDataTemplate" />
+          <EntitySet Name="TB27_DISASTERTYPE" EntityType="FXDICTModel.TB27_DISASTERTYPE" />
+          <EntitySet Name="TB28_OprRptType" EntityType="FXDICTModel.TB28_OprRptType" />
+          <EntitySet Name="TB30_RptTitleInfo" EntityType="FXDICTModel.TB30_RptTitleInfo" />
+          <EntitySet Name="TB31_BriefIndex" EntityType="FXDICTModel.TB31_BriefIndex" />
+          <EntitySet Name="TB32_BriefTemplate" EntityType="FXDICTModel.TB32_BriefTemplate" />
+          <EntitySet Name="TB35_FieldUnitTrans" EntityType="FXDICTModel.TB35_FieldUnitTrans" />
+          <EntitySet Name="TB47_DeathReason" EntityType="FXDICTModel.TB47_DeathReason" />
+          <EntitySet Name="TB48_MeasureUnit" EntityType="FXDICTModel.TB48_MeasureUnit" />
+          <EntitySet Name="TB52_Formula" EntityType="FXDICTModel.TB52_Formula" />
+          <EntitySet Name="TB55_FieldDefine" EntityType="FXDICTModel.TB55_FieldDefine" />
+          <AssociationSet Name="FK_TB02_MEA_TB01_BAS" Association="FXDICTModel.FK_TB02_MEA_TB01_BAS">
+            <End Role="TB01_Base" EntitySet="TB01_Base" />
+            <End Role="TB02_Measure" EntitySet="TB02_Measure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB20_FIE_REFERENCE_TB02_MEA" Association="FXDICTModel.FK_TB20_FIE_REFERENCE_TB02_MEA">
+            <End Role="TB02_Measure" EntitySet="TB02_Measure" />
+            <End Role="TB20_FieldDefine" EntitySet="TB20_FieldDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB20_FIE_REFERENCE_TB03_MOD" Association="FXDICTModel.FK_TB20_FIE_REFERENCE_TB03_MOD">
+            <End Role="TB03_Modulus" EntitySet="TB03_Modulus" />
+            <End Role="TB20_FieldDefine" EntitySet="TB20_FieldDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB10_RIV_REFERENCE_TB07_DIS" Association="FXDICTModel.FK_TB10_RIV_REFERENCE_TB07_DIS">
+            <End Role="TB07_District" EntitySet="TB07_District" />
+            <End Role="TB10_RiverDistribute" EntitySet="TB10_RiverDistribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB10_RIV_REFERENCE_TB09_RIV" Association="FXDICTModel.FK_TB10_RIV_REFERENCE_TB09_RIV">
+            <End Role="TB09_RiverDict" EntitySet="TB09_RiverDict" />
+            <End Role="TB10_RiverDistribute" EntitySet="TB10_RiverDistribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB28_OPR_REFERENCE_TB11_RPT" Association="FXDICTModel.FK_TB28_OPR_REFERENCE_TB11_RPT">
+            <End Role="TB11_RptType" EntitySet="TB11_RptType" />
+            <End Role="TB28_OprRptType" EntitySet="TB28_OprRptType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB16_OPE_REFERENCE_TB15_RPT" Association="FXDICTModel.FK_TB16_OPE_REFERENCE_TB15_RPT">
+            <End Role="TB15_RptClass" EntitySet="TB15_RptClass" />
+            <End Role="TB16_OperateReportDefine" EntitySet="TB16_OperateReportDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB17_TAB_REFERENCE_TB16_OPE" Association="FXDICTModel.FK_TB17_TAB_REFERENCE_TB16_OPE">
+            <End Role="TB16_OperateReportDefine" EntitySet="TB16_OperateReportDefine" />
+            <End Role="TB17_TableDefine" EntitySet="TB17_TableDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB28_OPR_REFERENCE_TB16_OPE" Association="FXDICTModel.FK_TB28_OPR_REFERENCE_TB16_OPE">
+            <End Role="TB16_OperateReportDefine" EntitySet="TB16_OperateReportDefine" />
+            <End Role="TB28_OprRptType" EntitySet="TB28_OprRptType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB17_TAB_REFERENCE_TB18_TAB" Association="FXDICTModel.FK_TB17_TAB_REFERENCE_TB18_TAB">
+            <End Role="TB18_TableStyle" EntitySet="TB18_TableStyle" />
+            <End Role="TB17_TableDefine" EntitySet="TB17_TableDefine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine" Association="FXDICTModel.FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine">
+            <End Role="TB20_FieldDefine" EntitySet="TB20_FieldDefine" />
+            <End Role="TB24_ExcelRptDataTemplate" EntitySet="TB24_ExcelRptDataTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="TB07_DistrictTB04_CheckBase" Association="FXDICTModel.TB07_DistrictTB04_CheckBase">
+            <End Role="TB07_District" EntitySet="TB07_District" />
+            <End Role="TB04_CheckBase" EntitySet="TB04_CheckBase" />
+          </AssociationSet>
+          <EntitySet Name="TB43_Reservoir" EntityType="FXDICTModel.TB43_Reservoir" />
+          <EntitySet Name="TB51_HunanDistrictConst" EntityType="FXDICTModel.TB51_HunanDistrictConst" />
+          <EntitySet Name="TB44_ReservoirDistrict" EntityType="FXDICTModel.TB44_ReservoirDistrict" />
+          <AssociationSet Name="TB43_ReservoirTB44_ReservoirDistrict" Association="FXDICTModel.TB43_ReservoirTB44_ReservoirDistrict">
+            <End Role="TB43_Reservoir" EntitySet="TB43_Reservoir" />
+            <End Role="TB44_ReservoirDistrict" EntitySet="TB44_ReservoirDistrict" />
+          </AssociationSet>
+          <AssociationSet Name="TB07_DistrictTB44_ReservoirDistrict" Association="FXDICTModel.TB07_DistrictTB44_ReservoirDistrict">
+            <End Role="TB07_District" EntitySet="TB07_District" />
+            <End Role="TB44_ReservoirDistrict" EntitySet="TB44_ReservoirDistrict" />
+          </AssociationSet>
+          <EntitySet Name="TB57_EvaluationParameter" EntityType="FXDICTModel.TB57_EvaluationParameter" />
+          <EntitySet Name="TB58_EvaluationFactor" EntityType="FXDICTModel.TB58_EvaluationFactor" />
+          <EntitySet Name="TB59_EvalFactorThreshold" EntityType="FXDICTModel.TB59_EvalFactorThreshold" />
+          <EntitySet Name="TB60_EvaluationGrade" EntityType="FXDICTModel.TB60_EvaluationGrade" />
+          <EntitySet Name="TB61_HunanHPDate" EntityType="FXDICTModel.TB61_HunanHPDate" />
+          <EntitySet Name="TB56_EvaluationType" EntityType="FXDICTModel.TB56_EvaluationType" />
+          <AssociationSet Name="TB07_DistrictTB51_HunanDistrictConst" Association="FXDICTModel.TB07_DistrictTB51_HunanDistrictConst">
+            <End Role="TB07_District" EntitySet="TB07_District" />
+            <End Role="TB51_HunanDistrictConst" EntitySet="TB51_HunanDistrictConst" />
+          </AssociationSet>
+          <EntitySet Name="TB62_NMReservoir" EntityType="FXDICTModel.TB62_NMReservoir" />
+          <AssociationSet Name="TB62_NMReservoirTB07_District" Association="FXDICTModel.TB62_NMReservoirTB07_District">
+            <End Role="TB62_NMReservoir" EntitySet="TB62_NMReservoir" />
+            <End Role="TB07_District" EntitySet="TB07_District" />
+          </AssociationSet>
+          <EntitySet Name="TB63_HunanHisHPData" EntityType="FXDICTModel.TB63_HunanHisHPData" />
+          <EntitySet Name="TB64_NMSHDate" EntityType="FXDICTModel.TB64_NMSHDate" />
+          <EntitySet Name="TB66_SHUnits" EntityType="FXDICTModel.TB66_SHUnits" />
+          <EntitySet Name="TB67_SHYearPlanData" EntityType="FXDICTModel.TB67_SHYearPlanData" />
+          </EntityContainer>
+        <EntityType Name="TB01_Base">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TB02_Measure" Relationship="FXDICTModel.FK_TB02_MEA_TB01_BAS" FromRole="TB01_Base" ToRole="TB02_Measure" />
+        </EntityType>
+        <EntityType Name="TB02_Measure">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Base_NO" Type="Int32" />
+          <Property Name="MName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="MeasureValue" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB01_Base" Relationship="FXDICTModel.FK_TB02_MEA_TB01_BAS" FromRole="TB02_Measure" ToRole="TB01_Base" />
+          <NavigationProperty Name="TB20_FieldDefine" Relationship="FXDICTModel.FK_TB20_FIE_REFERENCE_TB02_MEA" FromRole="TB02_Measure" ToRole="TB20_FieldDefine" />
+        </EntityType>
+        <EntityType Name="TB03_Modulus">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MName" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ModulusValue" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB20_FieldDefine" Relationship="FXDICTModel.FK_TB20_FIE_REFERENCE_TB03_MOD" FromRole="TB03_Modulus" ToRole="TB20_FieldDefine" />
+        </EntityType>
+        <EntityType Name="TB04_CheckBase">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District_Code" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RiverDict_Code" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="FieldDefine_NO" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="BaseData" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB07_District" Relationship="FXDICTModel.TB07_DistrictTB04_CheckBase" FromRole="TB04_CheckBase" ToRole="TB07_District" />
+        </EntityType>
+        <EntityType Name="TB06_Formula">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldDefine_No" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FormulaString" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="FormulaType" Type="Decimal" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB07_District">
+          <Key>
+            <PropertyRef Name="DistrictCode" />
+          </Key>
+          <Property Name="DistrictCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="pDistrictCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DistrictClass" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Uorder" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="RD_RiverCode1" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="RD_RiverCode2" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Del" Type="Int32" />
+          <NavigationProperty Name="TB10_RiverDistribute" Relationship="FXDICTModel.FK_TB10_RIV_REFERENCE_TB07_DIS" FromRole="TB07_District" ToRole="TB10_RiverDistribute" />
+          <NavigationProperty Name="TB04_CheckBase" Relationship="FXDICTModel.TB07_DistrictTB04_CheckBase" FromRole="TB07_District" ToRole="TB04_CheckBase" />
+          <NavigationProperty Name="TB44_ReservoirDistrict" Relationship="FXDICTModel.TB07_DistrictTB44_ReservoirDistrict" FromRole="TB07_District" ToRole="TB44_ReservoirDistrict" />
+          <NavigationProperty Name="TB51_HunanDistrictConst" Relationship="FXDICTModel.TB07_DistrictTB51_HunanDistrictConst" FromRole="TB07_District" ToRole="TB51_HunanDistrictConst" />
+          <NavigationProperty Name="TB62_NMReservoir" Relationship="FXDICTModel.TB62_NMReservoirTB07_District" FromRole="TB07_District" ToRole="TB62_NMReservoir" />
+        </EntityType>
+        <EntityType Name="TB08_RiverOrgan">
+          <Key>
+            <PropertyRef Name="RiverOrganCode" />
+          </Key>
+          <Property Name="RiverOrganCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RiverOrganName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB09_RiverDict">
+          <Key>
+            <PropertyRef Name="RiverCode" />
+          </Key>
+          <Property Name="RiverCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RiverName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PRiverCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RDClass" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="RDOrder" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="isadd" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB10_RiverDistribute" Relationship="FXDICTModel.FK_TB10_RIV_REFERENCE_TB09_RIV" FromRole="TB09_RiverDict" ToRole="TB10_RiverDistribute" />
+        </EntityType>
+        <EntityType Name="TB10_RiverDistribute">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_DistrictCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RD_RiverCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RDRate" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB07_District" Relationship="FXDICTModel.FK_TB10_RIV_REFERENCE_TB07_DIS" FromRole="TB10_RiverDistribute" ToRole="TB07_District" />
+          <NavigationProperty Name="TB09_RiverDict" Relationship="FXDICTModel.FK_TB10_RIV_REFERENCE_TB09_RIV" FromRole="TB10_RiverDistribute" ToRole="TB09_RiverDict" />
+        </EntityType>
+        <EntityType Name="TB11_RptType">
+          <Key>
+            <PropertyRef Name="RptTypeCode" />
+          </Key>
+          <Property Name="RptTypeCode" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="RptTypeName" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="RvCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="UnitCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="InUse" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="RptOrder" Type="Int32" />
+          <NavigationProperty Name="TB28_OprRptType" Relationship="FXDICTModel.FK_TB28_OPR_REFERENCE_TB11_RPT" FromRole="TB11_RptType" ToRole="TB28_OprRptType" />
+        </EntityType>
+        <EntityType Name="TB14_Cyc">
+          <Key>
+            <PropertyRef Name="CycType" />
+          </Key>
+          <Property Name="CycType" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="RemarkDetail" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB15_RptClass">
+          <Key>
+            <PropertyRef Name="RptClassCode" />
+          </Key>
+          <Property Name="RptClassCode" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="RptClassName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="RptClassShortName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Imgindex" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="IsUse" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="IsNew" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Remark" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="UseRptType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TB16_OperateReportDefine" Relationship="FXDICTModel.FK_TB16_OPE_REFERENCE_TB15_RPT" FromRole="TB15_RptClass" ToRole="TB16_OperateReportDefine" />
+        </EntityType>
+        <EntityType Name="TB16_OperateReportDefine">
+          <Key>
+            <PropertyRef Name="OperateReportCode" />
+          </Key>
+          <Property Name="OperateReportCode" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="RC_Code" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="OperateReportName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="IsNew" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="IsPrivate" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="DefaultCyc" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="OptionalCyc" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="UnitCode" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="ParExcelFileNo" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ComParExcelFileNo" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TransRowsOfTotal" Type="Int32" />
+          <NavigationProperty Name="TB15_RptClass" Relationship="FXDICTModel.FK_TB16_OPE_REFERENCE_TB15_RPT" FromRole="TB16_OperateReportDefine" ToRole="TB15_RptClass" />
+          <NavigationProperty Name="TB17_TableDefine" Relationship="FXDICTModel.FK_TB17_TAB_REFERENCE_TB16_OPE" FromRole="TB16_OperateReportDefine" ToRole="TB17_TableDefine" />
+          <NavigationProperty Name="TB28_OprRptType" Relationship="FXDICTModel.FK_TB28_OPR_REFERENCE_TB16_OPE" FromRole="TB16_OperateReportDefine" ToRole="TB28_OprRptType" />
+        </EntityType>
+        <EntityType Name="TB17_TableDefine">
+          <Key>
+            <PropertyRef Name="TabCode" />
+          </Key>
+          <Property Name="TabCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ORD_Code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="TabName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="TableStyle_Code" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TB16_OperateReportDefine" Relationship="FXDICTModel.FK_TB17_TAB_REFERENCE_TB16_OPE" FromRole="TB17_TableDefine" ToRole="TB16_OperateReportDefine" />
+          <NavigationProperty Name="TB18_TableStyle" Relationship="FXDICTModel.FK_TB17_TAB_REFERENCE_TB18_TAB" FromRole="TB17_TableDefine" ToRole="TB18_TableStyle" />
+        </EntityType>
+        <EntityType Name="TB18_TableStyle">
+          <Key>
+            <PropertyRef Name="TableStyleCode" />
+          </Key>
+          <Property Name="TableStyleCode" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="TableStyleName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style1" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style2" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style3" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style4" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style5" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style6" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style7" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style8" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style9" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style10" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style11" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style12" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style13" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Style14" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TB17_TableDefine" Relationship="FXDICTModel.FK_TB17_TAB_REFERENCE_TB18_TAB" FromRole="TB18_TableStyle" ToRole="TB17_TableDefine" />
+        </EntityType>
+        <EntityType Name="TB20_FieldDefine">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" />
+          <Property Name="FieldCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TD_TabCode" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="FieldCNName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="FieldOrder" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FieldType" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FieldWidth" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TotalType" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Modulus_No" Type="Int32" />
+          <Property Name="Measure_No" Type="Int32" />
+          <Property Name="DecimalCount" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ChangeArea" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CHECKFIELD" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="InputRemark" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="WriteRule" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ChooseContent" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="MeasureUnit" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TB02_Measure" Relationship="FXDICTModel.FK_TB20_FIE_REFERENCE_TB02_MEA" FromRole="TB20_FieldDefine" ToRole="TB02_Measure" />
+          <NavigationProperty Name="TB03_Modulus" Relationship="FXDICTModel.FK_TB20_FIE_REFERENCE_TB03_MOD" FromRole="TB20_FieldDefine" ToRole="TB03_Modulus" />
+          <NavigationProperty Name="TB24_ExcelRptDataTemplate" Relationship="FXDICTModel.FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine" FromRole="TB20_FieldDefine" ToRole="TB24_ExcelRptDataTemplate" />
+        </EntityType>
+        <EntityType Name="TB24_ExcelRptDataTemplate">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ERDT_NO" Type="Int32" />
+          <Property Name="ExcelSheetNO" Type="Int32" />
+          <Property Name="ExcelCol" Type="Int32" />
+          <Property Name="ExcelRow" Type="Int32" />
+          <Property Name="FildIndex_NO" Type="Int32" />
+          <Property Name="DataSource" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TB20_FieldDefine" Relationship="FXDICTModel.FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine" FromRole="TB24_ExcelRptDataTemplate" ToRole="TB20_FieldDefine" />
+        </EntityType>
+        <EntityType Name="TB27_DISASTERTYPE">
+          <Key>
+            <PropertyRef Name="DISASTERNAME" />
+          </Key>
+          <Property Name="DISASTERNAME" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="InUse" Type="Decimal" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB28_OprRptType">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OprTab_Code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="UnitCode" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="RptType_Code" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="ExcelFile_NO" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ComExcelFile_NO" Type="Decimal" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB11_RptType" Relationship="FXDICTModel.FK_TB28_OPR_REFERENCE_TB11_RPT" FromRole="TB28_OprRptType" ToRole="TB11_RptType" />
+          <NavigationProperty Name="TB16_OperateReportDefine" Relationship="FXDICTModel.FK_TB28_OPR_REFERENCE_TB16_OPE" FromRole="TB28_OprRptType" ToRole="TB16_OperateReportDefine" />
+        </EntityType>
+        <EntityType Name="TB30_RptTitleInfo">
+          <Key>
+            <PropertyRef Name="UnitCode" />
+          </Key>
+          <Property Name="UnitCode" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="RptClassCode" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="DefUnit" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DefUnitLead" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="DefStaticResp" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="DefWriter" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB31_BriefIndex">
+          <Key>
+            <PropertyRef Name="TBNo" />
+          </Key>
+          <Property Name="TBNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BriefName" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ORD_Code" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="DocFile" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsUse" Type="Decimal" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB32_BriefTemplate">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BI_No" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="OrderNo" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="BookMark" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SrcTab" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="MarkType" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="FieldName" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="DataSource" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="FieldExpression" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DecimalCount" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="MarkDescription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB35_FieldUnitTrans">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstValue" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="LastValue" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UseChange" Type="Int32" />
+          <Property Name="LastDecimalCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB47_DeathReason">
+          <Key>
+            <PropertyRef Name="ReasonCode" />
+          </Key>
+          <Property Name="ReasonCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PReasonCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ReasonName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ReasonOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB48_MeasureUnit">
+          <Key>
+            <PropertyRef Name="MUnit" />
+          </Key>
+          <Property Name="MUnit" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DecimalCount" Type="Int32" />
+          <Property Name="Modulus_No" Type="Int32" />
+          <Property Name="Measure_No" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB52_Formula">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" />
+          <Property Name="FieldDefine_No1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FormulaString" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FieldDefine_No2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FormulaType" Type="Int32" />
+          <Property Name="WrongName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB55_FieldDefine">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCls" Type="Int32" />
+          <Property Name="FieldCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TD_TabCode" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="FieldCNName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FieldOrder" Type="Int32" />
+          <Property Name="FieldType" Type="Int32" />
+          <Property Name="TotalType" Type="Int32" />
+          <Property Name="DecimalCount" Type="Int32" />
+          <Property Name="InputRemark" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="MeasureName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="MeasureValue" Type="Decimal" Precision="13" Scale="0" />
+        </EntityType>
+        <Association Name="FK_TB02_MEA_TB01_BAS">
+          <End Role="TB01_Base" Type="FXDICTModel.TB01_Base" Multiplicity="0..1" />
+          <End Role="TB02_Measure" Type="FXDICTModel.TB02_Measure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB01_Base">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB02_Measure">
+              <PropertyRef Name="Base_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB20_FIE_REFERENCE_TB02_MEA">
+          <End Role="TB02_Measure" Type="FXDICTModel.TB02_Measure" Multiplicity="0..1" />
+          <End Role="TB20_FieldDefine" Type="FXDICTModel.TB20_FieldDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB02_Measure">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB20_FieldDefine">
+              <PropertyRef Name="Measure_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB20_FIE_REFERENCE_TB03_MOD">
+          <End Role="TB03_Modulus" Type="FXDICTModel.TB03_Modulus" Multiplicity="0..1" />
+          <End Role="TB20_FieldDefine" Type="FXDICTModel.TB20_FieldDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB03_Modulus">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB20_FieldDefine">
+              <PropertyRef Name="Modulus_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB10_RIV_REFERENCE_TB07_DIS">
+          <End Role="TB07_District" Type="FXDICTModel.TB07_District" Multiplicity="0..1" />
+          <End Role="TB10_RiverDistribute" Type="FXDICTModel.TB10_RiverDistribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB07_District">
+              <PropertyRef Name="DistrictCode" />
+            </Principal>
+            <Dependent Role="TB10_RiverDistribute">
+              <PropertyRef Name="D_DistrictCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB10_RIV_REFERENCE_TB09_RIV">
+          <End Role="TB09_RiverDict" Type="FXDICTModel.TB09_RiverDict" Multiplicity="0..1" />
+          <End Role="TB10_RiverDistribute" Type="FXDICTModel.TB10_RiverDistribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB09_RiverDict">
+              <PropertyRef Name="RiverCode" />
+            </Principal>
+            <Dependent Role="TB10_RiverDistribute">
+              <PropertyRef Name="RD_RiverCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB28_OPR_REFERENCE_TB11_RPT">
+          <End Role="TB11_RptType" Type="FXDICTModel.TB11_RptType" Multiplicity="0..1" />
+          <End Role="TB28_OprRptType" Type="FXDICTModel.TB28_OprRptType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB11_RptType">
+              <PropertyRef Name="RptTypeCode" />
+            </Principal>
+            <Dependent Role="TB28_OprRptType">
+              <PropertyRef Name="RptType_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB16_OPE_REFERENCE_TB15_RPT">
+          <End Role="TB15_RptClass" Type="FXDICTModel.TB15_RptClass" Multiplicity="0..1" />
+          <End Role="TB16_OperateReportDefine" Type="FXDICTModel.TB16_OperateReportDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB15_RptClass">
+              <PropertyRef Name="RptClassCode" />
+            </Principal>
+            <Dependent Role="TB16_OperateReportDefine">
+              <PropertyRef Name="RC_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB17_TAB_REFERENCE_TB16_OPE">
+          <End Role="TB16_OperateReportDefine" Type="FXDICTModel.TB16_OperateReportDefine" Multiplicity="0..1" />
+          <End Role="TB17_TableDefine" Type="FXDICTModel.TB17_TableDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB16_OperateReportDefine">
+              <PropertyRef Name="OperateReportCode" />
+            </Principal>
+            <Dependent Role="TB17_TableDefine">
+              <PropertyRef Name="ORD_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB28_OPR_REFERENCE_TB16_OPE">
+          <End Role="TB16_OperateReportDefine" Type="FXDICTModel.TB16_OperateReportDefine" Multiplicity="0..1" />
+          <End Role="TB28_OprRptType" Type="FXDICTModel.TB28_OprRptType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB16_OperateReportDefine">
+              <PropertyRef Name="OperateReportCode" />
+            </Principal>
+            <Dependent Role="TB28_OprRptType">
+              <PropertyRef Name="OprTab_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB17_TAB_REFERENCE_TB18_TAB">
+          <End Role="TB18_TableStyle" Type="FXDICTModel.TB18_TableStyle" Multiplicity="0..1" />
+          <End Role="TB17_TableDefine" Type="FXDICTModel.TB17_TableDefine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB18_TableStyle">
+              <PropertyRef Name="TableStyleCode" />
+            </Principal>
+            <Dependent Role="TB17_TableDefine">
+              <PropertyRef Name="TableStyle_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine">
+          <End Role="TB20_FieldDefine" Type="FXDICTModel.TB20_FieldDefine" Multiplicity="0..1" />
+          <End Role="TB24_ExcelRptDataTemplate" Type="FXDICTModel.TB24_ExcelRptDataTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB20_FieldDefine">
+              <PropertyRef Name="TBNO" />
+            </Principal>
+            <Dependent Role="TB24_ExcelRptDataTemplate">
+              <PropertyRef Name="FildIndex_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB07_DistrictTB04_CheckBase">
+          <End Type="FXDICTModel.TB07_District" Role="TB07_District" Multiplicity="0..1" />
+          <End Type="FXDICTModel.TB04_CheckBase" Role="TB04_CheckBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB07_District">
+              <PropertyRef Name="DistrictCode" />
+            </Principal>
+            <Dependent Role="TB04_CheckBase">
+              <PropertyRef Name="District_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB43_Reservoir">
+          <Key>
+            <PropertyRef Name="RSCode" />
+          </Key>
+          <Property Type="String" Name="RSCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RSName" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RSType" />
+          <Property Type="Int32" Name="RSOrder" />
+          <Property Type="Decimal" Name="ZXKYXSL" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZXKYXSL1" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB44_ReservoirDistrict" Relationship="FXDICTModel.TB43_ReservoirTB44_ReservoirDistrict" FromRole="TB43_Reservoir" ToRole="TB44_ReservoirDistrict" />
+          <Property Type="Decimal" Name="SKR" Precision="20" Scale="5" />
+        </EntityType>
+        <EntityType Name="TB51_HunanDistrictConst">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DZXKCS" />
+          <Property Type="Decimal" Name="DZKYXSL" Precision="20" Scale="5" />
+          <Property Type="Int32" Name="ZXKCS" />
+          <Property Type="Decimal" Name="ZXKYXSL" Precision="20" Scale="5" />
+          <Property Type="Int32" Name="XYSKCS" />
+          <Property Type="Decimal" Name="XYKYXS" Precision="20" Scale="5" />
+          <Property Type="Int32" Name="XRSKCS" />
+          <Property Type="Decimal" Name="XRKYXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTHJCS" />
+          <Property Type="Decimal" Name="SPTYXS" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DZKYXSL1" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZXKYXSL1" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYKYXS1" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRKYXS1" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTYXS1" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="DZKSKR" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZXKSKR" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XYKSKR" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XRKSKR" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="SPTSKR" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB07_District" Relationship="FXDICTModel.TB07_DistrictTB51_HunanDistrictConst" FromRole="TB51_HunanDistrictConst" ToRole="TB07_District" />
+        </EntityType>
+        <EntityType Name="TB44_ReservoirDistrict">
+          <Key>
+            <PropertyRef Name="RSCode" />
+            <PropertyRef Name="UnitCode" />
+          </Key>
+          <Property Type="String" Name="RSCode" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB43_Reservoir" Relationship="FXDICTModel.TB43_ReservoirTB44_ReservoirDistrict" FromRole="TB44_ReservoirDistrict" ToRole="TB43_Reservoir" />
+          <NavigationProperty Name="TB07_District" Relationship="FXDICTModel.TB07_DistrictTB44_ReservoirDistrict" FromRole="TB44_ReservoirDistrict" ToRole="TB07_District" />
+        </EntityType>
+        <Association Name="TB43_ReservoirTB44_ReservoirDistrict">
+          <End Type="FXDICTModel.TB43_Reservoir" Role="TB43_Reservoir" Multiplicity="1" />
+          <End Type="FXDICTModel.TB44_ReservoirDistrict" Role="TB44_ReservoirDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB43_Reservoir">
+              <PropertyRef Name="RSCode" />
+            </Principal>
+            <Dependent Role="TB44_ReservoirDistrict">
+              <PropertyRef Name="RSCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB07_DistrictTB44_ReservoirDistrict">
+          <End Type="FXDICTModel.TB07_District" Role="TB07_District" Multiplicity="1" />
+          <End Type="FXDICTModel.TB44_ReservoirDistrict" Role="TB44_ReservoirDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB07_District">
+              <PropertyRef Name="DistrictCode" />
+            </Principal>
+            <Dependent Role="TB44_ReservoirDistrict">
+              <PropertyRef Name="UnitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB57_EvaluationParameter">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EvaluationType" />
+          <Property Type="String" Name="Parameter" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ParameterName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Weight" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB58_EvaluationFactor">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EvaluationType" />
+          <Property Type="String" Name="Parameter" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Factor" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FactorName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MeasureName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MeasureValue" Precision="13" Scale="0" />
+          <Property Type="Int32" Name="DecimalCount" />
+        </EntityType>
+        <EntityType Name="TB59_EvalFactorThreshold">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EvaluationType" />
+          <Property Type="String" Name="Factor" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Grade" />
+          <Property Type="Decimal" Name="LowerValue" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="HigherValue" Precision="9" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB60_EvaluationGrade">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EvaluationType" />
+          <Property Type="Int32" Name="EvaluationMethod" />
+          <Property Type="String" Name="EvalMethodName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Grade" />
+          <Property Type="String" Name="GradeName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="LowerValue" Precision="9" Scale="0" />
+          <Property Type="Decimal" Name="HigherValue" Precision="9" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB61_HunanHPDate">
+          <Key>
+            <PropertyRef Name="DateOrder" />
+          </Key>
+          <Property Type="Int32" Name="DateOrder" Nullable="false" />
+          <Property Type="String" Name="DateSpan" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB56_EvaluationType">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+        </EntityType>
+        <Association Name="TB07_DistrictTB51_HunanDistrictConst">
+          <End Type="FXDICTModel.TB07_District" Role="TB07_District" Multiplicity="0..1" />
+          <End Type="FXDICTModel.TB51_HunanDistrictConst" Role="TB51_HunanDistrictConst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB07_District">
+              <PropertyRef Name="DistrictCode" />
+            </Principal>
+            <Dependent Role="TB51_HunanDistrictConst">
+              <PropertyRef Name="UnitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB62_NMReservoir">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RSCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RSName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RSOrder" />
+          <Property Type="Decimal" Name="ZKR" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="XXSW" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZCXSW" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="ZCXSWXYKR" Precision="20" Scale="5" />
+          <NavigationProperty Name="TB07_District" Relationship="FXDICTModel.TB62_NMReservoirTB07_District" FromRole="TB62_NMReservoir" ToRole="TB07_District" />
+          <Property Type="String" Name="SSW" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SKR" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="TB62_NMReservoirTB07_District">
+          <End Type="FXDICTModel.TB62_NMReservoir" Role="TB62_NMReservoir" Multiplicity="*" />
+          <End Type="FXDICTModel.TB07_District" Role="TB07_District" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB07_District">
+              <PropertyRef Name="DistrictCode" />
+            </Principal>
+            <Dependent Role="TB62_NMReservoir">
+              <PropertyRef Name="UnitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB63_HunanHisHPData">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UnitCode" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RptTime" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ZJLNXSL" Precision="20" Scale="2" />
+          <Property Type="Decimal" Name="DXLNXSL" Precision="20" Scale="2" />
+          <Property Type="Decimal" Name="ZXLNXSL" Precision="20" Scale="2" />
+          <Property Type="Decimal" Name="XXLNXSL" Precision="20" Scale="2" />
+          <Property Type="Decimal" Name="QTLNXSL" Precision="20" Scale="2" />
+        </EntityType>
+        <EntityType Name="TB64_NMSHDate">
+          <Key>
+            <PropertyRef Name="DateOrder" />
+          </Key>
+          <Property Type="Int32" Name="DateOrder" Nullable="false" />
+          <Property Type="String" Name="DateSpan" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB66_SHUnits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SH_Code" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitCode" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UnitCls" />
+          <Property Type="Int32" Name="SH_Year" />
+          <Property Type="String" Name="GD_Name" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DataOrder" />
+        </EntityType>
+        <EntityType Name="TB67_SHYearPlanData">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Type="Int32" Name="TBNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SHYear" />
+          <Property Type="String" Name="UnitCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SHTableName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SHFieldName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="SHFieldVal" Precision="20" Scale="5" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FXDICTModelStoreContainer" CdmEntityContainer="FXDICTEntities">
+          <EntitySetMapping Name="TB01_Base"><EntityTypeMapping TypeName="FXDICTModel.TB01_Base"><MappingFragment StoreEntitySet="TB01_Base">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="BName" ColumnName="BName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB02_Measure"><EntityTypeMapping TypeName="FXDICTModel.TB02_Measure"><MappingFragment StoreEntitySet="TB02_Measure">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="Base_NO" ColumnName="Base_NO" />
+            <ScalarProperty Name="MName" ColumnName="MName" />
+            <ScalarProperty Name="MeasureValue" ColumnName="MeasureValue" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB03_Modulus"><EntityTypeMapping TypeName="FXDICTModel.TB03_Modulus"><MappingFragment StoreEntitySet="TB03_Modulus">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="MName" ColumnName="MName" />
+            <ScalarProperty Name="ModulusValue" ColumnName="ModulusValue" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB04_CheckBase"><EntityTypeMapping TypeName="FXDICTModel.TB04_CheckBase"><MappingFragment StoreEntitySet="TB04_CheckBase">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="District_Code" ColumnName="District_Code" />
+            <ScalarProperty Name="RiverDict_Code" ColumnName="RiverDict_Code" />
+            <ScalarProperty Name="FieldDefine_NO" ColumnName="FieldDefine_NO" />
+            <ScalarProperty Name="BaseData" ColumnName="BaseData" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB06_Formula"><EntityTypeMapping TypeName="FXDICTModel.TB06_Formula"><MappingFragment StoreEntitySet="TB06_Formula">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="FieldDefine_No" ColumnName="FieldDefine_No" />
+            <ScalarProperty Name="FormulaString" ColumnName="FormulaString" />
+            <ScalarProperty Name="FormulaType" ColumnName="FormulaType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB07_District"><EntityTypeMapping TypeName="FXDICTModel.TB07_District"><MappingFragment StoreEntitySet="TB07_District">
+            <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+            <ScalarProperty Name="pDistrictCode" ColumnName="pDistrictCode" />
+            <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+            <ScalarProperty Name="DistrictClass" ColumnName="DistrictClass" />
+            <ScalarProperty Name="Uorder" ColumnName="Uorder" />
+            <ScalarProperty Name="RD_RiverCode1" ColumnName="RD_RiverCode1" />
+            <ScalarProperty Name="RD_RiverCode2" ColumnName="RD_RiverCode2" />
+            <ScalarProperty Name="Del" ColumnName="Del" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB08_RiverOrgan"><EntityTypeMapping TypeName="FXDICTModel.TB08_RiverOrgan"><MappingFragment StoreEntitySet="TB08_RiverOrgan">
+            <ScalarProperty Name="RiverOrganCode" ColumnName="RiverOrganCode" />
+            <ScalarProperty Name="RiverOrganName" ColumnName="RiverOrganName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB09_RiverDict"><EntityTypeMapping TypeName="FXDICTModel.TB09_RiverDict"><MappingFragment StoreEntitySet="TB09_RiverDict">
+            <ScalarProperty Name="RiverCode" ColumnName="RiverCode" />
+            <ScalarProperty Name="RiverName" ColumnName="RiverName" />
+            <ScalarProperty Name="PRiverCode" ColumnName="PRiverCode" />
+            <ScalarProperty Name="RDClass" ColumnName="RDClass" />
+            <ScalarProperty Name="RDOrder" ColumnName="RDOrder" />
+            <ScalarProperty Name="isadd" ColumnName="isadd" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB10_RiverDistribute"><EntityTypeMapping TypeName="FXDICTModel.TB10_RiverDistribute"><MappingFragment StoreEntitySet="TB10_RiverDistribute">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="D_DistrictCode" ColumnName="D_DistrictCode" />
+            <ScalarProperty Name="RD_RiverCode" ColumnName="RD_RiverCode" />
+            <ScalarProperty Name="RDRate" ColumnName="RDRate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB11_RptType"><EntityTypeMapping TypeName="FXDICTModel.TB11_RptType"><MappingFragment StoreEntitySet="TB11_RptType">
+            <ScalarProperty Name="RptTypeCode" ColumnName="RptTypeCode" />
+            <ScalarProperty Name="RptTypeName" ColumnName="RptTypeName" />
+            <ScalarProperty Name="RvCode" ColumnName="RvCode" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="InUse" ColumnName="InUse" />
+            <ScalarProperty Name="RptOrder" ColumnName="RptOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB14_Cyc"><EntityTypeMapping TypeName="FXDICTModel.TB14_Cyc"><MappingFragment StoreEntitySet="TB14_Cyc">
+            <ScalarProperty Name="RemarkDetail" ColumnName="RemarkDetail" />
+                <ScalarProperty Name="CycType" ColumnName="CycType" />
+            <ScalarProperty Name="Remark" ColumnName="Remark" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB15_RptClass"><EntityTypeMapping TypeName="FXDICTModel.TB15_RptClass"><MappingFragment StoreEntitySet="TB15_RptClass">
+            <ScalarProperty Name="RptClassCode" ColumnName="RptClassCode" />
+            <ScalarProperty Name="RptClassName" ColumnName="RptClassName" />
+            <ScalarProperty Name="RptClassShortName" ColumnName="RptClassShortName" />
+            <ScalarProperty Name="Imgindex" ColumnName="Imgindex" />
+            <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+            <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+            <ScalarProperty Name="Remark" ColumnName="Remark" />
+            <ScalarProperty Name="UseRptType" ColumnName="UseRptType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB16_OperateReportDefine"><EntityTypeMapping TypeName="FXDICTModel.TB16_OperateReportDefine"><MappingFragment StoreEntitySet="TB16_OperateReportDefine">
+            <ScalarProperty Name="OperateReportCode" ColumnName="OperateReportCode" />
+            <ScalarProperty Name="RC_Code" ColumnName="RC_Code" />
+            <ScalarProperty Name="OperateReportName" ColumnName="OperateReportName" />
+            <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+            <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
+            <ScalarProperty Name="DefaultCyc" ColumnName="DefaultCyc" />
+            <ScalarProperty Name="OptionalCyc" ColumnName="OptionalCyc" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="Remark" ColumnName="Remark" />
+            <ScalarProperty Name="ParExcelFileNo" ColumnName="ParExcelFileNo" />
+            <ScalarProperty Name="ComParExcelFileNo" ColumnName="ComParExcelFileNo" />
+            <ScalarProperty Name="TransRowsOfTotal" ColumnName="TransRowsOfTotal" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB17_TableDefine"><EntityTypeMapping TypeName="FXDICTModel.TB17_TableDefine"><MappingFragment StoreEntitySet="TB17_TableDefine">
+            <ScalarProperty Name="TabCode" ColumnName="TabCode" />
+            <ScalarProperty Name="ORD_Code" ColumnName="ORD_Code" />
+            <ScalarProperty Name="TabName" ColumnName="TabName" />
+            <ScalarProperty Name="TableStyle_Code" ColumnName="TableStyle_Code" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB18_TableStyle"><EntityTypeMapping TypeName="FXDICTModel.TB18_TableStyle"><MappingFragment StoreEntitySet="TB18_TableStyle">
+            <ScalarProperty Name="TableStyleCode" ColumnName="TableStyleCode" />
+            <ScalarProperty Name="TableStyleName" ColumnName="TableStyleName" />
+            <ScalarProperty Name="Style1" ColumnName="Style1" />
+            <ScalarProperty Name="Style2" ColumnName="Style2" />
+            <ScalarProperty Name="Style3" ColumnName="Style3" />
+            <ScalarProperty Name="Style4" ColumnName="Style4" />
+            <ScalarProperty Name="Style5" ColumnName="Style5" />
+            <ScalarProperty Name="Style6" ColumnName="Style6" />
+            <ScalarProperty Name="Style7" ColumnName="Style7" />
+            <ScalarProperty Name="Style8" ColumnName="Style8" />
+            <ScalarProperty Name="Style9" ColumnName="Style9" />
+            <ScalarProperty Name="Style10" ColumnName="Style10" />
+            <ScalarProperty Name="Style11" ColumnName="Style11" />
+            <ScalarProperty Name="Style12" ColumnName="Style12" />
+            <ScalarProperty Name="Style13" ColumnName="Style13" />
+            <ScalarProperty Name="Style14" ColumnName="Style14" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB20_FieldDefine"><EntityTypeMapping TypeName="FXDICTModel.TB20_FieldDefine"><MappingFragment StoreEntitySet="TB20_FieldDefine">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+            <ScalarProperty Name="TD_TabCode" ColumnName="TD_TabCode" />
+            <ScalarProperty Name="FieldCNName" ColumnName="FieldCNName" />
+            <ScalarProperty Name="FieldOrder" ColumnName="FieldOrder" />
+            <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+            <ScalarProperty Name="FieldWidth" ColumnName="FieldWidth" />
+            <ScalarProperty Name="TotalType" ColumnName="TotalType" />
+            <ScalarProperty Name="Modulus_No" ColumnName="Modulus_No" />
+            <ScalarProperty Name="Measure_No" ColumnName="Measure_No" />
+            <ScalarProperty Name="DecimalCount" ColumnName="DecimalCount" />
+            <ScalarProperty Name="ChangeArea" ColumnName="ChangeArea" />
+            <ScalarProperty Name="CHECKFIELD" ColumnName="CHECKFIELD" />
+            <ScalarProperty Name="InputRemark" ColumnName="InputRemark" />
+            <ScalarProperty Name="WriteRule" ColumnName="WriteRule" />
+            <ScalarProperty Name="ChooseContent" ColumnName="ChooseContent" />
+            <ScalarProperty Name="MeasureUnit" ColumnName="MeasureUnit" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB24_ExcelRptDataTemplate"><EntityTypeMapping TypeName="FXDICTModel.TB24_ExcelRptDataTemplate"><MappingFragment StoreEntitySet="TB24_ExcelRptDataTemplate">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="ERDT_NO" ColumnName="ERDT_NO" />
+            <ScalarProperty Name="ExcelSheetNO" ColumnName="ExcelSheetNO" />
+            <ScalarProperty Name="ExcelCol" ColumnName="ExcelCol" />
+            <ScalarProperty Name="ExcelRow" ColumnName="ExcelRow" />
+            <ScalarProperty Name="FildIndex_NO" ColumnName="FildIndex_NO" />
+            <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB27_DISASTERTYPE"><EntityTypeMapping TypeName="FXDICTModel.TB27_DISASTERTYPE"><MappingFragment StoreEntitySet="TB27_DISASTERTYPE">
+            <ScalarProperty Name="DISASTERNAME" ColumnName="DISASTERNAME" />
+            <ScalarProperty Name="InUse" ColumnName="InUse" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB28_OprRptType"><EntityTypeMapping TypeName="FXDICTModel.TB28_OprRptType"><MappingFragment StoreEntitySet="TB28_OprRptType">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="OprTab_Code" ColumnName="OprTab_Code" />
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RptType_Code" ColumnName="RptType_Code" />
+            <ScalarProperty Name="ExcelFile_NO" ColumnName="ExcelFile_NO" />
+            <ScalarProperty Name="ComExcelFile_NO" ColumnName="ComExcelFile_NO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB30_RptTitleInfo"><EntityTypeMapping TypeName="FXDICTModel.TB30_RptTitleInfo"><MappingFragment StoreEntitySet="TB30_RptTitleInfo">
+            <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+            <ScalarProperty Name="RptClassCode" ColumnName="RptClassCode" />
+            <ScalarProperty Name="DefUnit" ColumnName="DefUnit" />
+            <ScalarProperty Name="DefUnitLead" ColumnName="DefUnitLead" />
+            <ScalarProperty Name="DefStaticResp" ColumnName="DefStaticResp" />
+            <ScalarProperty Name="DefWriter" ColumnName="DefWriter" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB31_BriefIndex"><EntityTypeMapping TypeName="FXDICTModel.TB31_BriefIndex"><MappingFragment StoreEntitySet="TB31_BriefIndex">
+            <ScalarProperty Name="TBNo" ColumnName="TBNo" />
+            <ScalarProperty Name="BriefName" ColumnName="BriefName" />
+            <ScalarProperty Name="ORD_Code" ColumnName="ORD_Code" />
+            <ScalarProperty Name="DocFile" ColumnName="DocFile" />
+            <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB32_BriefTemplate"><EntityTypeMapping TypeName="FXDICTModel.TB32_BriefTemplate"><MappingFragment StoreEntitySet="TB32_BriefTemplate">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="BI_No" ColumnName="BI_No" />
+            <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+            <ScalarProperty Name="BookMark" ColumnName="BookMark" />
+            <ScalarProperty Name="SrcTab" ColumnName="SrcTab" />
+            <ScalarProperty Name="MarkType" ColumnName="MarkType" />
+            <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+            <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+            <ScalarProperty Name="FieldExpression" ColumnName="FieldExpression" />
+            <ScalarProperty Name="DecimalCount" ColumnName="DecimalCount" />
+            <ScalarProperty Name="MarkDescription" ColumnName="MarkDescription" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB35_FieldUnitTrans"><EntityTypeMapping TypeName="FXDICTModel.TB35_FieldUnitTrans"><MappingFragment StoreEntitySet="TB35_FieldUnitTrans">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="FirstValue" ColumnName="FirstValue" />
+            <ScalarProperty Name="LastValue" ColumnName="LastValue" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="UseChange" ColumnName="UseChange" />
+            <ScalarProperty Name="LastDecimalCount" ColumnName="LastDecimalCount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB47_DeathReason"><EntityTypeMapping TypeName="FXDICTModel.TB47_DeathReason"><MappingFragment StoreEntitySet="TB47_DeathReason">
+            <ScalarProperty Name="ReasonCode" ColumnName="ReasonCode" />
+            <ScalarProperty Name="PReasonCode" ColumnName="PReasonCode" />
+            <ScalarProperty Name="ReasonName" ColumnName="ReasonName" />
+            <ScalarProperty Name="ReasonOrder" ColumnName="ReasonOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB48_MeasureUnit"><EntityTypeMapping TypeName="FXDICTModel.TB48_MeasureUnit"><MappingFragment StoreEntitySet="TB48_MeasureUnit">
+            <ScalarProperty Name="MUnit" ColumnName="MUnit" />
+            <ScalarProperty Name="DecimalCount" ColumnName="DecimalCount" />
+            <ScalarProperty Name="Modulus_No" ColumnName="Modulus_No" />
+            <ScalarProperty Name="Measure_No" ColumnName="Measure_No" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB52_Formula"><EntityTypeMapping TypeName="FXDICTModel.TB52_Formula"><MappingFragment StoreEntitySet="TB52_Formula">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="FieldDefine_No1" ColumnName="FieldDefine_No1" />
+            <ScalarProperty Name="FormulaString" ColumnName="FormulaString" />
+            <ScalarProperty Name="FieldDefine_No2" ColumnName="FieldDefine_No2" />
+            <ScalarProperty Name="FormulaType" ColumnName="FormulaType" />
+            <ScalarProperty Name="WrongName" ColumnName="WrongName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB55_FieldDefine"><EntityTypeMapping TypeName="FXDICTModel.TB55_FieldDefine"><MappingFragment StoreEntitySet="TB55_FieldDefine">
+            <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+            <ScalarProperty Name="UnitCls" ColumnName="UnitCls" />
+            <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+            <ScalarProperty Name="TD_TabCode" ColumnName="TD_TabCode" />
+            <ScalarProperty Name="FieldCNName" ColumnName="FieldCNName" />
+            <ScalarProperty Name="FieldOrder" ColumnName="FieldOrder" />
+            <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+            <ScalarProperty Name="TotalType" ColumnName="TotalType" />
+            <ScalarProperty Name="DecimalCount" ColumnName="DecimalCount" />
+            <ScalarProperty Name="InputRemark" ColumnName="InputRemark" />
+            <ScalarProperty Name="MeasureName" ColumnName="MeasureName" />
+            <ScalarProperty Name="MeasureValue" ColumnName="MeasureValue" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB43_Reservoir">
+            <EntityTypeMapping TypeName="FXDICTModel.TB43_Reservoir">
+              <MappingFragment StoreEntitySet="TB43_Reservoir">
+                <ScalarProperty Name="SKR" ColumnName="SKR" />
+                <ScalarProperty Name="ZXKYXSL1" ColumnName="ZXKYXSL1" />
+                <ScalarProperty Name="ZXKYXSL" ColumnName="ZXKYXSL" />
+                <ScalarProperty Name="RSOrder" ColumnName="RSOrder" />
+                <ScalarProperty Name="RSType" ColumnName="RSType" />
+                <ScalarProperty Name="RSName" ColumnName="RSName" />
+                <ScalarProperty Name="RSCode" ColumnName="RSCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB51_HunanDistrictConst">
+            <EntityTypeMapping TypeName="FXDICTModel.TB51_HunanDistrictConst">
+              <MappingFragment StoreEntitySet="TB51_HunanDistrictConst">
+                <ScalarProperty Name="SPTSKR" ColumnName="SPTSKR" />
+                <ScalarProperty Name="XRKSKR" ColumnName="XRKSKR" />
+                <ScalarProperty Name="XYKSKR" ColumnName="XYKSKR" />
+                <ScalarProperty Name="ZXKSKR" ColumnName="ZXKSKR" />
+                <ScalarProperty Name="DZKSKR" ColumnName="DZKSKR" />
+                <ScalarProperty Name="SPTYXS1" ColumnName="SPTYXS1" />
+                <ScalarProperty Name="XRKYXS1" ColumnName="XRKYXS1" />
+                <ScalarProperty Name="XYKYXS1" ColumnName="XYKYXS1" />
+                <ScalarProperty Name="ZXKYXSL1" ColumnName="ZXKYXSL1" />
+                <ScalarProperty Name="DZKYXSL1" ColumnName="DZKYXSL1" />
+                <ScalarProperty Name="SPTYXS" ColumnName="SPTYXS" />
+                <ScalarProperty Name="SPTHJCS" ColumnName="SPTHJCS" />
+                <ScalarProperty Name="XRKYXS" ColumnName="XRKYXS" />
+                <ScalarProperty Name="XRSKCS" ColumnName="XRSKCS" />
+                <ScalarProperty Name="XYKYXS" ColumnName="XYKYXS" />
+                <ScalarProperty Name="XYSKCS" ColumnName="XYSKCS" />
+                <ScalarProperty Name="ZXKYXSL" ColumnName="ZXKYXSL" />
+                <ScalarProperty Name="ZXKCS" ColumnName="ZXKCS" />
+                <ScalarProperty Name="DZKYXSL" ColumnName="DZKYXSL" />
+                <ScalarProperty Name="DZXKCS" ColumnName="DZXKCS" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB44_ReservoirDistrict">
+            <EntityTypeMapping TypeName="FXDICTModel.TB44_ReservoirDistrict">
+              <MappingFragment StoreEntitySet="TB44_ReservoirDistrict">
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="RSCode" ColumnName="RSCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB57_EvaluationParameter">
+            <EntityTypeMapping TypeName="FXDICTModel.TB57_EvaluationParameter">
+              <MappingFragment StoreEntitySet="TB57_EvaluationParameter">
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="EvaluationType" ColumnName="EvaluationType" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB58_EvaluationFactor">
+            <EntityTypeMapping TypeName="FXDICTModel.TB58_EvaluationFactor">
+              <MappingFragment StoreEntitySet="TB58_EvaluationFactor">
+                <ScalarProperty Name="DecimalCount" ColumnName="DecimalCount" />
+                <ScalarProperty Name="MeasureValue" ColumnName="MeasureValue" />
+                <ScalarProperty Name="MeasureName" ColumnName="MeasureName" />
+                <ScalarProperty Name="FactorName" ColumnName="FactorName" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="EvaluationType" ColumnName="EvaluationType" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB59_EvalFactorThreshold">
+            <EntityTypeMapping TypeName="FXDICTModel.TB59_EvalFactorThreshold">
+              <MappingFragment StoreEntitySet="TB59_EvalFactorThreshold">
+                <ScalarProperty Name="HigherValue" ColumnName="HigherValue" />
+                <ScalarProperty Name="LowerValue" ColumnName="LowerValue" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="EvaluationType" ColumnName="EvaluationType" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB60_EvaluationGrade">
+            <EntityTypeMapping TypeName="FXDICTModel.TB60_EvaluationGrade">
+              <MappingFragment StoreEntitySet="TB60_EvaluationGrade">
+                <ScalarProperty Name="HigherValue" ColumnName="HigherValue" />
+                <ScalarProperty Name="LowerValue" ColumnName="LowerValue" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="EvalMethodName" ColumnName="EvalMethodName" />
+                <ScalarProperty Name="EvaluationMethod" ColumnName="EvaluationMethod" />
+                <ScalarProperty Name="EvaluationType" ColumnName="EvaluationType" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB61_HunanHPDate">
+            <EntityTypeMapping TypeName="FXDICTModel.TB61_HunanHPDate">
+              <MappingFragment StoreEntitySet="TB61_HunanHPDate">
+                <ScalarProperty Name="DateSpan" ColumnName="DateSpan" />
+                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB56_EvaluationType">
+            <EntityTypeMapping TypeName="FXDICTModel.TB56_EvaluationType">
+              <MappingFragment StoreEntitySet="TB56_EvaluationType">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB62_NMReservoir">
+            <EntityTypeMapping TypeName="FXDICTModel.TB62_NMReservoir">
+              <MappingFragment StoreEntitySet="TB62_NMReservoir">
+                <ScalarProperty Name="SKR" ColumnName="SKR" />
+                <ScalarProperty Name="SSW" ColumnName="SSW" />
+                <ScalarProperty Name="ZCXSWXYKR" ColumnName="ZCXSWXYKR" />
+                <ScalarProperty Name="ZCXSW" ColumnName="ZCXSW" />
+                <ScalarProperty Name="XXSW" ColumnName="XXSW" />
+                <ScalarProperty Name="ZKR" ColumnName="ZKR" />
+                <ScalarProperty Name="RSOrder" ColumnName="RSOrder" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="RSName" ColumnName="RSName" />
+                <ScalarProperty Name="RSCode" ColumnName="RSCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB63_HunanHisHPData">
+            <EntityTypeMapping TypeName="FXDICTModel.TB63_HunanHisHPData">
+              <MappingFragment StoreEntitySet="TB63_HunanHisHPData">
+                <ScalarProperty Name="QTLNXSL" ColumnName="QTLNXSL" />
+                <ScalarProperty Name="XXLNXSL" ColumnName="XXLNXSL" />
+                <ScalarProperty Name="ZXLNXSL" ColumnName="ZXLNXSL" />
+                <ScalarProperty Name="DXLNXSL" ColumnName="DXLNXSL" />
+                <ScalarProperty Name="ZJLNXSL" ColumnName="ZJLNXSL" />
+                <ScalarProperty Name="RptTime" ColumnName="RptTime" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB64_NMSHDate">
+            <EntityTypeMapping TypeName="FXDICTModel.TB64_NMSHDate">
+              <MappingFragment StoreEntitySet="TB64_NMSHDate">
+                <ScalarProperty Name="DateSpan" ColumnName="DateSpan" />
+                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB66_SHUnits">
+            <EntityTypeMapping TypeName="FXDICTModel.TB66_SHUnits">
+              <MappingFragment StoreEntitySet="TB66_SHUnits">
+                <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
+                <ScalarProperty Name="GD_Name" ColumnName="GD_Name" />
+                <ScalarProperty Name="SH_Year" ColumnName="SH_Year" />
+                <ScalarProperty Name="UnitCls" ColumnName="UnitCls" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="SH_Code" ColumnName="SH_Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB67_SHYearPlanData">
+            <EntityTypeMapping TypeName="FXDICTModel.TB67_SHYearPlanData">
+              <MappingFragment StoreEntitySet="TB67_SHYearPlanData">
+                <ScalarProperty Name="SHFieldVal" ColumnName="SHFieldVal" />
+                <ScalarProperty Name="SHFieldName" ColumnName="SHFieldName" />
+                <ScalarProperty Name="SHTableName" ColumnName="SHTableName" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="SHYear" ColumnName="SHYear" />
+                <ScalarProperty Name="TBNO" ColumnName="TBNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FXDICT" ZoomLevel="93">
+        <EntityTypeShape EntityType="FXDICTModel.TB01_Base" Width="1.5" PointX="0.75" PointY="3.875" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB02_Measure" Width="1.5" PointX="3" PointY="3.625" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB03_Modulus" Width="1.5" PointX="3" PointY="0.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB04_CheckBase" Width="1.5" PointX="5.375" PointY="7.375" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB06_Formula" Width="1.5" PointX="9.75" PointY="5.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB07_District" Width="1.5" PointX="7.75" PointY="6.375" Height="3.1161507161458335" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXDICTModel.TB08_RiverOrgan" Width="1.5" PointX="0.75" PointY="7.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB09_RiverDict" Width="1.5" PointX="10.125" PointY="9.875" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB10_RiverDistribute" Width="1.5" PointX="10" PointY="7.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB11_RptType" Width="1.5" PointX="3" PointY="16.875" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB14_Cyc" Width="1.5" PointX="7.875" PointY="14.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB15_RptClass" Width="1.5" PointX="0.75" PointY="9.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB16_OperateReportDefine" Width="1.5" PointX="3" PointY="9.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB17_TableDefine" Width="1.5" PointX="5.25" PointY="10" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB18_TableStyle" Width="1.5" PointX="5.25" PointY="13.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB20_FieldDefine" Width="1.5" PointX="5.25" PointY="2.375" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB24_ExcelRptDataTemplate" Width="1.5" PointX="7.5" PointY="3.375" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB27_DISASTERTYPE" Width="1.5" PointX="11.75" PointY="2.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB28_OprRptType" Width="1.5" PointX="3" PointY="13.625" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB30_RptTitleInfo" Width="1.5" PointX="11.75" PointY="11.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB31_BriefIndex" Width="1.5" PointX="12.75" PointY="5.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB32_BriefTemplate" Width="1.5" PointX="9.75" PointY="14.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB35_FieldUnitTrans" Width="1.5" PointX="12.75" PointY="8.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB47_DeathReason" Width="1.5" PointX="11.75" PointY="14.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB48_MeasureUnit" Width="1.5" PointX="13.75" PointY="2.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB52_Formula" Width="1.5" PointX="13.75" PointY="11.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB55_FieldDefine" Width="1.5" PointX="13.75" PointY="14.125" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="FXDICTModel.FK_TB02_MEA_TB01_BAS" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.95" />
+          <ConnectorPoint PointX="3" PointY="3.95" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB20_FIE_REFERENCE_TB02_MEA" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.625" />
+          <ConnectorPoint PointX="5.25" PointY="2.775" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB20_FIE_REFERENCE_TB03_MOD" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="1.15" />
+          <ConnectorPoint PointX="3.75" PointY="2.5437475000000065" />
+          <ConnectorPoint PointX="5.25" PointY="2.5437475000000065" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB10_RIV_REFERENCE_TB07_DIS" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="7.7" />
+          <ConnectorPoint PointX="10" PointY="7.7" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB10_RIV_REFERENCE_TB09_RIV" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.8125" PointY="9.875" />
+          <ConnectorPoint PointX="10.8125" PointY="7.9" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB28_OPR_REFERENCE_TB11_RPT" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.1562525" PointY="16.875" />
+          <ConnectorPoint PointX="4.1562525" PointY="14.025" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB16_OPE_REFERENCE_TB15_RPT" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.75" />
+          <ConnectorPoint PointX="2.9999999999999893" PointY="9.65" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB17_TAB_REFERENCE_TB16_OPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5000000000000036" PointY="9.65" />
+          <ConnectorPoint PointX="5.25" PointY="10" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB28_OPR_REFERENCE_TB16_OPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.7499999999999964" PointY="9.65" />
+          <ConnectorPoint PointX="3.7499999999999964" PointY="13.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB17_TAB_REFERENCE_TB18_TAB" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="13.125" />
+          <ConnectorPoint PointX="6" PointY="10.4" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.FK_TB24_ExcelRptDataTemplate_TB20_FieldDefine" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="2.775" />
+          <ConnectorPoint PointX="7.4999999999999991" PointY="3.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.TB07_DistrictTB04_CheckBase">
+          <ConnectorPoint PointX="7.75" PointY="7.575" />
+          <ConnectorPoint PointX="6.875" PointY="7.575" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXDICTModel.TB43_Reservoir" Width="1.5" PointX="7" PointY="9.625" Height="2.3520719401041656" IsExpanded="true" />
+        <EntityTypeShape EntityType="FXDICTModel.TB51_HunanDistrictConst" Width="1.5" PointX="11.875" PointY="9" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB44_ReservoirDistrict" Width="1.5" PointX="8.125" PointY="12.375" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="FXDICTModel.TB43_ReservoirTB44_ReservoirDistrict">
+          <ConnectorPoint PointX="8.3125" PointY="11.977071940104166" />
+          <ConnectorPoint PointX="8.3125" PointY="12.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="FXDICTModel.TB07_DistrictTB44_ReservoirDistrict">
+          <ConnectorPoint PointX="8.90625" PointY="9.4911507161458335" />
+          <ConnectorPoint PointX="8.90625" PointY="12.375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXDICTModel.TB57_EvaluationParameter" Width="1.5" PointX="15.625" PointY="4" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB58_EvaluationFactor" Width="1.5" PointX="15.625" PointY="5.875" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB59_EvalFactorThreshold" Width="1.5" PointX="15.625" PointY="6.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB60_EvaluationGrade" Width="1.5" PointX="15.625" PointY="7.625" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="FXDICTModel.TB61_HunanHPDate" Width="1.5" PointX="5.375" PointY="15.75" Height="1.3969734700520746" />
+        <EntityTypeShape EntityType="FXDICTModel.TB56_EvaluationType" Width="1.5" PointX="15.625" PointY="2.5" Height="1.2849739583333246" />
+        <AssociationConnector Association="FXDICTModel.TB07_DistrictTB51_HunanDistrictConst">
+          <ConnectorPoint PointX="9.25" PointY="9.2" />
+          <ConnectorPoint PointX="9.7916666666666661" PointY="9.2" />
+          <ConnectorPoint PointX="9.9583333333333339" PointY="9.2" />
+          <ConnectorPoint PointX="10.729166666666666" PointY="9.2" />
+          <ConnectorPoint PointX="10.895833333333334" PointY="9.2" />
+          <ConnectorPoint PointX="11.875" PointY="9.2" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXDICTModel.TB62_NMReservoir" Width="1.5" PointX="9.375" PointY="15.75" Height="2.9251310221354174" />
+        <AssociationConnector Association="FXDICTModel.TB62_NMReservoirTB07_District">
+          <ConnectorPoint PointX="10.125" PointY="15.75" />
+          <ConnectorPoint PointX="10.125" PointY="14.774999999999999" />
+          <ConnectorPoint PointX="9.625" PointY="14.774999999999999" />
+          <ConnectorPoint PointX="9.625" PointY="13.024999999999999" />
+          <ConnectorPoint PointX="9.875" PointY="13.024999999999999" />
+          <ConnectorPoint PointX="9.875" PointY="8.45" />
+          <ConnectorPoint PointX="9.25" PointY="8.45" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FXDICTModel.TB63_HunanHisHPData" Width="1.5" PointX="11.375" PointY="15.75" Height="2.5430916341145746" />
+        <EntityTypeShape EntityType="FXDICTModel.TB64_NMSHDate" Width="1.5" PointX="7.375" PointY="0.75" Height="1.3658455403645746" />
+        <EntityTypeShape EntityType="FXDICTModel.TB66_SHUnits" Width="1.5" PointX="15.375" PointY="15.75" Height="2.2898160807291674" />
+        <EntityTypeShape EntityType="FXDICTModel.TB67_SHYearPlanData" Width="1.5" PointX="16.375" PointY="9.75" Height="2.1050219726562602" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

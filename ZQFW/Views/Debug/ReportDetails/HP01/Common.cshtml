@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html ng-app="CommonReport">
+<head>
+    <title>Debug-蓄水通报</title>
+    <meta content="webkit" name="renderer"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--------------------------CSS------------------------------>
+    <link rel="stylesheet" href="../../../../CSS/Public/ToolBar.css"/>
+    <link rel="stylesheet" href="../../../../CSS/Pages/Index/CommonReport.css"/>
+    <!--------------------------JavaScript------------------------------>
+    <!--Base Library-->
+    <script src="../../../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
+    <!--Plugin-->
+    <script src="../../../../Scripts/Library/Plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.user_data = {
+            xsl: @Html.Raw(ViewData["XSL"].ToString())
+        }
+    </script>
+    <script src="../../../../Scripts/Application/ReportDetails/HP01/Common.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Models/HP_RptModel.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Directives/PublicDirective.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Others/Tools.js" type="text/javascript"></script>
+    <!--地图脚本-->
+    <script src="../../../../Scripts/Library/Plugins/highchart/highcharts.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Plugins/highchart/modules/exporting.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Plugins/highchart/highcharts-3d.js" type="text/javascript"></script>
+    <script src="../../../../Mapserver/js/public.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Statistics/WaterStorage/Chart.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Statistics/WaterStorage/mapParams.js" type="text/javascript"></script>
+</head>
+<body ng-controller="MainCtrl">
+    <div class="ToolBar">
+        <ul>
+            <li class="Export" ng-click="Fn.Export()"><i></i>导出</li>
+        </ul>
+    </div>
+
+    <div class="Top">
+        <div class="Right">
+            <label><input type="text" style="font-size: 16px; font-weight: bolder" ng-model="Report.Time" readonly ng-wdatepicker='{"dateFmt":"yyyy年MM月dd日"}'/></label>&nbsp;
+        </div>
+    </div>
+
+    <div class="Main">
+        <table>
+            <caption>
+                {{Report.UnitName}}
+                <input type="text" ng-model="Report.Month" style="font-size: 16px; width: 30px;" readonly ng-wdatepicker='{"dateFmt":"M"}'/>
+                月{{Report.DayName}}蓄水情况
+            </caption>
+            <tbody>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" ng-model="Report.TJ_MONTH" readonly ng-wdatepicker='{"dateFmt":"MM"}' style="font-size: 16px;"/>月
+                    <input type="text" ng-model="Report.TJ_DAY" readonly ng-wdatepicker='{"dateFmt":"dd"}' style="font-size: 16px;"/>日统计，
+                    全{{Report.SimpleUnitName}}<input type="text" ng-model="Report.XSCSZJ" style="font-size: 16px;"/>万处蓄水工程共蓄水
+                    <input type="text" ng-model="Report.XXSLZJ" style="font-size: 16px;"/>{{Report.XSLMeasureName}}，占计划蓄水量的<input type="text" ng-model="Report.XZYBFB" style="font-size: 16px;"/>%
+                    ，比上期<input type="text" ng-model="Report.SQ_MONTH" readonly ng-wdatepicker='{"dateFmt":"MM"}' style="font-size: 16px;"/>月
+                    <input type="text" ng-model="Report.SQ_DAY" readonly ng-wdatepicker='{"dateFmt":"dd"}' style="font-size: 16px;"/>日{{Report.SQ_DHS}}<!--多（少）-->蓄
+                    <input type="text" ng-model="Report.BSQXS" style="font-size: 16px;"/>{{Report.XSLMeasureName}}；比历年同期平均{{Report.TQ_DHS}}<!--多（少）-->蓄
+                    <input type="text" ng-model="Report.BTQPJXS" style="font-size: 16px;"/>{{Report.XSLMeasureName}}，偏{{Report.TQ_DHS}}<!--多（少）-->
+                    <input type="text" ng-model="Report.BTQPJXS_Percent" style="font-size: 16px;"/>%；
+                    可用水量<input type="text" ng-model="Report.XZKYSL" style="font-size: 16px;"/>{{Report.XSLMeasureName}}；其中，大型水库蓄水
+                    <input type="text" ng-model="Report.DZKXXSL" style="font-size: 16px;"/>{{Report.XSLMeasureName}}，约占总蓄水量的
+                    <input type="text" ng-model="Report.DZKXXSL_Percent" style="font-size: 16px;"/>%；中型水库蓄水
+                    <input type="text" ng-model="Report.ZZKXXSL" style="font-size: 16px;"/>{{Report.XSLMeasureName}}，约占总蓄水量的
+                    <input type="text" ng-model="Report.ZZKXXSL_Percent" style="font-size: 16px;"/>%；小型水库蓄水
+                    <input type="text" ng-model="Report.XZKXXSL" style="font-size: 16px;"/>{{Report.XSLMeasureName}}，约占总蓄水量的
+                    <input type="text" ng-model="Report.XZKXXSL_Percent" style="font-size: 16px;"/>%；山坪塘蓄水
+                    <input type="text" ng-model="Report.SPTXXS" style="font-size: 16px;"/>{{Report.XSLMeasureName}}，约占总蓄水量的
+                    <input type="text" ng-model="Report.SPTXXS_Percent" style="font-size: 16px;"/>%。
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;蓄水量相对较多的为<input type="text" ng-model="Report.MaxXSLCities" style="width: 450px; font-size: 16px;"/>，
+                    分别占应蓄水量的<input type="text" ng-model="Report.MaxXSLCitiesXSBFB" style="width: 350px; font-size: 16px;"/>，
+                    相对较少的有<input type="text" ng-model="Report.MinXSLCities" style="width: 450px; font-size: 16px;"/>，分别占计划蓄水量的
+                    <input type="text" ng-model="Report.MinXSLCitiesXSBFB" style="width: 350px; font-size: 16px;"/>，
+                    其它{{Report.OtherUnitName}}蓄水占计划蓄水量的<input type="text" ng-model="Report.QTCSXSBFBMIN" style="font-size: 16px;"/>%至
+                    <input type="text" ng-model="Report.QTCSXSBFBMAX" style="font-size: 16px;"/>%。
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="BarChart" style="width: 570px; height: 300px; margin: auto;">
+        </div>
+        <div id="PieChart" style="width: 570px; height: 250px; margin: auto;">
+        </div>
+        <div id="map_frame" style="text-align: center;">
+            <p style="padding: 0px; margin: 0px; font-size: 18px; color: #000; font-family: Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif;"> 各市州蓄水情况评价</p>
+            <iframe id="map" style="width: 570px; height: 350px;" name="map" frameborder="0" src="" style="background-color: #FFF" scrolling="no"> </iframe>
+        </div>
+    </div>
+</body>
+</html>

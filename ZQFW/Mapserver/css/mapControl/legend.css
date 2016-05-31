@@ -1,0 +1,92 @@
+﻿#legend
+{
+	position:absolute;
+	bottom:5px;
+	/*z-index:10;
+	border-top:1px solid #bfbfbf;
+	border-right:1px solid #bfbfbf;*/
+	max-width:160px;
+	border: 1px solid #BFBFBF;
+	background-color:#fff;
+}
+#legend label
+{
+	display:block;
+	width:150px;
+	margin:0px auto;
+	height:21px;
+	line-height:21px;
+	text-align:center;
+	font-size:14px;	
+}
+#legend ul
+{
+	margin:0 0 5px;
+	padding:0;	
+}
+#legend ul li
+{
+	list-style:none;
+	margin:0;
+	padding:8px 10px;
+	width:150px;
+	height:20px;
+}
+#legend ul li .colorblocks
+{
+	width:50px;
+	height:20px;
+	float:left;
+	/*	display:block;
+	margin-right:15px;*/
+	/*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; /*IE8*/
+	/*filter: alpha(opacity=70);
+	opacity: 0.7;*/
+	border:1px solid #bfbfbf;
+}
+#legend ul li p
+{
+	height:20px;
+	line-height:20px;
+	font-size:12px;
+	/*float:left;*/
+	display:block;
+	margin: 0 0 0 65px;
+	padding:0;
+	}
+#legend #zoomer
+{
+	width:16px;
+	height:16px;
+	background-image:url(../../images/legend/shico.png);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:pointer;	
+	border-right:1px solid #bfbfbf;
+	border-bottom:1px solid #bfbfbf;
+	}
+#legend #zoomer.small
+{
+	position:relative;
+	background-position:top;
+	border-right:none;
+	display:block;
+}
+#legend #editor
+{
+	width:16px;
+	height:16px;
+	/*background-image:url(../../images/legend/shico.png);
+    background-position:bottom;*/
+    background-image:url(../../images/legend/mail14c5d6.png);
+    
+	background-position: -128px -77px;
+	background-repeat:no-repeat;
+	position:absolute;
+	top:0;
+	right:0;
+	cursor:pointer;	
+}

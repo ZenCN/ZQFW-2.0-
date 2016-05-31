@@ -1,0 +1,83 @@
+﻿<div class="LeftTree">
+    <div class="Left">
+        <ul id="RptTypeTree" class="ztree">
+        </ul>
+    </div>
+    <div class="Right">
+        <div class="ToolBar">
+            <ul>
+            </ul>
+        </div>
+        <div class="Main">
+            <p>
+                新建名称：<label style="font-weight: bolder; margin-left: 10px;">{{BaseData.Select.RptClass.Find("code",New.ReportTitle.ORD_Code,"name")}}</label>
+            </p>
+            <p>
+                <label>时段类型：</label>
+                <label ng-repeat="type in BaseData.Select.CycType[New.ReportTitle.ORD_Code]" title="{{type.content}}">
+                    <input type="radio" name="cycType" ng-model="New.ReportTitle.StatisticalCycType" value="{{type.value}}"/>
+                    {{type.name}}
+                </label>
+            </p>
+            <p>
+                <label>新建类型：</label>
+                <label>
+                    <input type="radio" name="createType" ng-model="New.ReportTitle.SourceType" value="0"/>
+                    录入
+                </label>
+                <label ng-hide="Config.Page.New.Func.Sum.Unders"> <!--浙江县级、黑龙江县级、蓄水县级没有汇总功能-->
+                    <input type="radio" name="createType" ng-model="New.ReportTitle.SourceType" value="1"/>
+                    汇总
+                </label>
+                <label ng-hide="Config.Page.New.Func.Sum.Self">
+                    <input type="radio" name="createType" ng-model="New.ReportTitle.SourceType" value="2"/>
+                    累计
+                </label>
+            </p>
+            <p ng-show="New.ReportTitle.ORD_Code == 'HL01'">
+                <label>起止日期：</label>
+                <input type="text" ng-wdatepicker='{"minDate": "Attr.CurrentYear + \"-01-01\"", "maxDate": "New.ReportTitle.EndDateTime"}'
+                 ng-model="New.ReportTitle.StartDateTime" />
+                <label>至</label>
+                <input type="text" ng-wdatepicker='{"minDate": "New.ReportTitle.StartDateTime"}' ng-model="New.ReportTitle.EndDateTime" />
+            </p>
+            <p ng-show="New.ReportTitle.ORD_Code == 'HP01' || New.ReportTitle.ORD_Code == 'NP01'">
+                <label>起止日期：</label>&nbsp;
+                <label>年份:</label>
+                <input type="text" ng-wdatepicker='{"dateFmt":"yyyy", minDate:"cur_year"}' ng-model="New.XSRQ.Year" style="width: 50px;" />
+                &nbsp;
+                <label>时间:</label>
+                <select ng-model="New.XSRQ.Time">
+                    <option ng-repeat="obj in BaseData.HPDate" value="{{obj.RealTime}}" ng-selected="New.XSRQ.Time == obj.RealTime">{{obj.FakeTime}}</option>
+                </select>
+            </p>
+            <div class="TitleList">
+                <div class="Title">
+                    <span>已有报表</span>
+                </div>
+                <ul class="Head">
+                    <li>
+                        <span class="Start-EndDate">起止日期</span>
+                        <span class="WriteDate">填报日期</span>
+                        <span class="SourceType">新建类型</span>
+                        <span class="Remark Last">备注</span>
+                    </li>
+                </ul>
+                <div class="Boxes">
+                    <ul>
+                        <li ng-repeat="rpt in New.SameReport.Content" ng-class="{Selected:rpt.PageNO == New.SameReport.Current.PageNO}" ng-click="New.SameReport.Current = rpt">
+                            <span class="Start-EndDate">{{rpt.StartDateTime}} 至 {{rpt.EndDateTime}}</span>
+                            <span class="WriteDate">{{rpt.WriterTime}}</span>
+                            <span class="SourceType">{{Assist.CN_Name("SourceType",rpt.SourceType)}}</span>
+                            <span class="Remark Last" title="{{rpt.Remark}}">{{rpt.Remark}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="TitleList-Operate">
+                <input type="button" value="确认新建" ng-hide="Config.Page.New.Func.Create" class="DarkBlue" ng-click="New.CreateReport()"/>&nbsp;&nbsp;&nbsp;&nbsp;  
+                <input type="button" value="打开" class="DarkBlue" ng-click="New.OpenReport()"/>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.TitleList li span.Start-EndDate{
+    width: 30%;
+}
+.TitleList li span.WriteDate{
+    width: 30%;
+}
+.TitleList li span.SourceType{
+    width: 10%;
+}
+.TitleList li span.Remark{
+    width: 30%;
+    height: 26px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.TitleList .Boxes {
+    top: 55px;
+}
+.TitleList .Boxes {
+    height: 174px;
+    overflow: auto;
+}
+.Main{
+    width: 600px;
+    margin: 25px auto;
+	text-align: left;
+}
+
+.LeftTree .Left .ztree#RptType {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	bottom: 20px;
+	left: 30px;
+}
+#StatisticalCycType {
+	width: 66px;
+}

@@ -1,0 +1,20 @@
+﻿<ul class="Rpt-Tags">
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 0}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 0"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表1</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 1}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 1"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表2</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 2}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 2"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表3</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 3}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 3"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表4</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 4}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 4">
+        <a>{{Report[Attr.NameSpace].Current.Attr.SSB ? "死亡/失踪人员明细" : "表5"}}</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 5}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 5"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表6</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 6}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 6"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表7</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 7}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 7"
+        ng-hide="Report[Attr.NameSpace].Current.Attr.SSB"><a>表8</a></li>
+    <li ng-class="{Selected:Report[Attr.NameSpace].Current.Attr.TableIndex == 8}" ng-click="Report[Attr.NameSpace].Current.Attr.TableIndex = 8">
+        <a>{{Report[Attr.NameSpace].Current.Attr.SSB ? "数据表" : "表9"}}</a></li>
+</ul>

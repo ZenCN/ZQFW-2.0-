@@ -1,0 +1,94 @@
+﻿/*-------------------------------------
+#Description:      主功能部分
+
+#Version:          1.0
+#Author:           xiemumu
+#Recent:           2012-12-05
+-------------------------------------*/
+.main
+{
+	position:absolute;
+	top: 121px;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:0;
+	margin:0 5px 5px 5px;
+	overflow:hidden;
+	min-width:950px;
+	min-height:510px;
+	z-index:1;
+	}
+.main .slide_page
+{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	overflow:hidden;
+	background-color:#FFF;
+	}
+.deleted{
+    display:none;
+}
+.main_shadows
+{
+	position:absolute;
+	top:135px;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+	min-width:960px;
+	min-height:515px;
+	z-index:0;
+	}
+.main_shadows .leftshadow
+{
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:10px;
+	background-image:url(main_shadow_bg.png);
+	background-repeat:repeat-y;
+	background-position:0 0;
+	width:5px;	
+	}
+.main_shadows .rightshadow
+{
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:10px;
+	background-image:url(main_shadow_bg.png);
+	background-repeat:repeat-y;
+	background-position:-5px 0;
+	width:5px;
+	}
+.main_shadows .leftbottomshadow
+{
+	position:absolute;
+	left:0;
+	bottom:0;
+	right:10px;
+	background-image:url(main_shadow_bg.png);
+	background-repeat:no-repeat;
+	background-position:-10px 0;
+	height:10px;
+	}
+.main_shadows .rightbottomshadow
+{
+	position:absolute;
+	bottom:0;
+	right:0;
+	background-image:url(main_shadow_bg.png);
+	background-repeat:no-repeat;
+	background-position:right 0;
+	height:10px;
+	width:10px;
+	}

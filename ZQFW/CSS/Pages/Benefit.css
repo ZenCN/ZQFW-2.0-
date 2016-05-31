@@ -1,0 +1,150 @@
+﻿body{
+    margin: 0;
+    padding: 0;
+}
+
+.DarkGray {
+    font-size:12px;
+    color:#333;
+    background-color:#f0f0f0;
+    background-image:url(../img/Public/DarkGray.png);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+}
+
+.Frame {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 5px;
+    bottom: 5px;
+    overflow: hidden;
+    background-color: #FFF;
+}
+
+.Frame .Left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 260px;
+    overflow: auto;
+    background-color: #FAFAFA;
+    border-right: 1px solid #e5e5e5;
+    background-image: url(../img/Public/White-Y.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 10px;
+}
+
+.Frame .Left ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.Frame .Left ul li {
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #A3ABBB;
+    padding: 0 0 0 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #333;
+}
+
+.Frame .Left ul li:hover {
+	background-color: #DFE3EB;
+}
+
+.Frame .Left ul li i {
+    margin: 9px;
+    display: block;
+    float: left;
+    background: url(../img/Public/Dot.png) no-repeat 0px 0px;
+    width: 12px;
+    height: 12px;
+}
+
+.Frame .Left ul li.Selected {
+    background-color: #D4DEF1;
+}
+
+.Frame .Left ul li.Selected i {
+    background-position: 0 -12px;
+}
+
+.Jumper{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 22px;
+    padding-left: 19px;
+}
+.Jumper .PageText{
+    margin: 0px 40px;
+}
+.Jumper i{
+    background: url(../img/Public/JumperIcons.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.Jumper .ToPrevious{
+    background-position: 0px -16px;
+}
+.Jumper .ToLast{
+    background-position: 0px -32px;
+}
+.Jumper .ToNext{
+    background-position: 0px -48px;
+}
+
+
+.Frame .Right {
+    position: absolute;
+    left: 283px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: #FAFAFA;
+}
+
+textarea {
+            height: 200px;
+}
+
+.DarkBlue{
+    height: 25px;
+    background-color: rgb(47, 96, 158);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    text-align: center;
+    border: 1px rgb(47, 96, 158) solid;
+    color: rgb(255, 255, 255);
+}
+.DarkBlue:hover{
+    background-image: linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -o-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -moz-linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -ms-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    border: 1px rgb(47, 96, 158) solid;
+    cursor: pointer;
+}

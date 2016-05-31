@@ -1,0 +1,25 @@
+﻿<tbody>
+    <tr ng-repeat="sh011 in Open.Report.Current.SH011">
+        <th>
+            <span class="txt_center">{{sh011.JSNR}}</span>
+        </th>
+        <td class="ReadOnly">
+            {{sh011.NDZJYS}}
+        </td>
+        <td ng-class="{ ReadOnly: !(sh011.NDZJYS > 0)}">
+            <input type="text" ng-readonly="!(sh011.NDZJYS > 0)" ng-model="sh011.NDZJZY" ng-blur="FCD(2)"/>
+        </td>
+        <td ng-class="{ ReadOnly: !(sh011.NDZJYS > 0)}">
+            <input type="text" ng-readonly="!(sh011.NDZJYS > 0)" ng-model="sh011.NDZJDF" ng-blur="FCD(2)"/>
+        </td>
+        <td>
+            <input type="text" ng-model="sh011.DFZJSJ" ng-blur="FCN(2)"/>
+        </td>
+        <td>
+            <input type="text" ng-model="sh011.DFZJSX" ng-blur="FCN(2)"/>
+        </td>
+        <td>
+            <input type="text" ng-model="sh011.ZJZF" ng-blur="FCN(2)"/>
+        </td>
+    </tr>
+</tbody>

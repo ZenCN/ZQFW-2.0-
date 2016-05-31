@@ -1,0 +1,41 @@
+/*
+ * Version: 2.1
+ * Author: Edward
+ * E-mail: 780589391@qq.com
+ */
+.DarkBlue{
+    height: 25px;
+    background-color: rgb(47, 96, 158);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    text-align: center;
+    border: 1px rgb(47, 96, 158) solid;
+    color: rgb(255, 255, 255);
+}
+.DarkBlue:hover{
+    background-image: linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -o-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -moz-linear-gradient(top, rgb(77, 122, 178) 0%,rgb(47, 96, 158) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    background-image: -ms-linear-gradient(top, rgb(77, 122, 178) 0%, rgb(47, 96, 158) 100%);
+    border: 1px rgb(47, 96, 158) solid;
+    cursor: pointer;
+}
+input.DarkBlue[name=Search] {
+	margin-left: 40px;
+}
+.Keyboard i {
+	width: 18px;
+	height: 18px;
+	background-image: url(../img/Public/MenuIcons/2.png);
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+}
+.Keyboard i.Delete {
+	background-position: -170px -26px;  /*background-position: -168px -24px;*/
+}
+.Keyboard i.Reset {
+	background-position: -530px -26px;  /*background-position: -168px -24px;*/
+}

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapParams>
+  <topRegion>
+    <code>35000000</code>
+    <name>福建省</name>
+    <level>2</level>
+  </topRegion>
+  <mapTypes>
+    <mapType type="0">
+      <name>直观图</name>
+      <maxLevel dataType="int">1</maxLevel>
+      <mapFile>FujianMap.map</mapFile>
+      <component>Map</component>
+      <disasterInfoTypes>SZRK,SWRK,SZRKR,ZYRK,SHMJXJ,DTFW,ZJJJZSS,SLSSZJJJSS</disasterInfoTypes>
+    </mapType>
+    <mapType type="1">
+      <name>市级图</name>
+      <maxLevel dataType="int">1</maxLevel>
+      <mapFile>FujianMap.map</mapFile>
+      <component>Map</component>
+      <disasterInfoTypes>SZRK,SWRK,SZRKR,ZYRK,SHMJXJ,DTFW,ZJJJZSS,SLSSZJJJSS</disasterInfoTypes>
+    </mapType>
+    <mapType type="2">
+      <name>流域图</name>
+      <maxLevel dataType="int">0</maxLevel>
+      <mapFile>FujianMap.map</mapFile>
+      <component>Map</component>
+      <riverBasinLabels>RiverBasin Labels</riverBasinLabels>
+      <riverBasinLine>RiverBasin_Line Drawing</riverBasinLine>
+      <disasterInfoTypes>SZRK,SWRK,SZRKR,ZYRK,SHMJXJ,DTFW,ZJJJZSS,SLSSZJJJSS</disasterInfoTypes>
+    </mapType>
+    <mapType type="3">
+      <name>评估图</name>
+      <maxLevel dataType="int">0</maxLevel>
+      <mapFile>FujianMap1.map</mapFile>
+      <component>Map</component>
+      <disasterInfoTypes>SZRK,SWRK,SHMJXJ,DTFW,ZJJJZSS,SMXJT,GCYMLS</disasterInfoTypes>
+    </mapType>
+  </mapTypes>
+  <allDstInfoTypes>
+    <disasterInfoType type="SZRK">
+      <name>受灾人口</name>
+      <unit>万人</unit>
+      <fixed>4</fixed>
+      <breakValues>
+        <breakValue level="1">20, 40, 60, 120</breakValue>
+        <breakValue level="2">20, 40, 60, 120</breakValue>
+        <breakValue level="3">20, 40, 60, 120</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="SWRK">
+      <name>死亡人口</name>
+      <unit>人</unit>
+      <fixed>0</fixed>
+      <breakValues>
+        <breakValue level="1">1, 5, 10, 50</breakValue>
+        <breakValue level="2">1, 5, 10, 50</breakValue>
+        <breakValue level="3">1, 5, 10, 50</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="SZRKR">
+      <name>失踪人口</name>
+      <unit>人</unit>
+      <fixed>0</fixed>
+      <breakValues>
+        <breakValue level="1">1, 5, 10, 50</breakValue>
+        <breakValue level="2">1, 5, 10, 50</breakValue>
+        <breakValue level="3">1, 5, 10, 50</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="ZYRK">
+      <name>转移人口</name>
+      <unit>万人</unit>
+      <fixed>4</fixed>
+      <breakValues>
+        <breakValue level="1">0.01, 0.1, 1, 10</breakValue>
+        <breakValue level="2">0.01, 0.1, 1, 10</breakValue>
+        <breakValue level="3">0.01, 0.1, 1, 10</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="SHMJXJ">
+      <name>受灾面积</name>
+      <unit>千公顷</unit>
+      <fixed>4</fixed>
+      <breakValues>
+        <breakValue level="1">20, 100, 200, 600</breakValue>
+        <breakValue level="2">20, 100, 200, 600</breakValue>
+        <breakValue level="3">20, 100, 200, 600</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="DTFW">
+      <name>倒塌房屋</name>
+      <unit>万间</unit>
+      <fixed>4</fixed>
+      <breakValues>
+        <breakValue level="1">0.01, 0.05, 0.1, 1</breakValue>
+        <breakValue level="2">0.01, 0.05, 0.1, 1</breakValue>
+        <breakValue level="3">0.01, 0.05, 0.1, 1</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="ZJJJZSS">
+      <name>直接经济损失</name>
+      <unit>亿元</unit>
+      <fixed>4</fixed>
+      <breakValues>
+        <breakValue level="1">0.1, 0.5, 1, 10</breakValue>
+        <breakValue level="2">0.1, 0.5, 1, 10</breakValue>
+        <breakValue level="3">0.1, 0.5, 1, 10</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="SLSSZJJJSS">
+      <name>水利经济损失</name>
+      <unit>亿元</unit>
+      <fixed>4</fixed>
+      <breakValues>
+        <breakValue level="1">0.5, 1, 5, 10</breakValue>
+        <breakValue level="2">0.5, 1, 5, 10</breakValue>
+        <breakValue level="3">0.5, 1, 5, 10</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="SMXJT">
+      <name>骨干交通中断历时</name>
+      <unit>天</unit>
+      <fixed>2</fixed>
+      <breakValues>
+        <breakValue level="1">0.5, 1, 10, 20</breakValue>
+        <breakValue level="2">0.5, 1, 10, 20</breakValue>
+        <breakValue level="3">0.5, 1, 10, 20</breakValue>
+      </breakValues>
+    </disasterInfoType>
+    <disasterInfoType type="GCYMLS">
+      <name>城市区淹没历时</name>
+      <unit>天</unit>
+      <fixed>2</fixed>
+      <breakValues>
+        <breakValue level="1">0.5, 1, 5, 50</breakValue>
+        <breakValue level="2">0.5, 1, 5, 50</breakValue>
+        <breakValue level="3">0.5, 1, 5, 50</breakValue>
+      </breakValues>
+    </disasterInfoType>
+  </allDstInfoTypes>
+  <colors>
+    <color>#B8CF5E</color>
+    <color>#CFBF50</color>
+    <color>#E5A150</color>
+    <color>#F57A4D</color>
+    <color>#FD5A5A</color>
+    <color>#C2B8AE</color>
+    <color>#EEEEEE</color>
+  </colors>
+  <layers>
+    <layer>
+      <rank>1</rank>
+      <labels>Province Labels</labels>
+      <drawing>Province Drawing</drawing>
+      <table>Province Table</table>
+      <line>Province_Line Drawing</line>
+      <lineTable>Province_Line Table</lineTable>
+      <fields>
+        <code>CODE</code>
+        <name>NAME</name>
+        <superiorCode>SUPERIOR_CODE</superiorCode>
+        <adminRank>ADMIN_RANK</adminRank>
+        <id>FID</id>
+      </fields>
+    </layer>
+    <layer>
+      <rank>2</rank>
+      <labels>City Labels</labels>
+      <drawing>City Drawing</drawing>
+      <table>City Table</table>
+      <line>City_Line Drawing</line>
+      <lineTable>City_Line Table</lineTable>
+      <fields>
+        <code>CODE</code>
+        <name>NAME</name>
+        <superiorCode>SUPERIOR_CODE</superiorCode>
+        <adminRank>ADMIN_RANK</adminRank>
+        <id>FID</id>
+      </fields>
+    </layer>
+    <layer>
+      <rank>3</rank>
+      <labels>County Labels</labels>
+      <drawing>County Drawing</drawing>
+      <table>County Table</table>
+      <fields>
+        <code>CODE</code>
+        <name>NAME</name>
+        <superiorCode>SUPERIOR_CODE</superiorCode>
+        <adminRank>ADMIN_RANK</adminRank>
+        <id>FID</id>
+      </fields>
+    </layer>
+  </layers>
+</mapParams>

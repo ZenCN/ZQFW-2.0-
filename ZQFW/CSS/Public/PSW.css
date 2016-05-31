@@ -1,0 +1,115 @@
+﻿/*刘志添加
+用于进入基础数据的弹出框
+*/
+#PWD,#OpenRiver,#divSend,#RiverRate43
+{
+	position:absolute;
+	z-index:150;
+	width: 310px;
+	left:50%;
+	top:50%;
+	margin-left:-155px;
+	margin-top:-80px;
+	}
+#PWD table
+{
+	margin:10px;	
+	}
+#OpenRiver p a
+{
+	margin:0px 10px;
+}
+.top_title_left
+{
+	position:absolute;
+	left:0;
+	top:0;
+	background-position:top left;
+	height:36px;
+	width:20px;
+	}
+.top_title_middle
+{
+	position:absolute;
+	left:20px;
+	right:20px;
+	background-position:0 -36px;
+	background-repeat:repeat-x;
+	padding-top:10px;
+	height:26px;
+	}
+.top_title_middle span
+{
+	display:block;
+	height:26px;
+	line-height:26px;
+	}
+.top_title_right
+{
+	position:absolute;
+	right:0;
+	top:0;
+	background-position:top right;
+	height:36px;
+	width:20px;
+	}
+.bottom_left
+{
+	position:absolute;
+	left:0;
+	bottom:0;
+	background-position:left -72px;
+	height:16px;
+	width:20px;	
+	}
+.bottom_middle
+{
+	position:absolute;
+	left:20px;
+	right:20px;
+	bottom:0;
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:16px;	
+	}
+.bottom_right
+{
+	position:absolute;
+	right:0;
+	bottom:0;
+	background-position:right -72px;
+	height:16px;
+	width:20px;	
+	}
+.middle_left
+{
+	position:absolute;
+	left:0;
+	top:36px;
+	bottom:16px;
+	background-repeat:repeat-y;
+	background-position:left;
+	width:20px;	
+	}
+.middle_middle
+{
+	margin:36px 20px 16px 20px;
+	padding:5px;
+	background-color:#fcfcfc;
+	}
+.middle_right
+{
+	position:absolute;
+	right:0;
+	top:36px;
+	bottom:16px;
+	background-repeat:repeat-y;
+	background-position:right;
+	width:20px;	
+	}
+	
+#tblSend td
+{
+	width:60px;
+	height: 30px;
+}	

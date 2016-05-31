@@ -1,0 +1,213 @@
+﻿.MenuBar {
+	position: absolute;
+}
+#Report table td {
+	white-space: nowrap;
+}
+.LeftTree[name=View] .Left{
+    width: 260px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.LeftTree[name=View] .Left p{
+    color: #023A5A;
+    margin: 0px auto 5px 25px;
+}
+.LeftTree[name=View] .Right {
+	position: fixed;
+	top: 123px;
+	left: 266px;
+	right: 5px;
+	bottom: 5px;
+	z-index: 9;
+}
+.LeftTree[name=View] .TreeBoxes{
+    position: absolute;
+    top: 88px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+}
+.LeftTree[name=View] .TreeBoxes .UnitName {
+	width: 196px;
+	margin-left: 35px;
+	font-size: 12px;
+	margin-top: 5px;
+}
+.LeftTree[name=View] .TreeBoxes .UnitName select {
+	height: 19px;
+	font-size: 12px;
+}
+.LeftTree[name=View] .Left .ShowAggAcc {
+	bottom: 250px;
+}
+.LeftTree[name=View] .Left select {
+	margin: 0px 0px 0px 0px;
+	width: 129px;
+}
+#Report{
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    bottom: 137px;
+    right: 0px;
+    font-size: 12px;
+    background-color: #F9F9F6;
+    border-bottom: #C09A9A 1px solid;
+    z-index: 4;
+}
+#Report table .ReadOnly {
+	background-color: #F7F2F2;
+}
+#Report table .ReadOnly input {
+	background-color: #F7F2F2;
+}
+#Report-Footer{
+    position: absolute;
+    top: auto;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 136px;
+}
+.LeftTree[name=View] .Boxes{
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: auto;
+    font-size: 12px;
+    color: #333;
+    border-radius: 10px;
+}
+.LeftTree[name=View] .Boxes p{
+    margin: 0px 0px 5px 0px;
+    line-height: 22px;
+}
+.LeftTree[name=View] .Boxes .ReportTitle {
+	font-size: 14px;
+	color: #333;
+}
+.LeftTree[name=View] .Boxes .ReportTitle div{
+    float: left;
+    padding-right: 5px;
+}
+.LeftTree[name=View] .Boxes .Affix ul {
+	list-style: none;
+	margin: 5px auto 5px;
+	padding: 0;
+}
+.LeftTree[name=View] .Boxes .Affix ul li {
+	padding: 2px 5px;
+	cursor: pointer;
+}
+.LeftTree[name=View] .Boxes .Affix ul li img {
+	float: left;
+}
+.LeftTree[name=View] .Boxes .Affix ul li a {
+	text-decoration: none;
+	margin-left: 5px;
+	color: #333;
+}
+.LeftTree[name=View] .Boxes .Affix ul li a:hover {
+	text-decoration: underline;
+}
+
+.LeftTree[name=View] .AggAccBox {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 250px;
+	font-size: 14px;
+	z-index: 4;
+}
+.LeftTree[name=View] .AggAccBox .AggAcc-Menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30px;
+	overflow: hidden;
+	background-image: url(../../Img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	z-index: 31;
+}
+.LeftTree[name=View] .AggAccBox .AggAcc-Menu ul {
+	background-image: url(../../Img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+	background-position: top;
+	background-repeat: repeat-x;
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 26px;
+	overflow: hidden;
+}
+.LeftTree[name=View] .AggAccBox .AggAcc-Menu ul li {
+	background-image: url(../../Img/Public/TBlue_MDarkBlue-BWhite-Y.png);
+	background-position: right top;
+	background-repeat: repeat-x;
+	line-height: 26px;
+	color: #fff;
+	margin: 0 0 0 5px;
+	padding: 0 5px;
+	font-weight: bold;
+	float: left;
+	cursor: pointer;
+	font-size: 14px;
+	border-left: 1px solid transparent;
+}
+.LeftTree[name=View] .AggAccBox .AggAcc-Menu ul li:hover{
+	background-position:right -26px;
+	border-left:1px solid #466081;
+}
+.LeftTree[name=View] .AggAccBox .AggAcc-Menu ul li i {
+	width: 24px;
+	height: 24px;
+	margin: 2px 2px 0px 0;
+	background-image: url(../../img/Public/MenuIcons/2.png);
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+}
+.AggAccBox .AggAcc-Menu ul li.Add i {
+	background-position: -360px -24px;
+}
+.AggAccBox .AggAcc-Menu ul li.Del i {
+	background-position: -384px -24px;
+}
+.AggAccBox .AggAcc-Content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 26px;
+	overflow: auto;
+}
+.AggAccBox .AggAcc-Content ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.AggAccBox .AggAcc-Content ul li {
+	background-color: #FFF;
+	cursor: pointer;
+	border-bottom: 1px #e3e3e3 solid;
+}
+.AggAccBox .AggAcc-Content ul li.Selected {
+	background-color: #e3e3e3;
+	color: #333;
+}
+.AggAccBox .AggAcc-Content ul li a {
+	display: block;
+	padding-left: 10px;
+	height: 21px;
+	line-height: 20px;
+	font-size: 12px;
+	overflow: hidden;
+}
