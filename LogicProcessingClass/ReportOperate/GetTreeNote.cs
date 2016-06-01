@@ -740,11 +740,12 @@ namespace LogicProcessingClass.ReportOperate
             string stateName = "";//是否上报
             string operTypeName = "";//上报类型
 
-            if (objData.Length != 0)
+            if (objData.Length != 0 && typeLimit != 1)
             {
                 if (Convert.ToInt32(objData[6]) == 3)//如果已经报送，判断报送类型
                 {
-                    operTypeName = GetOperType(Convert.ToInt32(objData[7]));
+                    //operTypeName = GetOperType(Convert.ToInt32(objData[7]));
+                    operTypeName = "已报送";
                 }
                 else
                 {

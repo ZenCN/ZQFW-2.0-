@@ -48,7 +48,7 @@ table th.NoBorder-B {
 table td{
     margin: 0;
     padding: 0 5px;
-    text-align: right;
+    text-align: center;
     border: 1px solid #4A97CB;
     background-color: #FFF;
     font-size: 14px;

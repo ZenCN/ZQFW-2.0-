@@ -2838,7 +2838,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                         
                         report.ReportTitle.Remark = typeof(report.ReportTitle.Remark) == "string" ? report.ReportTitle.Remark.replaceAll("[\r|\n]", "{/r-/n}") : undefined;
                         report.ReportTitle.UnitCode = $scope.BaseData.Unit.Local.UnitCode.slice(0, 2) + "000000";
-                        report.ReportTitle.UnitName = "";
+                        //report.ReportTitle.UnitName = "";
                         var arr = undefined;
 
                         switch (report.ReportTitle.ORD_Code) {

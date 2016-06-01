@@ -97,7 +97,7 @@ body div.Rpt-Content table caption {
     width:100%;
     height:24px;
     border: none;
-	text-align: right;
+	text-align: center;
     vert-align: middle;
 }
 .Report table td input.txt_center {

@@ -138,6 +138,9 @@
     text-align: center;
     vert-align: middle;
 }
+.Rpt-Content table td input {
+    text-align: center !important;
+}
 .Rpt-Content .Group {
 	position: absolute;
 	left: 0;
