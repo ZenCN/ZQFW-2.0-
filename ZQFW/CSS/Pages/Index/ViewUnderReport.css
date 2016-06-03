@@ -79,7 +79,7 @@ body div.Rpt-Content table caption {
 	/*position: relative;*/
     margin: 0;
     padding: 0 5px;
-    text-align: right;
+    text-align: center;
     vert-align: middle;
 	border: 1px solid #888888;
     height:24px;

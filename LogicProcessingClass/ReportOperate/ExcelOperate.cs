@@ -190,78 +190,99 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string ExportAllTab(int limit, int pageNO, string unitCode, string ordName, string sTime, string eTime)
         {
-            string result = "";
-            Dictionary<string, string> riverDic = GetRiverData();
-            string unitInfo = GetUnderUnitNames(unitCode, "HL01");
-            string riverInfo = GetRiverDataByUnitCode(unitCode);
-            string deathReason = getDiedReasonStr();
-            IList<TB07_District> tb07List = getLowerUnits(unitCode, "HL01");
-            IList<LZHL011> xmmList1 = GetLZHL01(pageNO, limit, tb07List);//表1-表4、以及表9
-            IList<LZHL012> xmmList2 = GetLZHL02(pageNO, limit);//表5
-            IList<LZHL013> xmmList3 = GetLZHL03(pageNO, limit);//表6
-            IList<LZHL014> xmmList4 = GetLZHL04(pageNO, limit, tb07List);//表7-表8
-            ReportTitle rpt = getRptInfo(pageNO);
-            Dictionary<string, string> fieldDic = new Dictionary<string, string>();
-            fieldDic = GetFieldsData(limit);
-            string[] tableFieldsArr = new string[] { "DW,SZFWX,SZFWZ,SZRK,SYCS,DTFW,SWRK,SZRKR,ZYRK,ZJJJZSS", "DW,SHMJXJ,SHMJLS,CZMJXJ,CZMJLS,JSMJXJ,JSMJLS,YZJCLS,JJZWSS,SWDSC,SCYZMJ,SCYZSL,NLMYZJJJSS", "DW,TCGKQY,TLZD,GLZD,JCGKGT,GDZD,TXZD,GJYSZJJJSS", "DW,SHSKD,SHSKX,SKKBD,SKKBX1,SKKBX2,SHDFCS,SHDFCD,DFJKCS,DFJKCD,SHHAC,SHSZ,CHTB,SHGGSS,SHSWCZ,SHJDJ,SHJDBZ,SHSDZ,SLSSZJJJSS", "DW,CSMC,YMFWMJ,YMFWBL,SZRK,SWRK,GCJSSJ,GCYMLS,GCLJJYL,GCHSWKRK,GCJJZYRK,ZYZJZDSS,SMXGS,SMXGD,SMXGQ,SMXJT,JZWSYFW,JZWSYDX,CQZJJJSS", "DW,WZBZD,WZBZB,WZDSSS,WZSSL,WZMC,WZGC,WZJSY,WZY,WZD,WZQT,WZZXH,QXHJ,QXBDGB,QXDFRY,QXFXJD,SBQXZ,SBYS,SBJX", "DW,ZJXJ,ZJZY,ZJSJ,ZJSJYS,ZJQZ,XYJYGD,XYJMLSJS,XYJSSZRK,XYJJQZ,XYJMSWC,XYJMSWR,XYZYSH,XYZYTF,XYZYQT,XYBMSY,XYJZJJXY", "DW,SZFWX,SZFWZ,SHMJXJ,SZRK,SWRK,SZRKR,ZYRK,DTFW,ZJJJZSS,SLSSZJJJSS" };//各表的字段，没有包含表5的
-
-            #region 读取我们需要用到的xls模板
-            //创建工作簿对象
-            HSSFWorkbook hssfworkbook;
-            string mobanName = "";
-            if (unitCode.StartsWith("33"))//浙江
+            try
             {
-                mobanName = "ExcelModel/zjnewmoban.xls";
-                tableFieldsArr[3] =
-                    "DW,SHSKD,SHSKX,SKKBD,SKKBX1,SKKBX2,SHDFCS,SHDFCD,DFJKCS,DFJKCD,SHHTCS,SHHTCD,HTJKCS,HTJKCD,SHHAC,SHSZ,CHTB,SHGGSS,SHSWCZ,SHJDJ,SHJDBZ,SHSDZ,SLSSZJJJSS";//浙江的表4增加了四个字段
+                string result = "";
+                Dictionary<string, string> riverDic = GetRiverData();
+                string unitInfo = GetUnderUnitNames(unitCode, "HL01");
+                string riverInfo = GetRiverDataByUnitCode(unitCode);
+                string deathReason = getDiedReasonStr();
+                IList<TB07_District> tb07List = getLowerUnits(unitCode, "HL01");
+                IList<LZHL011> xmmList1 = GetLZHL01(pageNO, limit, tb07List); //表1-表4、以及表9
+                IList<LZHL012> xmmList2 = GetLZHL02(pageNO, limit); //表5
+                IList<LZHL013> xmmList3 = GetLZHL03(pageNO, limit); //表6
+                IList<LZHL014> xmmList4 = GetLZHL04(pageNO, limit, tb07List); //表7-表8
+                ReportTitle rpt = getRptInfo(pageNO);
+                Dictionary<string, string> fieldDic = new Dictionary<string, string>();
+                fieldDic = GetFieldsData(limit);
+                string[] tableFieldsArr = new string[]
+                {
+                    "DW,SZFWX,SZFWZ,SZRK,SYCS,DTFW,SWRK,SZRKR,ZYRK,ZJJJZSS",
+                    "DW,SHMJXJ,SHMJLS,CZMJXJ,CZMJLS,JSMJXJ,JSMJLS,YZJCLS,JJZWSS,SWDSC,SCYZMJ,SCYZSL,NLMYZJJJSS",
+                    "DW,TCGKQY,TLZD,GLZD,JCGKGT,GDZD,TXZD,GJYSZJJJSS",
+                    "DW,SHSKD,SHSKX,SKKBD,SKKBX1,SKKBX2,SHDFCS,SHDFCD,DFJKCS,DFJKCD,SHHAC,SHSZ,CHTB,SHGGSS,SHSWCZ,SHJDJ,SHJDBZ,SHSDZ,SLSSZJJJSS",
+                    "DW,CSMC,YMFWMJ,YMFWBL,SZRK,SWRK,GCJSSJ,GCYMLS,GCLJJYL,GCHSWKRK,GCJJZYRK,ZYZJZDSS,SMXGS,SMXGD,SMXGQ,SMXJT,JZWSYFW,JZWSYDX,CQZJJJSS",
+                    "DW,WZBZD,WZBZB,WZDSSS,WZSSL,WZMC,WZGC,WZJSY,WZY,WZD,WZQT,WZZXH,QXHJ,QXBDGB,QXDFRY,QXFXJD,SBQXZ,SBYS,SBJX",
+                    "DW,ZJXJ,ZJZY,ZJSJ,ZJSJYS,ZJQZ,XYJYGD,XYJMLSJS,XYJSSZRK,XYJJQZ,XYJMSWC,XYJMSWR,XYZYSH,XYZYTF,XYZYQT,XYBMSY,XYJZJJXY",
+                    "DW,SZFWX,SZFWZ,SHMJXJ,SZRK,SWRK,SZRKR,ZYRK,DTFW,ZJJJZSS,SLSSZJJJSS"
+                }; //各表的字段，没有包含表5的
 
+                #region 读取我们需要用到的xls模板
+
+                //创建工作簿对象
+                HSSFWorkbook hssfworkbook;
+                string mobanName = "";
+                if (unitCode.StartsWith("33")) //浙江
+                {
+                    mobanName = "ExcelModel/zjnewmoban.xls";
+                    tableFieldsArr[3] =
+                        "DW,SHSKD,SHSKX,SKKBD,SKKBX1,SKKBX2,SHDFCS,SHDFCD,DFJKCS,DFJKCD,SHHTCS,SHHTCD,HTJKCS,HTJKCD,SHHAC,SHSZ,CHTB,SHGGSS,SHSWCZ,SHJDJ,SHJDBZ,SHSDZ,SLSSZJJJSS";
+                    //浙江的表4增加了四个字段
+
+                }
+                else
+                {
+                    mobanName = "ExcelModel/newmoban.xls";
+                }
+                using (
+                    FileStream file = new FileStream(
+                        System.AppDomain.CurrentDomain.BaseDirectory.ToString() + mobanName, FileMode.Open,
+                        FileAccess.Read))
+                {
+                    //将文件流中模板加载到工作簿对象中
+                    hssfworkbook = new HSSFWorkbook(file);
+                }
+
+                #endregion
+
+                //建立一个名为Sheet1的工作表
+                ISheet sheet1 = hssfworkbook.GetSheet("表1");
+                ISheet sheet2 = hssfworkbook.GetSheet("表2");
+                ISheet sheet3 = hssfworkbook.GetSheet("表3");
+                ISheet sheet4 = hssfworkbook.GetSheet("表4");
+                ISheet sheet5 = hssfworkbook.GetSheet("表5");
+                ISheet sheet6 = hssfworkbook.GetSheet("表6");
+                ISheet sheet7 = hssfworkbook.GetSheet("表7");
+                ISheet sheet8 = hssfworkbook.GetSheet("表8");
+                ISheet sheet9 = hssfworkbook.GetSheet("表9");
+
+                sheet1 = HLTable1(sheet1, xmmList1, rpt, tableFieldsArr[0], fieldDic);
+                sheet2 = HLTable2(sheet2, xmmList1, rpt, tableFieldsArr[1], fieldDic);
+                sheet3 = HLTable3(sheet3, xmmList1, rpt, tableFieldsArr[2], fieldDic);
+                if (unitCode.StartsWith("33")) //浙江
+                {
+                    sheet4 = ZJHLTable4(sheet4, xmmList1, rpt, tableFieldsArr[3], fieldDic);
+                }
+                else
+                {
+                    sheet4 = HLTable4(sheet4, xmmList1, rpt, tableFieldsArr[3], fieldDic);
+                }
+
+                sheet5 = HLTable5(sheet5, xmmList2, rpt, riverDic, unitInfo, riverInfo, deathReason);
+                sheet6 = HLTable6(sheet6, xmmList3, rpt, unitInfo, riverInfo, riverDic, tableFieldsArr[4], fieldDic);
+                //由于表5没有，所以是从4开始
+                sheet7 = HLTable7(sheet7, xmmList4, rpt, tableFieldsArr[5], fieldDic);
+                sheet8 = HLTable8(sheet8, xmmList4, rpt, tableFieldsArr[6], fieldDic);
+                sheet9 = HLTable9(sheet9, xmmList1, rpt, tableFieldsArr[7], fieldDic);
+
+                //强制Excel重新计算表中所有的公式
+                result = ResponseExcel(hssfworkbook, ordName, sTime, eTime);
+                return result;
             }
-            else
+            catch (Exception ex)
             {
-                mobanName = "ExcelModel/newmoban.xls";
+                throw ex;
             }
-            using (FileStream file = new FileStream(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + mobanName, FileMode.Open, FileAccess.Read))
-            {
-                //将文件流中模板加载到工作簿对象中
-                hssfworkbook = new HSSFWorkbook(file);
-            }
-            #endregion
-
-            //建立一个名为Sheet1的工作表
-            ISheet sheet1 = hssfworkbook.GetSheet("表1");
-            ISheet sheet2 = hssfworkbook.GetSheet("表2");
-            ISheet sheet3 = hssfworkbook.GetSheet("表3");
-            ISheet sheet4 = hssfworkbook.GetSheet("表4");
-            ISheet sheet5 = hssfworkbook.GetSheet("表5");
-            ISheet sheet6 = hssfworkbook.GetSheet("表6");
-            ISheet sheet7 = hssfworkbook.GetSheet("表7");
-            ISheet sheet8 = hssfworkbook.GetSheet("表8");
-            ISheet sheet9 = hssfworkbook.GetSheet("表9");
-
-            sheet1 = HLTable1(sheet1, xmmList1, rpt, tableFieldsArr[0], fieldDic);
-            sheet2 = HLTable2(sheet2, xmmList1, rpt, tableFieldsArr[1], fieldDic);
-            sheet3 = HLTable3(sheet3, xmmList1, rpt, tableFieldsArr[2], fieldDic);
-            if (unitCode.StartsWith("33"))//浙江
-            {
-                sheet4 = ZJHLTable4(sheet4, xmmList1, rpt, tableFieldsArr[3], fieldDic);
-            }
-            else
-            {
-                sheet4 = HLTable4(sheet4, xmmList1, rpt, tableFieldsArr[3], fieldDic);
-            }
-
-            sheet5 = HLTable5(sheet5, xmmList2, rpt, riverDic, unitInfo, riverInfo, deathReason);
-            sheet6 = HLTable6(sheet6, xmmList3, rpt, unitInfo, riverInfo, riverDic, tableFieldsArr[4], fieldDic);//由于表5没有，所以是从4开始
-            sheet7 = HLTable7(sheet7, xmmList4, rpt, tableFieldsArr[5], fieldDic);
-            sheet8 = HLTable8(sheet8, xmmList4, rpt, tableFieldsArr[6], fieldDic);
-            sheet9 = HLTable9(sheet9, xmmList1, rpt, tableFieldsArr[7], fieldDic);
-
-            //强制Excel重新计算表中所有的公式
-            //sheet1.ForceFormulaRecalculation = true;//没得公式可以计算
-
-
-            result = ResponseExcel(hssfworkbook, ordName, sTime, eTime);
-            return result;
         }
         #endregion 导出数据到Excel
 
