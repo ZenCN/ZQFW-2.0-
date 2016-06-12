@@ -162,7 +162,8 @@
                 { "Value": "SH01", "Name": "资金情况统计表" },
                 { "Value": "SH02", "Name": "山洪沟治理进度统计表" },
                 { "Value": "SH03", "Name": "非工程措施补充完善表" },
-                { "Value": "SH04", "Name": "调查评价表" }
+                { "Value": "SH04", "Name": "调查评价表" },
+                { "Value": 'SH05', "Name": '效益发挥统计表' }
             ];
 
             $scope.View.Report.Selected.StatisticalCycType = $scope.BaseData.Select.CycType[0].Code;

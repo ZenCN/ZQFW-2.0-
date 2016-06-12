@@ -352,31 +352,42 @@ namespace LogicProcessingClass.ReportOperate
                                             .ToList<SH038>());
                         break;
                     case "SH04":
-                        response += ",SH041:" +
+                        if (DateTime.Parse(rpt.EndDateTime.ToString()) > DateTime.Parse("2016-01-01"))
+                        {
+                            response += ",SH046:" +
+                                        serializer.Serialize(
+                                            busEntity.SH046.Where(t => t.PageNO == pageNO)
+                                                .OrderBy(t => t.DataOrder)
+                                                .ToList<SH046>());
+                        }
+                        else
+                        {
+                            response += ",SH041:" +
                                     serializer.Serialize(
                                         busEntity.SH041.Where(t => t.PageNO == pageNO)
                                             .OrderBy(t => t.DataOrder)
                                             .ToList<SH041>());
-                        response += ",SH042:" +
-                                    serializer.Serialize(
-                                        busEntity.SH042.Where(t => t.PageNO == pageNO)
-                                            .OrderBy(t => t.DataOrder)
-                                            .ToList<SH042>());
-                        response += ",SH043:" +
-                                    serializer.Serialize(
-                                        busEntity.SH043.Where(t => t.PageNO == pageNO)
-                                            .OrderBy(t => t.DataOrder)
-                                            .ToList<SH043>());
-                        response += ",SH044:" +
-                                    serializer.Serialize(
-                                        busEntity.SH044.Where(t => t.PageNO == pageNO)
-                                            .OrderBy(t => t.DataOrder)
-                                            .ToList<SH044>());
-                        response += ",SH045:" +
-                                    serializer.Serialize(
-                                        busEntity.SH045.Where(t => t.PageNO == pageNO)
-                                            .OrderBy(t => t.DataOrder)
-                                            .ToList<SH045>());
+                            response += ",SH042:" +
+                                        serializer.Serialize(
+                                            busEntity.SH042.Where(t => t.PageNO == pageNO)
+                                                .OrderBy(t => t.DataOrder)
+                                                .ToList<SH042>());
+                            response += ",SH043:" +
+                                        serializer.Serialize(
+                                            busEntity.SH043.Where(t => t.PageNO == pageNO)
+                                                .OrderBy(t => t.DataOrder)
+                                                .ToList<SH043>());
+                            response += ",SH044:" +
+                                        serializer.Serialize(
+                                            busEntity.SH044.Where(t => t.PageNO == pageNO)
+                                                .OrderBy(t => t.DataOrder)
+                                                .ToList<SH044>());
+                            response += ",SH045:" +
+                                        serializer.Serialize(
+                                            busEntity.SH045.Where(t => t.PageNO == pageNO)
+                                                .OrderBy(t => t.DataOrder)
+                                                .ToList<SH045>());
+                        }
                         break;
                     case "SH05":
                         response += ",SH051:" +

@@ -1,0 +1,25 @@
+﻿<tbody>
+    <tr ng-repeat="sh046 in Open.Report.Current.SH046">
+        <th>
+            {{sh046.DW}}
+        </th>
+        <td>
+            {{sh046.CGJYXS}}
+        </td>
+        <td>
+            {{sh046.XZXS}}
+        </td>
+        <td>
+            {{sh046.BZ}}
+        </td>
+        <td>
+            {{sh046.ZBJD}}
+        </td>
+        <td>
+            {{sh046.SFKG == 1 ? '是' : (sh046.SFKG == 0 ? '否' : '')}}
+        </td>
+        <td>
+            {{sh046.JSJD}}
+        </td>
+    </tr>
+</tbody>

@@ -1,0 +1,32 @@
+﻿<tbody>
+    <tr ng-repeat="sh046 in Open.Report.Current.SH046" ng-first-readonly>
+        <th>
+            {{sh046.DW}}
+        </th>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh046.UnitCode + '-CGJYXS')}">
+            <input type="text" ng-model="sh046.CGJYXS" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh046.UnitCode + '-XZXS')}">
+            <input type="text" ng-model="sh046.XZXS" ng-blur="FCS(0,0);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh046.UnitCode + '-BZ')}">
+            <input type="text" ng-model="sh046.BZ" ng-blur="FCL(250);FCKD();"/>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh046.UnitCode + '-ZBJD') || sh046.ZBJD > 100}">
+            <input type="text" ng-model="sh046.ZBJD" ng-blur="FCA(2);FCKD();"/>
+        </td>
+        <td>
+            <div style="width: 90px; margin: auto;" ng-if="$index > 0">
+                <label>
+                    <input type="radio" name="{{'SFKG_' + $index}}" ng-model="sh046.SFKG" value="1"/> 是
+                </label>
+                <label>
+                    <input type="radio" name="{{'SFKG_' + $index}}" ng-model="sh046.SFKG" value="0"/> 否
+                </label>
+            </div>
+        </td>
+        <td ng-class="{WrongData: Open.Report.Current.Attr.WrongData.In_Array(sh046.UnitCode + '-JSJD') || sh046.JSJD > 100}">
+            <input type="text" ng-model="sh046.JSJD" ng-blur="FCA(2);FCKD();"/>
+        </td>
+    </tr>
+</tbody>

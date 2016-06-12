@@ -387,6 +387,7 @@
     <Content Include="Document\File\说明.txt" />
     <Content Include="ExcelFile\说明.txt" />
     <Content Include="ExcelModel\说明.txt" />
+    <Content Include="Git命令.txt" />
     <Content Include="Mapserver\config.txt" />
     <Content Include="Mapserver\css\loginDiv.css" />
     <Content Include="Mapserver\css\mapControl\button.css" />
@@ -737,9 +738,9 @@
     <Content Include="Scripts\Templates\Public\SH\New.htm" />
     <Content Include="Scripts\Templates\Public\SH\Open.htm" />
     <Content Include="Scripts\Templates\Public\SH\Receive.htm" />
-    <Content Include="Scripts\Templates\Public\SH\Table\SH046\CurYear\ReadMe.txt" />
-    <Content Include="Scripts\Templates\Public\SH\Table\SH046\CurYear\TBody_Edit.htm" />
-    <Content Include="Scripts\Templates\Public\SH\Table\SH046\CurYear\THead.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH046\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH046\TBody_View.htm" />
+    <Content Include="Scripts\Templates\Public\SH\Table\SH046\THead.htm" />
     <Content Include="Scripts\Templates\Public\SH\Table\SH011\OverYear\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\SH\Table\SH011\OverYear\TBody_View.htm" />
     <Content Include="Scripts\Templates\Public\SH\Table\SH011\OverYear\THead.htm" />

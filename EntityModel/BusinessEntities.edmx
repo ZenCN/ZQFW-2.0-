@@ -50,7 +50,6 @@
           <EntitySet Name="ReportTitle" EntityType="FXCLDModel.Store.ReportTitle" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RoleTab" EntityType="FXCLDModel.Store.RoleTab" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH011" EntityType="FXCLDModel.Store.SH011" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sh016" EntityType="FXCLDModel.Store.sh016" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH021" EntityType="FXCLDModel.Store.SH021" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH031" EntityType="FXCLDModel.Store.SH031" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH032" EntityType="FXCLDModel.Store.SH032" store:Type="Tables" Schema="dbo" />
@@ -65,6 +64,7 @@
           <EntitySet Name="SH043" EntityType="FXCLDModel.Store.SH043" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH044" EntityType="FXCLDModel.Store.SH044" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH045" EntityType="FXCLDModel.Store.SH045" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SH046" EntityType="FXCLDModel.Store.SH046" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SH051" EntityType="FXCLDModel.Store.SH051" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SingleDisasterAssessment" EntityType="FXCLDModel.Store.SingleDisasterAssessment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TENDENCYCHARTINFO" EntityType="FXCLDModel.Store.TENDENCYCHARTINFO" store:Type="Tables" Schema="dbo" />
@@ -552,21 +552,6 @@
           <Property Name="ZFXJBL" Type="numeric" Precision="20" Scale="5" />
           <Property Name="DFZJX" Type="numeric" Precision="20" Scale="5" />
         </EntityType>
-        <EntityType Name="sh016">
-          <Key>
-            <PropertyRef Name="TBNO" />
-          </Key>
-          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UnitCode" Type="varchar" MaxLength="30" />
-          <Property Name="PageNO" Type="int" />
-          <Property Name="DataOrder" Type="int" />
-          <Property Name="CGJYXS" Type="int" />
-          <Property Name="XZXS" Type="int" />
-          <Property Name="BZ" Type="varchar" MaxLength="500" />
-          <Property Name="ZBJD" Type="numeric" Precision="20" Scale="1" />
-          <Property Name="SFKG" Type="int" />
-          <Property Name="JSJD" Type="numeric" Precision="20" Scale="1" />
-        </EntityType>
         <EntityType Name="SH021">
           <Key>
             <PropertyRef Name="TBNO" />
@@ -816,6 +801,22 @@
           <Property Name="PXRSJH" Type="numeric" Precision="20" Scale="5" />
           <Property Name="PXRSWC" Type="numeric" Precision="20" Scale="5" />
         </EntityType>
+        <EntityType Name="SH046">
+          <Key>
+            <PropertyRef Name="TBNO" />
+          </Key>
+          <Property Name="TBNO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="30" />
+          <Property Name="PageNO" Type="int" />
+          <Property Name="DataOrder" Type="int" />
+          <Property Name="DW" Type="varchar" MaxLength="40" />
+          <Property Name="CGJYXS" Type="int" />
+          <Property Name="XZXS" Type="int" />
+          <Property Name="BZ" Type="varchar" MaxLength="500" />
+          <Property Name="ZBJD" Type="numeric" Precision="20" Scale="1" />
+          <Property Name="SFKG" Type="int" />
+          <Property Name="JSJD" Type="numeric" Precision="20" Scale="1" />
+        </EntityType>
         <EntityType Name="SH051">
           <Key>
             <PropertyRef Name="TBNO" />
@@ -1036,7 +1037,7 @@
           <EntitySet Name="Benefit" EntityType="FXCLDModel.Benefit" />
           <EntitySet Name="SH011" EntityType="FXCLDModel.SH011" />
           <EntitySet Name="SH051" EntityType="FXCLDModel.SH051" />
-          <EntitySet Name="sh016" EntityType="FXCLDModel.sh016" />
+          <EntitySet Name="SH046" EntityType="FXCLDModel.SH046" />
           </EntityContainer>
         <EntityType Name="Affix">
           <Key>
@@ -1972,7 +1973,7 @@
           <Property Type="Decimal" Name="SSSH" Precision="20" Scale="5" />
           <Property Type="String" Name="BZ" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="sh016">
+        <EntityType Name="SH046">
           <Key>
             <PropertyRef Name="TBNO" />
           </Key>
@@ -1980,6 +1981,7 @@
           <Property Type="String" Name="UnitCode" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="PageNO" />
           <Property Type="Int32" Name="DataOrder" />
+          <Property Type="String" Name="DW" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="CGJYXS" />
           <Property Type="Int32" Name="XZXS" />
           <Property Type="String" Name="BZ" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -2730,15 +2732,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sh016">
-            <EntityTypeMapping TypeName="FXCLDModel.sh016">
-              <MappingFragment StoreEntitySet="sh016">
+          <EntitySetMapping Name="SH046">
+            <EntityTypeMapping TypeName="FXCLDModel.SH046">
+              <MappingFragment StoreEntitySet="SH046">
                 <ScalarProperty Name="JSJD" ColumnName="JSJD" />
                 <ScalarProperty Name="SFKG" ColumnName="SFKG" />
                 <ScalarProperty Name="ZBJD" ColumnName="ZBJD" />
                 <ScalarProperty Name="BZ" ColumnName="BZ" />
                 <ScalarProperty Name="XZXS" ColumnName="XZXS" />
                 <ScalarProperty Name="CGJYXS" ColumnName="CGJYXS" />
+                <ScalarProperty Name="DW" ColumnName="DW" />
                 <ScalarProperty Name="DataOrder" ColumnName="DataOrder" />
                 <ScalarProperty Name="PageNO" ColumnName="PageNO" />
                 <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
@@ -2766,7 +2769,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="BusinessEntities" ZoomLevel="77">
+      <Diagram Name="BusinessEntities" ZoomLevel="73">
         <EntityTypeShape EntityType="FXCLDModel.Affix" Width="1.5" PointX="3" PointY="2.5" Height="2.1280729166666674" IsExpanded="true" />
         <EntityTypeShape EntityType="FXCLDModel.AggAccRecord" Width="1.5" PointX="5.75" PointY="3" Height="2.2966927083333335" IsExpanded="true" />
         <EntityTypeShape EntityType="FXCLDModel.AnnualDisasterAssessment" Width="1.5" PointX="10.75" PointY="7.625" Height="2.1280729166666656" IsExpanded="true" />
@@ -2862,7 +2865,7 @@
         <EntityTypeShape EntityType="FXCLDModel.Benefit" Width="1.5" PointX="19.375" PointY="17.75" Height="3.7681689453125102" />
         <EntityTypeShape EntityType="FXCLDModel.SH011" Width="1.5" PointX="8.375" PointY="20.75" Height="6.1704923502604174" />
         <EntityTypeShape EntityType="FXCLDModel.SH051" Width="1.5" PointX="10.375" PointY="20.75" Height="3.7681689453125102" />
-        <EntityTypeShape EntityType="FXCLDModel.sh016" Width="1.5" PointX="12.375" PointY="20.75" Height="2.8441984049479174" />
+        <EntityTypeShape EntityType="FXCLDModel.SH046" Width="1.5" PointX="12.375" PointY="20.75" Height="3.0289925130208246" />
         </Diagram>
     </Diagrams>
   </Designer>

@@ -61,6 +61,16 @@ function setTDValue(bodyPage) {
         var s = $(tds[i]).children("input").val();
         $(tds[i]).html(s);
     });
+
+    if (window.opener.$scope.Open.Report.Current.ReportTitle.ORD_Code == 'SH04') {
+        var tds = bodyPage.find("td input[type='radio']").parent();
+        $.each(tds, function (i, n) {
+            var s = $(tds[i]).children("input").val();
+            if (!$(tds[i]).children("input")[0].checked) {
+                $(tds[i]).children("input").parent().remove();
+            }
+        });
+    }
 }
 
 //将select中的数据复制到td

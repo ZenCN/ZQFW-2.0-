@@ -542,11 +542,11 @@ namespace ZQFW.Controllers
             }
         }
 
-        public string GetTemplate(string rptType, string tableType, int isCurYear)
+        public string GetTemplate(string rptType, string tableType, bool isCurYear)
         {
             string template = "";
             tableType = tableType.ToLower() == "edit" ? "Edit" : "View";
-            string name = (isCurYear > 0 ? "CurYear" : "OverYear") + "-" + rptType + "-" + tableType;
+            string name = (isCurYear ? "CurYear" : "OverYear") + "-" + rptType + "-" + tableType;
             HttpApplicationState app = System.Web.HttpContext.Current.Application;
             if (app[name] != null)
             {
@@ -558,7 +558,8 @@ namespace ZQFW.Controllers
                 dic.Add("SH01", new string[] {"SH011"});
                 dic.Add("SH02", new string[] {"SH021"});
                 dic.Add("SH03", new string[] {"SH031", "SH032", "SH033", "SH034", "SH035", "SH036", "SH037", "SH038"});
-                dic.Add("SH04", new string[] {"SH046"});  //"SH041", "SH042", "SH043", "SH044", "SH045"
+                dic.Add("SH04_Cur", new string[] {"SH046"});
+                dic.Add("SH04_Over", new string[] { "SH041", "SH042", "SH043", "SH044", "SH045" });
                 dic.Add("SH05", new string[] {"SH051"});
                 string bathPath = AppDomain.CurrentDomain.BaseDirectory + "Scripts/Templates/Public/SH/Table/";
                 string fileUrl = "";
@@ -566,12 +567,26 @@ namespace ZQFW.Controllers
 
                 template = "<div class='Rpt-Content' ng-switch on='Open.Report.Current.Attr.TableIndex'>\r";
                 string tabs = "<ul class='Rpt-Tags'>\r";
-                for (int i = 0; i < dic[rptType.ToUpper()].Length; i++)
+
+                rptType = rptType.ToUpper();
+                if (rptType.ToUpper() == "SH04")
                 {
-                    fileUrl = bathPath + dic[rptType.ToUpper()][i];
-                    if (dic[rptType.ToUpper()][i] == "SH011" || dic[rptType.ToUpper()][i] == "SH041" || dic[rptType.ToUpper()][i] == "SH045")
+                    if (isCurYear)
                     {
-                        if (isCurYear > 0)
+                        rptType = "SH04_Cur";
+                    }
+                    else
+                    {
+                        rptType = "SH04_Over";
+                    }
+                }
+
+                for (int i = 0; i < dic[rptType].Length; i++)
+                {
+                    fileUrl = bathPath + dic[rptType][i];
+                    if (dic[rptType][i] == "SH011" || dic[rptType][i] == "SH041" || dic[rptType][i] == "SH045")
+                    {
+                        if (isCurYear)
                         {
                             fileUrl += "/CurYear";
                         }
@@ -587,10 +602,10 @@ namespace ZQFW.Controllers
                     sr = new StreamReader(fileUrl + "/TBody_" + tableType + ".htm");
                     template += sr.ReadToEnd() + "\r";
                     template += "</table>\r";
-
-                    tabs += "<li ng-if='Open.Report.Current." + rptType.ToUpper() + (i + 1) + "' ng-class='{Selected:Open.Report.Current.Attr.TableIndex == " + i +
+                    //rptType + (i + 1)
+                    tabs += "<li ng-if='Open.Report.Current." + dic[rptType][i] + "' ng-class='{Selected:Open.Report.Current.Attr.TableIndex == " + i +
                             "}' ng-click='Open.Report.Current.Attr.TableIndex = "
-                            + i + "'><a>{{BaseData.Page." + rptType.ToUpper() + "[" + (i + 1) + "]}}</a></li>\r";
+                            + i + "'><a>{{BaseData.Page." + rptType + "[" + (i + 1) + "]}}</a></li>\r";
                 }
                 tabs += "</ul>";
                 template += "</div>\r" + tabs;
@@ -899,6 +914,16 @@ namespace ZQFW.Controllers
                             busEntity.SH045.AddObject(sh045);
                         }
                         break;
+                    case "SH046":
+                        object[] sh046s = serializer.ConvertToType<object[]>(de.Value);
+                        for (int i = 0; i < sh046s.Length; i++) //循环这个对象数组
+                        {
+                            SH046 sh046 = serializer.ConvertToType<SH046>(sh046s[i]);
+                            sh046.PageNO = rpt.PageNO;
+                            //sh045.TBNO = 0;
+                            busEntity.SH046.AddObject(sh046);
+                        }
+                        break;
                     case "SH051":
                         object[] sh051s = serializer.ConvertToType<object[]>(de.Value);
                         for (int i = 0; i < sh051s.Length; i++) //循环这个对象数组
@@ -1027,6 +1052,7 @@ namespace ZQFW.Controllers
             var sh043s = busEntity.SH043.Where(t => t.PageNO == pageno);
             var sh044s = busEntity.SH044.Where(t => t.PageNO == pageno);
             var sh045s = busEntity.SH045.Where(t => t.PageNO == pageno);
+            var sh046s = busEntity.SH046.Where(t => t.PageNO == pageno);
             var sh051s = busEntity.SH051.Where(t => t.PageNO == pageno);
             var aggs = busEntity.AggAccRecord.Where(t => t.PageNo == pageno);
 
@@ -1091,6 +1117,10 @@ namespace ZQFW.Controllers
             foreach (var sh045 in sh045s)
             {
                 busEntity.SH045.DeleteObject(sh045);
+            }
+            foreach (var sh046 in sh046s)
+            {
+                busEntity.SH046.DeleteObject(sh046);
             }
             foreach (var sh051 in sh051s)
             {
@@ -1989,6 +2019,23 @@ namespace ZQFW.Controllers
                         else
                         {
                             response += "[]";
+                        }
+                        break;
+                    case "SH04":
+                        sql = "select * from SH046 where pageno in(" + pagenos + ") and DW = '合计'";
+                        var sh046s = busEntity.ExecuteStoreQuery<SH046>(sql).ToList();
+                        response = "SH046: ";
+                        if (sh046s.Any())
+                        {
+                            response += JsonConvert.SerializeObject(sh046s,
+                                new Newtonsoft.Json.JsonSerializerSettings
+                                {
+                                    NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
+                                }) + ",";
+                        }
+                        else
+                        {
+                            response += "[],";
                         }
                         break;
                     case "SH05":

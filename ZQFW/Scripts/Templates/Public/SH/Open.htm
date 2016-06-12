@@ -73,7 +73,7 @@
                 <!--li class="Reset" ng-click="Open.Report.Fn.Core.Delete.Data()">
                     <i></i>清除
                 </li-->
-                <li class="Export" ng-hide="Open.Report.Current.ReportTitle.PageNO == 0">
+                <li class="Export" ng-hide="Open.Report.Current.ReportTitle.PageNO == 0 || ['SH04','SH05'].In_Array(Open.Report.Current.ReportTitle.ORD_Code)">
                     <a href="{{'/sh/exporttoexcel?pageno=' + Open.Report.Current.ReportTitle.PageNO + '&ord_code=' + Open.Report.Current.ReportTitle.ORD_Code}}">
                         <i></i>导出
                     </a>

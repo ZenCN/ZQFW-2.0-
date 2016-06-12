@@ -407,7 +407,7 @@
                         CycType: [$scope.New.Report.CycType]
                     };
                     var obj = undefined;
-                    angular.forEach($scope.BaseData.Unit.SH, function (obj, key) {
+                    /*angular.forEach($scope.BaseData.Unit.SH, function (obj, key) {
                         if ($.isEmptyObject(obj)) {
                             $scope.New.Report.TreeData.children = $scope.New.Report.TreeData.children.RemoveBy("id", key);
                         } else {
@@ -419,7 +419,8 @@
                                 });
                             }
                         }
-                    });
+                    });*/
+                    $scope.New.Report.TreeData.children = $scope.New.Report.TreeData.children.RemoveBy('id', 'SH02');
 
                     $scope.BaseData.Select.RptClass = [
                         { "Value": "SH01", "Name": "资金情况统计表" },
@@ -564,10 +565,20 @@
                         $scope.Fn.Ajax("/sh/getrecentrpt", params, 'get', function (data) {
                             if (!$.isEmptyObject(data)) {
                                 $scope.Open.Report.Current.ReportTitle = $.extend(data.ReportTitle, obj);
-                                if ($scope.New.Report.Type.Code == 'SH05') {
-                                    $scope.Open.Report.Current.SH051 = data.SH051.RemoveAttr(["PageNO", "EntityKey", "TBNO"]);
-                                    $scope.Open.Report.Current.Attr.Previous.SH051 = angular.copy($scope.Open.Report.Current.SH051);
-                                } else {
+                                if (['SH04', 'SH05'].In_Array($scope.New.Report.Type.Code)) {
+                                    var code = $scope.New.Report.Type.Code == 'SH04' ? 'SH046' : 'SH051';
+                                    if ($.isArray(data[code])) {
+                                        if (code == 'SH046' && data[code].length == 0) {
+                                            $scope.Open.Report.Current[code] = App.Models.SH[code]($scope.BaseData.Unit.Unders);
+                                            $scope.Open.Report.Current[code].InsertAt(0, App.Models.SH[code]([
+                                                { UnitName: '合计', UnitCode: $scope.BaseData.Unit.Local.UnitCode }
+                                            ])[0]);
+                                        } else {
+                                            $scope.Open.Report.Current[code] = data[code].RemoveAttr(["PageNO", "EntityKey", "TBNO"]);
+                                            $scope.Open.Report.Current.Attr.Previous[code] = angular.copy($scope.Open.Report.Current[code]);
+                                        }
+                                    }
+                                }else {
                                     $.each($scope.BaseData.Unit.SH[$scope.New.Report.Type.Code], function (table) {
                                         if (this.length > 0) {
                                             if (data[table].length > 0) {
@@ -580,9 +591,10 @@
                                     });
                                 }
                             } else {
-                                if ($scope.New.Report.Type.Code == 'SH05') {
-                                    $scope.Open.Report.Current.SH051 = App.Models.SH.SH051($scope.BaseData.Unit.Unders);
-                                    $scope.Open.Report.Current.SH051.InsertAt(0, App.Models.SH.SH051([
+                                if (['SH04', 'SH05'].In_Array($scope.New.Report.Type.Code)) {
+                                    var code = $scope.New.Report.Type.Code == 'SH04' ? 'SH046' : 'SH051';
+                                    $scope.Open.Report.Current[code] = App.Models.SH[code]($scope.BaseData.Unit.Unders);
+                                    $scope.Open.Report.Current[code].InsertAt(0, App.Models.SH[code]([
                                         { UnitName: '合计', UnitCode: $scope.BaseData.Unit.Local.UnitCode }
                                     ])[0]);
                                 } else {
@@ -1038,6 +1050,27 @@
                                                 });
                                             });
                                             break;
+                                        case 'SH04':
+                                            fields = ['TBNO', 'UnitCode', 'PageNO', 'DataOrder', 'EntityKey'];
+                                            if (!$scope.Open.Report.Current.Attr.AggAcc.isAdded) {
+                                                $scope.Open.Report.Current.SH046 = App.Models.SH.SH046($scope.BaseData.Unit.Unders);
+                                                $scope.Open.Report.Current.SH046.InsertAt(0, App.Models.SH.SH046([
+                                                    { UnitName: '合计', UnitCode: $scope.BaseData.Unit.Local.UnitCode }
+                                                ])[0]);
+                                                $scope.Open.Report.Current.Attr.AggAcc.isAdded = true;
+                                            };
+
+                                            var hj = $scope.Open.Report.Current.SH046[0];
+                                            $.each(response.data.SH046, function () {
+                                                obj = $scope.Open.Report.Current.SH046.Find('UnitCode', this.UnitCode);
+                                                $.each(this, function (field, val) {
+                                                    if (!fields.In_Array(field) && Number(val) > 0) {
+                                                        obj[field] = App.Tools.Calculator.Addition(obj[field], val);
+                                                        hj[field] = App.Tools.Calculator.Addition(hj[field], val);
+                                                    }
+                                                });
+                                            });
+                                            break;
                                         case 'SH05':
                                             fields = ['TBNO', 'UnitCode', 'PageNO', 'DataOrder', 'EntityKey'];
                                             if (!$scope.Open.Report.Current.Attr.AggAcc.isAdded) {
@@ -1118,6 +1151,19 @@
                                                                 hj[field] = App.Tools.Calculator.Subtraction(hj[field], val);
                                                             }
                                                         });
+                                                    });
+                                                });
+                                                break;
+                                            case 'SH04':
+                                                fields = ['TBNO', 'UnitCode', 'PageNO', 'DataOrder', 'EntityKey'];
+                                                var hj = $scope.Open.Report.Current.SH046[0];
+                                                $.each(response.data.SH046, function () {
+                                                    obj = $scope.Open.Report.Current.SH046.Find('UnitCode', this.UnitCode);
+                                                    $.each(this, function (field, val) {
+                                                        if (!fields.In_Array(field) && Number(val) > 0) {
+                                                            obj[field] = App.Tools.Calculator.Subtraction(obj[field], val);
+                                                            hj[field] = App.Tools.Calculator.Subtraction(hj[field], val);
+                                                        }
                                                     });
                                                 });
                                                 break;
@@ -1202,7 +1248,11 @@
                             }
                         });
                     },
-                    Check_Data: function() {
+                    Check_Data: function () {
+                        if ($.isEmptyObject($scope.Open.Report.Current.Attr.Previous)) {
+                            return;
+                        }
+
                         var arr = $scope.Fn.GetEvt().attr('ng-model').split(".");
                         var cur_table = $scope.Fn.GetEvt().scope()[arr[0]];
                         var pre_table = $scope.Open.Report.Current.Attr.Previous[arr[0].toUpperCase()].Find('UnitCode', cur_table.UnitCode);
@@ -1244,6 +1294,28 @@
                             }
                         }
                     },
+                    Avg: function (fixed) {
+                        fixed = fixed != undefined ? fixed : 2;
+                        var arr = $scope.Fn.GetEvt().attr('ng-model').split(".");
+                        var data = $scope.Open.Report.Current[arr[0].toUpperCase()];
+                        var count = 0;
+                        $.each(data, function(i) {
+                            if (i > 0 && Number(this[arr[1]]) > 0) {
+                                this[arr[1]] = parseFloat(this[arr[1]]).toFixed(fixed);
+                                count = App.Tools.Calculator.Addition(count, this[arr[1]]);
+                            } else {
+                                this[arr[1]] = undefined;
+                            }
+                        });
+
+                        if (count > 0) {
+                            data[0][arr[1]] = App.Tools.Calculator.Division(count, data.length - 1);
+                            data[0][arr[1]] = parseFloat(data[0][arr[1]]).toFixed(fixed);
+                            data[0][arr[1]] = Number(data[0][arr[1]]) > 0 ? data[0][arr[1]] : undefined;
+                        } else {
+                            data[0][arr[1]] = undefined;
+                        }
+                    },
                     Sum: function (strOrObj, fixed) {
                         fixed = fixed != undefined ? fixed : 2;
                         var arr = undefined;
@@ -1251,9 +1323,12 @@
                         var data = undefined;
                         var fn = function () {
                             count = 0;
-                            $.each(data, function(i) {
-                                if (i > 0) {
+                            $.each(data, function (i) {
+                                this[arr[1]] = parseFloat(this[arr[1]]).toFixed(fixed);
+                                if (i > 0 && Number(this[arr[1]]) > 0) {
                                     count = App.Tools.Calculator.Addition(count, this[arr[1]]);
+                                } else {
+                                    this[arr[1]] = undefined;
                                 }
                             });
 
@@ -1282,7 +1357,7 @@
                     Save: function () {
                         var report = angular.copy($scope.Open.Report.Current);
 
-                        if (report.Attr.WrongData.length > 0) {
+                        if (report.Attr.WrongData && report.Attr.WrongData.length > 0) {
                             Alert('表中某些数据不能小于上期数据');
                             return;
                         }
@@ -1424,7 +1499,7 @@
                             $scope.Open.Report.Opened.push(report);
                             $scope.Open.Report.Current = report;
 
-                            if (obj.is_cur_year && $scope.BaseData.Unit.Local.Limit < 4 && report.ReportTitle.ORD_Code != 'SH05') {
+                            if (obj.is_cur_year && $scope.BaseData.Unit.Local.Limit < 4 && !['SH04', 'SH05'].In_Array(report.ReportTitle.ORD_Code)) {
                                 var arr = [], _this = undefined;
                                 $.each($scope.BaseData.Unit.SH[$scope.Open.Report.Current.ReportTitle.ORD_Code], function (key) {
                                     if (this.length) {
@@ -1458,7 +1533,7 @@
                                 });
                             }
 
-                            if (report.ReportTitle.ORD_Code == "SH03" || report.ReportTitle.ORD_Code == "SH04") {
+                            if (report.ReportTitle.ORD_Code == "SH03") { // || report.ReportTitle.ORD_Code == "SH04"
                                 var count = report.ReportTitle.ORD_Code == "SH03" ? 8 : 5;
                                 for (var j = 1; j <= count; j++) {
                                     if (!report[report.ReportTitle.ORD_Code + j].length) {
@@ -1501,7 +1576,36 @@
                     isCurYear: function (str) {
                         var date = new Date(str);
 
-                        return date.getFullYear() == new Date().getFullYear() ? 1 : 0;
+                        var obj = {
+                            SH01: { //资金情况
+                                UseCurYear: true,
+                                MergeDate: new Date('2015-12-31')
+                            },
+                            SH02: {  //山洪沟
+                                UseCurYear: true,
+                                MergeDate: new Date(str)
+                            },
+                            SH03: {  //非工程措施
+                                UseCurYear: true,
+                                MergeDate: new Date(str)
+                            },
+                            SH04: {  //调查评价
+                                UseCurYear: true,
+                                MergeDate: new Date('2016-01-01')
+                            },
+                            SH05: {  //调查评价
+                                UseCurYear: true,
+                                MergeDate: new Date(str)
+                            }
+                        };
+
+                        if (date.getTime() < obj[$scope.Open.Report.Current.ReportTitle.ORD_Code].MergeDate.getTime()) {
+                            obj[$scope.Open.Report.Current.ReportTitle.ORD_Code].UseCurYear = false;
+                        }
+
+                        return obj[$scope.Open.Report.Current.ReportTitle.ORD_Code].UseCurYear;
+
+                        //return date.getFullYear() == new Date().getFullYear() ? 1 : 0;
                     },
                     CurTable: {
                         Code: function() {
@@ -1516,6 +1620,27 @@
             $scope.Open.Init();
         }
 
+        $scope.FCA = $scope.Open.Fn.Core.Avg;
+        $scope.FCL = function(len) {
+            var arr = $scope.Fn.GetEvt().attr('ng-model').split(".");
+            var obj = $scope.Fn.GetEvt().scope();
+
+            if (arr.length > 2) {
+                $.each(arr, function(i) {
+                    if (i == arr.length - 1) {
+                        return false;
+                    } else {
+                        obj = obj[arr[i]];
+                    }
+                });
+            } else {
+                obj = obj[arr[0]];
+            }
+
+            if (typeof obj[arr[arr.length - 1]] == "string") {
+                obj[arr[arr.length - 1]] = obj[arr[arr.length - 1]].slice(0, len > 0 ? len : 0);
+            }
+        };
         $scope.FCS = $scope.Open.Fn.Core.Sum;
         $scope.FCK = $scope.Open.Fn.Common.Check;
         $scope.FCKD = $scope.Open.Fn.Core.Check_Data;
