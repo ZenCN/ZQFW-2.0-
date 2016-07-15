@@ -163,22 +163,6 @@ App.Tools = {
                         break;
                 }
                 break;
-            case "SendOperType":
-                switch (value) {
-                    case 0:
-                        name = "初报";
-                        break;
-                    case 1:
-                        name = "续报";
-                        break;
-                    case 2:
-                        name = "核报";
-                        break;
-                    default:
-                        name = "未报送";
-                        break;
-                }
-                break;
         }
         return name;
     },

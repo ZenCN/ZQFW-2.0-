@@ -39,7 +39,10 @@ namespace LogicProcessingClass.ReportOperate
             string result = "0";
             try
             {
-                BusinessEntities entity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(int.Parse(HttpContext.Current.Request.Cookies["limit"].Value));
+                BusinessEntities entity =
+                    (BusinessEntities)
+                        getEntity.GetPersistenceEntityByLevel(
+                            int.Parse(HttpContext.Current.Request.Cookies["limit"].Value));
                 ReportTitle rpt = new ReportTitle();
                 rpt = entity.ReportTitle.Where(t => t.PageNO == pageno).SingleOrDefault();
                 string[] tbno = tbnos.Split(new char[] { ',' });
@@ -72,36 +75,42 @@ namespace LogicProcessingClass.ReportOperate
             return result;
         }
 
-        public string Save(int limit, string unitCode, string diffData, int isrivercode, string dataStr, string diffPageNOs)
+        public string Save(int limit, string unitCode, string diffData, int isrivercode, string dataStr,
+            string diffPageNOs)
         {
             string temp = "";
             int userCount = 0;
             int waitCount = 0;
             while (true)
             {
-                if (App["userCount"] != null)
+                if (App[limit + "_userCount"] != null)
                 {
-                    userCount = Convert.ToInt32(App["userCount"]);
+                    userCount = Convert.ToInt32(App[limit + "_userCount"]);
                 }
                 if (userCount == 0)
                 {
                     userCount++;
-                    App["userCount"] = userCount;
+                    App[limit + "_userCount"] = userCount;
                     if (userCount == 1) //只有第一个保存
                     {
                         try
                         {
                             JavaScriptSerializer serializer = new JavaScriptSerializer();
+
                             Hashtable report = serializer.Deserialize<Hashtable>(dataStr);
+
                             string reportTitle = serializer.Serialize(report["ReportTitle"]);
                             Hashtable ReportTitle = serializer.Deserialize<Hashtable>(reportTitle); //表头信息
+
                             Hashtable data = serializer.Deserialize<Hashtable>(dataStr);
+
                             string affix = null;
                             if (report["DelAffixURL"].ToString() != "" && report["DelAffixTBNO"].ToString() != "")
                             {
                                 affix = report["DelAffixURL"].ToString().Replace("..", "~") + ";" +
-                                        report["DelAffixTBNO"].ToString();
+                                        report["DelAffixTBNO"];
                             }
+
                             if (unitCode.StartsWith("15") && ReportTitle["ORD_Code"].ToString() == "NP01") //内蒙古蓄水表
                             {
                                 temp = NMNPSaveUpdateReport(int.Parse(ReportTitle["PageNO"].ToString()), data, affix,
@@ -109,37 +118,32 @@ namespace LogicProcessingClass.ReportOperate
                             }
                             else //非内蒙古蓄水
                             {
-                                #region
+                                int pageNO = 0; //找到最大的页号并加一
 
-                                ReportHelpClass rptHelp = new ReportHelpClass();
-                                string aggAcc = serializer.Serialize(report["SourceReport"]);
-                                int pageNO = rptHelp.FindMaxPageNO(limit) + 1; //找到最大的页号并加一
                                 if (dataStr == "")
                                 {
                                     temp = "错误消息："; //不成功
                                 }
                                 else
                                 {
-                                    string isNew = ReportTitle["PageNO"].ToString() == "0" ? "true" : "false";
-                                    if (isNew == "false" && ReportTitle["State"] != null &&
-                                        ReportTitle["State"].ToString() != "3")
-                                        //如果是修改，那么加1不需要，
+                                    bool isNew = true;
+                                    int.TryParse(ReportTitle["PageNO"].ToString(), out pageNO);
+                                    if (pageNO > 0)
                                     {
-                                        //HttpApplicationState App = System.Web.HttpContext.Current.Application;
-                                        App[limit.ToString() + "_maxPageNO"] =
-                                            Convert.ToInt32(App[limit.ToString() + "_maxPageNO"]) - 1;
+                                        isNew = false;
                                     }
-                                    ///差值表diffData中如果有正确的PageNO参数，则是修改，否则是新建
-                                    if (ReportTitle["PageNO"].ToString() == "0")
-                                    {
-                                        ReportTitle["State"] = 0;
-                                    }
+
+                                    //string sourceRptResult = "";
 
                                     #region----保存差值表----差值数据需要在前台传入数据之后进行调试，现阶段没有数据进行测试调试------------------
 
-                                    string sourceRptResult = "";
-                                    if (diffData.Trim().Length != 0) //不存在差值数据
+                                    /*if (diffData.Trim().Length != 0) //不存在差值数据
                                     {
+                                        ///差值表diffData中如果有正确的PageNO参数，则是修改，否则是新建
+                                        if (ReportTitle["PageNO"].ToString() == "0")
+                                        {
+                                            ReportTitle["State"] = 0;
+                                        }
                                         DifferentialReport DiffReport = new DifferentialReport();
                                         if (Convert.ToInt32(ReportTitle["SourceType"].ToString()) == 2) //如果是累计差值表
                                         {
@@ -162,27 +166,20 @@ namespace LogicProcessingClass.ReportOperate
                                                 ref dataStr,
                                                 ref aggAcc, allDiffPageNOs);
                                         }
-                                    }
+                                    }*/
                                     //-------------------------------------------------------------------------------------------------------
 
                                     #endregion
 
-                                    //Hashtable data = serializer.Deserialize<Hashtable>(dataStr);
-                                    //把HL011-HL014数据序列化成Hashtable类型
-                                    Hashtable SReport =
-                                        serializer.Deserialize<Hashtable>("{SourceReport:" + aggAcc + "}");
-                                    //汇总的下级表的页号 
+                                    string aggAcc = serializer.Serialize(report["SourceReport"]);
+                                    Hashtable SReport = serializer.Deserialize<Hashtable>("{SourceReport:" + aggAcc + "}");
 
-                                    #region 前台传入的流域数据处理
-
-                                    ///********************************************多流域保存（如：湖南）*****/
-                                    //string rates = report["RiverRates"] == null ? "" : report["RiverRates"].ToString();
                                     List<RiverInfo> rifs = new List<RiverInfo>();
                                     if (report["RiverRates"] != null)
                                     {
                                         //Hashtable hdata = serializer.Deserialize<Hashtable>(rates);
                                         Dictionary<string, object> dic =
-                                            (Dictionary<string, object>) report["RiverRates"];
+                                            (Dictionary<string, object>)report["RiverRates"];
                                         foreach (string key in dic.Keys)
                                         {
                                             RiverInfo rif = new RiverInfo();
@@ -201,41 +198,24 @@ namespace LogicProcessingClass.ReportOperate
                                         isrivercode = 1;
                                     }
 
-                                    #endregion
-
-                                    //string affix = null;
-                                    //if (report["DelAffixURL"].ToString() != "" && report["DelAffixTBNO"].ToString() != "")
-                                    //{
-                                    //    affix = report["DelAffixURL"].ToString().Replace("..", "~") + ";" +
-                                    //            report["DelAffixTBNO"].ToString();
-                                    //}
-
-                                    //pageNO = rptHelp.FindMaxPageNO(limit) + 1; //找到最大的页号并加一(如果差值表新建保存成功，那么PageNO需要重新取)
-                                    if (isNew == "false")
-                                    {
-                                        pageNO = Convert.ToInt32(ReportTitle["PageNO"].ToString());
-                                    }
                                     string rptType = ReportTitle["ORD_Code"].ToString();
 
                                     temp = SaveUpdateReport(limit, unitCode, pageNO, data, ReportTitle, SReport,
                                         isrivercode,
                                         isNew, rifs, affix, rptType);
-                                    //temp += sourceRptResult;
-                                    int errorIndex = temp.IndexOf("&"); //错误信息的位置索引,只搜索前面11个字符"saveFalse&&"
-                                    int sourceRptErrorIndex = sourceRptResult.IndexOf("错误消息");
-                                    //差值表错误信息的位置索引,只搜索前面11个字符"saveFalse&&"
-                                    if (sourceRptErrorIndex != -1)
-                                    {
-                                        temp = "错误消息：差值表报表保存失败!" + "{" + sourceRptResult + "}";
-                                    }
-                                    if (errorIndex != -1)
-                                    {
-                                        temp = "错误消息：报表保存失败!" + temp;
-                                    }
+
+                                    /*int errorIndex = temp.IndexOf("&"); //错误信息的位置索引,只搜索前面11个字符"saveFalse&&"
+                                                    int sourceRptErrorIndex = sourceRptResult.IndexOf("错误消息"); //差值表错误信息的位置索引,只搜索前面11个字符"saveFalse&&"
+                                                    if (sourceRptErrorIndex != -1)
+                                                    {
+                                                        temp = "错误消息：差值表报表保存失败!" + "{" + sourceRptResult + "}";
+                                                    }
+                                                    if (errorIndex != -1)
+                                                    {
+                                                        temp = "错误消息：报表保存失败!" + temp;
+                                                    }*/
                                 }
                             }
-
-                            #endregion
                         }
                         catch (Exception ex)
                         {
@@ -244,36 +224,34 @@ namespace LogicProcessingClass.ReportOperate
                         finally
                         {
                             userCount--;
-                            App["userCount"] = userCount;
+                            App[limit + "_userCount"] = userCount;
                         }
                         break;
                     }
                     else //其他的退出，但不 break,再循环到外层
                     {
                         userCount--;
-                        App["userCount"] = userCount;
+                        App[limit + "_userCount"] = userCount;
                     }
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(800);
                 }
                 else
                 {
                     if (waitCount == 10)//等待20秒之后还有操作在进行的话，强制结束
                     {
                         temp = "当前服务器访问人数过多，请稍后保存！";
-                        App["userCount"] = null;
-                        App["userCount"] = 0;
+                        App[limit + "_userCount"] = null;
+                        App[limit + "_userCount"] = 0;
                         break;
                     }
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(800);
                     waitCount++;
 
                 }
             }
 
             return temp;
-            //}
         }
-
 
         /// <summary>
         /// 保存或更新报表数据
@@ -287,83 +265,64 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="isNew">是否新建true或false</param>
         /// <param name="rInfos">流域比例信息</param>
         /// <returns>修改后的表信息</returns>
-        public string SaveUpdateReport(int limit, string unitCode, int pageNO, Hashtable data, Hashtable reportTitle, Hashtable SReport, int isRiverCode, string isNew, List<RiverInfo> rInfos, string affix, string rptType)
+        public string SaveUpdateReport(int limit, string unitCode, int pageNO, Hashtable data, Hashtable reportTitle, Hashtable SReport, int isRiverCode, bool isNew, List<RiverInfo> rInfos, string affix, string rptType)
         {
             BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
             ViewReportForm viewReport = new ViewReportForm();
-            ReportHelpClass rptHelp = new ReportHelpClass();
             string saveFlag = "";//保存失败，传出saveFalse&&,传出一个保存失败的标识
             ReportTitle rpt = null;
             bool CopyReport = false;
 
             int csOldPageNO = 0;//国家防总保存的CS数据库中的页号，如果为0，那么是新建
 
-            if (isNew.ToUpper() == "FALSE" && reportTitle["State"].ToString() != "3")//isNew是新建还是修改还是Copy
-            {
-                rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();
-                bool cflag = CleanTableData(busEntity, pageNO);
-
-                /****************************国家防总BS/CS两版本数据同步  start********************************************/
-                if (limit == 0 && Convert.IsDBNull(rpt.CSPageNO))
-                {
-                    csOldPageNO = Convert.ToInt32(rpt.CSPageNO);//保存的CS版本报表对应的页号
-                }
-                /********************防总  end*************/
-
-                if (!cflag)//清理失败 
-                {
-                    saveFlag = "清除旧数据失败！";
-                    return saveFlag;
-                }
-            }
-            else
+            if (isNew) //修改未报送的,删除之前的表（(除ReportTitle外)
             {
                 rpt = new ReportTitle();
                 rpt.CopyPageNO = 0;
+
+                ReportHelpClass rptHelp = new ReportHelpClass();
+                pageNO = rptHelp.FindMaxPageNO(limit);
+
+                rpt.PageNO = pageNO;
+            }
+            else
+            {
+                if (int.Parse(reportTitle["State"].ToString()) == 3)  //修改已报送的，保留之前的表
+                {
+                    rpt = new ReportTitle();
+
+                    ReportTitle old_rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();
+                    if (old_rpt != null)
+                    {
+                        old_rpt.CopyPageNO = int.Parse(reportTitle["PageNO"].ToString());
+                    }
+
+                    ReportHelpClass rptHelp = new ReportHelpClass();
+                    pageNO = rptHelp.FindMaxPageNO(limit);
+
+                    rpt.CopyPageNO = 0;
+                    rpt.PageNO = pageNO;
+                }
+                else  //修改未报送的
+                {
+                    rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();
+                    bool cflag = CleanTableData(busEntity, pageNO);
+
+                    #region /****************************国家防总BS/CS两版本数据同步  start********************************************/
+                    if (limit == 0 && Convert.IsDBNull(rpt.CSPageNO))
+                    {
+                        csOldPageNO = Convert.ToInt32(rpt.CSPageNO);//保存的CS版本报表对应的页号
+                    }
+                    #endregion   /********************防总  end*************/
+
+                    if (!cflag)//清理失败 
+                    {
+                        saveFlag = "清除旧数据失败！";
+                        return saveFlag;
+                    }
+                }
             }
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            #region 对已经报送的报表进行复制
-            if (reportTitle["State"] != null && reportTitle["State"].ToString() == "3")//已经报送，那么进行Copy
-            {
-                int maxPageNO = rptHelp.FindMaxPageNO(limit) + 1;
-                ReportTitle zhubiaoRpt = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();//已经报送的主表
-                zhubiaoRpt.CopyPageNO = maxPageNO;
-                pageNO = maxPageNO;
-                string[] tbno = null;
-                if (affix != null)
-                {
-                    tbno = affix.Split(new char[] { ';' })[1].Split(new char[] { ',' });
-                }
-                foreach (var copyAff in zhubiaoRpt.Affix)
-                {
-                    Affix newAff = new Affix();
-                    bool copy = true;
-                    if (tbno != null)
-                    {
-                        for (int j = 0; j < tbno.Length; j++)
-                        {
-                            if (tbno[j] == copyAff.TBNO.ToString())   //判断需要删除的附件的TBNO是否等于当前的要复制的TBNO
-                            {
-                                copy = false;
-                                break;
-                            }
-                        }
-                    }
-                    if (copy)
-                    {
-                        newAff = rptHelp.CloneEF<Affix>(copyAff);
-                        newAff.PageNO = maxPageNO;
-                        rpt.Affix.Add(newAff);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                CopyReport = true;
-            }
-            #endregion
 
             //新建ReportTitle表
             DateTime dt = DateTime.Now;
@@ -390,7 +349,8 @@ namespace LogicProcessingClass.ReportOperate
             {
                 rpt.State = 4;
             }
-            else {
+            else
+            {
                 rpt.State = 0;
             }
             rpt.CloudPageNO = 0;
@@ -399,9 +359,12 @@ namespace LogicProcessingClass.ReportOperate
             rpt.SendTime = dt;
             rpt.ReceiveTime = dt;
             rpt.LastUpdateTime = dt;
-            rpt.PageNO = pageNO;
 
-
+            if (isNew || reportTitle["State"].ToString() == "3")  //新建或修改已报送的,添加
+            {
+                busEntity.ReportTitle.AddObject(rpt);
+                busEntity.SaveChanges();
+            }
 
             //新建修改HL011-HL014，HP011-HP012的表
             string DBname = "";
@@ -483,19 +446,6 @@ namespace LogicProcessingClass.ReportOperate
                             rpt.HP012.Add(hp012);
                         }
                         break;
-                    /*case "ReportTitle":
-                        Dictionary<string, string> rptTitle = serializer.ConvertToType< Dictionary<string, string>>(de.Value);
-                        /*for (int i = 0; i < ; i++)
-                        {
-                            if(kvPair.Key)
-                        }#1#
-                        if (rptTitle["RPTType_Code"] != null && rptTitle["RPTType_Code"] != "")
-                        {
-                            rpt.RPTType_Code = rptTitle["RPTType_Code"];
-                        }
-                        break;*/
-                    default:
-                        break;
                 }
             }
             #endregion
@@ -537,7 +487,7 @@ namespace LogicProcessingClass.ReportOperate
 
                 /*************************************国家防总   end******************************************/
 
-                if (isNew.ToUpper() == "FALSE" && reportTitle["State"].ToString() != "3")
+                /*if (!isNew && reportTitle["State"].ToString() != "3")
                 {
                     busEntity.SaveChanges();
                 }
@@ -545,19 +495,12 @@ namespace LogicProcessingClass.ReportOperate
                 {
                     busEntity.ReportTitle.AddObject(rpt);
                     busEntity.SaveChanges();
-                }
-                //scope.Complete();
+                }*/
+                busEntity.SaveChanges();
+
                 flag = true;
                 //}
             }
-            //catch (OptimisticConcurrencyException ex)
-            //{
-            //    //以数据库为准
-            //    busEntity.Refresh(RefreshMode.StoreWins, rpt);
-            //    //最后再次更新数据库
-            //    busEntity.SaveChanges();
-
-            //}
             catch (Exception ex)
             {
                 rpt = null;
@@ -574,7 +517,8 @@ namespace LogicProcessingClass.ReportOperate
                 }
                 else if (unitCode.StartsWith("22"))
                 {
-                    if (rpt.HL011.Count > 0 || rpt.HL012.Count > 0 || rpt.HL013.Count > 0 || rpt.HL014.Count > 0) {
+                    if (rpt.HL011.Count > 0 || rpt.HL012.Count > 0 || rpt.HL013.Count > 0 || rpt.HL014.Count > 0)
+                    {
 
                         RiverDistribute rd = new RiverDistribute();
                         //删除之前的流域表
@@ -582,7 +526,7 @@ namespace LogicProcessingClass.ReportOperate
                         {
                             rd.DeleteRiverReport(rpt.PageNO);
                         }
-                        
+
                         successRiver = riverDis.SaveSingleRiverDistribute(rpt, "AA2");
                         successRiver = riverDis.SaveSingleRiverDistribute(rpt, "BB2");
                         successRiver = riverDis.SaveSingleRiverDistribute(rpt, "AB1");
@@ -744,7 +688,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="pageNO"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public string NMNPSaveUpdateReport(int pageNO, Hashtable data, string affix,int limit,string unitCode)
+        public string NMNPSaveUpdateReport(int pageNO, Hashtable data, string affix, int limit, string unitCode)
         {
             BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
             string saveFlag = "";//保存失败，传出saveFalse&&,传出一个保存失败的标识
@@ -816,7 +760,7 @@ namespace LogicProcessingClass.ReportOperate
             try
             {
                 busEntity.SaveChanges();
-                if (limit>2)
+                if (limit > 2)
                 {
                     int[] limitSub = { 2, 4, 6 };
                     string tempCode = unitCode.Substring(0, limitSub[limit - 2]);
@@ -827,7 +771,7 @@ namespace LogicProcessingClass.ReportOperate
                     }
                     if (saveFlag != "")
                     {
-                        saveFlag = "{'PageNO':"+pageNO+",'TBNO':{"+saveFlag.Remove(saveFlag.Length - 1)+"}}";
+                        saveFlag = "{'PageNO':" + pageNO + ",'TBNO':{" + saveFlag.Remove(saveFlag.Length - 1) + "}}";
                     }
                 }
             }
@@ -858,7 +802,7 @@ namespace LogicProcessingClass.ReportOperate
             else
             {
                 ReportHelpClass rptHelp = new ReportHelpClass();
-                int pageNO = rptHelp.FindMaxPageNO(2) + 1; //找到最大的页号并加一
+                int pageNO = rptHelp.FindMaxPageNO(2); //找到最大的页号并加一
                 string saveFlag = ""; //保存失败，传出saveFalse&&,传出一个保存失败的标识
                 ReportTitle rpt = new ReportTitle();
                 DateTime dt = DateTime.Now;
@@ -897,7 +841,7 @@ namespace LogicProcessingClass.ReportOperate
             }
         }
 
-        public DateTime GetNPRptStartDateTime( DateTime endTime)
+        public DateTime GetNPRptStartDateTime(DateTime endTime)
         {
             //DateTime dt = DateTime.Now;
             //DateTime startTime = new DateTime();

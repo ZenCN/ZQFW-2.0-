@@ -728,7 +728,7 @@ namespace ZQFW.Controllers
             {
                 if (rpt.State == 3)  //更新已报送
                 {
-                    int new_pageno = new ReportHelpClass().FindMaxPageNO(int.Parse(Request["limit"])) + 1;
+                    int new_pageno = new ReportHelpClass().FindMaxPageNO(int.Parse(Request["limit"]));
                     var rpt_title = busEntity.ReportTitle.Where(t => t.PageNO == rpt.PageNO).SingleOrDefault();
                     if (rpt_title != null)
                     {
@@ -748,7 +748,7 @@ namespace ZQFW.Controllers
             }
             else
             {
-                rpt.PageNO = new ReportHelpClass().FindMaxPageNO(int.Parse(Request["limit"])) + 1;
+                rpt.PageNO = new ReportHelpClass().FindMaxPageNO(int.Parse(Request["limit"]));
             }
             busEntity.ReportTitle.AddObject(rpt);
 

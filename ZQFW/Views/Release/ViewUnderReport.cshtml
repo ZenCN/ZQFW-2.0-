@@ -15,6 +15,7 @@
     <!--------------------------JavaScript----------------------->
     <!--Base Library-->
     <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Library/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
     <script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
     <script src="../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
     <script src="../../Scripts/Library/Plugins/easydialog.min.js" type="text/javascript"></script>
@@ -60,7 +61,7 @@
         </div>
         <div class="Report" ng-if="!BaseData.isRiverRpt" ng-include="'GetTemmplate?type=rpt&url=' + Report[Attr.NameSpace].Current.ReportTitle.ORD_Code.slice(0,2) + '.View'">
         </div>
-        <div ng-if="BaseData.isRiverRpt" class="Report" ng-include="'GetTemmplate?type=rpt&url=' + Report[Attr.NameSpace].Current.ReportTitle.ORD_Code.slice(0,2) + '.Edit'">
+        <div ng-if="BaseData.isRiverRpt" report-changed class="Report" ng-include="'GetTemmplate?type=rpt&url=' + Report[Attr.NameSpace].Current.ReportTitle.ORD_Code.slice(0,2) + '.Edit'">
         </div>
         <div class="Report-Footer">
             <div class="Tabs">

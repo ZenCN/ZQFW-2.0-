@@ -102,13 +102,13 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="BusinessEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BusinessEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="FXDICT.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FXDICT.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="BusinessEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BusinessEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup />

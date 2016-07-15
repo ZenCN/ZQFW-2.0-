@@ -583,7 +583,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
         }
     };
 
-    $rootScope.Fn.OnInit();
+    //$rootScope.Fn.OnInit();
     $rootScope.CurrentUrl = window.location.hash.replace("#", "");
     $rootScope.RedictUrl = function (url) {
         var name = url.replace('/', '');
@@ -911,13 +911,14 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                             var checkedNodes = zTree.getCheckedNodes();
                             if (checkedNodes.length > 0) {
                                 var exitSameRpt = false;
+
                                 $.each(checkedNodes, function() {
-                                    /*if (this.id == $scope.Open.Report.Current.ReportTitle.PageNO) {
+                                    if (this.id == $scope.Open.Report.Current.ReportTitle.PageNO) {
                                         exitSameRpt = true;
                                     } else {
                                         exitSameRpt = $rootScope.Open.Report.Current.Attr.AggAcc.Content.SomeBy("id", this.id);
-                                    }*/
-                                    exitSameRpt = $rootScope.Open.Report.Current.Attr.AggAcc.Content.SomeBy("id", this.id);
+                                    }
+                                    //exitSameRpt = $rootScope.Open.Report.Current.Attr.AggAcc.Content.SomeBy("id", this.id);
 
                                     if (exitSameRpt) {
                                         Alert("不能添加相同的报表");
@@ -1368,8 +1369,12 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                     Close: function(pageno) {
                         pageno = pageno == undefined ? $rootScope.Open.Report.Current.ReportTitle.PageNO : pageno;
                         if (parseInt(pageno) == 0) {
-                            if (!confirm("报表尚未保存，确认关闭么？")) {
+                            if (!confirm("报表尚未保存，确定要关闭么？")) {
                                 return;
+                            }
+                        } else if($scope.Open.Report.Current.Attr.Data_Changed){
+                            if (!confirm("报表修改的的数据尚未保存，确定要关闭么？")) {
+                                 return;
                             }
                         }
 
@@ -1958,8 +1963,6 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
 
                                 $scope.Fn.GetEvt().removeData('target');
                                 $scope.Fn.GetEvt().removeData('disabledCallBack');
-
-                                $scope.Open.Report.Current.Attr.Data_Changed = true;
                             }
                         },
                         Save: function() {
@@ -2010,8 +2013,6 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                         }
                                     });
                                 });
-
-                                $scope.Open.Report.Current.Attr.Data_Changed = true;
                             }
                         }
                     },
@@ -2337,8 +2338,6 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                         }
 
                                         rpt.HL013.splice(0);
-
-                                        $scope.Open.Report.Current.Attr.Data_Changed = true;
                                     }
                                 },
                                 Sub: function(obj) {
@@ -2355,8 +2354,6 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
 
                                         report.HL013[1].Max = report.HL013[1].Max.RemoveBy("PageNO", obj.pageno);
                                         obj.report.HL013.splice(0);
-
-                                        $scope.Open.Report.Current.Attr.Data_Changed = true;
                                     }
                                 }
                             },
@@ -3154,8 +3151,6 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                             $target = $scope.Fn.GetEvt(); //还原$target
                             $scope.Fn.GetEvt().data('target', $target);
                         }
-
-                        $scope.Open.Report.Current.Attr.Data_Changed = true;
                         //$scope.Open.Report.Fn.Core.Private.Call("Sum", 0, tableField);  //自动调用各省的Sum方法
                     }
                 },

@@ -201,7 +201,7 @@ namespace ZQFW.Controllers
                 if (state.ToString() == "3")//已经报送的，那么新建一个新表，且把主表CopyPageNO值修改为新表的PageNO
                 {
                     rpt = new ReportTitle();
-                    rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5) + 1;
+                    rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5);
                     ReportTitle zhurpt = busEntitiy.ReportTitle.Where(t => t.PageNO == id).SingleOrDefault();
                     zhurpt.CopyPageNO = rpt.PageNO;
                     rpt.State = 0;
@@ -221,7 +221,7 @@ namespace ZQFW.Controllers
             {
                 rpt = new ReportTitle();
                 rpt.State = 0;
-                rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5) + 1;
+                rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5);
             }
 
             //新建修改HL011-HL014，HP011-HP012的表

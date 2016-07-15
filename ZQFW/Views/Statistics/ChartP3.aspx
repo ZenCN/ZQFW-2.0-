@@ -7,7 +7,7 @@
     <meta content="webkit" name="renderer"/>
     <title>导出三维饼图</title>
     <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="../../MapServer/js/map/chart/chart.js" type="text/javascript"></script>
+    <script src="../../MapServer/js/map/chart/chart.js?t=0620" type="text/javascript"></script>
 <%--        <script src="../../MapServer/js/cookie.js" type="text/javascript"></script>--%>
     <script type="text/javascript">
         //        $(function() {

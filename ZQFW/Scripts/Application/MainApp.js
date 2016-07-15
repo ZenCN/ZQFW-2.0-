@@ -62,7 +62,7 @@ App.Main = {
     Report: {
         Disaster: function () {
             $.cookie('ord_code', 'HL01');
-            location.href = location.href.indexOf('?debug=1') > 0 ? '/index?debug=1' : '/index';
+            location.href = '/index';
         },
         Reservoir: function () {
             if (sys_code == "43") {
@@ -70,7 +70,7 @@ App.Main = {
             } else if (sys_code == "15") {
                 $.cookie('ord_code', 'NP01');
             }
-            location.href = location.href.indexOf('?debug=1') > 0 ? '/index?debug=1' : '/index';
+            location.href = '/index';
         }
     }
 };

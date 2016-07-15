@@ -119,8 +119,8 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
             Province: {
                 Left: {
                     //浙江省 33000000  湖南省 43000000 吉林省 22000000 黑龙江省 23000000  内蒙古 15000000  江西省 36000000 广西 45000000 福建省 35000000
-                    UnitName: "内蒙古",
-                    UnitCode: "15000000"
+                    UnitName: "福建省",
+                    UnitCode: "35000000"
                 }
             },
             City: {
@@ -306,15 +306,15 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
                             unitcode: $scope.Attr.Login.User.UnitCode,
                             password: $scope.Attr.Login.User.Password,
                             type: $scope.Attr.CurrentTab,
-                            fresh: Math.random()   //解决浏览器的缓存问题
+                            fresh: Math.random() //解决浏览器的缓存问题
                         },
-                        beforeSend: function () {
+                        beforeSend: function() {
                             $('#Login').addClass('Logining'); //将按钮显示为登录中
                         },
-                        complete: function () {
+                        complete: function() {
                             $('#Login').removeClass('Logining'); //移除按钮的登录中状态
                         },
-                        success: function (data) {
+                        success: function(data) {
                             if (data.indexOf("Error:") == 0) {
                                 alert(data);
                                 throw data;
@@ -369,7 +369,7 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
                                 throw data;
                             }
                         },
-                        error: function (xhr, status) {
+                        error: function(xhr, status) {
                             $scope.Attr.Login.User.Message = "网络超时，状态：" + status;
                             animate.Shake();
                         }

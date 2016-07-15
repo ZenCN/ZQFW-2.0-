@@ -1,4 +1,4 @@
-function clickchart(chartType, disasterInfoType) {
+﻿function clickchart(chartType, disasterInfoType) {
     var disasterInfo = getGlobalDisasterInfo();         //获取灾情数据字符串
     if (disasterInfo == "") {
         alert("当前区域无灾情数据");
@@ -7,6 +7,9 @@ function clickchart(chartType, disasterInfoType) {
     var dataName = mapParams.disasterInfoTypes[disasterInfoType].name;  //获取数据名称
     var dataUnit = mapParams.disasterInfoTypes[disasterInfoType].unit;   //获取数据单位
     var fixed = mapParams.disasterInfoTypes[disasterInfoType].fixed;   //获取小数位数
+    if (fixed == 4) {
+        fixed = 2;
+    }
     var timer = ruler1.getSelected()
     var subtitle = timer.startyear + "年" + timer.startmonth + "月" + timer.startday + "日" + "—" +
     timer.endyear + "年" + timer.endmonth + "月" + timer.endday + "日" + "(" + timer.sorcetype + ")";

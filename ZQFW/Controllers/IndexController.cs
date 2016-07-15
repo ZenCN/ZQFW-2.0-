@@ -367,12 +367,6 @@ namespace ZQFW.Controllers
             return JR;
         }
 
-        /*public string AggAcc_Del()
-        {
-            string pageno = Request["pageno"];
-            var entity = new AggAccRecord()
-        }*/
-
         /// <summary>
         /// 保存或修改报表（需要通过POST请求）如果不是新建,IsNew参数必须为false，PageNO为正确的页号
         /// </summary>
@@ -412,7 +406,7 @@ namespace ZQFW.Controllers
             Hashtable report = serializer.Deserialize<Hashtable>(dataStr);
             string reportTitle = serializer.Serialize(report["ReportTitle"]);
             string aggAcc = serializer.Serialize(report["SourceReport"]);
-            int pageNO = rptHelp.FindMaxPageNO(limit) + 1; //找到最大的页号并加一
+            int pageNO = rptHelp.FindMaxPageNO(limit); //找到最大的页号并加一
             if (dataStr == "")
             {
                 temp = "错误消息："; //不成功
@@ -420,7 +414,7 @@ namespace ZQFW.Controllers
             else
             {
                 Hashtable ReportTitle = serializer.Deserialize<Hashtable>(reportTitle); //表头信息
-                string isNew = ReportTitle["PageNO"].ToString() == "0" ? "true" : "false";
+                bool isNew = ReportTitle["PageNO"].ToString() == "0" ? true : false;
                 ///差值表diffData中如果有正确的PageNO参数，则是修改，否则是新建
                 if (ReportTitle["PageNO"].ToString() == "0")
                 {
@@ -490,8 +484,8 @@ namespace ZQFW.Controllers
                     affix = report["DelAffixURL"].ToString().Replace("..", "~") + ";" + report["DelAffixTBNO"].ToString();
                 }
 
-                pageNO = rptHelp.FindMaxPageNO(limit) + 1; //找到最大的页号并加一(如果差值表新建保存成功，那么PageNO需要重新取)
-                if (isNew == "false")
+                pageNO = rptHelp.FindMaxPageNO(limit); //找到最大的页号并加一(如果差值表新建保存成功，那么PageNO需要重新取)
+                if (!isNew)
                 {
                     pageNO = Convert.ToInt32(ReportTitle["PageNO"].ToString());
                 }

@@ -100,6 +100,7 @@ namespace LogicProcessingClass.ReportOperate
 
         public int FindMaxPageNO(int limit)
         {
+            //----------------刘志-------------------------
             //BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
             //var rpts = from rpt in busEntity.ReportTitle
             //           orderby rpt.PageNO descending
@@ -112,33 +113,56 @@ namespace LogicProcessingClass.ReportOperate
             //}
             //return maxPageNO;
 
+            //---------------张建军------------------------------
             HttpApplicationState App = System.Web.HttpContext.Current.Application;
+
             BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-            var rpts = from rpt in busEntity.ReportTitle
-                       orderby rpt.PageNO descending
-                       select rpt.PageNO;
-            //var rpts = busEntity.ReportTitle.Max(t => t.PageNO);
+
             int maxPageNO = 0;
-            if (rpts.Count() != 0)
-            {
-                maxPageNO = Convert.ToInt32(rpts.First().ToString());
 
-            }
-            if (App[limit.ToString() + "_maxPageNO"] == null)//与该application相关的都是并发修改
+            if (App[limit + "_maxPageNO"] == null) //与该application相关的都是并发修改,重启iis时
             {
-                App[limit.ToString() + "_maxPageNO"] = maxPageNO;//第一次运行时，app中保存的就是即将使用到的最大页号
+                if (busEntity.ReportTitle.Any())
+                {
+                    maxPageNO = busEntity.ReportTitle.Max(t => t.PageNO);
+                }
+
+                maxPageNO = maxPageNO + 1;
+            }
+            else
+            {
+                maxPageNO = Convert.ToInt32(App[limit + "_maxPageNO"]);
             }
 
-            if (Convert.ToInt32(App[limit.ToString() + "_maxPageNO"]) > maxPageNO)//如果不相等，等证明app中的页号还没保存到数据库中，maxPageNO需要加1
-            {
-                maxPageNO = Convert.ToInt32(App[limit.ToString() + "_maxPageNO"]) + 1;//在还没保存到数据库中的最大页号的基础上加1
-                App[limit.ToString() + "_maxPageNO"] = maxPageNO;//
-            }
-            else//保证是数据库中即将使用的最大的页号
-            {
-                App[limit.ToString() + "_maxPageNO"] = maxPageNO + 1;
-            }
+            App[limit + "_maxPageNO"] = maxPageNO + 1;
+
             return maxPageNO;
+
+            
+
+            /*HttpApplicationState app = System.Web.HttpContext.Current.Application;
+
+            if (app["rng"] == null)
+            {
+                System.Security.Cryptography.RNGCryptoServiceProvider _rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
+                app["rng"] = _rng;
+            }
+
+            System.Security.Cryptography.RNGCryptoServiceProvider rng = (System.Security.Cryptography.RNGCryptoServiceProvider)app["rng"];
+
+            byte[] bytes = new byte[4];
+
+            rng.GetBytes(bytes);
+
+            int pageno = BitConverter.ToInt32(bytes, 0);
+
+            //BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            //while (busEntity.ReportTitle.Where(t => t.PageNO == pageno).Any())
+            //{
+                
+            //}
+
+            return pageno;*/
         }
 
         /// <summary>

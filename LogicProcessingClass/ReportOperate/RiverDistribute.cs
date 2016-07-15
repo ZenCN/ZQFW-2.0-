@@ -253,8 +253,7 @@ namespace LogicProcessingClass.ReportOperate
             try
             {
                 var rpts = prvBusEntity.ReportTitle.Where(t => t.AssociatedPageNO == pageNO).Select(t => t.PageNO);
-                IList riverPageNOList = rpts.ToList();
-                string riverPageNOs = string.Join(",", riverPageNOList.Cast<int>().ToArray());
+                string riverPageNOs = string.Join(",", rpts.ToArray());
                 var hl011s = prvBusEntity.HL011.Where("it.PageNO in {" + riverPageNOs + "}");
                 var hl012s = prvBusEntity.HL012.Where("it.PageNO in {" + riverPageNOs + "}");
                 var hl013s = prvBusEntity.HL013.Where("it.PageNO in {" + riverPageNOs + "}");
@@ -374,9 +373,8 @@ namespace LogicProcessingClass.ReportOperate
             int maxPageNO = rptHelp.FindMaxPageNO(2);
             foreach (var prti in prvRiverTypeInfo.DRiverRPType)
             {
-                maxPageNO++;
                 ReportTitle riverRpt = rptHelp.CloneEF<ReportTitle>(xzRpt);
-                riverRpt.PageNO = maxPageNO;
+                riverRpt.PageNO = rptHelp.FindMaxPageNO(2);
                 //riverRpt.PageNO = 0;
                 riverRpt.AssociatedPageNO = xzRpt.PageNO;
                 riverRpt.LastUpdateTime = DateTime.Now;
@@ -697,16 +695,14 @@ namespace LogicProcessingClass.ReportOperate
             ReportHelpClass rptHelp = new ReportHelpClass();
             //用来存放已分配好的行政报表ReportTitle
             IDictionary<string, ReportTitle> pRptList = new Dictionary<string, ReportTitle>();
-            int maxPageNO = rptHelp.FindMaxPageNO(2);
             ArrayList slPageNoList = new ArrayList();
             bool exist_SongLiao = false;
 
             foreach (var prti in prvRiverTypeInfo.DRiverRPType)
             {
-                maxPageNO++;
                 ReportTitle riverRpt = rptHelp.CloneEF<ReportTitle>(xzRpt);
-                riverRpt.PageNO = maxPageNO;
-                //riverRpt.PageNO = 0;
+
+                riverRpt.PageNO = rptHelp.FindMaxPageNO(2);
                 riverRpt.AssociatedPageNO = xzRpt.PageNO;
                 riverRpt.LastUpdateTime = DateTime.Now;
                 riverRpt.ReceiveTime = DateTime.Now;
@@ -1038,7 +1034,7 @@ namespace LogicProcessingClass.ReportOperate
 
                 if (exist_SongLiao)  //添加松辽委报表
                 {
-                    SaveSLRiverRpt(slPageNoList, maxPageNO, xzRpt, pageNO);
+                    SaveSLRiverRpt(slPageNoList, xzRpt, pageNO);
                     prvBusEntity.SaveChanges();
                 }
 
@@ -1058,7 +1054,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="maxPageNO"></param>
         /// <param name="rpt"></param>
         /// <param name="PageNO"></param>
-        public void SaveSLRiverRpt(ArrayList pageList, int maxPageNO, ReportTitle rpt, int PageNO)
+        public void SaveSLRiverRpt(ArrayList pageList, ReportTitle rpt, int PageNO)
         {
             ReportHelpClass rptHelp = new ReportHelpClass();
             IList<int> list = new List<int>();
@@ -1075,9 +1071,8 @@ namespace LogicProcessingClass.ReportOperate
             string[] objStrings = new[] { "HL011", "HL012", "HL013", "HL014" };
             string tableName = "";
             string sql = "";
-            maxPageNO++;
             ReportTitle slRiverRpt = rptHelp.CloneEF<ReportTitle>(rpt);
-            slRiverRpt.PageNO = maxPageNO;
+            slRiverRpt.PageNO = rptHelp.FindMaxPageNO(2);
             slRiverRpt.AssociatedPageNO = rpt.PageNO;
             slRiverRpt.LastUpdateTime = DateTime.Now;
             slRiverRpt.ReceiveTime = DateTime.Now;
@@ -1148,37 +1143,39 @@ namespace LogicProcessingClass.ReportOperate
 
                         var hl013s =
                             prvBusEntity.ExecuteStoreQuery<HL013>("select * from hl013 where pageno in(" + pageNOs + ")").ToList();
-
-                        HL013 hl03hj = hl013s.Where(x => x.DW == "合计").ToList()[0];
-                        HL013 hl013temp = new HL013();
-                        IList<HL013> hl013 = hl013s.Where(x => x.DW != "合计").ToList();
-                        foreach (var hl03 in hl013)
+                        if (hl013s.Count > 0)
                         {
-                            TObjectSum<HL013>(hl013temp, hl03);
-                        }
-                        UnionObject<HL013>(hl03hj, hl013temp);
+                            HL013 hl03hj = hl013s.Where(x => x.DW == "合计").ToList()[0];
+                            HL013 hl013temp = new HL013();
+                            IList<HL013> hl013 = hl013s.Where(x => x.DW != "合计").ToList();
+                            foreach (var hl03 in hl013)
+                            {
+                                TObjectSum<HL013>(hl013temp, hl03);
+                            }
+                            UnionObject<HL013>(hl03hj, hl013temp);
 
-                        ///处理最大历时和最大水深
-                        var maxZYZJZDSS = hl013.Max(t => t.ZYZJZDSS);//水深
-                        var maxGCYMLS = hl013.Max(t => t.GCYMLS);//历时
-                        hl03hj.GCYMLS = maxGCYMLS;
-                        hl03hj.ZYZJZDSS = maxZYZJZDSS;
-                        hl03hj.YMFWBL = hl013.Average(x => x.YMFWBL);
+                            ///处理最大历时和最大水深
+                            var maxZYZJZDSS = hl013.Max(t => t.ZYZJZDSS); //水深
+                            var maxGCYMLS = hl013.Max(t => t.GCYMLS); //历时
+                            hl03hj.GCYMLS = maxGCYMLS;
+                            hl03hj.ZYZJZDSS = maxZYZJZDSS;
+                            hl03hj.YMFWBL = hl013.Average(x => x.YMFWBL);
 
-                        int m3 = 0;
-                        hl03hj.PageNO = slRiverRpt.PageNO;
-                        hl03hj.DataOrder = m3;
-                        m3++;
-                        slRiverRpt.HL013.Add(hl03hj);
-
-                        foreach (var hl03 in hl013)
-                        {
-                            hl03.PageNO = slRiverRpt.PageNO;
-                            hl03.DataOrder = m3;
+                            int m3 = 0;
+                            hl03hj.PageNO = slRiverRpt.PageNO;
+                            hl03hj.DataOrder = m3;
                             m3++;
-                            slRiverRpt.HL013.Add(hl03);
+                            slRiverRpt.HL013.Add(hl03hj);
+
+                            foreach (var hl03 in hl013)
+                            {
+                                hl03.PageNO = slRiverRpt.PageNO;
+                                hl03.DataOrder = m3;
+                                m3++;
+                                slRiverRpt.HL013.Add(hl03);
+                            }
                         }
-                        
+
                         break;
                     default:
                         sql = CreateSQL(pageNOs, tableName);

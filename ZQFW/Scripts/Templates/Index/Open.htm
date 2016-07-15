@@ -74,10 +74,10 @@
                 <ul>
                     <li ng-repeat="rpt in Open.Report.Current.Attr.AggAcc.Content" ng-class="{Selected:rpt.id == Open.Report.Attr.AggAcc.Selected.id}" ng-click="Open.Report.Attr.AggAcc.Selected = rpt" ng-dblclick="Open.Report.Fn.Core.AggAcc.View(rpt)">
                         <a ng-if="Open.Report.Current.ReportTitle.SourceType == '1'">
-                            [{{BaseData.Unit.Unders.Find("UnitCode",rpt.UnitCode,"UnitName")}}][{{Assist.CN_Name("SourceType",rpt.SourceType)}}][{{Assist.CN_Name("SendOperType",rpt.SendOperType)}}]{{rpt.StartDate}}-{{rpt.EndDate}}
+                            [{{BaseData.Unit.Unders.Find("UnitCode",rpt.UnitCode,"UnitName")}}][{{Assist.CN_Name("SourceType",rpt.SourceType)}}]{{rpt.StartDate}}-{{rpt.EndDate}}
                         </a>
                         <a ng-if="Open.Report.Current.ReportTitle.SourceType == '2'">
-                            [{{Assist.CN_Name("SourceType",rpt.SourceType)}}][{{rpt.State == '3' ? Assist.CN_Name("SendOperType",rpt.SendOperType) : '未报送'}}]{{rpt.StartDate}}-{{rpt.EndDate}}
+                            [{{Assist.CN_Name("SourceType",rpt.SourceType)}}][{{rpt.State == '3' ? '已报送' : '未报送'}}]{{rpt.StartDate}}-{{rpt.EndDate}}
                         </a>
                     </li>
                 </ul>
@@ -108,7 +108,7 @@
                 <li class="DelRow" ng-hide="Config.Page.Open.Func.DelRow" ng-click="Open.Report.Fn.Core.DelRow()">
                     <i></i>删除行
                 </li>
-                <li class="Import ng-hide" autofileupload><!--ng-hide="Config.Page.Open.Func.Import"-->
+                <li class="Import" ng-hide="Config.Page.Open.Func.Import" autofileupload>
                     <i></i>导入
                 </li>
                 <li class="Export" ng-hide="Config.Page.Open.Func.Export">
@@ -162,7 +162,7 @@
                     </span>
                 </li>
             </ul>
-            <div ng-include="'Index/GetTemmplate?type=rpt&url=' + Open.Report.Current.ReportTitle.ORD_Code.slice(0,2) + '.Edit'">
+            <div report-changed ng-include="'Index/GetTemmplate?type=rpt&url=' + Open.Report.Current.ReportTitle.ORD_Code.slice(0,2) + '.Edit'">
                 
             </div>
         </div>

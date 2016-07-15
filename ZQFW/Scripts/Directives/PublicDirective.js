@@ -143,20 +143,20 @@ App.directive('disableKey', function() {
 
 App.directive("ngFileupload", function () {
     return function ($scope, $element) {
-        $(function () {
+        $(function() {
             $element.uploadify({
                 'auto': false,
                 'swf': '../../CSS/Plugins/Uploadify/uploadify.swf',
                 'uploader': '/AffixOperater/UploadFiles',
                 'buttonText': $.cookie('limit') == 5 ? '添加附件' : '添加',
-                'fileTypeExts': '*.*',  //pdf;*.rar;*.doc;*.xlsx;*.docx;*.xls;
+                'fileTypeExts': '*.*', //pdf;*.rar;*.doc;*.xlsx;*.docx;*.xls;
                 'queueSizeLimit': 20,
                 'uploadLimit': 20,
                 'fileSizeLimit': '5MB',
                 'width': 60,
                 'height': 25,
                 'removeTimeout': 1,
-                'onUploadSuccess': function (file, data) {
+                'onUploadSuccess': function(file, data) {
                     data = eval("(" + data + ")");
                     if (angular.isObject(data) && !data.Message) {
                         data.name = file.name;
@@ -174,24 +174,24 @@ App.directive("ngFileupload", function () {
                         Alert("附件保存失败!");
                     }
                 },
-                'onQueueComplete': function (queueData) {
+                'onQueueComplete': function(queueData) {
                     $scope.$apply();
                     Alert("保存成功", 1000);
                 },
                 'onFallback': function() {
                     var span = "<span id='fileUpload' style='margin-left:8px;font-size:14px;'>您的电脑没装Flash Player，无法上传文件，点击" +
-                        "<a style='text-decoration:none;font-weight:bolder;' href='javascript:void(0)'>这里</a>" + 
+                        "<a style='text-decoration:none;font-weight:bolder;' href='javascript:void(0)'>这里</a>" +
                         "下载安装，安装后重启浏览器即可上传文件</sapn>";
                     $("#file_upload").replaceWith(span);
 
-                    $("#fileUpload a").click(function () {
+                    $("#fileUpload a").click(function() {
                         var report = $scope.Open.Report;
 
                         if ($scope.NameSapce == "View") {
                             report = $scope.Report;
                         }
 
-                        if (report.Current.ReportTitle.PageNO == 0 || report.Current.Attr.Data_Changed) {
+                        if (report.Current.ReportTitle.PageNO == 0) {
                             Alert("您的报表尚未保存，请先保存再下载安装Flash Player", 3000);
                             return true;
                         }
@@ -208,9 +208,11 @@ App.directive("ngFileupload", function () {
                         });
                     });
                 },
-                onSelect: function () {
-                    if ($scope.NameSapce != "View" && $scope.Open.Report.Current.ReportTitle.PageNO > 0) {  //修改时自动上传
-                        $scope.Open.Report.Fn.Core.Upload.Affix();   
+                onSelect: function() {
+                    if ($scope.NameSapce == "View" && $scope.Report.Current.ReportTitle.PageNO > 0) {
+                        $scope.Fn.Upload_Affix();
+                    } else if ($scope.Open.Report.Current.ReportTitle.PageNO > 0) {
+                        $scope.Open.Report.Fn.Core.Upload.Affix();
                     }
                 }
             });
@@ -308,4 +310,18 @@ App.directive("posTop", function () {
             $element.css("top", $attr["posTop"] + "px");
         }
     };
+});
+
+App.directive("reportChanged", function() {
+    return function ($scope, $element, $attr) {
+        if ($scope.BaseData.isRiverRpt) {
+            $element.find('table tbody td input').live('change', function() {
+                $scope.Report.Current.Attr.Data_Changed = true;
+            });
+        } else {
+            $element.find('table tbody td input').live('change', function () {
+                $scope.Open.Report.Current.Attr.Data_Changed = true;
+            });
+        }
+    }
 });

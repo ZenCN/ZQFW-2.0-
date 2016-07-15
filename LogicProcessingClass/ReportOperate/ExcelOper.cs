@@ -159,8 +159,7 @@ namespace LogicProcessingClass.ReportOperate
             int start_index = 7;
             sheet = CreateCell(sheet, sh051S.Count, 11, start_index);
             int index = 0;
-            foreach (SH051 sh051 in sh051S)
-            {
+            foreach (SH051 sh051 in sh051S){
                 sheet.GetRow(start_index + index).GetCell(0).SetCellValue(sh051.DW);
                 sheet.GetRow(start_index + index).GetCell(1).SetCellValue(sh051.YJFBGX == null ? "" : Convert.ToInt32(sh051.YJFBGX.Value).ToString());
                 sheet.GetRow(start_index + index).GetCell(2).SetCellValue(sh051.YJXJFBCS == null ? "" : Convert.ToInt32(sh051.YJXJFBCS.Value).ToString());

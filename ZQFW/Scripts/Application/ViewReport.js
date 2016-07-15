@@ -53,7 +53,11 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
             }
             return name;
         },
-        Send: function() {
+        Send: function () {
+            if ($scope.Report.Current.Attr.Data_Changed) {
+                Alert("报表的数据有变动，请先保存再报送");
+                return false;
+            }
             $scope.$parentScope.Open.Report.Fn.Core.Send(window, $scope.Report.View.Current.ReportTitle);
         },
         Delete: {
@@ -90,6 +94,16 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                 }
             }
         },
+        Upload_Affix: function() {
+            var uploadify = $('#file_upload');
+            uploadify.uploadify("settings", "formData", {
+                'PageNo': $scope.Report.Current.ReportTitle.PageNO,
+                'limit': $scope.BaseData.Unit.Local.Limit,
+                'unitcode': $scope.BaseData.Unit.Local.UnitCode,
+                'rptType': $scope.Report.Current.ReportTitle.ORD_Code
+            });
+            uploadify.uploadify('upload', '*');
+        },
         Save: function () {
             var report = {};
             report.DelAffixTBNO = $scope.Report.Current.Attr.DelAffixTBNO.toString();
@@ -101,16 +115,6 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
             report.HL014 = $scope.Report.Current.HL014;
 
             var count = $scope.Report.Current.Attr.DelAffixTBNO.length;
-            var fn = function () {
-                var uploadify = $('#file_upload');
-                uploadify.uploadify("settings", "formData", {
-                    'PageNo': $scope.Report.Current.ReportTitle.PageNO,
-                    'limit': $scope.BaseData.Unit.Local.Limit,
-                    'unitcode': $scope.BaseData.Unit.Local.UnitCode,
-                    'rptType': $scope.Report.Current.ReportTitle.ORD_Code
-                });
-                uploadify.uploadify('upload', '*');
-            }
 
             $.ajax({
                 url: "/Index/SaveUpdateReport",
@@ -126,7 +130,7 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                                 .success(function(result) {
                                     if (Number(result) > 0) {
                                         if ($(".Boxes #file_upload-queue").children().length > 0) { //存在附件
-                                            fn();
+                                            $scope.Fn.Upload_Affix();
                                         } else {
                                             Alert("保存完成", 1000);
                                         }
@@ -136,13 +140,15 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                                     }
                                 });
                         } else if ($(".Boxes #file_upload-queue").children().length > 0) {
-                            fn();
+                            $scope.Fn.Upload_Affix();
                         }
                     } else {
                         Alert(result);
                     }
+
+                    delete $scope.Open.Report.Current.Attr.Data_Changed;
                 }
-            });            
+            });
         },
         UnitIndex: function(tablename, unitcode) {
             var j = -1;

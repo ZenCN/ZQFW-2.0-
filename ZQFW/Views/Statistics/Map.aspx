@@ -160,7 +160,7 @@
                 loadScript("../../Scripts/Library/Plugins/highchart/highcharts.js", function () {
                     loadScript("../../Scripts/Library/Plugins/highchart/highcharts-3d.js");
                     loadScript("../../Scripts/Library/Plugins/highchart/modules/exporting.js");
-                    loadScript("../../MapServer/js/map/chart/chart.js");
+                    loadScript("../../MapServer/js/map/chart/chart.js?t=0620");
                 });
                 loadScript("../../MapServer/facebox/facebox.js");
                 loadScript("../../MapServer/fancybox/jquery.fancybox.pack.js");

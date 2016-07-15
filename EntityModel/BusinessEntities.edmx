@@ -492,7 +492,7 @@
           <Property Name="WriterName" Type="varchar" MaxLength="20" />
           <Property Name="WriterTime" Type="datetime" />
           <Property Name="SendTime" Type="datetime" />
-          <Property Name="Remark" Type="varchar" MaxLength="255" />
+          <Property Name="Remark" Type="varchar" MaxLength="600" />
           <Property Name="Del" Type="int" />
           <Property Name="ReceiveState" Type="int" />
           <Property Name="State" Type="numeric" Precision="20" Scale="5" />
@@ -1346,7 +1346,7 @@
           <Property Name="WriterName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="WriterTime" Type="DateTime" />
           <Property Name="SendTime" Type="DateTime" />
-          <Property Name="Remark" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" Unicode="false" FixedLength="false" MaxLength="600" />
           <Property Name="Del" Type="Int32" />
           <Property Name="ReceiveState" Type="Int32" />
           <Property Name="State" Type="Decimal" Precision="20" Scale="5" />

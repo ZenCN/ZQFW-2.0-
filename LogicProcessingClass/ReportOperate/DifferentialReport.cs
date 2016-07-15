@@ -227,7 +227,7 @@ namespace LogicProcessingClass.ReportOperate
             BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);//传入的是当前单位级别，数据存放在下级单位，所以需要+1
             ReportTitle rpt = null;
             ReportHelpClass rptHelp = new ReportHelpClass();
-            int maxSPageNO = rptHelp.FindMaxPageNO(limit) + 1;//找到最大的页号并加一
+            int maxSPageNO = rptHelp.FindMaxPageNO(limit);//找到最大的页号并加一
 
             bool CommitSuccess = false;
             string currentDiffRpt = "";

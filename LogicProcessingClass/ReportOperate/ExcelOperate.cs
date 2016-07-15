@@ -2182,6 +2182,7 @@ namespace LogicProcessingClass.ReportOperate
         {
             ICellStyle style = sheet.Workbook.CreateCellStyle();
             style.Alignment = HorizontalAlignment.CENTER;//水平对齐居中
+            style.VerticalAlignment = VerticalAlignment.CENTER;
             style.BorderBottom = BorderStyle.THIN;//边框是黑色的
             style.BorderLeft = BorderStyle.THIN;
             style.BorderRight = BorderStyle.THIN;

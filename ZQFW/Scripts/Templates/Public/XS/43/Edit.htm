@@ -74,7 +74,7 @@
         <tbody>
             <tr ng-repeat="hp011 in Open.Report.Current.HP011" ng-firstreadonly>
                 <th>
-                    {{((hp011.DW != '全区/县' && hp011.DW != '合计') && BaseData.Unit.Local.Limit == 4) ? '' : hp011.DW}}
+                    {{((hp011.DW != '全区/县' && hp011.DW != '合计') && BaseData.Unit.Unders.length == 1 && BaseData.Unit.Local.Limit == 4) ? '' : hp011.DW}}
                 </th>
                 <td class="ReadOnly">
                     <input type="text" ng-model="hp011.XSCSZJ" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB"/>
@@ -198,9 +198,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="hp011 in Open.Report.Current.HP011" ng-firstreadonly ng-init="readonly = (hp011.DW != '全区/县' && BaseData.Unit.Local.Limit == 4)">
+            <tr ng-repeat="hp011 in Open.Report.Current.HP011" ng-firstreadonly ng-init="readonly = (hp011.DW != '全区/县' && BaseData.Unit.Unders.length == 1 && BaseData.Unit.Local.Limit == 4)">
                 <th>
-                    {{((hp011.DW != '全区/县' && hp011.DW != '合计') && BaseData.Unit.Local.Limit == 4) ? '' : hp011.DW}}
+                    {{((hp011.DW != '全区/县' && hp011.DW != '合计')&& BaseData.Unit.Unders.length == 1 && BaseData.Unit.Local.Limit == 4) ? '' : hp011.DW}}
                 </th>
                 <td class="ReadOnly">
                     <input type="text" ng-model="hp011.XYSKCS" readonly="readonly" ng-disabled="Open.Report.Current.Attr.HB">
