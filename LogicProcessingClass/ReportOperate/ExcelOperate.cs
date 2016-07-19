@@ -416,9 +416,18 @@ namespace LogicProcessingClass.ReportOperate
         #region  把数据分别存放到洪涝excel模板的9张表中
         public ISheet HLTable1(ISheet sheet1, IList<LZHL011> xmmhl011s, ReportTitle rpt, string fields, Dictionary<string, string> dic)
         {
-
-
             sheet1 = CreateCell(sheet1, xmmhl011s.Count, 10, 9);
+
+            //设置单元格格式
+            ICellStyle cellStyle = SetCellStyle(sheet1);
+            for (int x = 9; x < 9 + xmmhl011s.Count; x++)//对所有有数据的单元格边框进行设置成黑色边框
+            {
+                for (int y = 0; y < 10; y++)
+                {
+                    sheet1.GetRow(x).GetCell(y).CellStyle = cellStyle;
+                }
+            }
+
             string[] fieldsArr = fields.Split(',');
             for (int j = 1; j < 10; j++)
             {
@@ -428,20 +437,91 @@ namespace LogicProcessingClass.ReportOperate
                 }
             }
 
+            double val = 0;
             for (int i = 0; i < xmmhl011s.Count; i++)
             {
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl011s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl011s[i].SZFWX);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl011s[i].SZFWZ);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl011s[i].SZRK);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl011s[i].SYCS);
 
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl011s[i].DTFW);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl011s[i].SWRK);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl011s[i].SZRKR);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl011s[i].ZYRK);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl011s[i].ZJJJZSS);
+                if (double.TryParse(xmmhl011s[i].SZFWX, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
 
+                if (double.TryParse(xmmhl011s[i].SZFWZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SZRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SYCS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].DTFW, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SWRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SZRKR, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].ZYRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].ZJJJZSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
             }
             //填写表头信息
             CellRangeAddress cellRangeAddress = new CellRangeAddress(9 + xmmhl011s.Count, 9 + xmmhl011s.Count, 0, 2);//合并单元格
@@ -460,21 +540,23 @@ namespace LogicProcessingClass.ReportOperate
             sheet1.GetRow(9 + xmmhl011s.Count).GetCell(5).SetCellValue("填报人：" + rpt.WriterName);
             sheet1.GetRow(9 + xmmhl011s.Count).GetCell(7).SetCellValue("填报时间：" + Convert.ToDateTime(rpt.WriterTime).ToString("yyyy/MM/dd"));
 
-            //设置单元格格式
-            ICellStyle cellStyle = SetCellStyle(sheet1);
-            for (int x = 9; x < 9 + xmmhl011s.Count; x++)//对所有有数据的单元格边框进行设置成黑色边框
-            {
-                for (int y = 0; y < 10; y++)
-                {
-                    sheet1.GetRow(x).GetCell(y).CellStyle = cellStyle;
-                }
-            }
             return sheet1;
         }
 
         public ISheet HLTable2(ISheet sheet1, IList<LZHL011> xmmhl011s, ReportTitle rpt, string fields, Dictionary<string, string> dic)
         {
             sheet1 = CreateCell(sheet1, xmmhl011s.Count, 13, 9);//下表从0开始的,所以是13
+
+            // 设置单元格格式
+            ICellStyle cellStyle = SetCellStyle(sheet1);
+            for (int x = 9; x < 9 + xmmhl011s.Count; x++)//对所有有数据的单元格边框进行设置成黑色边框
+            {
+                for (int y = 0; y < 13; y++)
+                {
+                    sheet1.GetRow(x).GetCell(y).CellStyle = cellStyle;
+                }
+            }
+
             string[] fieldsArr = fields.Split(',');
             for (int j = 1; j < 13; j++)
             {
@@ -484,22 +566,118 @@ namespace LogicProcessingClass.ReportOperate
                 }
             }
 
+            double val = 0;
             for (int i = 0; i < xmmhl011s.Count; i++)
             {
-                //sheet1.CreateRow(9 + i).CreateCell(0).SetCellValue(xmmhl011s[i].DW);
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl011s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl011s[i].SHMJXJ);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl011s[i].SHMJLS);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl011s[i].CZMJXJ);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl011s[i].CZMJLS);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl011s[i].JSMJXJ);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl011s[i].JSMJLS);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl011s[i].YZJCLS);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl011s[i].JJZWSS);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl011s[i].SWDSC);
-                sheet1.GetRow(9 + i).GetCell(10).SetCellValue(xmmhl011s[i].SCYZMJ);
-                sheet1.GetRow(9 + i).GetCell(11).SetCellValue(xmmhl011s[i].SCYZSL);
-                sheet1.GetRow(9 + i).GetCell(12).SetCellValue(xmmhl011s[i].NLMYZJJJSS);
+
+                if (double.TryParse(xmmhl011s[i].SHMJXJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHMJLS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].CZMJXJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].CZMJLS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].JSMJXJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].JSMJLS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].YZJCLS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].JJZWSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SWDSC, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SCYZMJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SCYZSL, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].NLMYZJJJSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue("");
+                }
             }
 
             //填写表头信息
@@ -519,15 +697,6 @@ namespace LogicProcessingClass.ReportOperate
             sheet1.GetRow(9 + xmmhl011s.Count).GetCell(6).SetCellValue("填报人：" + rpt.WriterName);
             sheet1.GetRow(9 + xmmhl011s.Count).GetCell(10).SetCellValue("填报时间：" + Convert.ToDateTime(rpt.WriterTime).ToString("yyyy/MM/dd"));
 
-            // 设置单元格格式
-            ICellStyle cellStyle = SetCellStyle(sheet1);
-            for (int x = 9; x < 9 + xmmhl011s.Count; x++)//对所有有数据的单元格边框进行设置成黑色边框
-            {
-                for (int y = 0; y < 13; y++)
-                {
-                    sheet1.GetRow(x).GetCell(y).CellStyle = cellStyle;
-                }
-            }
             return sheet1;
         }
 
@@ -542,16 +711,74 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(8).GetCell(j).SetCellValue(dic[fieldsArr[j]]);
                 }
             }
+
+            double val = 0;
             for (int i = 0; i < xmmhl011s.Count; i++)
             {
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl011s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl011s[i].TCGKQY);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl011s[i].TLZD);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl011s[i].GLZD);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl011s[i].JCGKGT);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl011s[i].GDZD);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl011s[i].TXZD);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl011s[i].GJYSZJJJSS);
+
+                if (double.TryParse(xmmhl011s[i].TCGKQY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].TLZD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].GLZD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].JCGKGT, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].GDZD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].TXZD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].GJYSZJJJSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
             }
             //填写表头信息
             CellRangeAddress cellRangeAddress = new CellRangeAddress(9 + xmmhl011s.Count, 9 + xmmhl011s.Count, 0, 1);//合并单元格
@@ -592,27 +819,173 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(8).GetCell(j).SetCellValue(dic[fieldsArr[j]]);
                 }
             }
+
+            double val = 0;
             for (int i = 0; i < xmmhl011s.Count; i++)
             {
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl011s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl011s[i].SHSKD);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl011s[i].SHSKX);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl011s[i].SKKBD);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl011s[i].SKKBX1);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl011s[i].SKKBX2);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl011s[i].SHDFCS);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl011s[i].SHDFCD);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl011s[i].DFJKCS);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl011s[i].DFJKCD);
-                sheet1.GetRow(9 + i).GetCell(10).SetCellValue(xmmhl011s[i].SHHAC);
-                sheet1.GetRow(9 + i).GetCell(11).SetCellValue(xmmhl011s[i].SHSZ);
-                sheet1.GetRow(9 + i).GetCell(12).SetCellValue(xmmhl011s[i].CHTB);
-                sheet1.GetRow(9 + i).GetCell(13).SetCellValue(xmmhl011s[i].SHGGSS);
-                sheet1.GetRow(9 + i).GetCell(14).SetCellValue(xmmhl011s[i].SHSWCZ);
-                sheet1.GetRow(9 + i).GetCell(15).SetCellValue(xmmhl011s[i].SHJDJ);
-                sheet1.GetRow(9 + i).GetCell(16).SetCellValue(xmmhl011s[i].SHJDBZ);
-                sheet1.GetRow(9 + i).GetCell(17).SetCellValue(xmmhl011s[i].SHSDZ);
-                sheet1.GetRow(9 + i).GetCell(18).SetCellValue(xmmhl011s[i].SLSSZJJJSS);
+
+                if (double.TryParse(xmmhl011s[i].SHSKD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHSKX, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SKKBD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SKKBX1, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SKKBX2, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHDFCS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHDFCD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].DFJKCS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].DFJKCD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHHAC, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHSZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].CHTB, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHGGSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHSWCZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue("");
+                }
+                
+                if (double.TryParse(xmmhl011s[i].SHJDJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHJDBZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHSDZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(17).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(17).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SLSSZJJJSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(18).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(18).SetCellValue("");
+                }
             }
             //填写表头信息
             CellRangeAddress cellRangeAddress = new CellRangeAddress(9 + xmmhl011s.Count, 9 + xmmhl011s.Count, 0, 3);//合并单元格
@@ -752,6 +1125,7 @@ namespace LogicProcessingClass.ReportOperate
             ((HSSFSheet)sheet1).AddValidationData(dataValidate);
 
             string dw = "";
+            double val = 0;
             for (int i = 0; i < xmmhl012s.Count; i++)
             {
                 dw = new LogicProcessingClass.Tools().GetNameByUnitCode(xmmhl012s[i].UnitCode);
@@ -760,7 +1134,16 @@ namespace LogicProcessingClass.ReportOperate
                 sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl012s[i].DataType);
                 sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl012s[i].SWXM);
                 sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl012s[i].SWXB);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl012s[i].SWNL);
+
+                if (double.TryParse(xmmhl012s[i].SWNL, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
                 sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl012s[i].SWHJ);
                 sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl012s[i].SWSJ);
                 sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl012s[i].SWDD);
@@ -830,29 +1213,167 @@ namespace LogicProcessingClass.ReportOperate
             constraint = DVConstraint.CreateExplicitListConstraint(riverInfo.Split(','));
             dataValidate = new HSSFDataValidation(regions, constraint);
             ((HSSFSheet)sheet1).AddValidationData(dataValidate);
+
+            double val = 0;
             for (int i = 0; i < xmmhl013s.Count; i++)
             {
                 string rivercode = xmmhl013s[i].RiverCode;
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl013s[i].DW);  //有标题
 
                 sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl013s[i].CSMC);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl013s[i].YMFWMJ);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl013s[i].YMFWBL);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl013s[i].SZRK);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl013s[i].SWRK);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl013s[i].GCJSSJ);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl013s[i].GCYMLS);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl013s[i].GCLJJYL);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl013s[i].GCHSWKRK);
-                sheet1.GetRow(9 + i).GetCell(10).SetCellValue(xmmhl013s[i].GCJJZYRK);
-                sheet1.GetRow(9 + i).GetCell(11).SetCellValue(xmmhl013s[i].ZYZJZDSS);
-                sheet1.GetRow(9 + i).GetCell(12).SetCellValue(xmmhl013s[i].SMXGS);
-                sheet1.GetRow(9 + i).GetCell(13).SetCellValue(xmmhl013s[i].SMXGD);
-                sheet1.GetRow(9 + i).GetCell(14).SetCellValue(xmmhl013s[i].SMXGQ);
-                sheet1.GetRow(9 + i).GetCell(15).SetCellValue(xmmhl013s[i].SMXJT);
-                sheet1.GetRow(9 + i).GetCell(16).SetCellValue(xmmhl013s[i].JZWSYFW);
-                sheet1.GetRow(9 + i).GetCell(17).SetCellValue(xmmhl013s[i].JZWSYDX);
-                sheet1.GetRow(9 + i).GetCell(18).SetCellValue(xmmhl013s[i].CQZJJJSS);
+
+                if (double.TryParse(xmmhl013s[i].YMFWMJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].YMFWBL, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].SZRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].SWRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].GCJSSJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].GCYMLS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].GCLJJYL, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].GCHSWKRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].GCJJZYRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].ZYZJZDSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].SMXGS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].SMXGD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].SMXGQ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].SMXJT, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].JZWSYFW, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].JZWSYDX, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(17).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(17).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl013s[i].CQZJJJSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(18).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(18).SetCellValue("");
+                }
                 //if (rivercode == null || rivercode.ToString().Trim().Length == 0&& i ==0)
                 //{
                 //    sheet1.GetRow(9 + i).GetCell(19).SetCellValue("合计");
@@ -907,27 +1428,173 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(8).GetCell(j).SetCellValue(dic[fieldsArr[j]]);
                 }
             }
+
+            double val = 0;
             for (int i = 0; i < xmmhl014s.Count; i++)
             {
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl014s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl014s[i].WZBZD);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl014s[i].WZBZB);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl014s[i].WZDSSS);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl014s[i].WZSSL);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl014s[i].WZMC);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl014s[i].WZGC);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl014s[i].WZJSY);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl014s[i].WZY);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl014s[i].WZD);
-                sheet1.GetRow(9 + i).GetCell(10).SetCellValue(xmmhl014s[i].WZQT);
-                sheet1.GetRow(9 + i).GetCell(11).SetCellValue(xmmhl014s[i].WZZXH);
-                sheet1.GetRow(9 + i).GetCell(12).SetCellValue(xmmhl014s[i].QXHJ);
-                sheet1.GetRow(9 + i).GetCell(13).SetCellValue(xmmhl014s[i].QXBDGB);
-                sheet1.GetRow(9 + i).GetCell(14).SetCellValue(xmmhl014s[i].QXDFRY);
-                sheet1.GetRow(9 + i).GetCell(15).SetCellValue(xmmhl014s[i].QXFXJD);
-                sheet1.GetRow(9 + i).GetCell(16).SetCellValue(xmmhl014s[i].SBQXZ);
-                sheet1.GetRow(9 + i).GetCell(17).SetCellValue(xmmhl014s[i].SBYS);
-                sheet1.GetRow(9 + i).GetCell(18).SetCellValue(xmmhl014s[i].SBJX);
+
+                if (double.TryParse(xmmhl014s[i].WZBZD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZBZB, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZDSSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZSSL, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZMC, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZGC, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZJSY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZQT, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].WZZXH, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].QXHJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].QXBDGB, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].QXDFRY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].QXFXJD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].SBQXZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].SBYS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(17).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(17).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].SBJX, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(18).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(18).SetCellValue("");
+                }
             }
             //填写表头信息
             CellRangeAddress cellRangeAddress = new CellRangeAddress(9 + xmmhl014s.Count, 9 + xmmhl014s.Count, 0, 2);//合并单元格
@@ -968,26 +1635,154 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(8).GetCell(j).SetCellValue(dic[fieldsArr[j]]);
                 }
             }
+            double val = 0;
             for (int i = 0; i < xmmhl014s.Count; i++)
             {
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl014s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl014s[i].ZJXJ);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl014s[i].ZJZY);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl014s[i].ZJSJ);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl014s[i].ZJSJYS);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl014s[i].ZJQZ);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl014s[i].XYJYGD);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl014s[i].XYJMLSJS);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl014s[i].XYJSSZRK);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl014s[i].XYJJQZ);
-                sheet1.GetRow(9 + i).GetCell(10).SetCellValue(xmmhl014s[i].XYJMSWC);
-                sheet1.GetRow(9 + i).GetCell(11).SetCellValue(xmmhl014s[i].XYJMSWR);
-                sheet1.GetRow(9 + i).GetCell(12).SetCellValue(xmmhl014s[i].XYZYSH);
-                sheet1.GetRow(9 + i).GetCell(13).SetCellValue(xmmhl014s[i].XYZYTF);
-                sheet1.GetRow(9 + i).GetCell(14).SetCellValue(xmmhl014s[i].XYZYQT);
-                sheet1.GetRow(9 + i).GetCell(15).SetCellValue(xmmhl014s[i].XYBMSY);
-                sheet1.GetRow(9 + i).GetCell(16).SetCellValue(xmmhl014s[i].XYJZJJXY);
 
+                if (double.TryParse(xmmhl014s[i].ZJXJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].ZJZY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].ZJSJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].ZJSJYS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].ZJQZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJYGD, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJMLSJS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJSSZRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJJQZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJMSWC, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJMSWR, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(11).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYZYSH, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(12).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYZYTF, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(13).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYZYQT, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(14).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYBMSY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(15).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl014s[i].XYJZJJXY, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(16).SetCellValue("");
+                }
             }
             //填写表头信息
             CellRangeAddress cellRangeAddress = new CellRangeAddress(9 + xmmhl014s.Count, 9 + xmmhl014s.Count, 0, 2);//合并单元格
@@ -1028,20 +1823,100 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(8).GetCell(j).SetCellValue(dic[fieldsArr[j]]);
                 }
             }
+            double val = 0;
             for (int i = 0; i < xmmhl011s.Count; i++)
             {
                 sheet1.GetRow(9 + i).GetCell(0).SetCellValue(xmmhl011s[i].DW);
-                sheet1.GetRow(9 + i).GetCell(1).SetCellValue(xmmhl011s[i].SZFWX);
-                sheet1.GetRow(9 + i).GetCell(2).SetCellValue(xmmhl011s[i].SZFWZ);
-                sheet1.GetRow(9 + i).GetCell(3).SetCellValue(xmmhl011s[i].SHMJXJ);
-                sheet1.GetRow(9 + i).GetCell(4).SetCellValue(xmmhl011s[i].SZRK);
-                sheet1.GetRow(9 + i).GetCell(5).SetCellValue(xmmhl011s[i].SWRK);
-                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl011s[i].SZRKR);
-                sheet1.GetRow(9 + i).GetCell(7).SetCellValue(xmmhl011s[i].ZYRK);
-                sheet1.GetRow(9 + i).GetCell(8).SetCellValue(xmmhl011s[i].DTFW);
-                sheet1.GetRow(9 + i).GetCell(9).SetCellValue(xmmhl011s[i].ZJJJZSS);
-                sheet1.GetRow(9 + i).GetCell(10).SetCellValue(xmmhl011s[i].SLSSZJJJSS);
 
+                if (double.TryParse(xmmhl011s[i].SZFWX, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(1).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SZFWZ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(2).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SHMJXJ, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(3).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SZRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(4).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SWRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SZRKR, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].ZYRK, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(7).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].DTFW, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(8).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].ZJJJZSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(9).SetCellValue("");
+                }
+
+                if (double.TryParse(xmmhl011s[i].SLSSZJJJSS, out val) && val > 0)
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue(val);
+                }
+                else
+                {
+                    sheet1.GetRow(9 + i).GetCell(10).SetCellValue("");
+                }
             }
             //填写表头信息
             CellRangeAddress cellRangeAddress = new CellRangeAddress(9 + xmmhl011s.Count, 9 + xmmhl011s.Count, 0, 2);//合并单元格
@@ -2181,12 +3056,16 @@ namespace LogicProcessingClass.ReportOperate
         private ICellStyle SetCellStyle(ISheet sheet)
         {
             ICellStyle style = sheet.Workbook.CreateCellStyle();
-            style.Alignment = HorizontalAlignment.CENTER;//水平对齐居中
-            style.VerticalAlignment = VerticalAlignment.CENTER;
-            style.BorderBottom = BorderStyle.THIN;//边框是黑色的
-            style.BorderLeft = BorderStyle.THIN;
-            style.BorderRight = BorderStyle.THIN;
-            style.BorderTop = BorderStyle.THIN;
+            style.Alignment = HorizontalAlignment.Center;//水平对齐居中
+            style.VerticalAlignment = VerticalAlignment.Center;
+            style.BorderBottom = BorderStyle.Thin;//边框是黑色的
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
+            style.BorderTop = BorderStyle.Thin;
+
+            //IDataFormat format = sheet.Workbook.CreateDataFormat();
+            //style.DataFormat = format.GetFormat("General");
+
             return style;
         }
 
@@ -3023,6 +3902,17 @@ namespace LogicProcessingClass.ReportOperate
         public ISheet GTTable1(ISheet sheet1, IList<LZHP011> xmmhp011s, ReportTitle rpt, int limit, string fields, Dictionary<string, string> dic, IList<GTHP01> newWNData)
         {
             sheet1 = CreateCell(sheet1, xmmhp011s.Count + 1, 14, 11);
+
+            //设置单元格格式
+            ICellStyle cellStyle = SetCellStyle(sheet1);
+            for (int x = 11; x < 11 + xmmhp011s.Count; x++)//对所有有数据的单元格边框进行设置成黑色边框
+            {
+                for (int y = 0; y < 14; y++)
+                {
+                    sheet1.GetRow(x).GetCell(y).CellStyle = cellStyle;
+                }
+            }
+
             string[] fieldsArr = fields.Split(',');
             for (int j = 1; j < 14; j++)
             {
@@ -3069,15 +3959,7 @@ namespace LogicProcessingClass.ReportOperate
             sheet1.GetRow(11 + xmmhp011s.Count).GetCell(3).SetCellValue("统计负责人：" + rpt.StatisticsPrincipal);
             sheet1.GetRow(11 + xmmhp011s.Count).GetCell(6).SetCellValue("填报人：" + rpt.WriterName);
             sheet1.GetRow(11 + xmmhp011s.Count).GetCell(8).SetCellValue("报出日期：" + Convert.ToDateTime(rpt.WriterTime).ToString("yyyy/MM/dd"));
-            //设置单元格格式
-            ICellStyle cellStyle = SetCellStyle(sheet1);
-            for (int x = 11; x < 11 + xmmhp011s.Count; x++)//对所有有数据的单元格边框进行设置成黑色边框
-            {
-                for (int y = 0; y < 14; y++)
-                {
-                    sheet1.GetRow(x).GetCell(y).CellStyle = cellStyle;
-                }
-            }
+
             return sheet1;
         }
 

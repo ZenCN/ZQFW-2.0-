@@ -862,7 +862,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                         if (table) {
                             $rootScope.Open.Report.Current[table].push(App.Models.HL.HL01[table]()); //var length = 
                         }
-                        $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                        //$scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
                     },
                     AggAcc: {   //汇总、累计时没有查合计行数据
                         get_aggacc_pagenos:function() {
@@ -996,6 +996,9 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                      /* else if ($scope.BaseData.Unit.Local.Limit == 3 && $scope.Open.Report.Current.ReportTitle.SourceType == 2) { //市级累计
                                             exceptFields.push("SZFWZ");
                                     }*/
+                                    if ($scope.SysUserCode == '35') {
+                                        exceptFields = exceptFields.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT', 'GCYMLS', 'GCLJJYL', 'YMFWBL']);
+                                    }
                                     break;
                                 case "HP01":
                                     exceptFields = ["DXKXXSL", "DXKKYS", "DXZYBFB", "QNTQDXS"]; //DXKYXSL 计划蓄水
@@ -1088,10 +1091,15 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                     angular.forEach(unitCodeArr, function(unitcode) {
                                         $scope.Open.Report.Fn.Comm.OnChange.UnitEntity(unitcode);
                                     });
-                                    $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+
                                     $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
-                                    $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
-                                    $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+
+                                    if ($scope.SysUserCode != '35') {
+                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
+                                        $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                                    }
+
                                     if (["45"].In_Array($scope.SysUserCode)) { //包含“本级”的单位
                                         this.DisposeSZFW($scope.Open.Report.Current);
                                     }
@@ -1156,6 +1164,9 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                          /*else if ($scope.BaseData.Unit.Local.Limit == 3 && $scope.Open.Report.Current.ReportTitle.SourceType == 2) { //市级累计
                                             exceptFields.push("SZFWZ");
                                         }*/
+                                        if ($scope.SysUserCode == '35') {
+                                            exceptFields = exceptFields.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT', 'GCYMLS', 'GCLJJYL', 'YMFWBL']);
+                                        }
                                         delete report.HL012;
                                         delete report.HL013;
                                         break;
@@ -1248,10 +1259,15 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                     angular.forEach(unitCodeArr, function(unitcode) {
                                         $scope.Open.Report.Fn.Comm.OnChange.UnitEntity(unitcode);
                                     });
-                                    $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+
                                     $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
-                                    $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
-                                    $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+
+                                    if ($scope.SysUserCode != '35') {
+                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
+                                        $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                                    }
+                                    
                                     if (["45"].In_Array($scope.SysUserCode)) { //包含“本级”的单位
                                         this.DisposeSZFW($scope.Open.Report.Current);
                                     }
@@ -1662,7 +1678,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                         }
                     },
                     HL01: {
-                        Avg: function(fixed, field_info) {
+                        Avg: function(fixed, field_info, not_hj) {
                             fixed = fixed ? fixed : 0;
                             var table_field = $.isArray(field_info) ? field_info : $scope.Fn.GetEvt().attr('ng-model').split(".");
                             var arr = $scope.Open.Report.Current[table_field[0].toUpperCase()];
@@ -1688,7 +1704,10 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                     total = undefined;
                                 }
                             }
-                            $scope.Open.Report.Current[table_field[0].toUpperCase()][0][table_field[1]] = total;
+
+                            if (!not_hj) {
+                                $scope.Open.Report.Current[table_field[0].toUpperCase()][0][table_field[1]] = total;
+                            }
                         },
                         Save: function(rpt) {
                             $rootScope.Open.Report.Current.Attr.CheckErrors = {};
@@ -1847,7 +1866,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                 $scope.Open.Report.Fn.Core.Sum(["HL014", "XYZYQT"]);
                             }
                         },
-                        Max: function(fixed, arr) {
+                        Max: function(fixed, arr, not_hj) {
                             try {
                                 var max = 0;
                                 arr = arr ? arr : $scope.Fn.GetEvt().attr("ng-model").split(".");
@@ -1874,7 +1893,9 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                     });
                                 }
 
-                                arr[0][field] = Number(max) > 0 ? max : undefined;
+                                if (!not_hj) {
+                                    arr[0][field] = Number(max) > 0 ? max : undefined;
+                                }
                             } catch (e) {
                                 throw e;
                             }

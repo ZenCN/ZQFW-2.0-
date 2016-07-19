@@ -717,6 +717,7 @@
     <Content Include="Scripts\Templates\Public\HL\Table\5\Common\THead.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\33\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\33\THead.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\35\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\Common\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\Common\TBody_View.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\Common\THead.htm" />

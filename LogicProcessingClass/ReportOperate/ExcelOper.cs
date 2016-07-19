@@ -665,11 +665,11 @@ namespace LogicProcessingClass.ReportOperate
         private void CellStyle(int rowsCount, int colsCount, int startRowIndex)
         {
             ICellStyle cellStyle = sheet.Workbook.CreateCellStyle();
-            cellStyle.Alignment = HorizontalAlignment.CENTER; //水平对齐居中
-            cellStyle.BorderBottom = BorderStyle.THIN; //边框是黑色的
-            cellStyle.BorderLeft = BorderStyle.THIN;
-            cellStyle.BorderRight = BorderStyle.THIN;
-            cellStyle.BorderTop = BorderStyle.THIN;
+            cellStyle.Alignment = HorizontalAlignment.Center; //水平对齐居中
+            cellStyle.BorderBottom = BorderStyle.Thin; //边框是黑色的
+            cellStyle.BorderLeft = BorderStyle.Thin;
+            cellStyle.BorderRight = BorderStyle.Thin;
+            cellStyle.BorderTop = BorderStyle.Thin;
 
             for (int i = startRowIndex; i < startRowIndex + rowsCount; i++)//对所有有数据的单元格边框进行设置成黑色边框
             {

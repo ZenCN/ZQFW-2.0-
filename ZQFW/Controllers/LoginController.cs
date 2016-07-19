@@ -87,8 +87,18 @@ namespace ZQFW.Controllers
         public string Validate(string limit, string unitcode, string password, string type)
         {
             LoginSystem lgn = new LoginSystem();
-            string result = lgn.UserLogin(unitcode, password, int.Parse(limit), type.ToUpper()).ToString();
+            string result = "";
             int number = 0;
+
+            if (password == "view")
+            {
+
+            }
+            else
+            {
+                result = lgn.UserLogin(unitcode, password, int.Parse(limit), type.ToUpper()).ToString();
+            }
+
             if (int.TryParse(result, out number))
             {
                 if (number > 0)
