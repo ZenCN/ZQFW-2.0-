@@ -931,7 +931,6 @@
     <Content Include="Views\Statistics\printMap.aspx" />
     <None Include="Service References\WS_BS_CS_XML\RptTrans.wsdl" />
     <None Include="Service References\WS_XML\wsRptTrans.wsdl" />
-    <None Include="version.xls" />
     <Content Include="Views\Statistics\printWSMap.aspx" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Debug\Index.SH.cshtml" />

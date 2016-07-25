@@ -15,6 +15,7 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
     $scope.BaseData.RiverCode = window.opener.$scope.BaseData.RiverCode;
     $scope.BaseData.isRiverRpt = location.href.indexOf("&RiverRpt=true") > 0 ? true : false;
     $scope.BaseData.RiverUnits = baseData.RiverUnits;
+    $scope.Authority = parseInt($.cookie("authority"));
     $scope.BaseData.Unit = {
         Local: {
             UnitCode: "0",
@@ -307,7 +308,7 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
         $scope.Report.Current.HL011.BubbleSort("DataOrder", "asc");
         $scope.Report.Current.HL014.BubbleSort("DataOrder", "asc");
 
-        $scope.FCA = function(fixed, field_info) {
+        $scope.FCA = function (fixed, field_info, not_hj) {
             fixed = fixed ? fixed : 0;
             var table_field = $.isArray(field_info) ? field_info : $scope.Fn.GetEvt().attr('ng-model').split(".");
             var arr = $scope.Report.Current[table_field[0].toUpperCase()];
@@ -333,7 +334,10 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                     total = undefined;
                 }
             }
-            $scope.Report.Current[table_field[0].toUpperCase()][0][table_field[1]] = total;
+
+            if (!not_hj) {
+                $scope.Report.Current[table_field[0].toUpperCase()][0][table_field[1]] = total
+            }
         };
         $scope.FCS = function (arr, path, fixed) {
             var $target = $(event.srcElement || event.target);
@@ -561,7 +565,7 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                 throw e;
             }
         };
-        $scope.FCM = function(fixed, arr) {
+        $scope.FCM = function (fixed, arr, not_hj) {
             try {
                 var max = 0;
                 arr = arr ? arr : $scope.Fn.GetEvt().attr("ng-model").split(".");
@@ -589,7 +593,9 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                         });
                     }
 
-                    arr[0][field] = Number(max) > 0 ? max : undefined;
+                    if (!not_hj) {
+                        arr[0][field] = Number(max) > 0 ? max : undefined;
+                    }
                 }
             } catch (e) {
                 throw e;
@@ -610,10 +616,6 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
                     obj.XYZYQT = hl011.ZYRK;
                     $scope.Report.Current.HL014.push(obj);
                 }
-                
-                /*$scope.Fn.GetEvt().data('NoCallUnitEntity', true);
-                $scope.Fn.GetEvt().data('NoCheck', true);*/
-                //$scope.Fn.GetEvt().data('disabledCallBack', ["UnitEntity", "RelationCheck"]);
                 $scope.FCS(["HL014", "XYZYQT"]);
             }
         };
@@ -634,19 +636,12 @@ App.controller("MainCtrl", function ($scope, baseData, $http, $timeout) {
             }
         }
 
-        $scope.FCM($scope.$parentScope.BaseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
         $scope.FCM($scope.$parentScope.BaseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
-        $scope.FCM($scope.$parentScope.BaseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
-        //$scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
 
-        /*$scope = $scope.$parentScope.Open.Report.Fn.Comm.OnChange.Type;
-        $scope.FCOF = $scope.$parentScope.Open.Report.Fn.Comm.OnFocus.Field;
-        $scope.CTF = $scope.$parentScope.Fn.ConvertToFloat;
-        $scope.Divide = App.Tools.Calculator.Division;
-        
-        $scope.FCHSR = $scope.$parentScope.Open.Report.Fn.Core.HP01.Sum.Reservoir;
-        
-        $scope.FCHOX = $scope.$parentScope.Open.Report.Fn.Core.HP01.OnChange.XXSLZJ;*/
+        if ($scope.Report.Current.ReportTitle.UnitCode.slice(0, 2) != '35') {
+            $scope.FCM($scope.$parentScope.BaseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+            $scope.FCM($scope.$parentScope.BaseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
+        }
 
         if ($scope.$parentScope.SysUserCode == '33') {
             $scope.SW = function(unit) {

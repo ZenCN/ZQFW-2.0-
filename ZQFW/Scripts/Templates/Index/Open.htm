@@ -66,8 +66,8 @@
         <div class="AggAccBox" ng-show="Open.Report.Current.ReportTitle.SourceType > 0">
             <div class="AggAcc-Menu">
                 <ul>
-                    <li class="Add" ng-hide="Open.Report.Current.Attr.HB" ng-click="Open.Report.Fn.Core.AggAcc.Sum()"><i></i>加表</li>
-                    <li class="Del" ng-hide="Open.Report.Current.Attr.HB" ng-click="Open.Report.Fn.Core.AggAcc.Sub()"><i></i>减表</li>
+                    <li ng-if="Authority == 0" class="Add" ng-hide="Open.Report.Current.Attr.HB" ng-click="Open.Report.Fn.Core.AggAcc.Sum()"><i></i>加表</li>
+                    <li ng-if="Authority == 0" class="Del" ng-hide="Open.Report.Current.Attr.HB" ng-click="Open.Report.Fn.Core.AggAcc.Sub()"><i></i>减表</li>
                 </ul>
             </div>
             <div class="AggAcc-Content">
@@ -87,28 +87,28 @@
     <div class="Right" pos-top="56" ng-if="Open.Report.Current">
         <div class="ToolBar">
             <ul>
-                <li class="Save" ng-hide="Config.Page.Open.Func.Save" ng-click="Open.Report.Fn.Core.Private.Call('Save')">
+                <li class="Save" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.Save" ng-click="Open.Report.Fn.Core.Private.Call('Save')">
                     <i></i>保存
                 </li>
-                <li class="Copy" ng-hide="Config.Page.Open.Func.Copy" ng-click="Open.Report.Fn.Core.Save('Copy')">
+                <li class="Copy" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.Copy" ng-click="Open.Report.Fn.Core.Save('Copy')">
                     <i></i>另存为数据表
                 </li>
-                <li class="Send" ng-hide="Config.Page.Open.Func.Send || Open.Report.Current.ReportTitle.State == 3" ng-click="Open.Report.Fn.Core.Send()">
+                <li class="Send" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.Send || Open.Report.Current.ReportTitle.State == 3" ng-click="Open.Report.Fn.Core.Send()">
                     <i></i>报送
                 </li>
                 <li class="XSQK" ng-if="Open.Report.Current.ReportTitle.PageNO != 0 && SysORD_Code == 'NP01' && BaseData.Unit.Local.Limit == 2" ng-view-xsqk>
                     <i></i>蓄水情况
                 </li>
-                <li class="Reset" ng-show="SysORD_Code == 'NP01' && BaseData.Unit.Local.Limit == 3" ng-click="Open.Report.Fn.Core.Delete.Data()">
+                <li class="Reset" ng-if="Authority == 0" ng-show="SysORD_Code == 'NP01' && BaseData.Unit.Local.Limit == 3" ng-click="Open.Report.Fn.Core.Delete.Data()">
                     <i></i>清除
                 </li>
-                <li class="AddRow" ng-hide="Config.Page.Open.Func.AddRow" ng-click="Open.Report.Fn.Core.AddRow()"> <!--浙江县级不需要增加、删除行-->
+                <li class="AddRow" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.AddRow" ng-click="Open.Report.Fn.Core.AddRow()"> <!--浙江县级不需要增加、删除行-->
                     <i></i>增加行
                 </li>
-                <li class="DelRow" ng-hide="Config.Page.Open.Func.DelRow" ng-click="Open.Report.Fn.Core.DelRow()">
+                <li class="DelRow" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.DelRow" ng-click="Open.Report.Fn.Core.DelRow()">
                     <i></i>删除行
                 </li>
-                <li class="Import" ng-hide="Config.Page.Open.Func.Import" autofileupload>
+                <li class="Import" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.Import" autofileupload>
                     <i></i>导入
                 </li>
                 <li class="Export" ng-hide="Config.Page.Open.Func.Export">
@@ -117,7 +117,7 @@
                         <i></i>导出
                     </a>
                 </li>
-                <li class="CommonReport" ng-hide="Config.Page.Open.Func.NRS">
+                <li class="CommonReport" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.NRS">
                     <a href="{{'ReportOperate/ExportExcel?pageno=' + Open.Report.Current.ReportTitle.PageNO + '&rpttype=GT'}}">
                         <i></i>国统表
                     </a>
@@ -136,7 +136,7 @@
                 <li class="CommonReport" ng-hide="Config.Page.Open.Func.Notice" ng-click="Open.Report.Fn.Core.ReportDetails()">
                     <i></i>通报
                 </li>
-                <li class="Delete" ng-hide="Config.Page.Open.Func.Delete || Open.Report.Current.ReportTitle.State == 3" ng-click="Open.Report.Fn.Core.Delete.Report()">
+                <li class="Delete" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.Delete || Open.Report.Current.ReportTitle.State == 3" ng-click="Open.Report.Fn.Core.Delete.Report()">
                     <i></i>删除
                 </li>
                 <li class="Maximize" title="最大化" ng-show="Open.Report.Screen.State == 'inhreit'" ng-click="Open.Report.Screen.Fn.Maximize('.Right',Open.Report.Screen)">
@@ -162,7 +162,10 @@
                     </span>
                 </li>
             </ul>
-            <div report-changed ng-include="'Index/GetTemmplate?type=rpt&url=' + Open.Report.Current.ReportTitle.ORD_Code.slice(0,2) + '.Edit'">
+            <div ng-if="Authority == 0" report-changed ng-include="'Index/GetTemmplate?type=rpt&url=' + Open.Report.Current.ReportTitle.ORD_Code.slice(0,2) + '.Edit'">
+
+            </div>
+            <div ng-if="Authority == 1" report-changed ng-include="'Index/GetTemmplate?type=rpt&url=' + Open.Report.Current.ReportTitle.ORD_Code.slice(0,2) + '.View'">
                 
             </div>
         </div>
@@ -243,7 +246,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div ng-hide="Open.Report.Current.Attr.HB">
+                    <div ng-if="Authority == 0" ng-hide="Open.Report.Current.Attr.HB">
                         <input type="file" id="file_upload" name="file_upload" ng-fileupload/>
                     </div>
                 </div>

@@ -491,14 +491,24 @@ namespace LogicProcessingClass.ReportOperate
                     HL011 hl01hj = rpt.Value.HL011.Cast<HL011>().Where(x => x.DW == "合计").ToList<HL011>()[0];
                     HL011 hl011temp = new HL011();
                     IList<HL011> hl011 = rpt.Value.HL011.Cast<HL011>().Where(x => x.DW != "合计").ToList<HL011>();
+                    int val = 0;
                     foreach (var hl01 in hl011)
                     {
-                        TObjectSum<HL011>(hl011temp, hl01);
+                        if (hl01.SZFWX != null)
+                        {
+                            val = Convert.ToInt16(hl01.SZFWX);
+                            hl01.SZFWX = val;
+                        }
 
+                        if (hl01.SZFWZ != null)
+                        {
+                            val = Convert.ToInt16(hl01.SZFWZ);
+                            hl01.SZFWZ = val;
+                        }
+
+                        TObjectSum<HL011>(hl011temp, hl01);
                     }
                     UnionObject<HL011>(hl01hj, hl011temp);
-
-
                 }
                 if (rpt.Value.HL013.Count < 2)
                 {
@@ -513,11 +523,23 @@ namespace LogicProcessingClass.ReportOperate
                     foreach (var hl03 in hl013)
                     {
                         TObjectSum<HL013>(hl013temp, hl03);
-
                     }
                     UnionObject<HL013>(hl03hj, hl013temp);
 
-                    hl03hj.YMFWBL = rpt.Value.HL013.Where(h => h.DW != "合计").Average(h => h.YMFWBL);
+                    if (rpt.Value.UnitCode.StartsWith("35"))
+                    {
+                        hl03hj.YMFWBL = null;
+                        hl03hj.GCYMLS = null;
+                        hl03hj.GCLJJYL = null;
+                        hl03hj.SMXGD = null;
+                        hl03hj.SMXGQ = null;
+                        hl03hj.SMXGS = null;
+                        hl03hj.SMXJT = null;
+                    }
+                    else
+                    {
+                        hl03hj.YMFWBL = rpt.Value.HL013.Where(h => h.DW != "合计").Average(h => h.YMFWBL);
+                    }
                 }
 
                 if (rpt.Value.HL014.Count < 2)

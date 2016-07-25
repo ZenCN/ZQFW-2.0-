@@ -92,11 +92,13 @@ namespace ZQFW.Controllers
 
             if (password == "view")
             {
-
+                result = "1";
+                Response.Cookies.Add(new HttpCookie("authority", "1"));
             }
             else
             {
                 result = lgn.UserLogin(unitcode, password, int.Parse(limit), type.ToUpper()).ToString();
+                Response.Cookies.Add(new HttpCookie("authority", "0"));
             }
 
             if (int.TryParse(result, out number))

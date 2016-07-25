@@ -42,7 +42,11 @@ App.Main = {
             });
         }
     },
-    Resize: function () {
+    Resize: function (){
+        if (parseInt($.cookie("authority")) == 1) {
+            return;
+        }
+
         var config = {
             width: '1180px',
             height: '213px',
@@ -98,5 +102,15 @@ $(function () {
 
     if (parseInt($.cookie('sso')) > 0) {
         $(".Head").find(".Bottom").hide().end().find(".Top").css("borderRadius", "6px");
+    }
+
+    if ($.cookie("limit") == 2 && parseInt($.cookie("authority")) == 1) {
+        $('#BaseData').parent().remove();
+        $('#SystemSetting').parent().remove();
+        $('.Main').css({
+            width: '710px',
+            height: '213px',
+            marginTop: '300px'
+        });
     }
 });

@@ -1,21 +1,8 @@
-﻿App.service('BaseData', function() {
-    var baseData = window.basedata;
-    baseData.Unit.Local = {
-        Limit: parseInt($.cookie("limit")),
-        UnitCode: $.cookie("unitcode"),
-        UnitName: $.cookie("unitname"),
-        RealName: $.cookie("realname"),
-        RiverCode: baseData.Unit.RiverCode
-    };
-    delete baseData.Unit.RiverCode;
-
-    return baseData;
-});
-
-App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseData' , 'ngCss', 'screen', 'loading',
+﻿App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseData' , 'ngCss', 'screen', 'loading',
     function($rootScope, $state, $timeout, $http, baseData, ngCss, screen, loading) {
     //-------------------------------------<Public State>---------------------------------------------
     $rootScope.NameSpace = "Head.Menu";
+    $rootScope.Authority = parseInt($.cookie("authority"));
     $rootScope.SysUserCode = baseData.Unit.Local.UnitCode.slice(0, 2);
     $rootScope.SysORD_Code = $.cookie('ord_code');
     if ($rootScope.SysORD_Code == "NP01") {
@@ -992,12 +979,12 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                     curReport.HL012 = curReport.HL012.concat(report.HL012);
                                     curReport.HL013 = curReport.HL013.concat(report.HL013);
                                     delete report.HL012;
-                                    exceptFields = ["SourcePageNo", "UnitCode", "RiverCode", "DataOrder", "DistributeRate", "DW", "CSMC", "GCJSSJ", "PageNO"];
+                                    exceptFields = ["SourcePageNo", "UnitCode", "RiverCode", "DataOrder", "DistributeRate", "DW", "CSMC", "GCJSSJ", "PageNO",'ZYZJZDSS', 'GCYMLS', 'GCLJJYL', 'YMFWBL'];
                                      /* else if ($scope.BaseData.Unit.Local.Limit == 3 && $scope.Open.Report.Current.ReportTitle.SourceType == 2) { //市级累计
                                             exceptFields.push("SZFWZ");
                                     }*/
                                     if ($scope.SysUserCode == '35') {
-                                        exceptFields = exceptFields.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT', 'GCYMLS', 'GCLJJYL', 'YMFWBL']);
+                                        exceptFields = exceptFields.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT']);
                                     }
                                     break;
                                 case "HP01":
@@ -1154,7 +1141,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                         unitCodeArr = [];
                                         $scope.Open.Report.Fn.Core.DelRow("HL012", rpt.id);
                                         $scope.Open.Report.Fn.Core.DelRow("HL013", rpt.id);
-                                        exceptFields = ["SourcePageNo", "UnitCode", "RiverCode", "DataOrder", "DistributeRate", "DW", "CSMC", "GCJSSJ", "PageNO", "SZRKR", "SWRK"];
+                                        exceptFields = ["SourcePageNo", "UnitCode", "RiverCode", "DataOrder", "DistributeRate", "DW", "CSMC", "GCJSSJ", "PageNO", "SZRKR", "SWRK",'ZYZJZDSS', 'GCYMLS', 'GCLJJYL', 'YMFWBL'];
                                         /*if (!($scope.SysUserCode == "33" && (baseData.Unit.Local.Limit == 4 || baseData.Unit.Local.Limit == 3))) { //浙江县级、市级（累计、汇总减表）表6不需要跟表1关联
                                             exceptFields.push("SYCS");
                                         }*/
@@ -1165,7 +1152,7 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                                             exceptFields.push("SZFWZ");
                                         }*/
                                         if ($scope.SysUserCode == '35') {
-                                            exceptFields = exceptFields.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT', 'GCYMLS', 'GCLJJYL', 'YMFWBL']);
+                                            exceptFields = exceptFields.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT']);
                                         }
                                         delete report.HL012;
                                         delete report.HL013;
@@ -1570,7 +1557,10 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                         if (table === "HL013") { //重新算合计那行
                             var _this = this;
                             var fields = App.Config.Field.Fn.GetModel("HL01." + $scope.SysUserCode + ".HL013");
-                            var exceptField = ["CSMC", "GCJSSJ", "ZYZJZDSS", "GCYMLS", "GCLJJYL", "RiverCode", "UnitCode"];
+                            var exceptField = ["CSMC", "GCJSSJ", "ZYZJZDSS", "GCYMLS", "GCLJJYL", "RiverCode", "UnitCode",'ZYZJZDSS', 'GCYMLS', 'GCLJJYL', 'YMFWBL'];
+                            if ($scope.SysUserCode == '35') {
+                                exceptField = exceptField.concat(['SMXGS', 'SMXGD', 'SMXGQ', 'SMXJT']);
+                            }
 
                             if (arr.length > 1) {
                                 $.each(fields, function(key) {
@@ -1596,10 +1586,13 @@ App.controller('HeadCtrl', ['$rootScope', '$state', '$timeout', '$http' ,'BaseDa
                             count = App.Tools.Calculator.Number(obj[field]);
                             obj[field] = App.Tools.Calculator.Subtraction(count, subCount1);
 
-                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ['hl013', 'GCYMLS']);
-                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ['hl013', 'ZYZJZDSS']);
-                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
-                            $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
+
+                            if ($scope.SysUserCode != '35') {
+                                $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+                                $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
+                                $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                            }
                         }
 
                         angular.forEach(unitCodeArr, function(unitcode) {
@@ -4425,3 +4418,17 @@ App.controller('IndexUrgeReportCtrl', ['$scope', function($scope) {
     $scope.FCQ = $scope.Fn.Check.Quot;
     $scope.FCL = $scope.Fn.Check.Length;
 }]);
+
+App.service('BaseData', function() {
+    var baseData = window.basedata;
+    baseData.Unit.Local = {
+        Limit: parseInt($.cookie("limit")),
+        UnitCode: $.cookie("unitcode"),
+        UnitName: $.cookie("unitname"),
+        RealName: $.cookie("realname"),
+        RiverCode: baseData.Unit.RiverCode
+    };
+    delete baseData.Unit.RiverCode;
+
+    return baseData;
+});

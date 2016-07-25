@@ -1258,14 +1258,7 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(9 + i).GetCell(5).SetCellValue("");
                 }
 
-                if (double.TryParse(xmmhl013s[i].GCJSSJ, out val) && val > 0)
-                {
-                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue(val);
-                }
-                else
-                {
-                    sheet1.GetRow(9 + i).GetCell(6).SetCellValue("");
-                }
+                sheet1.GetRow(9 + i).GetCell(6).SetCellValue(xmmhl013s[i].GCJSSJ);
 
                 if (double.TryParse(xmmhl013s[i].GCYMLS, out val) && val > 0)
                 {

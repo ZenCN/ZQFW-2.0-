@@ -1,9 +1,9 @@
 ﻿<div class="Head">
     <div class="Top">
-        <span class="TopLeft">您好，尊敬的&nbsp;<span style="font-weight: bolder;">{{BaseData.Unit.Local.RealName}}</span>&nbsp;用户</span>
+        <span class="TopLeft">您好，尊敬的&nbsp;<span style="font-weight: bolder;">{{BaseData.Unit.Local.UnitName}}</span>&nbsp;用户</span>
         <span class="TopRight">
             <a href="javascript:void(0);" ng-show="CurrentUrl != '/Main' && BaseData.Unit.Local.Limit < 5 || SysUserCode == '33' " onclick="App.System.BackToMain()">返回主界面</a>
-            <a href="javascript:void(0);" ng-click="Fn.UpdatePassword()" ng-hide="['HistoryDisaster', 'BaseData'].In_Array(Attr.RootName)">修改密码</a>
+            <a href="javascript:void(0);" ng-if="Authority == 0" ng-click="Fn.UpdatePassword()" ng-hide="['HistoryDisaster', 'BaseData'].In_Array(Attr.RootName)">修改密码</a>
             <a href="javascript:void(0);" onclick="App.System.Exit()">退出</a>
         </span>
     </div>

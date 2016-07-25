@@ -57,7 +57,11 @@
     }
 };
 
-window.onload = function() {
+window.onload = function () {
+    if (parseInt($.cookie('authority')) == 1) { //查看权限不需要获取催报消息
+        return;
+    }
+
     $.jGrowl.defaults.closerTemplate = "<div style=' width: 180px'>关闭所有消息</div>";
 
     $.ajax({

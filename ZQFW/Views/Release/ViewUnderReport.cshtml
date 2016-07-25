@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../CSS/Public/ToolBar.css"/>
     <link rel="stylesheet" href="../../CSS/Plugins/Easydialog.css"/>
     <link rel="stylesheet" href="../../CSS/Plugins/Uploadify/uploadify.css"/>
-    <link rel="stylesheet" href="../../CSS/Pages/Index/ViewUnderReport.css?t=0602"/>
+    <link rel="stylesheet" href="../../CSS/Pages/Index/ViewUnderReport.css?t=0722"/>
     <!--------------------------JavaScript----------------------->
     <!--Base Library-->
     <script src="../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
@@ -32,17 +32,17 @@
             RiverUnits: @Html.Raw(ViewData["RiverUnits"].ToString())
         };
     </script>
-    <script src="../../Scripts/Application/ViewReport.js" type="text/javascript"></script>
+    <script src="../../Scripts/Application/ViewReport.js?t=0722" type="text/javascript"></script>
     <script src="../../Scripts/Configuration/Field.js" type="text/javascript"></script>
-    <script src="../../Scripts/Directives/PublicDirective.js" type="text/javascript"></script>
+    <script src="../../Scripts/Directives/PublicDirective.js?t=0721" type="text/javascript"></script>
     <script src="../../Scripts/Others/Tools.js" type="text/javascript"></script>
 </head>
     <body ng-controller="MainCtrl">
         <div class="ToolBar">
             <ul>
-                <li class="Save" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Save()"><i></i>保存</li>
-                <li class="Delete" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Delete.Report()"><i></i>删除</li>
-                <li class="Send" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Send()"><i></i>报送</li>
+                <li class="Save" ng-if="Authority == 0" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Save()"><i></i>保存</li>
+                <li class="Delete" ng-if="Authority == 0" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Delete.Report()"><i></i>删除</li>
+                <li class="Send" ng-if="Authority == 0" ng-show="BaseData.isRiverRpt && Report[Attr.NameSpace].Current.ReportTitle.State !=3" ng-click="Fn.Send()"><i></i>报送</li>
                 <li class="Export">
                     <a ng-if="BaseData.isRiverRpt" href="{{'/ReportOperate/ExportExcel?pageno=' + Report[Attr.NameSpace].Current.ReportTitle.PageNO + '&rpttype=' + 
                             Report[Attr.NameSpace].Current.ReportTitle.ORD_Code + '&limit=' + BaseData.Unit.Local.Limit + '&unitcode=' + 
@@ -105,7 +105,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div ng-if="BaseData.isRiverRpt">
+                    <div ng-if="Authority == 0 && BaseData.isRiverRpt">
                         <input type="file" id="file_upload" name="file_upload" ng-fileupload/>
                     </div>
                 </div>

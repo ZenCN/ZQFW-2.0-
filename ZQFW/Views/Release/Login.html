@@ -21,7 +21,7 @@
     <script src="../../Scripts/Library/Plugins/jquery.cookie.js" type="text/javascript"></script>
     <script src="../../Scripts/Library/Plugins/easydialog.min.js" type="text/javascript"></script>
     <!--Angular MVC-->
-    <script src="../../Scripts/Application/LoginApp.js" type="text/javascript"></script>
+    <script src="../../Scripts/Application/LoginApp.js?t=0720" type="text/javascript"></script>
     <!--Custom-->
     <script src="../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
     <script src="../../Scripts/Library/Extend/String.js" type="text/javascript"></script>
@@ -44,7 +44,7 @@
                 <li>
                     <label>县&nbsp;&nbsp;级：</label>
                     <label class="lbl" ng-show="Attr.Login.Quick.Enable">{{Attr.Login.Quick.County.Left}}&nbsp;&nbsp;{{Attr.Login.Quick.County.Right}}</label> 
-                    <select ng-hide="Attr.Login.Quick.Enable" name="County.Left" ng-model="Attr.District.County.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.County.Left.Select" ng-change="Fn.OnChange.Select()">
+                    <select ng-disabled="Attr.District.City.Left.Value.UnitCode == '35100000'" ng-hide="Attr.Login.Quick.Enable" name="County.Left" ng-model="Attr.District.County.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.County.Left.Select" ng-change="Fn.OnChange.Select()">
                     </select>
                 </li>
                 <li ng-hide="['15','22','23','33','35','44','45'].In_Array(Attr.UserCode)">

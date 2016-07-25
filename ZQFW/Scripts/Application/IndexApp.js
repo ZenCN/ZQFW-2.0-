@@ -1,9 +1,19 @@
 ﻿window.App = angular.module("Index", ['ui.router', 'Scope.safeApply']);
 
 App.config([
-    '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('', '/New');
-        $urlRouterProvider.otherwise('/New');
+    '$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+
+        var default_url = '/Open';
+        switch (parseInt($.cookie("authority"))) {
+            case 0:
+                default_url = '/New';
+                break;
+            case 1:
+                default_url = '/Open';
+                break;
+        }
+        $urlRouterProvider.when('', default_url);
+        $urlRouterProvider.otherwise(default_url);
 
         $stateProvider.state('Head', {
             url: '',

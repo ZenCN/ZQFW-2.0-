@@ -136,10 +136,14 @@ App.directive('autofileupload', function () {
                                                         obj = {};
                                                     }
 
-                                                    $.each(this, function(k, val) { //循环每列
+                                                    $.each(this, function (k, val) { //循环每列
+                                                        if (!isNaN(val)) {
+                                                            val = Number(val);
+                                                        }
+
                                                         if (["HL011", "HL014"].In_Array(key)) { //过滤DW
                                                             if (k > 0) {
-                                                                $scope.Open.Report.Current[key][j][map[key][i + "-" + (k - 1)]] = Number(val) > 0 ? val : undefined;
+                                                                $scope.Open.Report.Current[key][j][map[key][i + "-" + (k - 1)]] = val > 0 ? val : undefined;
                                                             }
                                                         } else {
                                                             field = map[key][i + "-" + k];

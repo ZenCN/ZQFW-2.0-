@@ -11,7 +11,7 @@ window.App = angular.module('Login', []).run(function ($http) {
     $http.defaults.cache = true;  //启用数据数据缓存
 
     $(function () {
-        $(document).keydown(function() {
+        $(document).keydown(function () {
             if (event.keyCode == 13 || event.which == 13) {
                 $scope.Fn.Login.In();
             }
@@ -119,8 +119,8 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
             Province: {
                 Left: {
                     //浙江省 33000000  湖南省 43000000 吉林省 22000000 黑龙江省 23000000  内蒙古 15000000  江西省 36000000 广西 45000000 福建省 35000000
-                    UnitName: "福建省",
-                    UnitCode: "35000000"
+                    UnitName: "广西",
+                    UnitCode: "45000000"
                 }
             },
             City: {
@@ -182,9 +182,9 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
     };
     $scope.Attr.UserCode = $scope.Attr.District.Province.Left.UnitCode.slice(0, 2);
     /*if ($scope.Attr.UserCode == "15") {
-        $scope.Attr.CurrentTab = "HL";
+    $scope.Attr.CurrentTab = "HL";
     } else {
-        $scope.Attr.CurrentTab = "Normal";
+    $scope.Attr.CurrentTab = "Normal";
     }*/
     $scope.Attr.CurrentTab = "HL";
 
@@ -308,13 +308,13 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
                             type: $scope.Attr.CurrentTab,
                             fresh: Math.random() //解决浏览器的缓存问题
                         },
-                        beforeSend: function() {
+                        beforeSend: function () {
                             $('#Login').addClass('Logining'); //将按钮显示为登录中
                         },
-                        complete: function() {
+                        complete: function () {
                             $('#Login').removeClass('Logining'); //移除按钮的登录中状态
                         },
-                        success: function(data) {
+                        success: function (data) {
                             if (data.indexOf("Error:") == 0) {
                                 alert(data);
                                 throw data;
@@ -328,18 +328,18 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
                                 $.cookie("limit", $scope.Attr.Login.User.Limit);
 
                                 if ($scope.Attr.CurrentTab == "HL") {
-                                    var fn = function() {
+                                    var fn = function () {
                                         var url = "";
                                         if ($scope.Attr.District.Province.Left.UnitCode == "33000000") {
                                             url = "/main";
                                         } else {
                                             switch (Number($scope.Attr.Login.User.Limit)) {
-                                            case 5:
-                                                url = "/town";
-                                                break;
-                                            default:
-                                                url = "/main";
-                                                break;
+                                                case 5:
+                                                    url = "/town";
+                                                    break;
+                                                default:
+                                                    url = "/main";
+                                                    break;
                                             }
                                         }
 
@@ -369,7 +369,7 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
                                 throw data;
                             }
                         },
-                        error: function(xhr, status) {
+                        error: function (xhr, status) {
                             $scope.Attr.Login.User.Message = "网络超时，状态：" + status;
                             animate.Shake();
                         }
