@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -8,9 +10,13 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using DBHelper;
 using EntityModel;
+using JetBrains.Util;
 using LogicProcessingClass.AuxiliaryClass;
 using LogicProcessingClass.Model;
 using LogicProcessingClass.ReportOperate;
+using Newtonsoft.Json;
+using NuGet;
+using HttpUtility = System.Web.HttpUtility;
 
 namespace ZQFW.Controllers
 {
@@ -198,7 +204,7 @@ namespace ZQFW.Controllers
                     hj_list = fxdict.TB62_NMReservoir.Where(t => t.UnitCode == unitCode).ToList();
                 }
                 string hj_str = ",XSHJ:[";
-                if (hj_list.Any())
+                if (Enumerable.Any(hj_list))
                 {
                     foreach (TB62_NMReservoir hj in hj_list)
                     {
@@ -367,6 +373,106 @@ namespace ZQFW.Controllers
             return JR;
         }
 
+        public string SaveDeltaReport(string Reports)
+        {
+            string response = "";
+
+            //创建匿名类型集合以方便反序列化
+            var report = new
+            {
+                ReportTitle = new ReportTitle(),
+                HL011 = new List<HL011>(),
+                HL012 = new List<HL012>(),
+                HL013 = new List<HL013>(),
+                HL014 = new List<HL014>()
+            };
+            var list = Enumerable.Repeat(report, 1).ToList();
+
+            bool is_new = false;
+            int pageno = 0;
+            int limit = int.Parse(Request.Cookies["limit"].Value);
+            ReportTitle report_title = null;
+            ReportHelpClass rptHelp = new ReportHelpClass();
+            Entities getEntity = new Entities();
+            //BusinessEntities local_db = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities under_db = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);
+            try
+            {
+                response = "[";
+                AggAccRecord agg = null;
+                var rpts = JsonConvert.DeserializeAnonymousType(Reports, list);
+                for (var i = 0; i < rpts.Count; i++)
+                {
+                    if (rpts[i].ReportTitle.PageNO > 0) //删除之前的
+                    {
+                        is_new = false;
+                        pageno = rpts[i].ReportTitle.PageNO;
+                        report_title = under_db.ReportTitle.Where(t => t.PageNO == pageno).SingleOrDefault();
+                        under_db.ExecuteStoreCommand("delete from hl011 where pageno=" + rpts[i].ReportTitle.PageNO + ";"
+                                                     + "delete from hl012 where pageno=" + rpts[i].ReportTitle.PageNO + ";"
+                                                     + "delete from hl013 where pageno=" + rpts[i].ReportTitle.PageNO + ";"
+                                                     + "delete from hl014 where pageno=" + rpts[i].ReportTitle.PageNO + ";"
+                                                     + "delete from aggaccrecord where pageno=" + rpts[i].ReportTitle.PageNO);
+                    }
+                    else
+                    {
+                        is_new = true;
+                        report_title = rpts[i].ReportTitle;
+                        report_title.PageNO = rptHelp.FindMaxPageNO(limit + 1);
+                    }
+
+                    response += "{\"UnitCode\":" + report_title.UnitCode + ",\"PageNO\":" + report_title.PageNO + "},";
+
+                    if (rpts[i].HL011 != null)
+                    {
+                        for (int j = 0; j < rpts[i].HL011.Count; j++)
+                        {
+                            report_title.HL011.Add(rpts[i].HL011[j]);
+                        }
+                    }
+
+                    if (rpts[i].HL012 != null)
+                    {
+                        for (int j = 0; j < rpts[i].HL012.Count; j++)
+                        {
+                            report_title.HL012.Add(rpts[i].HL012[j]);
+                        }
+                    }
+
+                    if (rpts[i].HL013 != null)
+                    {
+                        for (int j = 0; j < rpts[i].HL013.Count; j++)
+                        {
+                            report_title.HL013.Add(rpts[i].HL013[j]);
+                        }
+                    }
+
+                    if (rpts[i].HL014 != null)
+                    {
+                        for (int j = 0; j < rpts[i].HL014.Count; j++)
+                        {
+                            report_title.HL014.Add(rpts[i].HL014[j]);
+                        }
+                    }
+
+                    if (is_new)
+                    {
+                        under_db.ReportTitle.AddObject(report_title);
+                    }
+                }
+
+                //local_db.SaveChanges();
+                under_db.SaveChanges();
+                response = response.Remove(response.Length - 1) + "]";
+            }
+            catch (Exception ex)
+            {
+                response = ex.Message;
+            }
+
+            return response;
+        }
+
         /// <summary>
         /// 保存或修改报表（需要通过POST请求）如果不是新建,IsNew参数必须为false，PageNO为正确的页号
         /// </summary>
@@ -507,6 +613,8 @@ namespace ZQFW.Controllers
             }
             return temp;
         }
+
+
         /// <summary>
         /// 查看报表（优先使用单位级别，否则需要传入单位代码。两者不能同时为空）
         /// 传入UnitCode适用与打开多级报表
@@ -548,7 +656,11 @@ namespace ZQFW.Controllers
                 {
                     result = viewRpt.ViewReportFormInfo(limit, pageNO, rptType);
                     arr = viewRpt.GetSourceReportList(pageNO, limit, (sourceType == 2 ? 1 : 0), unitName, unitCode); // "1"表示本级库
-                    result = result + "," + arr;
+                    
+                    //打开delta_report
+                    var delta_rpt = viewRpt.GetDeltaReport(pageNO, limit);
+
+                    result = result + "," + arr + "," + delta_rpt;
                 }
             }
             jsr = Json("{" + result + "}");

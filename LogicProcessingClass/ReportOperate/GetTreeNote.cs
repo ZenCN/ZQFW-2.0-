@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Data;
 using DBHelper;
 using EntityModel;
 using System.Globalization;
@@ -646,61 +647,68 @@ namespace LogicProcessingClass.ReportOperate
             IList<int?> localAggList = null;
             IList<int?> upperAggList = null;
 
-
-            Entities getEntity = new Entities();
-            BusinessEntities upEntities = null;
-            if (typeLimit == 0)  //本级
+            try
             {
-                /*if (limit > 2)
+                Entities getEntity = new Entities();
+                BusinessEntities upEntities = null;
+                if (typeLimit == 0)  //本级
                 {
-                    upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit - 1);
-                    huiZongAggList = upEntities.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();//汇总
+                    /*if (limit > 2)
+                    {
+                        upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit - 1);
+                        huiZongAggList = upEntities.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();//汇总
+                    }
+                    else
+                    {
+                        huiZongAggList = new List<int?>();
+                    }
+                    leiJiAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 2).Select(t => t.SPageNO).Distinct().ToList();//累计*/
+                    upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);  //不管是否报送先从本级库中查SPageNO是否被累计过
+                    localAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 2).Select(t => t.SPageNO).Distinct().ToList();
+                    if (limit > 2)  //省级无法查看国家防总的AggAcc表
+                    {
+                        upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit - 1);  //查看已报送的表是否被上级汇总过
+                        upperAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();
+                    }
                 }
-                else
+                else  //下级
                 {
-                    huiZongAggList = new List<int?>();
+                    upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit); //下级表是否被本级汇总过
+                    upperAggList = upEntities.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();//汇总
                 }
-                leiJiAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 2).Select(t => t.SPageNO).Distinct().ToList();//累计*/
-                upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);  //不管是否报送先从本级库中查SPageNO是否被累计过
-                localAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 2).Select(t => t.SPageNO).Distinct().ToList();
-                if (limit > 2)  //省级无法查看国家防总的AggAcc表
+                object[] temp = { };
+                foreach (var obj in rptList)
                 {
-                    upEntities = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit - 1);  //查看已报送的表是否被上级汇总过
-                    upperAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();
+                    temp = new object[12];
+                    temp[0] = obj.PageNO;
+                    temp[1] = obj.UnitCode;
+                    temp[2] = obj.StartDateTime.ToString();
+                    temp[3] = obj.EndDateTime.ToString();
+                    temp[4] = obj.StatisticalCycType;
+                    temp[5] = obj.SourceType;
+                    temp[6] = obj.State;
+                    temp[7] = obj.SendOperType;
+                    temp[8] = obj.LastUpdateTime;
+                    temp[9] = obj.SendTime;
+                    //报表是否被自己本级累计过（不管是否已报送，特别注意：我的报表已使用过，那表示一定是因为被累计而纯在AggAcc表的SPageno里面），
+                    //如果已报送的话，要看上级库中Aggacc表中看该表是否被汇总过（注意：下级表只能被上级汇总才会出现在上级的AggAcc表里面）
+                    if (localAggList != null && localAggList.Contains(obj.PageNO) || Convert.ToInt32(obj.State) == 3 && upperAggList != null && upperAggList.Contains(obj.PageNO))
+                    {
+                        temp[10] = "true";
+                    }
+                    else
+                    {
+                        temp[10] = "false";
+                    }
+                    temp[11] = Convert.ToDateTime(obj.WriterTime).ToString("M月d日 HH:mm");
+                    arrList.Add(temp);
                 }
             }
-            else  //下级
+            catch (System.Exception ex)
             {
-                upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit); //下级表是否被本级汇总过
-                upperAggList = upEntities.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();//汇总
+                string msg = ex.Message;
             }
-            object[] temp = { };
-            foreach (var obj in rptList)
-            {
-                temp = new object[12];
-                temp[0] = obj.PageNO;
-                temp[1] = obj.UnitCode;
-                temp[2] = obj.StartDateTime.ToString();
-                temp[3] = obj.EndDateTime.ToString();
-                temp[4] = obj.StatisticalCycType;
-                temp[5] = obj.SourceType;
-                temp[6] = obj.State;
-                temp[7] = obj.SendOperType;
-                temp[8] = obj.LastUpdateTime;
-                temp[9] = obj.SendTime;
-                //报表是否被自己本级累计过（不管是否已报送，特别注意：我的报表已使用过，那表示一定是因为被累计而纯在AggAcc表的SPageno里面），
-                //如果已报送的话，要看上级库中Aggacc表中看该表是否被汇总过（注意：下级表只能被上级汇总才会出现在上级的AggAcc表里面）
-                if (localAggList != null && localAggList.Contains(obj.PageNO) || Convert.ToInt32(obj.State) == 3 && upperAggList != null && upperAggList.Contains(obj.PageNO))
-                {
-                    temp[10] = "true";
-                }
-                else
-                {
-                    temp[10] = "false";
-                }
-                temp[11] = Convert.ToDateTime(obj.WriterTime).ToString("M月d日 HH:mm");
-                arrList.Add(temp);
-            }
+            
             return arrList;
         }
 

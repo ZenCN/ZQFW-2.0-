@@ -6,11 +6,13 @@ using System.Web.Script.Serialization;
 using EntityModel;
 using DBHelper;
 using System.Collections;
+using System.Data;
 using LogicProcessingClass.XMMZH;
 using EntityModel.ReportAuxiliaryModel;
 using LogicProcessingClass.AuxiliaryClass;
 using System.Globalization;
 using System.Net.Cache;
+using Newtonsoft.Json;
 
 /*----------------------------------------------------------------
 // 版本说明：
@@ -36,26 +38,34 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string ViewReportTitleInfo(string unitCode, int limit)
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             string reportInfo = "";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-            var rpts = from rpt in busEntity.ReportTitle
-                       where rpt.UnitCode == unitCode && rpt.ORD_Code == "HL01" && rpt.RPTType_Code == "XZ0"
-                       && rpt.Del != 1 && rpt.CopyPageNO == 0 && rpt.SendOperType == 0 && rpt.CSPageNO == 0
-                       orderby rpt.PageNO descending
-                       select rpt;
-            //IList<ReportTitle> rptList = rpts.ToList<ReportTitle>();
-            XMMZHClass ZH = new XMMZHClass();
-            if (rpts.Count() > 0)
+            try
             {
-                LZReportTitle rt = ZH.ZHQTReportTitle(rpts.First());
-                reportInfo = "RecentReportInfo:{HL01:" + serializer.Serialize(rt).Replace("\"", "'") + "}";
-                //reportInfo = "ReportInfo:" + serializer.Serialize(rpts.First()); // rpt对象中还有其他导航属性 会导致循环引用，需要一个其他辅助类XMMReportTitle
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                BusinessEntities busEntity = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
+                var rpts = from rpt in busEntity.ReportTitle
+                    where rpt.UnitCode == unitCode && rpt.ORD_Code == "HL01" && rpt.RPTType_Code == "XZ0"
+                          && rpt.Del != 1 && rpt.CopyPageNO == 0 && rpt.SendOperType == 0 && rpt.CSPageNO == 0
+                    orderby rpt.PageNO descending
+                    select rpt;
+                //IList<ReportTitle> rptList = rpts.ToList<ReportTitle>();
+                XMMZHClass ZH = new XMMZHClass();
+                if (rpts.Count() > 0)
+                {
+                    LZReportTitle rt = ZH.ZHQTReportTitle(rpts.First());
+                    reportInfo = "RecentReportInfo:{HL01:" + serializer.Serialize(rt).Replace("\"", "'") + "}";
+                    //reportInfo = "ReportInfo:" + serializer.Serialize(rpts.First()); // rpt对象中还有其他导航属性 会导致循环引用，需要一个其他辅助类XMMReportTitle
+                }
+                else
+                {
+                    reportInfo = "RecentReportInfo:{HL01:{}}";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                reportInfo = "RecentReportInfo:{HL01:{}}";
+                string msg = ex.Message;
             }
+
             return reportInfo;
         }
 
@@ -411,7 +421,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="unitCode"></param>
         /// <param name="curLimit">当前登录单位级别</param>
         /// <returns></returns>
-        public string ViewReportFormInfo(int pageNO, string unitCode,int curLimit)
+        public string ViewReportFormInfo(int pageNO, string unitCode, int curLimit)
         {
             string jsonStr = "";
             BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
@@ -451,20 +461,20 @@ namespace LogicProcessingClass.ReportOperate
                 }
                 else
                 {
-                    int[] limitSub = {4,4,6};
-                    if (curLimit==2)
+                    int[] limitSub = { 4, 4, 6 };
+                    if (curLimit == 2)
                     {
                         unitCode = "15110000";//呼和浩特
                     }
-                    string tempCode = unitCode.Substring(0, limitSub[curLimit-2]);
-                    foreach (var hp01 in rpt.NP011.Where(t => t.RSCode!=null && t.RSCode.StartsWith(tempCode)).OrderBy(t=>t.UnitCode).ThenBy(hl => hl.DataOrder))
+                    string tempCode = unitCode.Substring(0, limitSub[curLimit - 2]);
+                    foreach (var hp01 in rpt.NP011.Where(t => t.RSCode != null && t.RSCode.StartsWith(tempCode)).OrderBy(t => t.UnitCode).ThenBy(hl => hl.DataOrder))
                     {
                         LZNP011 lznp011 = ZH.ConvertHLToXMMHL<LZNP011, NP011>(hp01);
                         arrLZnp011.Add(lznp011);
                     }
                     strNP011 = "NP011:" + serializer.Serialize(arrLZnp011);
                 }
-                jsonStr = reportInfo  + "," + strNP011 + tmp;
+                jsonStr = reportInfo + "," + strNP011 + tmp;
 
                 if (curLimit == 2 || curLimit == 3)
                 {
@@ -488,7 +498,7 @@ namespace LogicProcessingClass.ReportOperate
             else
             {
                 jsonStr = "ReportTitle:[],NP011:[],Affix:[]";
-                }
+            }
             return jsonStr;
         }
 
@@ -558,11 +568,11 @@ namespace LogicProcessingClass.ReportOperate
             {
                 BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
                 var aggaccs = (from agg in busEntity.AggAccRecord
-                    where agg.PageNo == pageno
-                    select new
-                    {
-                        agg.SPageNO
-                    }).ToList();
+                               where agg.PageNo == pageno
+                               select new
+                               {
+                                   agg.SPageNO
+                               }).ToList();
 
                 if (aggaccs.Any())
                 {
@@ -575,13 +585,13 @@ namespace LogicProcessingClass.ReportOperate
                     busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);
                     var rpts = (from rpt in busEntity.ReportTitle
                                 where pagenos.Contains(rpt.PageNO)
-                        select new
-                        {
-                            rpt.PageNO,
-                            rpt.UnitName,
-                            rpt.WriterTime,
-                            rpt.UnitCode,
-                        }).ToList();
+                                select new
+                                {
+                                    rpt.PageNO,
+                                    rpt.UnitName,
+                                    rpt.WriterTime,
+                                    rpt.UnitCode,
+                                }).ToList();
 
                     response += "[";
                     DateTime dt = new DateTime();
@@ -596,13 +606,60 @@ namespace LogicProcessingClass.ReportOperate
                 }
                 else
                 {
-                    
+
                     response += "[]";
                 }
             }
             catch (Exception ex)
             {
                 response = ex.Message;
+            }
+
+            return response;
+        }
+
+        //获取差指表数据
+        public string GetDeltaReport(int pageno, int limit)
+        {
+            string response = "";
+            BusinessEntities db_context = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+
+            try
+            {
+                var spagenos = db_context.AggAccRecord.Where(t => t.PageNo == pageno).Select(t => t.SPageNO).ToList();
+                db_context = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1); //下级库
+                var list =
+                    db_context.ReportTitle.Where(t => spagenos.Contains(t.PageNO) && t.SourceType == 6)
+                        .Select(t => t.PageNO)
+                        .ToList();
+                string pagenos = string.Join(",", list);
+
+                JsonSerializerSettings setting = new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                };
+
+                var hl011_list =
+                    db_context.ExecuteStoreQuery<HL011>("select * from hl011 where pageno in(" + pagenos + ")").ToList();
+                response = "HL011:" + JsonConvert.SerializeObject(hl011_list, setting) + ",";
+
+                var hl012_list =
+                    db_context.ExecuteStoreQuery<HL012>("select * from hl012 where pageno in(" + pagenos + ")").ToList();
+                response += "HL012:" + JsonConvert.SerializeObject(hl012_list, setting) + ",";
+
+                var hl013_list =
+                    db_context.ExecuteStoreQuery<HL013>("select * from hl013 where pageno in(" + pagenos + ")").ToList();
+                response += "HL013:" + JsonConvert.SerializeObject(hl013_list, setting) + ",";
+
+                var hl014_list =
+                    db_context.ExecuteStoreQuery<HL014>("select * from hl014 where pageno in(" + pagenos + ")").ToList();
+                response += "HL014:" + JsonConvert.SerializeObject(hl014_list, setting);
+
+                response = "Delta:{" + response + "}";
+            }
+            catch (Exception ex)
+            {
+                response = ex.InnerException.Message;
             }
 
             return response;
@@ -616,7 +673,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="typeLimit">1查看本级，0查看下级</param>
         /// <param name="UnitName"></param>
         /// <returns></returns>
-        public string GetSourceReportList(int pageNO, int limit, int typeLimit, string UnitName,string unitCode)
+        public string GetSourceReportList(int pageNO, int limit, int typeLimit, string UnitName, string unitCode)
         {
             string jsonStr = "";
             BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
@@ -632,7 +689,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 pageNoList += agg.SPageNO + ",";
             }
-            if (pageNoList!="")
+            if (pageNoList != "")
             {
                 pageNoList = pageNoList.Remove(pageNoList.Length - 1);
             }

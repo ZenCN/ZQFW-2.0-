@@ -27,7 +27,7 @@ namespace ZQFW.Controllers
                 str = str.Substring(start_index + 12);
                 str = new LogicProcessingClass.Tools().EncryptOrDecrypt(1,
                     str, DateTime.Now.ToString("yyyyMMdd"));
-                string[] arr = str.Split(new string[] {";"}, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr = str.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
                 str = arr[0].Substring(arr[0].IndexOf("=") + 1);
                 HttpApplicationState app = System.Web.HttpContext.Current.Application;
                 FXDICTEntities dictEntities = app["FXDICTEntities"] == null
@@ -305,25 +305,25 @@ namespace ZQFW.Controllers
             return jsr;
         }
 
-/*        /// <summary>
-        /// 版本检测
-        /// </summary>
-        /// <returns>如果版本有改变，返回1,否则返回0</returns>
-        /// GET: /Login/CheckVersion
-        public JsonResult CheckVersion()
-        {
-            CacheAndVersion version = new CacheAndVersion();
-            bool versionFlag = version.CheckVersionChange();
-            JsonResult jsr = new JsonResult();
-            string temp = "0";
-            if (versionFlag)
-            {
-                temp = "1";
-            }
-            jsr = Json(temp);
-            jsr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return jsr;
-        }*/
+        /*        /// <summary>
+                /// 版本检测
+                /// </summary>
+                /// <returns>如果版本有改变，返回1,否则返回0</returns>
+                /// GET: /Login/CheckVersion
+                public JsonResult CheckVersion()
+                {
+                    CacheAndVersion version = new CacheAndVersion();
+                    bool versionFlag = version.CheckVersionChange();
+                    JsonResult jsr = new JsonResult();
+                    string temp = "0";
+                    if (versionFlag)
+                    {
+                        temp = "1";
+                    }
+                    jsr = Json(temp);
+                    jsr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+                    return jsr;
+                }*/
 
         /// <summary>
         /// 根据单位代码查询密码，或根据单位名字进行模糊查询，如：Login/Query?u=43000000 或 Login/Query?l=2&u=湖南

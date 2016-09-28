@@ -6,6 +6,7 @@ using System.IO;
 using System.Security.Cryptography;
 using EntityModel;
 using System.Collections;
+using System.Data;
 using DBHelper;
 
 /*----------------------------------------------------------------

@@ -133,40 +133,40 @@ namespace LogicProcessingClass.ReportOperate
                                         isNew = false;
                                     }
 
-                                    //string sourceRptResult = "";
+                                    string sourceRptResult = "";
 
                                     #region----保存差值表----差值数据需要在前台传入数据之后进行调试，现阶段没有数据进行测试调试------------------
 
-                                    /*if (diffData.Trim().Length != 0) //不存在差值数据
-                                    {
-                                        ///差值表diffData中如果有正确的PageNO参数，则是修改，否则是新建
-                                        if (ReportTitle["PageNO"].ToString() == "0")
-                                        {
-                                            ReportTitle["State"] = 0;
-                                        }
-                                        DifferentialReport DiffReport = new DifferentialReport();
-                                        if (Convert.ToInt32(ReportTitle["SourceType"].ToString()) == 2) //如果是累计差值表
-                                        {
-                                            int sPageNO = 0;
-                                            sPageNO = pageNO; //新建时用到，如果diffData中正确的传入差值表PageNO，则不会使用sPageNO
-                                            sourceRptResult = DiffReport.SaveOrUpdate(limit, unitCode, diffData,
-                                                ReportTitle,
-                                                sPageNO,
-                                                ref aggAcc, ref dataStr);
-                                        }
-                                        else if (Convert.ToInt32(ReportTitle["SourceType"].ToString()) == 1) //汇总差值表
-                                        {
-                                            ArrayList diffRptList = DiffReport.SplitDiffReportByString(diffData);
-                                            string allDiffPageNOs = null;
-                                            if (diffPageNOs != null)
-                                            {
-                                                allDiffPageNOs = diffPageNOs;
-                                            }
-                                            sourceRptResult = DiffReport.SaveOrUpdate(limit, diffRptList, ReportTitle,
-                                                ref dataStr,
-                                                ref aggAcc, allDiffPageNOs);
-                                        }
-                                    }*/
+                                    //if (diffData.Trim().Length != 0) //不存在差值数据
+                                    //{
+                                    //    ///差值表diffData中如果有正确的PageNO参数，则是修改，否则是新建
+                                    //    if (ReportTitle["PageNO"].ToString() == "0")
+                                    //    {
+                                    //        ReportTitle["State"] = 0;
+                                    //    }
+                                    //    DifferentialReport DiffReport = new DifferentialReport();
+                                    //    if (Convert.ToInt32(ReportTitle["SourceType"].ToString()) == 2) //如果是累计差值表
+                                    //    {
+                                    //        int sPageNO = 0;
+                                    //        sPageNO = pageNO; //新建时用到，如果diffData中正确的传入差值表PageNO，则不会使用sPageNO
+                                    //        sourceRptResult = DiffReport.SaveOrUpdate(limit, unitCode, diffData,
+                                    //            ReportTitle,
+                                    //            sPageNO,
+                                    //            ref aggAcc, ref dataStr);
+                                    //    }
+                                    //    else if (Convert.ToInt32(ReportTitle["SourceType"].ToString()) == 1) //汇总差值表
+                                    //    {
+                                    //        ArrayList diffRptList = DiffReport.SplitDiffReportByString(diffData);
+                                    //        string allDiffPageNOs = null;
+                                    //        if (diffPageNOs != null)
+                                    //        {
+                                    //            allDiffPageNOs = diffPageNOs;
+                                    //        }
+                                    //        sourceRptResult = DiffReport.SaveOrUpdate(limit, diffRptList, ReportTitle,
+                                    //            ref dataStr,
+                                    //            ref aggAcc, allDiffPageNOs);
+                                    //    }
+                                    //}
                                     //-------------------------------------------------------------------------------------------------------
 
                                     #endregion
@@ -639,7 +639,7 @@ namespace LogicProcessingClass.ReportOperate
             }
             catch (Exception ex)
             {
-
+                string msg = ex.Message;
             }
             //}
             return cleanFlag;

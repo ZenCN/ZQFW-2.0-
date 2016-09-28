@@ -175,24 +175,42 @@ namespace LogicProcessingClass.ReportOperate
         public string GetUrgeReportList(int limit, string unitCode)
         {
             string strJson = "";
-            string urgeStr = "urgeReport:[";
-            FXDICTEntities dicEntity = (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
-            var ucs = (from tb07 in dicEntity.TB07_District where tb07.pDistrictCode == unitCode select tb07.DistrictCode).ToList();
-            BusinessEntities lowerBusEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
-            var rpts = lowerBusEntity.ReportTitle.Where(rpt => ucs.Contains(rpt.UnitCode)).Where(rpt => rpt.ReceiveState == 0 && rpt.State == 3);
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
-            var urgeReports = busEntity.UrgeReport.Where(urgeReport => urgeReport.ReceiveUnitCode == unitCode && urgeReport.IsRead == 0 && urgeReport.MsgType == 0);
-            if (urgeReports.Any())
+            try
             {
-                foreach (var urgeReport in urgeReports)
+                string urgeStr = "urgeReport:[";
+                FXDICTEntities dicEntity =
+                    (FXDICTEntities)
+                        entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+                var ucs =
+                    (from tb07 in dicEntity.TB07_District where tb07.pDistrictCode == unitCode select tb07.DistrictCode)
+                        .ToList();
+                BusinessEntities lowerBusEntity = (BusinessEntities) entities.GetPersistenceEntityByLevel(limit);
+                var rpts =
+                    lowerBusEntity.ReportTitle.Where(rpt => ucs.Contains(rpt.UnitCode))
+                        .Where(rpt => rpt.ReceiveState == 0 && rpt.State == 3);
+                BusinessEntities busEntity = (BusinessEntities) entities.GetPersistenceEntityByLevel(limit);
+                var urgeReports =
+                    busEntity.UrgeReport.Where(
+                        urgeReport =>
+                            urgeReport.ReceiveUnitCode == unitCode && urgeReport.IsRead == 0 && urgeReport.MsgType == 0);
+                if (urgeReports.Any())
                 {
-                    urgeStr += "{TBNO:'" + urgeReport.TBNO + "',SendUnitName:'" + urgeReport.SendUnitName + "',UrgeRptContent:'" +
-                        urgeReport.UrgeRptContent + "',UrgeRptDateTime:'" + urgeReport.UrgeRptDateTime + "',UrgeRptPersonName:'" +
-                        urgeReport.UrgeRptPersonName + "'},";
+                    foreach (var urgeReport in urgeReports)
+                    {
+                        urgeStr += "{TBNO:'" + urgeReport.TBNO + "',SendUnitName:'" + urgeReport.SendUnitName +
+                                   "',UrgeRptContent:'" +
+                                   urgeReport.UrgeRptContent + "',UrgeRptDateTime:'" + urgeReport.UrgeRptDateTime +
+                                   "',UrgeRptPersonName:'" +
+                                   urgeReport.UrgeRptPersonName + "'},";
+                    }
+                    urgeStr = urgeStr.Remove(urgeStr.Length - 1);
                 }
-                urgeStr = urgeStr.Remove(urgeStr.Length - 1);
+                strJson = urgeStr + "]";
             }
-            strJson = urgeStr + "]";
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
             return strJson;
         }
 

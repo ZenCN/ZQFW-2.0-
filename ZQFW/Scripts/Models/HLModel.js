@@ -84,6 +84,7 @@ App.Models.HL.HL01.HL012 = function($scope) {
 
     return $.extend(App.Config.Field.Fn.GetModel("HL01." + window.$scope.SysUserCode + ".HL012"), {
         Checked: false, //自定义属性
+        PageNO: 0,  //方便识别增加行
         UnitCode: $.cookie("unitcode"),
         RiverSelect: riverSelect,
         RiverCode: riverSelect.length ? riverSelect[0].Code : undefined,
@@ -108,6 +109,7 @@ App.Models.HL.HL01.HL013 = function ($scope) {
 
     return $.extend(App.Config.Field.Fn.GetModel("HL01." + window.$scope.SysUserCode + ".HL013"), {
         Checked: false,  //自定义属性
+        PageNO: 0,  //方便识别增加行
         UnitCode: $.cookie("unitcode"),
         RiverSelect: riverSelect,
         RiverCode: riverSelect.length ? riverSelect[0].Code : undefined,

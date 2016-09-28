@@ -119,8 +119,8 @@ App.controller('Main', ['$scope', '$http', 'Animate', function ($scope, $http, a
             Province: {
                 Left: {
                     //浙江省 33000000  湖南省 43000000 吉林省 22000000 黑龙江省 23000000  内蒙古 15000000  江西省 36000000 广西 45000000 福建省 35000000
-                    UnitName: "广西",
-                    UnitCode: "45000000"
+                    UnitName: "福建省",
+                    UnitCode: "35000000"
                 }
             },
             City: {

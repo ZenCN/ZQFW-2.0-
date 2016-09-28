@@ -73,11 +73,14 @@
             <div class="AggAcc-Content">
                 <ul>
                     <li ng-repeat="rpt in Open.Report.Current.Attr.AggAcc.Content" ng-class="{Selected:rpt.id == Open.Report.Attr.AggAcc.Selected.id}" ng-click="Open.Report.Attr.AggAcc.Selected = rpt" ng-dblclick="Open.Report.Fn.Core.AggAcc.View(rpt)">
-                        <a ng-if="Open.Report.Current.ReportTitle.SourceType == '1'">
+                        <a ng-if="rpt.SourceType != 6 && Open.Report.Current.ReportTitle.SourceType == '1'">
                             [{{BaseData.Unit.Unders.Find("UnitCode",rpt.UnitCode,"UnitName")}}][{{Assist.CN_Name("SourceType",rpt.SourceType)}}]{{rpt.StartDate}}-{{rpt.EndDate}}
                         </a>
-                        <a ng-if="Open.Report.Current.ReportTitle.SourceType == '2'">
+                        <a ng-if="rpt.SourceType != 6 && Open.Report.Current.ReportTitle.SourceType == '2'">
                             [{{Assist.CN_Name("SourceType",rpt.SourceType)}}][{{rpt.State == '3' ? '已报送' : '未报送'}}]{{rpt.StartDate}}-{{rpt.EndDate}}
+                        </a>
+                        <a ng-if="rpt.SourceType == 6" style="color: red; font-weight: bolder;">
+                            [{{BaseData.Unit.Unders.Find("UnitCode",rpt.UnitCode,"UnitName")}}][差值表]
                         </a>
                     </li>
                 </ul>

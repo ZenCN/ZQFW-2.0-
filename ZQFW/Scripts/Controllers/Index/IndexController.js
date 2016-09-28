@@ -849,7 +849,6 @@
                         if (table) {
                             $rootScope.Open.Report.Current[table].push(App.Models.HL.HL01[table]()); //var length = 
                         }
-                        //$scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
                     },
                     AggAcc: {   //汇总、累计时没有查合计行数据
                         get_aggacc_pagenos:function() {
@@ -2117,7 +2116,7 @@
                                     report.HL013[1].Max = report.MAX;
                                     delete report.MAX;
                                 }
-                                arr = ["HL011", "HL014"];
+                                arr = ["HL011", "HL014", "Delta.HL011", "Delta.HL014"];
 
                                 break;
                             case "HP01":
@@ -2149,19 +2148,37 @@
                             }
 
                             var rptType = report.ReportTitle.ORD_Code;
+                            var _this = undefined;
+                            var fn = function(key, arr) {
+                                if (key.indexOf(".") < 0) {
+                                    return {
+                                        arr: arr[key],
+                                        key: key
+                                    };
+                                } else {
+                                    angular.forEach(key.split("."), function(name) {
+                                        arr = arr[name];
+                                        if ($.isArray(arr)) {
+                                            return false;
+                                        }
+                                    });
+                                    return ;
+                                }
+                            };  //Key有问题
                             angular.forEach(arr, function(key) {
                                 tmpArr.splice(0);
-                                if (report[key].length == 0) {
+                                _this = fn(key, report);
+                                if (_this.length == 0) {
                                     tmpArr = App.Models[rptType.slice(0, 2)][rptType][key].Array();
                                 } else {
-                                    tmpArr.push(report[key][0]);
-                                    report[key].splice(0, 1);
+                                    tmpArr.push(_this[0]);
+                                    _this.splice(0, 1);
                                     angular.forEach($rootScope.BaseData.Unit.Unders, function(unit) {
                                         exit = false;
-                                        exit = report[key].some(function(object, i) {
+                                        exit = _this.some(function(object, i) {
                                             if (unit.UnitCode == object.UnitCode) {
                                                 tmpArr.push(object);
-                                                report[key].splice(i, 1);
+                                                _this.splice(i, 1);
                                                 return true;
                                             }
                                         });
@@ -2170,7 +2187,7 @@
                                         }
                                     });
                                 }
-                                report[key] = angular.copy(tmpArr);
+                                _this = angular.copy(tmpArr);
                             });
 
                             $rootScope.Open.Report.Opened.push(report);
@@ -2218,7 +2235,7 @@
                                         }
 
                                         if (report.HJ) {
-                                            var hj = $.extend(App.Models.NP.NP01.NP011.Object(), report.HJ);
+                                            hj = $.extend(App.Models.NP.NP01.NP011.Object(), report.HJ);
                                             $scope[$scope.Attr.NameSpace].Report.Current.NP011.InsertAt(0, hj);
                                             delete report.HJ;
                                         }
@@ -2826,11 +2843,6 @@
                             }
                         }
 
-                        /*if (report.HL011.length == report.HL012.length == report.HL013.length == report.HL014.length && report.HL011.length == 0) {
-                            Alert("不能保存空表");
-                            return;
-                        }*/
-
                         if ($scope.SysORD_Code == "HP01" && $scope.Open.Report.Current.ReportTitle.PageNO == 0 && !$scope.Open.Report.Current.Attr.Data_Changed) {  //不允许保存空表
                             Alert("不能保存空表");
                             return;
@@ -2849,11 +2861,106 @@
                         
                         report.ReportTitle.Remark = typeof(report.ReportTitle.Remark) == "string" ? report.ReportTitle.Remark.replaceAll("[\r|\n]", "{/r-/n}") : undefined;
                         report.ReportTitle.UnitCode = $scope.BaseData.Unit.Local.UnitCode.slice(0, 2) + "000000";
+                        delete report.Delta;  //删除差值数据
                         //report.ReportTitle.UnitName = "";
                         var arr = undefined;
-
+                        
                         switch (report.ReportTitle.ORD_Code) {
                         case "HL01":
+                            //----------------------------处理差值数据----------------------------
+                            if ($scope.Open.Report.Current.ReportTitle.SourceType > 0) { //根据差值表生成对应的ReportTitle表
+                                var prev_delta_pageno = {};
+                                $.each($scope.Open.Report.Current.Attr.AggAcc.Content, function() {
+                                    if (this.SourceType == 6) {
+                                        prev_delta_pageno[this.UnitCode] = this.id;
+                                    }
+                                });
+                                var excepfield = ['$$hashKey', 'DW', 'DataOrder', 'DistributeRate', 'RiverCode', 'UnitCode'], exist, delta_rpts = {};
+                                var fn = function(key, _this) {
+                                    if (!delta_rpts[_this.UnitCode]) { //之前是否不存在ReportTitle
+                                        delta_rpts[_this.UnitCode] = {
+                                            ReportTitle: {
+                                                PageNO: prev_delta_pageno[_this.UnitCode] || 0,
+                                                UnitCode: _this.UnitCode,
+                                                UnitName: _this.DW,
+                                                CopyPageNO: 0,
+                                                Del: 0,
+                                                SourceType: 6, //锁定表的SourceType为6
+                                                ORD_Code: 'HL01',
+                                                RPTType_Code: 'XZ0',
+                                                StatisticalCycType: $scope.Open.Report.Current.ReportTitle.StatisticalCycType,
+                                                State: 3
+                                            }
+                                        };
+                                    }
+
+                                    delta_rpts[_this.UnitCode][key] = delta_rpts[_this.UnitCode][key] || [];
+                                    delta_rpts[this.UnitCode][key].push(_this);
+                                };
+                                angular.forEach(['HL011', 'HL014'], function(key) {
+                                    $.each($scope.Open.Report.Current.Delta[key], function() {
+                                        exist = false;
+                                        $.each(this, function(field, val) {
+                                            if (excepfield.In_Array(field))
+                                                return true;
+
+                                            if (!isNaN(val)) {
+                                                exist = true;
+                                                return false;
+                                            }
+                                        });
+
+                                        if (exist) {
+                                            fn(key, this);
+                                        }
+                                    });
+                                });
+
+                                var rpts = angular.copy($scope.Open.Report.Current);
+                                rpts.HL013.splice(0, 1);
+                                angular.forEach(['HL012', 'HL013'], function(key) {
+                                    $.each(rpts[key], function(i) {
+                                        if (this.PageNO == 0) { //自行增加的
+                                            fn(key, this);
+                                        }
+                                    });
+                                });
+
+                                rpts = [];
+                                $.each(delta_rpts, function(code, obj) {
+                                    rpts.push(obj);
+                                });
+
+                                var obj = undefined;
+                                var response = $scope.Fn.Ajax('index/SaveDeltaReport', { Reports: angular.toJson(rpts) });
+                                if ($.isArray(response)) {
+                                    $.each(response, function() {
+                                        _this = this;
+                                        obj = $scope.Open.Report.Current.Attr.AggAcc.Content.Find('UnitCode', _this.UnitCode);
+                                        if ($.isEmptyObject(obj)) {  //不存在，则插入，存在，则用之前的页号
+                                            obj = {
+                                                id: _this.PageNO,
+                                                UnitCode: _this.UnitCode,
+                                                SourceType: 6
+                                            };
+                                            $scope.Open.Report.Current.Attr.AggAcc.Content.push(obj);
+                                            report.Attr.AggAcc.Content.push(obj);
+                                        }
+
+                                        angular.forEach(['HL012', 'HL013'], function(key) {
+                                            $.each(report[key], function(i) {
+                                                if (this.PageNO == 0 && this.UnitCode == _this.UnitCode) { //自行增加的
+                                                    this.SourcePageNo = _this.PageNO; //保存页号方便减表
+                                                    $scope.Open.Report.Current[key][i].SourcePageNo = _this.PageNO;
+                                                }
+                                            });
+                                        });
+                                    });
+                                } else {
+                                    throw response;
+                                }
+                            }
+                            //----------------------------处理差值数据----------------------------
                             report["HL012"].RemoveAttr(["Checked", "RiverSelect"], function(obj) {
                                 obj.BZ = typeof(obj.BZ) == "string" ? obj.BZ.replaceAll("[\r|\n]", "{/r-/n}") : undefined;
                             });
@@ -2923,7 +3030,7 @@
                             param = angular.toJson(param);
                         }
 
-                        var result = $rootScope.Fn.Ajax("Index/SaveUpdateReport", { report: param });
+                        var result = $scope.Fn.Ajax("Index/SaveUpdateReport", { report: param });
                         if (!isNaN(result) || angular.isObject(result)) {
                             switch ($scope.Open.Report.Current.ReportTitle.ORD_Code) {
                             case "NP01":
@@ -4311,6 +4418,19 @@ App.controller('IndexOpenCtrl', ['$scope', function ($scope) {
 
                         if (typeof($CurrentScope.Report.Current.ReportTitle.Remark) == "string") {
                             $CurrentScope.Report.Current.ReportTitle.Remark = $CurrentScope.Report.Current.ReportTitle.Remark.replaceAll("{/r-/n}", "\n");
+                        }
+
+                        if ($CurrentScope.Report.Current.ReportTitle.SourceType > 0) {
+                            var report = angular.copy($CurrentScope.Report.Current);
+                            delete report.ReportTitle;
+                            delete report.Affix;
+                            delete report.Attr;
+                            delete report.HL012;
+                            delete report.HL013;
+                            report.HL011.splice(0, 1); //删除和合计行
+                            report.HL014.splice(0, 1);
+
+                            $CurrentScope.Report.Current.Delta = report;
                         }
                         break;
                 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EntityModel;
 
 namespace LogicProcessingClass.Model
 {
