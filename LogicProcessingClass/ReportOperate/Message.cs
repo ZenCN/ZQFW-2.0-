@@ -12,8 +12,6 @@ namespace LogicProcessingClass.ReportOperate
     {
         public static void ReadMsgFillInApplicaion()
         {
-            Entities getEntity = new Entities();
-            BusinessEntities busEntities = null;
             System.Web.HttpApplicationState HAS = HttpContext.Current.Application;
             Dictionary<string, Hashtable> Msg = new Dictionary<string, Hashtable>();
 
@@ -26,98 +24,92 @@ namespace LogicProcessingClass.ReportOperate
                         new Dictionary<string, Dictionary<string, string>>();
                     Dictionary<string, string> SendMsgDetails = new Dictionary<string, string>();
 
-                    busEntities = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
-                    var urges = busEntities.UrgeReport.Where(t => t.MsgType == msgType && t.IsRead == 0).ToList();
-                    string ReceiveUnitCode = "";
-                    string SendUnitName = "";
-                    for (int i = 0; i < urges.Count; i++)
+                    using (BusinessEntities DbEntity = Persistence.GetDbEntities(limit))
                     {
-                        ReceiveUnitCode = urges[i].ReceiveUnitCode.ToString().Trim();
-                        SendUnitName = urges[i].SendUnitName.ToString().Trim();
-                        if (MsgDic.ContainsKey(ReceiveUnitCode))
+                        var urges = DbEntity.UrgeReport.Where(t => t.MsgType == msgType && t.IsRead == 0).ToList();
+                        string ReceiveUnitCode = "";
+                        string SendUnitName = "";
+                        for (int i = 0; i < urges.Count; i++)
                         {
-                            SendMsgDetails = (Dictionary<string, string>)MsgDic[ReceiveUnitCode];
-                            if (msgType == 2)
+                            ReceiveUnitCode = urges[i].ReceiveUnitCode.ToString().Trim();
+                            SendUnitName = urges[i].SendUnitName.ToString().Trim();
+                            if (MsgDic.ContainsKey(ReceiveUnitCode))
                             {
-                                if (SendMsgDetails.ContainsKey(SendUnitName))
+                                SendMsgDetails = (Dictionary<string, string>) MsgDic[ReceiveUnitCode];
+                                if (msgType == 2)
                                 {
-                                    SendMsgDetails[SendUnitName] = SendMsgDetails[SendUnitName] +
-                                                                   urges[i].UrgeRptContent + "||";
+                                    if (SendMsgDetails.ContainsKey(SendUnitName))
+                                    {
+                                        SendMsgDetails[SendUnitName] = SendMsgDetails[SendUnitName] +
+                                                                       urges[i].UrgeRptContent + "||";
+                                    }
+                                    else
+                                    {
+                                        SendMsgDetails[SendUnitName] = urges[i].UrgeRptContent + "||";
+                                    }
+
+                                    if (i == urges.Count - 1)
+                                    {
+                                        SendMsgDetails[SendUnitName] =
+                                            SendMsgDetails[SendUnitName].Remove(SendMsgDetails[SendUnitName].Length - 2);
+                                    }
                                 }
                                 else
                                 {
-                                    SendMsgDetails[SendUnitName] = urges[i].UrgeRptContent + "||";
-                                }
-
-                                if (i == urges.Count - 1)
-                                {
-                                    SendMsgDetails[SendUnitName] =
-                                        SendMsgDetails[SendUnitName].Remove(SendMsgDetails[SendUnitName].Length - 2);
+                                    if (SendMsgDetails.ContainsKey(SendUnitName))
+                                    {
+                                        SendMsgDetails[SendUnitName] =
+                                            (int.Parse(SendMsgDetails[SendUnitName]) + 1).ToString();
+                                    }
+                                    else
+                                    {
+                                        SendMsgDetails[SendUnitName] = "1";
+                                    }
                                 }
                             }
                             else
                             {
-                                if (SendMsgDetails.ContainsKey(SendUnitName))
+                                if (msgType == 2)
                                 {
-                                    SendMsgDetails[SendUnitName] = (int.Parse(SendMsgDetails[SendUnitName]) + 1).ToString();
+                                    SendMsgDetails[SendUnitName] = urges[i].UrgeRptContent + "||";
                                 }
                                 else
                                 {
                                     SendMsgDetails[SendUnitName] = "1";
-                                }   
+                                }
+                                MsgDic[ReceiveUnitCode] = SendMsgDetails;
                             }
                         }
-                        else
-                        {
-                            if (msgType == 2)
-                            {
-                                SendMsgDetails[SendUnitName] = urges[i].UrgeRptContent + "||";
-                            }
-                            else
-                            {
-                                SendMsgDetails[SendUnitName] = "1";
-                            }
-                            MsgDic[ReceiveUnitCode] = SendMsgDetails;
-                        }
+                        Table[limit.ToString()] = MsgDic;
+                        DbEntity.Dispose();
                     }
-                    Table[limit.ToString()] = MsgDic;
                 }
 
                 Msg.Add(msgType.ToString(), Table);
             }
 
             HAS["Message"] = Msg;
-
-            /*Entities entities = new Entities();
-            BusinessEntities busEntity = null;
-            UrgeReport urgeReport = null;
-
-            foreach (int limit in (new int[] { 3, 4 }))
-            {
-                busEntity = (BusinessEntities) entities.GetPersistenceEntityByLevel(limit);
-                (UrgeReport)busEntity.UrgeReport.Where(msg => msg.MsgType == 1 || msg.MsgType == 2);
-                urgeReport.IsRead = 1;
-            }
-
-            busEntity.SaveChanges();*/
         }
 
         public static string RemoveFormDB(string unitcode, int limit, int msgType)
         {
             string Result = "";
-            Entities getEntity = new Entities();
-            BusinessEntities busEntities = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
             try
             {
-                var urges = busEntities.UrgeReport.Where(t => t.ReceiveUnitCode == unitcode && t.MsgType == msgType).ToList();
-                if (urges.Count > 0)
+                using (BusinessEntities DbEntity = Persistence.GetDbEntities(limit))
                 {
-                    for (int i = 0; i < urges.Count; i++)
+                    var urges =
+                        DbEntity.UrgeReport.Where(t => t.ReceiveUnitCode == unitcode && t.MsgType == msgType)
+                            .ToList();
+                    if (urges.Count > 0)
                     {
-                        busEntities.UrgeReport.DeleteObject(urges[i]);
+                        for (int i = 0; i < urges.Count; i++)
+                        {
+                            DbEntity.UrgeReport.DeleteObject(urges[i]);
+                        }
+                        DbEntity.SaveChanges();
+                        Result = "1";
                     }
-                    busEntities.SaveChanges();
-                    Result = "1";
                 }
             }
             catch (Exception ex)

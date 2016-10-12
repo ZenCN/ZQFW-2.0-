@@ -23,7 +23,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class CreateXML
     {
-        Entities getEntity = new Entities();
 
         /// <summary>
         /// 创建XML文件(暂时没有添加蓄水表的)
@@ -33,7 +32,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>XMLName文件名</returns>
         public ArrayList CreateHLXML(int pageNO, int limit)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();
             rpt.State = 3;
             rpt.ReceiveState = 0;
@@ -124,7 +123,7 @@ namespace LogicProcessingClass.ReportOperate
                     if (sPageNOs != "")
                     {
                         sPageNOs = sPageNOs.Remove(sPageNOs.Length - 1);
-                        BusinessEntities lowBusEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(3);//市级
+                        //BusinessEntities lowBusEntity = Persistence.GetDbEntities(3);//市级
                         var lowRpts = busEntity.ReportTitle.Where("it.PageNO in {" + sPageNOs + "}").AsQueryable();
                         foreach (var lowRptObj in lowRpts)
                         {
@@ -165,6 +164,8 @@ namespace LogicProcessingClass.ReportOperate
                                 hl04list.AppendChild(xe04);
                             }
                         }
+                        //busEntity.Dispose();
+                        //lowBusEntity.Dispose();
                     }
                 }
                 #endregion

@@ -328,7 +328,7 @@ namespace LogicProcessingClass.Statistics
         /// <returns>行政单位名称</returns>
         public string GetUnitName(string unitCode)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();;
             string unitName = fxdict.TB07_District.Single(d => d.DistrictCode == unitCode).DistrictName;
             return unitName;
         }

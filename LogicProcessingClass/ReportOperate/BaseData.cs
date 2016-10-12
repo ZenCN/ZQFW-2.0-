@@ -24,8 +24,7 @@ namespace LogicProcessingClass.ReportOperate
     public class BaseData
     {
         Tools tool = new Tools();
-        Entities entities = new Entities();
-        FXDICTEntities dicEntity = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+        //private FXDICTEntities dicEntity = Persistence.GetDbEntities();
         string jsonStr = "[";
         IList[] iList = new IList[4];//存放4个单位级别的数据
         IList<TB07_District>[] tb07List = new IList<TB07_District>[4];
@@ -37,6 +36,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="baseData">基础数据</param>
         public void SaveBaseData(string unitCode, List<TB04_CheckBase> tb04List)
         {
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             for (int i = 0; i < tb04List.Count; i++)
             {
                 if (tb04List[i].BaseData == null || tb04List[i].BaseData == 0)
@@ -124,7 +124,8 @@ namespace LogicProcessingClass.ReportOperate
         public string AddUnit(string unitCode, string pUnitCode, string unitName, int uorder, string riverDictCode)
         {
             string str = "success";
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(GetLimitByUnitCode(unitCode));
+            BusinessEntities busEntity = Persistence.GetDbEntities(GetLimitByUnitCode(unitCode));
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var oneUnit = dicEntity.TB07_District.Where(d => d.DistrictCode == unitCode).ToList();
             var pUnit = dicEntity.TB07_District.Where(pd => pd.DistrictCode == pUnitCode).First();
             if (!IsInSubRiver(riverDictCode, pUnit.RD_RiverCode1))//该单位的流域不在上级单位的流域范围之内
@@ -240,7 +241,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="unitCode">单位代码</param>
         public void ResetPassword(string unitCode, int limit)
         {
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var login = busEntity.LGN.Where(lgn => lgn.LoginName == unitCode);
             if (login.Count() > 0)
             {
@@ -263,7 +264,7 @@ namespace LogicProcessingClass.ReportOperate
 
         public void ResetPassword(string[] unitCodes, int limit)
         {
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             foreach (string unitCode in unitCodes)
             {
                 var login = busEntity.LGN.Where(lgn => lgn.LoginName == unitCode);
@@ -299,7 +300,8 @@ namespace LogicProcessingClass.ReportOperate
         public string UpdateUnit(string unitCode, string pUnitCode, string unitName, int uorder, string riverDictCode)
         {
             string str = "success";
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(2);
+            BusinessEntities busEntity = Persistence.GetDbEntities(2);
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var oneUnit = dicEntity.TB07_District.Where(tb07 => tb07.DistrictCode == unitCode).First();
             var pUnit = dicEntity.TB07_District.Where(tb07 => tb07.DistrictCode == pUnitCode).First();
             var checkBases = dicEntity.TB04_CheckBase.Where(tb04 => tb04.District_Code == unitCode);
@@ -342,10 +344,11 @@ namespace LogicProcessingClass.ReportOperate
         public string DeleteUnit(string unitCode)
         {
             string temp = "";
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var lowerUnits = dicEntity.TB07_District.Where(tb07 => tb07.pDistrictCode == unitCode);//获得下级单位
             if (!lowerUnits.Any())//没有下级单位
             {
-                BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(tool.GetLevelByUnitCode(unitCode));
+                BusinessEntities busEntity = Persistence.GetDbEntities(tool.GetLevelByUnitCode(unitCode));
                 dicEntity.TB07_District.DeleteObject(dicEntity.TB07_District.Where(tb07 => tb07.DistrictCode == unitCode).SingleOrDefault());//删除单位表信息
                 var lgsns = busEntity.LGN.Where(lgn => lgn.LoginName == unitCode);
                 if (lgsns.Count() > 0)
@@ -376,6 +379,7 @@ namespace LogicProcessingClass.ReportOperate
         public string GetBaseDataByUnitCode(string unitCode)
         {
             string str = "";
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var baseDates = dicEntity.TB04_CheckBase.Where(tb04 => tb04.District_Code == unitCode);
             foreach (var baseData in baseDates)
             {
@@ -399,6 +403,9 @@ namespace LogicProcessingClass.ReportOperate
                 str += "{TBNO:'" + baseData.TBNO + "',FieldDefine_NO:'" + baseData.FieldDefine_NO + "',BaseData:'" +
                     returnValus + "'},";
             }
+
+            dicEntity.Dispose();
+
             if (str.Length != 0)
             {
                 str = "{DataList:[" + str.Remove(str.Length - 1) + "]}";
@@ -407,6 +414,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 str = "{DataList:[]}";
             }
+
             return str;
         }
 
@@ -418,6 +426,7 @@ namespace LogicProcessingClass.ReportOperate
         public string GetUnits(string unitCode)
         {
             string str = "";
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var lowerUnits = dicEntity.TB07_District.Where(tb07 => tb07.pDistrictCode == unitCode).OrderBy(t => t.Uorder);//查找下级单位
             if (!lowerUnits.Any())//没有下级单位
             {
@@ -437,6 +446,8 @@ namespace LogicProcessingClass.ReportOperate
                     str = "{lowerunits:[" + str.Remove(str.Length - 1) + "]}";
                 }
             }
+            dicEntity.Dispose();
+
             return str;
         }
 
@@ -471,7 +482,7 @@ namespace LogicProcessingClass.ReportOperate
         {
             jsonStr = "[";
             int degree = GetUnitDegree(unitCode);//当前单位级别(0省级，1市级，2县级，3乡镇)
-
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var tb07s = dicEntity.TB07_District.AsQueryable();
             //当前单位
             var curUnit = tb07s.Where(t => t.DistrictCode == unitCode).ToList();
@@ -498,6 +509,7 @@ namespace LogicProcessingClass.ReportOperate
                 GetJson(1, Convert.ToInt32(obj2[0]));//递归循环得到所有下级json
                 jsonStr += "}";
             }
+            dicEntity.Dispose();
             jsonStr += "]";
             return jsonStr;
         }
@@ -507,6 +519,7 @@ namespace LogicProcessingClass.ReportOperate
             jsonStr = "[";
             int degree = GetUnitDegree(unitCode);//当前单位级别(0省级，1市级，2县级，3乡镇)
             string tempCode = unitCode.Substring(0, 2);
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var tb07s = dicEntity.TB07_District.Where(t => t.DistrictCode.StartsWith(tempCode)).ToList();
             //当前单位
             var curUnit = tb07s.Where(t => t.DistrictCode == unitCode).ToList();
@@ -532,6 +545,7 @@ namespace LogicProcessingClass.ReportOperate
                 GetJsonObj(1, tb07.DistrictCode);//递归循环得到所有下级json
                 jsonStr += "}";
             }
+            dicEntity.Dispose();
             jsonStr += "]";
             return jsonStr;
         }
@@ -641,12 +655,16 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public int CheckUnitCodeExist(string unitCode, int limit)
         {
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var tb07s = dicEntity.TB07_District.Where(t => t.DistrictCode == unitCode).AsQueryable();
             if (limit > 0)
             {
                 tb07s = tb07s.Where(t => t.DistrictClass != 5);
             }
-            return tb07s.Count();
+            int count = tb07s.Count();
+            dicEntity.Dispose();
+
+            return count;
         }
 
         /// <summary>检查该上级代码的下级单位编号是否存在，返回记录条数
@@ -656,8 +674,12 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public int CheckUorderExist(string unitCode, decimal uorder)
         {
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             var tb07s = dicEntity.TB07_District.Where(t => t.pDistrictCode == unitCode && t.Uorder == uorder).AsQueryable();
-            return tb07s.Count();
+            int count = tb07s.Count();
+            dicEntity.Dispose();
+
+            return count;
         }
     }
 }

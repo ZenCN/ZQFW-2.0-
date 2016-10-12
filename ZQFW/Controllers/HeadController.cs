@@ -29,8 +29,7 @@ namespace ZQFW.Controllers.Partial
             string result = "";
             int limit = int.Parse(Request["limit"]);
             string unitcode = Request["unitcode"];
-            Entities getEntity = new Entities();
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(Convert.ToInt32(limit));
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var lgn = busEntity.LGN.Where(t => t.LoginName == unitcode);
             if (lgn != null)
             {

@@ -11,7 +11,7 @@ namespace LogicProcessingClass.Statistics
     {
         public IDictionary<string, DisasterBean> GetDataForMap(int level, string pageNO, string unitCode, int mapType)
         {
-            BusinessEntities bsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
+            BusinessEntities bsnEntities = Persistence.GetDbEntities(level);
             IDictionary<string, DisasterBean> disasterData = new Dictionary<string, DisasterBean>();
             if (mapType == 3)
             {
@@ -83,7 +83,7 @@ namespace LogicProcessingClass.Statistics
             BusinessEntities bsnEntities, int level)
         {
             int lowerLevel = (level == 0) ? 2 : level + 1;
-            BusinessEntities lowerLevelEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(lowerLevel);
+            BusinessEntities lowerLevelEntities = Persistence.GetDbEntities(lowerLevel);
             string pagenoNext = GetLowerPageNOs(Convert.ToInt32(pageNO), unitCode, bsnEntities);//得到下级pageno
             IDictionary<string, DisasterBean> disasterData = new Dictionary<string, DisasterBean>();
             if (pagenoNext != "")

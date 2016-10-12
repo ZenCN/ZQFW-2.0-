@@ -16,7 +16,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class CSReportOperate
     {
-        Entities getEntity = new Entities();
         public int SaveRpt(int limit, string unitCode, int pageNO, Hashtable data, Hashtable reportTitle, Hashtable SReport, string affix)
         {
             ViewReportForm viewReport = new ViewReportForm();
@@ -154,7 +153,7 @@ namespace LogicProcessingClass.ReportOperate
                     object[] AggAccs = serializer.ConvertToType<object[]>(SReport["SourceReport"]);
                     int oldSPageNO = 0;
                     
-                    BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);//省级库
+                    BusinessEntities busEntity = Persistence.GetDbEntities(2);//省级库
                     for (int i = 0; i < AggAccs.Length; i++)
                     {
                         Hashtable AggAcc = serializer.Deserialize<Hashtable>(serializer.Serialize(AggAccs[i]));
@@ -391,7 +390,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 temp = 1;
             }
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);//省级库
+            BusinessEntities busEntity = Persistence.GetDbEntities(2);//省级库
             var csPageNO = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault().CSPageNO;//找出BS中的报表在CS中保存的页号
             string sql = "update REPORTTITLE set del = " + temp + " where pageno  =  " + csPageNO;
             CSDBhelper db = new CSDBhelper(limit);

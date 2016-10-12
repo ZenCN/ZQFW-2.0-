@@ -260,8 +260,7 @@ namespace ZQFW.Controllers
         public JsonResult ChangePWD(string limit, string unitCode, string newPWD)
         {
             JsonResult jsr = new JsonResult();
-            Entities getEntity = new Entities();
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(Convert.ToInt32(limit));
+            BusinessEntities busEntity = Persistence.GetDbEntities(int.Parse(limit));
             var lgn = busEntity.LGN.Where(t => t.LoginName == unitCode);
             if (lgn != null)
             {
@@ -285,8 +284,8 @@ namespace ZQFW.Controllers
         public JsonResult ChangePWD(string limit, string unitCode, string userName, string newPWD)
         {
             JsonResult jsr = new JsonResult();
-            Entities getEntity = new Entities();
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(Convert.ToInt32(limit));
+
+            BusinessEntities busEntity = Persistence.GetDbEntities(int.Parse(limit));
             var lgn = busEntity.LGN.Where(t => t.LoginName == unitCode && t.UserName == userName);
             if (lgn != null)
             {
@@ -339,7 +338,6 @@ namespace ZQFW.Controllers
                 string name = "";
                 int limit = 0;
                 List<LGN> list = null;
-                Entities entity = new Entities();
                 BusinessEntities busEntity = null;
 
                 if (int.TryParse(u, out limit))  //只输入Code
@@ -361,14 +359,14 @@ namespace ZQFW.Controllers
                     {
                         limit = 5;
                     }
-                    busEntity = entity.GetEntityByLevel(limit);
+                    busEntity = Persistence.GetDbEntities(limit);
                     list = busEntity.LGN.Where(l => l.LoginName == code).ToList<LGN>();
                 }
                 else //输入了Name和Limit
                 {
                     if (int.TryParse(Request.QueryString["l"], out limit))
                     {
-                        busEntity = entity.GetEntityByLevel(limit);
+                        busEntity = Persistence.GetDbEntities(limit);
                         list = busEntity.LGN.Where(l => l.RealName.Contains(u)).ToList<LGN>();
                     }
                     else
@@ -388,6 +386,8 @@ namespace ZQFW.Controllers
 
                     unit_info = "<font style='font-size: x-large;font-weight: bolder;'>" + unit_info + "<font>";
                 }
+
+                busEntity.Dispose();
             }
 
             return unit_info;

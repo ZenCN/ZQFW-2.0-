@@ -28,9 +28,7 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class SaveOrUpdateReport
     {
-
-        Entities getEntity = new Entities();
-        private static object SaveLock = new object();
+        //private static object SaveLock = new object();
         //public static byte userCount = 0;
         HttpApplicationState App = System.Web.HttpContext.Current.Application;
 
@@ -39,10 +37,8 @@ namespace LogicProcessingClass.ReportOperate
             string result = "0";
             try
             {
-                BusinessEntities entity =
-                    (BusinessEntities)
-                        getEntity.GetPersistenceEntityByLevel(
-                            int.Parse(HttpContext.Current.Request.Cookies["limit"].Value));
+                int limit = int.Parse(HttpContext.Current.Request.Cookies["limit"].Value);
+                BusinessEntities entity = Persistence.GetDbEntities(limit);
                 ReportTitle rpt = new ReportTitle();
                 rpt = entity.ReportTitle.Where(t => t.PageNO == pageno).SingleOrDefault();
                 string[] tbno = tbnos.Split(new char[] { ',' });
@@ -79,20 +75,20 @@ namespace LogicProcessingClass.ReportOperate
             string diffPageNOs)
         {
             string temp = "";
-            int userCount = 0;
-            int waitCount = 0;
-            while (true)
-            {
-                if (App[limit + "_userCount"] != null)
-                {
-                    userCount = Convert.ToInt32(App[limit + "_userCount"]);
-                }
-                if (userCount == 0)
-                {
-                    userCount++;
-                    App[limit + "_userCount"] = userCount;
-                    if (userCount == 1) //只有第一个保存
-                    {
+            //int userCount = 0;
+            //int waitCount = 0;
+            //while (true)
+            //{
+            //    if (App[limit + "_userCount"] != null)
+            //    {
+            //        userCount = Convert.ToInt32(App[limit + "_userCount"]);
+            //    }
+            //    if (userCount == 0)
+            //    {
+            //        userCount++;
+            //        App[limit + "_userCount"] = userCount;
+            //        if (userCount == 1) //只有第一个保存
+            //        {
                         try
                         {
                             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -221,34 +217,34 @@ namespace LogicProcessingClass.ReportOperate
                         {
                             temp = ex.Message;
                         }
-                        finally
-                        {
-                            userCount--;
-                            App[limit + "_userCount"] = userCount;
-                        }
-                        break;
-                    }
-                    else //其他的退出，但不 break,再循环到外层
-                    {
-                        userCount--;
-                        App[limit + "_userCount"] = userCount;
-                    }
-                    System.Threading.Thread.Sleep(800);
-                }
-                else
-                {
-                    if (waitCount == 10)//等待20秒之后还有操作在进行的话，强制结束
-                    {
-                        temp = "当前服务器访问人数过多，请稍后保存！";
-                        App[limit + "_userCount"] = null;
-                        App[limit + "_userCount"] = 0;
-                        break;
-                    }
-                    System.Threading.Thread.Sleep(800);
-                    waitCount++;
+                        //finally
+                        //{
+                        //    userCount--;
+                        //    App[limit + "_userCount"] = userCount;
+                        //}
+                        //break;  //start
+                    //}
+                    //else //其他的退出，但不 break,再循环到外层
+                    //{
+                    //    userCount--;
+                    //    App[limit + "_userCount"] = userCount;
+                    //}
+                    //System.Threading.Thread.Sleep(800);
+                //}
+                //else
+                //{
+                //    if (waitCount == 10)//等待20秒之后还有操作在进行的话，强制结束
+                //    {
+                //        temp = "当前服务器访问人数过多，请稍后保存！";
+                //        App[limit + "_userCount"] = null;
+                //        App[limit + "_userCount"] = 0;
+                //        break;
+                //    }
+                //    System.Threading.Thread.Sleep(800);
+                //    waitCount++;
 
-                }
-            }
+                //}
+            //}   //end
 
             return temp;
         }
@@ -267,7 +263,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>修改后的表信息</returns>
         public string SaveUpdateReport(int limit, string unitCode, int pageNO, Hashtable data, Hashtable reportTitle, Hashtable SReport, int isRiverCode, bool isNew, List<RiverInfo> rInfos, string affix, string rptType)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             ViewReportForm viewReport = new ViewReportForm();
             string saveFlag = "";//保存失败，传出saveFalse&&,传出一个保存失败的标识
             ReportTitle rpt = null;
@@ -317,8 +313,17 @@ namespace LogicProcessingClass.ReportOperate
 
                     if (!cflag)//清理失败 
                     {
-                        saveFlag = "清除旧数据失败！";
-                        return saveFlag;
+                        //saveFlag = "清除旧数据失败！";
+                        //return saveFlag;
+                        rpt.Del = 1;
+                        rpt.Remark = "清除旧数据失败";  //开始新建
+
+                        rpt = new ReportTitle();
+                        ReportHelpClass rptHelp = new ReportHelpClass();
+                        pageNO = rptHelp.FindMaxPageNO(limit);
+
+                        rpt.CopyPageNO = 0;
+                        rpt.PageNO = pageNO;
                     }
                 }
             }
@@ -590,6 +595,7 @@ namespace LogicProcessingClass.ReportOperate
             bool cleanFlag = false;
             //using (TransactionScope scope = new TransactionScope())
             //{
+
             var hl011s = busEntity.HL011.Where(t => t.PageNO == pageNO);
             var hl012s = busEntity.HL012.Where(t => t.PageNO == pageNO);
             var hl013s = busEntity.HL013.Where(t => t.PageNO == pageNO);
@@ -639,7 +645,7 @@ namespace LogicProcessingClass.ReportOperate
             }
             catch (Exception ex)
             {
-                string msg = ex.Message;
+                //string msg = ex.Message;
             }
             //}
             return cleanFlag;
@@ -655,7 +661,7 @@ namespace LogicProcessingClass.ReportOperate
         public string DBUploadFileAffix(int pageNO, int limit, Affix affix)
         {
             string jsonStr = "0";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             ReportTitle rpt = new ReportTitle();
 
             try
@@ -673,11 +679,13 @@ namespace LogicProcessingClass.ReportOperate
                 Tools tool = new Tools();
                 jsonStr = tool.EncryptOrDecrypt(0, affs.DownloadURL, "JXHLZQBS") + "&" + affs.TBNO;
             }
-
             catch (Exception ex)
             {
                 jsonStr = "错误消息：" + ex.Message;
             }
+
+            busEntity.Dispose();
+
             return jsonStr;
         }
 
@@ -690,7 +698,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string NMNPSaveUpdateReport(int pageNO, Hashtable data, string affix, int limit, string unitCode)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
+            BusinessEntities busEntity = Persistence.GetDbEntities(2);
             string saveFlag = "";//保存失败，传出saveFalse&&,传出一个保存失败的标识
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string DBname = "";
@@ -792,7 +800,7 @@ namespace LogicProcessingClass.ReportOperate
             DateTime startTime = GetNPRptStartDateTime(endTime);
             //DateTime startTime = GetNPRptStartDateTime();
             //DateTime endTime = GetNPRptEndDateTime(startTime);
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);//省级
+            BusinessEntities busEntity = Persistence.GetDbEntities(2);//省级
             var rpts =
                 busEntity.ReportTitle.Where(t => t.StartDateTime == startTime && t.EndDateTime == endTime && t.Del == 0).ToList();
             if (rpts.Count > 0)

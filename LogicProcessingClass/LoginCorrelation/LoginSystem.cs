@@ -44,8 +44,8 @@ namespace LogicProcessingClass.LoginCorrelation
                     break;
                 }
             }
-            Entities getEntity = new Entities();
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(loginLimit);
+            
+            BusinessEntities busEntity = Persistence.GetDbEntities(loginLimit);
             var lgns = from login in busEntity.LGN
                        where login.PWD == password &&
                        login.LoginName == loginName
@@ -181,8 +181,8 @@ namespace LogicProcessingClass.LoginCorrelation
         public int UserLogins(string loginName, string password, int loginLimit, string userName)
         {
             int result = 0;
-            Entities getEntity = new Entities();
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(loginLimit);
+            
+            BusinessEntities busEntity = Persistence.GetDbEntities(loginLimit);
             try
             {
                 var lgn = busEntity.LGN.Where(t => t.UserName == userName &&
@@ -269,8 +269,7 @@ namespace LogicProcessingClass.LoginCorrelation
         public string GetUserName(string unitCode, int limit)
         {
             int result = 0;
-            Entities getEntity = new Entities();
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var lgns = from login in busEntity.LGN
                        where login.LoginName == unitCode
                        select new

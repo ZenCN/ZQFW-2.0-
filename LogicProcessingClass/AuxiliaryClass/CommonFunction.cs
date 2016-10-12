@@ -22,7 +22,7 @@ namespace LogicProcessingClass.AuxiliaryClass
 {
     public class CommonFunction
     {
-        FXDICTEntities fxdict = (FXDICTEntities)new Persistence().GetPersistenceEntity(EntitiesConnection.entityName.FXDICTEntities);
+        FXDICTEntities fxdict = Persistence.GetDbEntities();
         /// <summary>
         /// 判断文件名是否已存在，若存在则另取：_n
         /// </summary>

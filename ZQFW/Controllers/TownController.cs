@@ -183,162 +183,167 @@ namespace ZQFW.Controllers
             string riverCode = new CommonFunction().GetRiverCodeByUnitCode(title.UnitCode);
             ReportTitle rpt = null;
 
-            BusinessEntities busEntitiy = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(5);
-            decimal state = 0;
-            if (title.State == null || title.State == 0)
+            using (BusinessEntities busEntitiy = Persistence.GetDbEntities(5))
             {
-                state = 0; //报表状态  0新建，1待审核，2已审核，3已发送，4已报批，5已签批，6已发送（发布）
-            }
-            else
-            {
-                state = Convert.ToDecimal(title.State);
-            }
-            string pageNO = null;
-            if (title.PageNO != 0)
-            {
-                pageNO = title.PageNO.ToString();
-                int id = Convert.ToInt32(pageNO);
-                if (state.ToString() == "3")//已经报送的，那么新建一个新表，且把主表CopyPageNO值修改为新表的PageNO
+                decimal state = 0;
+                if (title.State == null || title.State == 0)
                 {
-                    rpt = new ReportTitle();
-                    rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5);
-                    ReportTitle zhurpt = busEntitiy.ReportTitle.Where(t => t.PageNO == id).SingleOrDefault();
-                    zhurpt.CopyPageNO = rpt.PageNO;
-                    rpt.State = 0;
+                    state = 0; //报表状态  0新建，1待审核，2已审核，3已发送，4已报批，5已签批，6已发送（发布）
                 }
                 else
                 {
-                    rpt = busEntitiy.ReportTitle.Where(t => t.PageNO == id).SingleOrDefault();
-                    if (!town.DeleteTownRpt(id))
-                    {
-                        result = "错误消息：";
-                        jsr = Json(result);
-                        return jsr;
-                    }
+                    state = Convert.ToDecimal(title.State);
                 }
-            }
-            else
-            {
-                rpt = new ReportTitle();
-                rpt.State = 0;
-                rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5);
-            }
-
-            //新建修改HL011-HL014，HP011-HP012的表
-            string DBname = "";
-            XMMZHClass xmm = new XMMZHClass();
-            List<Affix> aList = new List<Affix>();
-            #region 插入HL011-HL012，HP011-HP012的数据
-            foreach (DictionaryEntry de in report)
-            {
-                DBname = de.Key.ToString();
-                switch (DBname)//根据DBname不同执行不同的操作
-                {
-                    case "HL011"://往HL011表中插入数据
-                        object[] str011 = serializer.ConvertToType<object[]>(de.Value);//反序列化HL011，将里面的数据放入一个对象数组中去
-                        for (int i = 0; i < str011.Length; i++)//循环这个对象数组
-                        {
-                            HL011 hl011 = serializer.ConvertToType<HL011>(str011[i]);//HL011对象接收，数组里的对象
-                            hl011.DataOrder = i;
-                            hl011.PageNO = rpt.PageNO;//新加的
-                            hl011.ReportTitle = rpt;//不确定是否需要
-                            hl011 = xmm.ToSetHL<HL011>(hl011, 5);//数量级转换
-                            hl011.RiverCode = riverCode;
-                            hl011.UnitCode = title.UnitCode;
-                            hl011.DW ="合计";
-                            rpt.HL011.Add(hl011);//将HL011数据放到reporttitle对象的HL011中去
-
-                            if (hl011.ZYRK > 0) //有转移人口，往 HL014表 插入数据
-                            {
-                                HL014 hl014 = new HL014();
-                                hl014 = tool.SetZeroToObject(hl014);
-                                hl014.UnitCode = title.UnitCode;
-                                hl014.RiverCode = riverCode;
-                                hl014.DW = "合计";
-                                hl014.PageNO = rpt.PageNO;
-                                hl014.XYZYQT = hl011.ZYRK;
-                                rpt.HL014.Add(hl014);
-                            }
-                        }
-                        break;
-                    case "HL012":
-                        object[] str012 = serializer.ConvertToType<object[]>(de.Value);
-                        for (int i = 0; i < str012.Length; i++)
-                        {
-                            HL012 hl012 =new HL012();
-                            hl012 = tool.SetZeroToObject(hl012);
-                            hl012 =  serializer.ConvertToType<HL012>(str012[i]);
-                            hl012.UnitCode = title.UnitCode;
-                            hl012.DW = title.UnitName;
-
-                            hl012.DataOrder = i;
-                            hl012.PageNO = rpt.PageNO;//新加的
-                            hl012.ReportTitle = rpt;
-                            hl012.RiverCode = riverCode;
-                            rpt.HL012.Add(hl012);
-                        }
-                        break;
-                    case "DeletedAffix":
-                        object[] delAffs = serializer.ConvertToType<object[]>(de.Value);
-                        for (int i = 0; i < delAffs.Length; i++)
-                        {
-                            Affix aff = serializer.ConvertToType<Affix>(delAffs[i]);
-                            aff.PageNO = rpt.PageNO;
-                            aList.Add(aff);
-                        }
-                        break;
-                }
-            }
-            #endregion
-
-            rpt.ORD_Code = "HL01";
-            rpt.RPTType_Code = "XZ0";
-            rpt.UnitCode = title.UnitCode; //单位代码
-            rpt.UnitName = title.UnitName;
-            rpt.StartDateTime = title.StartDateTime; //起始时间 
-            rpt.EndDateTime = title.EndDateTime; //结束时间  
-            rpt.Remark = title.Remark; //备注
-            rpt.ReceiveState = -1; //接收状态  0下载表箱，1拒收表箱，2已装入，3已删除
-            rpt.CopyPageNO = 0; //源表页号    新建表没有源表，此项值为0
-            rpt.Del = 0;
-            string date = DateTime.Now.ToShortDateString();
-            rpt.WriterTime = Convert.ToDateTime(date); //填报日期  只有年月日
-            rpt.LastUpdateTime = Convert.ToDateTime(date); //最后修改日期  年月日时分秒
-            rpt.SendTime = DateTime.Now; 
-            rpt.ReceiveTime = Convert.ToDateTime(date); //接收日期 年月日时分秒
-            rpt.StatisticalCycType = 0;
-            rpt.SourceType = 0;
-            rpt.AssociatedPageNO = 0;
-            rpt.CSPageNO = 0;//为了保证数据的完整性,不为null
-
-            try
-            {
+                string pageNO = null;
                 if (title.PageNO != 0)
                 {
-                    if (state != 3)
+                    pageNO = title.PageNO.ToString();
+                    int id = Convert.ToInt32(pageNO);
+                    if (state.ToString() == "3") //已经报送的，那么新建一个新表，且把主表CopyPageNO值修改为新表的PageNO
                     {
-                        busEntitiy.SaveChanges();
+                        rpt = new ReportTitle();
+                        rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5);
+                        ReportTitle zhurpt = busEntitiy.ReportTitle.Where(t => t.PageNO == id).SingleOrDefault();
+                        zhurpt.CopyPageNO = rpt.PageNO;
+                        rpt.State = 0;
+                    }
+                    else
+                    {
+                        rpt = busEntitiy.ReportTitle.Where(t => t.PageNO == id).SingleOrDefault();
+                        if (!town.DeleteTownRpt(id))
+                        {
+                            result = "错误消息：";
+                            jsr = Json(result);
+                            return jsr;
+                        }
+                    }
+                }
+                else
+                {
+                    rpt = new ReportTitle();
+                    rpt.State = 0;
+                    rpt.PageNO = new ReportHelpClass().FindMaxPageNO(5);
+                }
+
+                //新建修改HL011-HL014，HP011-HP012的表
+                string DBname = "";
+                XMMZHClass xmm = new XMMZHClass();
+                List<Affix> aList = new List<Affix>();
+
+                #region 插入HL011-HL012，HP011-HP012的数据
+
+                foreach (DictionaryEntry de in report)
+                {
+                    DBname = de.Key.ToString();
+                    switch (DBname) //根据DBname不同执行不同的操作
+                    {
+                        case "HL011": //往HL011表中插入数据
+                            object[] str011 = serializer.ConvertToType<object[]>(de.Value); //反序列化HL011，将里面的数据放入一个对象数组中去
+                            for (int i = 0; i < str011.Length; i++) //循环这个对象数组
+                            {
+                                HL011 hl011 = serializer.ConvertToType<HL011>(str011[i]); //HL011对象接收，数组里的对象
+                                hl011.DataOrder = i;
+                                hl011.PageNO = rpt.PageNO; //新加的
+                                hl011.ReportTitle = rpt; //不确定是否需要
+                                hl011 = xmm.ToSetHL<HL011>(hl011, 5); //数量级转换
+                                hl011.RiverCode = riverCode;
+                                hl011.UnitCode = title.UnitCode;
+                                hl011.DW = "合计";
+                                rpt.HL011.Add(hl011); //将HL011数据放到reporttitle对象的HL011中去
+
+                                if (hl011.ZYRK > 0) //有转移人口，往 HL014表 插入数据
+                                {
+                                    HL014 hl014 = new HL014();
+                                    hl014 = tool.SetZeroToObject(hl014);
+                                    hl014.UnitCode = title.UnitCode;
+                                    hl014.RiverCode = riverCode;
+                                    hl014.DW = "合计";
+                                    hl014.PageNO = rpt.PageNO;
+                                    hl014.XYZYQT = hl011.ZYRK;
+                                    rpt.HL014.Add(hl014);
+                                }
+                            }
+                            break;
+                        case "HL012":
+                            object[] str012 = serializer.ConvertToType<object[]>(de.Value);
+                            for (int i = 0; i < str012.Length; i++)
+                            {
+                                HL012 hl012 = new HL012();
+                                hl012 = tool.SetZeroToObject(hl012);
+                                hl012 = serializer.ConvertToType<HL012>(str012[i]);
+                                hl012.UnitCode = title.UnitCode;
+                                hl012.DW = title.UnitName;
+
+                                hl012.DataOrder = i;
+                                hl012.PageNO = rpt.PageNO; //新加的
+                                hl012.ReportTitle = rpt;
+                                hl012.RiverCode = riverCode;
+                                rpt.HL012.Add(hl012);
+                            }
+                            break;
+                        case "DeletedAffix":
+                            object[] delAffs = serializer.ConvertToType<object[]>(de.Value);
+                            for (int i = 0; i < delAffs.Length; i++)
+                            {
+                                Affix aff = serializer.ConvertToType<Affix>(delAffs[i]);
+                                aff.PageNO = rpt.PageNO;
+                                aList.Add(aff);
+                            }
+                            break;
+                    }
+                }
+
+                #endregion
+
+                rpt.ORD_Code = "HL01";
+                rpt.RPTType_Code = "XZ0";
+                rpt.UnitCode = title.UnitCode; //单位代码
+                rpt.UnitName = title.UnitName;
+                rpt.StartDateTime = title.StartDateTime; //起始时间 
+                rpt.EndDateTime = title.EndDateTime; //结束时间  
+                rpt.Remark = title.Remark; //备注
+                rpt.ReceiveState = -1; //接收状态  0下载表箱，1拒收表箱，2已装入，3已删除
+                rpt.CopyPageNO = 0; //源表页号    新建表没有源表，此项值为0
+                rpt.Del = 0;
+                string date = DateTime.Now.ToShortDateString();
+                rpt.WriterTime = Convert.ToDateTime(date); //填报日期  只有年月日
+                rpt.LastUpdateTime = Convert.ToDateTime(date); //最后修改日期  年月日时分秒
+                rpt.SendTime = DateTime.Now;
+                rpt.ReceiveTime = Convert.ToDateTime(date); //接收日期 年月日时分秒
+                rpt.StatisticalCycType = 0;
+                rpt.SourceType = 0;
+                rpt.AssociatedPageNO = 0;
+                rpt.CSPageNO = 0; //为了保证数据的完整性,不为null
+
+                try
+                {
+                    if (title.PageNO != 0)
+                    {
+                        if (state != 3)
+                        {
+                            busEntitiy.SaveChanges();
+                        }
+                        else
+                        {
+                            busEntitiy.ReportTitle.AddObject(rpt);
+                            busEntitiy.SaveChanges();
+                        }
+                        if (aList.Count > 0)
+                        {
+                            town.DeleteAffixs(state, aList, rpt.PageNO, Convert.ToInt32(pageNO));
+                        }
                     }
                     else
                     {
                         busEntitiy.ReportTitle.AddObject(rpt);
                         busEntitiy.SaveChanges();
                     }
-                    if (aList.Count>0)
-                    {
-                        town.DeleteAffixs(state, aList, rpt.PageNO, Convert.ToInt32(pageNO));
-                    }
+                    result = rpt.PageNO.ToString();
                 }
-                else
+                catch (Exception ex)
                 {
-                    busEntitiy.ReportTitle.AddObject(rpt);
-                    busEntitiy.SaveChanges();
+                    result = "错误消息：" + ex.Message + ex.InnerException;
                 }
-                result = rpt.PageNO.ToString();
-            }
-            catch (Exception ex)
-            {
-                result = "错误消息：" + ex.Message+ex.InnerException;
             }
             jsr = Json(result);
             jsr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;

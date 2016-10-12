@@ -32,7 +32,7 @@ namespace LogicProcessingClass.Statistics
                 if (mapLevel == 1)//mapLevel默认为0，双击之后为1，获取当前区域的灾情数据
                 {
                     int pageNO = int.Parse(pageno);
-                    BusinessEntities bsn = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
+                    BusinessEntities bsn = Persistence.GetDbEntities(level);
                     var aggPage = (from agg in bsn.AggAccRecord
                                    where agg.PageNo == pageNO && agg.UnitCode == regionCode
                                    select agg.SPageNO).ToArray();
@@ -77,7 +77,7 @@ namespace LogicProcessingClass.Statistics
            //OpenISession openISession = new OpenISession();
            //OpenISession.SessionEnum ise = OpenISession.initSession();  //获取初始连接的数据库
            //IList<object[]> list = (IList<object[]>)openISession.GetDataList(ise, sql, 0);    //打开会话
-           BusinessEntities bsn = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
+           BusinessEntities bsn = Persistence.GetDbEntities(level);
            //BusinessEntities bsn = new BusinessEntities();
            var list = (from hl in bsn.HL011
                        where hl.DW != "兵团" && hl.PageNO ==pn

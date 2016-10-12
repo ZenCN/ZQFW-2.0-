@@ -111,7 +111,7 @@
                 <li class="DelRow" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.DelRow" ng-click="Open.Report.Fn.Core.DelRow()">
                     <i></i>删除行
                 </li>
-                <li class="Import" ng-if="Authority == 0" ng-hide="Config.Page.Open.Func.Import" autofileupload>
+                <li class="Import ng-hide" ng-if="Authority == 0" autofileupload><!--ng-hide="Config.Page.Open.Func.Import"-->
                     <i></i>导入
                 </li>
                 <li class="Export" ng-hide="Config.Page.Open.Func.Export">

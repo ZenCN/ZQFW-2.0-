@@ -27,7 +27,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class GetHP01Const
     {
-        private Entities entities = new Entities();
         Tools tool = new Tools();
 
         /// <summary>
@@ -38,7 +37,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetHPConst(string unitCode, int rptMonth)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             string temp = "";
             if (tool.GetLevelByUnitCode(unitCode) != 5)
             {
@@ -220,7 +219,7 @@ namespace LogicProcessingClass.ReportOperate
 
         public string GetReservoirByUnitCode(string unitCode)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             string temp = "";
             string large = "";
             string middle = "";
@@ -258,7 +257,7 @@ namespace LogicProcessingClass.ReportOperate
         public string GetLowerHPReport(int limit, int pageNO)
         {
             string jsonStr = "";
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             XMMZHClass ZH = new XMMZHClass();
             JavaScriptSerializer serializer = new JavaScriptSerializer(); //创建一个序列化对象
             var rpt = busEntity.ReportTitle.Where(r => r.PageNO == pageNO).First();
@@ -321,9 +320,8 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetHPLastYearSHIJIData(DateTime startTime, DateTime endTime, int limit, string unitCode)
         {
-            BusinessEntities busEntity = (BusinessEntities) entities.GetPersistenceEntityByLevel(limit);
-            FXDICTEntities fxdict =
-                (FXDICTEntities) entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var tb55 =
                 fxdict.TB55_FieldDefine.Where(t => t.FieldCode == "DXKXXSL" && t.UnitCls == limit).SingleOrDefault();
                 //实际蓄水的转换系数与保留小数位
@@ -414,7 +412,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>合计的实际蓄水量</returns>
         public string GetSQXSL(DateTime endTime, int limit, string unitCode)
         {
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var rpt = busEntity.ReportTitle.Where(t => t.EndDateTime == endTime && t.UnitCode == unitCode && t.ORD_Code == "HP01" && t.Del == 0).OrderByDescending(t => t.PageNO).AsQueryable();
             TableFieldBaseData tbBaseData = new TableFieldBaseData();
             string[] arr = { };
@@ -449,7 +447,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetAllTQXSL(DateTime endTime, int limit, string unitCode)
         {
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             string shortTime = "";
             string pageNOs = "";
             string str = "";
@@ -525,7 +523,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetUnderReservoirCodeByUnitCode(string unitCode, int limit)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var underUnits = fxdict.TB07_District.Where(t => t.pDistrictCode == unitCode).Select(t => t.DistrictCode).ToList();
             var tb44s = (from tb44 in fxdict.TB44_ReservoirDistrict
                          //where tb44.UnitCode == unitCode || underUnits.Contains(tb44.UnitCode)
@@ -569,7 +567,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetSQXSAllUnits(DateTime endTime, int limit, string unitCode)
         {
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             string str = "";
             TableFieldBaseData tbBaseData = new TableFieldBaseData();
             string[] arr = { };
@@ -621,7 +619,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetLNTQXSAllUnits(DateTime endTime, int limit, string unitCode)
         {
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             //string shortTime = "";
             string pageNO = "";
             string str = "";
@@ -701,8 +699,7 @@ namespace LogicProcessingClass.ReportOperate
 
         public string GetLNTQXSAllUnits(DateTime endTime, string unitCode)
         {
-            FXDICTEntities fxdict =
-                (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var underUnits = fxdict.TB07_District.Where(t => t.pDistrictCode == unitCode || t.DistrictCode == unitCode).Select(t => t.DistrictCode).ToList();
             //var tb44s = (from tb44 in fxdict.TB44_ReservoirDistrict
             //    where underUnits.Contains(tb44.UnitCode );
@@ -731,7 +728,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetNMReservoirCodeByUnitCode(string unitCode, int curLimit, string unitName)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             string result = "";
             string city = "";
 
@@ -798,7 +795,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetNMReservoirByUnitCode(string unitCode, string unitName)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             string result = "";
             string tempCode = unitCode.Substring(0, 4);
             string unders = "";

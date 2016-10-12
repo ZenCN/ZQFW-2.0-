@@ -39,10 +39,7 @@ namespace ZQFW
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            Application.Add("Assembly", System.Reflection.Assembly.Load("App_Code/AssemblyInfo.cs"));
-
             Persistence persistence = new Persistence();
-            persistence.PersistenceEntities();  //网站启动第一次全部加载省、市、县、乡镇四个实体加载到application中
             persistence.PersistenceUnits("35000000 ");  //浙江 33000000  湖南 43000000  黑龙江 23000000  内蒙古 15000000 江西 36000000 吉林 22000000 广西 45000000 广东 44000000 福建省 35000000
 
             LogicProcessingClass.ReportOperate.Message.ReadMsgFillInApplicaion();

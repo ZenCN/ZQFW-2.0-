@@ -393,9 +393,8 @@ namespace ZQFW.Controllers
             int limit = int.Parse(Request.Cookies["limit"].Value);
             ReportTitle report_title = null;
             ReportHelpClass rptHelp = new ReportHelpClass();
-            Entities getEntity = new Entities();
-            //BusinessEntities local_db = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-            BusinessEntities under_db = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);
+
+            BusinessEntities under_db = Persistence.GetDbEntities(limit + 1);
             try
             {
                 response = "[";
@@ -658,9 +657,9 @@ namespace ZQFW.Controllers
                     arr = viewRpt.GetSourceReportList(pageNO, limit, (sourceType == 2 ? 1 : 0), unitName, unitCode); // "1"表示本级库
                     
                     //打开delta_report
-                    var delta_rpt = viewRpt.GetDeltaReport(pageNO, limit);
+                    //var delta_rpt = viewRpt.GetDeltaReport(pageNO, limit);
 
-                    result = result + "," + arr + "," + delta_rpt;
+                    result = result + "," + arr;  //+ "," + delta_rpt
                 }
             }
             jsr = Json("{" + result + "}");
@@ -815,7 +814,7 @@ namespace ZQFW.Controllers
             {
                 int typeLimit = Convert.ToInt32(Request["typeLimit"]);//0：本级，1：下级
                 string operateType = Request["operateType"];//操作名称，加表：sum,减表sub
-                SummaryReportForm sumRpt = new SummaryReportForm(limit, typeLimit);
+                SummaryReportForm sumRpt = new SummaryReportForm();
                 string unitCode = Request.Cookies["unitcode"].Value;
                 temp = sumRpt.GetSummaryReportFormData(pageNOs, limit, typeLimit, operateType, unitCode);
             }

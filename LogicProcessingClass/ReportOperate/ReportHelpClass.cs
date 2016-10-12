@@ -19,8 +19,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class ReportHelpClass
     {
-        Entities getEntity = new Entities();
-
         /// <summary>
         /// 找出相同时段的报表
         /// </summary>
@@ -40,7 +38,7 @@ namespace LogicProcessingClass.ReportOperate
                 unitCode = "15000000";
             }
             string jsonStr = "{reportList:[";
-            BusinessEntities busEntity = getEntity.GetEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             DateTime sDateTime = Convert.ToDateTime(startDateTime);
             DateTime eDateTime = Convert.ToDateTime(endDateTime);
             var sameRpts = from rpt in busEntity.ReportTitle
@@ -73,6 +71,9 @@ namespace LogicProcessingClass.ReportOperate
             {
                 jsonStr = jsonStr.Remove(jsonStr.Length - 1);
             }
+
+            busEntity.Dispose();
+
             jsonStr = jsonStr + "]}";
 
             return jsonStr;
@@ -85,7 +86,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>最大pageNO页号</returns>
         //public int FindMaxPageNO(int limit)
         //{
-        //    BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+        //    BusinessEntities busEntity = Persistence.GetDbEntities(limit);
         //    var rpts = from rpt in busEntity.ReportTitle
         //               orderby rpt.PageNO descending
         //               select rpt.PageNO;
@@ -101,7 +102,7 @@ namespace LogicProcessingClass.ReportOperate
         public int FindMaxPageNO(int limit)
         {
             //----------------刘志-------------------------
-            //BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            //BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             //var rpts = from rpt in busEntity.ReportTitle
             //           orderby rpt.PageNO descending
             //           select rpt.PageNO;
@@ -116,16 +117,16 @@ namespace LogicProcessingClass.ReportOperate
             //---------------张建军------------------------------
             HttpApplicationState App = System.Web.HttpContext.Current.Application;
 
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-
             int maxPageNO = 0;
 
             if (App[limit + "_maxPageNO"] == null) //与该application相关的都是并发修改,重启iis时
             {
+                BusinessEntities busEntity = Persistence.GetDbEntities(limit);
                 if (busEntity.ReportTitle.Any())
                 {
                     maxPageNO = busEntity.ReportTitle.Max(t => t.PageNO);
                 }
+                busEntity.Dispose();
 
                 maxPageNO = maxPageNO + 1;
             }
@@ -156,7 +157,7 @@ namespace LogicProcessingClass.ReportOperate
 
             int pageno = BitConverter.ToInt32(bytes, 0);
 
-            //BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            //BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             //while (busEntity.ReportTitle.Where(t => t.PageNO == pageno).Any())
             //{
                 

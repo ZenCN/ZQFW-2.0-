@@ -425,39 +425,39 @@ App.directive('ngViewXsqk', function ($http) {
     };
 });
 
-App.directive('rptDelta', function ($timeout) {
-    return function ($scope, $element) {
-        if ($scope.Open.Report.Current.ReportTitle.SourceType > 0) {  //the source type not record
-            $timeout(function () {
-                $element.find('td input[type=text]').focus(function () {
-                    $(this).data('prev_val', this.value);
-                }).change(function () {
-                    var $this = $(this);
-                    var arr = $this.attr('ng-model').split('.');
-                    var obj, prev_val, cur_val;
-                    arr[0] = arr[0].toUpperCase();
+//App.directive('rptDelta', function ($timeout) {
+//    return function ($scope, $element) {
+//        if ($scope.Open.Report.Current.ReportTitle.SourceType > 0) {  //the source type not record
+//            $timeout(function () {
+//                $element.find('td input[type=text]').focus(function () {
+//                    $(this).data('prev_val', this.value);
+//                }).change(function () {
+//                    var $this = $(this);
+//                    var arr = $this.attr('ng-model').split('.');
+//                    var obj, prev_val, cur_val;
+//                    arr[0] = arr[0].toUpperCase();
 
-                    if ($scope.Open.Report.Current.Delta) {
-                        prev_val = $this.data('prev_val');
-                        prev_val = isNaN(prev_val) ? 0 : Number(prev_val); //get the previous value
+//                    if ($scope.Open.Report.Current.Delta) {
+//                        prev_val = $this.data('prev_val');
+//                        prev_val = isNaN(prev_val) ? 0 : Number(prev_val); //get the previous value
 
-                        cur_val = $this.val();
-                        cur_val = isNaN(cur_val) ? 0 : Number(cur_val); //get the current value
+//                        cur_val = $this.val();
+//                        cur_val = isNaN(cur_val) ? 0 : Number(cur_val); //get the current value
 
-                        //差值表HL011、HL014没有合计行故index需减1
-                        obj = $scope.Open.Report.Current.Delta[arr[0]][$this.parent().parent().index() - 1]; //get the previous delta model
+//                        //差值表HL011、HL014没有合计行故index需减1
+//                        obj = $scope.Open.Report.Current.Delta[arr[0]][$this.parent().parent().index() - 1]; //get the previous delta model
 
-                        if (!obj) {
-                            obj = $this.parent().parent().scope()[arr[0].toLowerCase()];
-                            obj = App.Models[arr[0].slice(0, 2)][arr[0].slice(0, 4)][arr[0]].Object(obj.UnitCode, obj.DW);
-                        }
+//                        if (!obj) {
+//                            obj = $this.parent().parent().scope()[arr[0].toLowerCase()];
+//                            obj = App.Models[arr[0].slice(0, 2)][arr[0].slice(0, 4)][arr[0]].Object(obj.UnitCode, obj.DW);
+//                        }
 
-                        obj[arr[1]] = isNaN(obj[arr[1]]) ? 0 : obj[arr[1]];
-                        obj[arr[1]] = cur_val - prev_val + obj[arr[1]];
-                        obj[arr[1]] = obj[arr[1]] > 0 ? obj[arr[1]] : undefined;
-                    }
-                });
-            });
-        };
-    }
-});
+//                        obj[arr[1]] = isNaN(obj[arr[1]]) ? 0 : obj[arr[1]];
+//                        obj[arr[1]] = cur_val - prev_val + obj[arr[1]];
+//                        obj[arr[1]] = obj[arr[1]] > 0 ? obj[arr[1]] : undefined;
+//                    }
+//                });
+//            });
+//        };
+//    }
+//});

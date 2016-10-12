@@ -10,7 +10,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class HP01SKR
     {
-        Entities entities = new Entities();
         FXDICTEntities fxdict = null;
         /// <summary>获取当前登录单位的下级单位死库容
         /// </summary>
@@ -19,8 +18,7 @@ namespace LogicProcessingClass.ReportOperate
         public string GetUnitSKR(string unitCode,int limit)
         {
             string str = "";
-            fxdict =
-                (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            fxdict = Persistence.GetDbEntities();
             //var units =
             //    fxdict.TB07_District.Where(t => t.pDistrictCode == unitCode).Select(t=>t.DistrictCode).ToList();
             var units =
@@ -80,8 +78,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string GetReservoirSKR(string unitCode,int limit)
         {
-            fxdict =
-                (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            fxdict = Persistence.GetDbEntities();
             var underUnits = fxdict.TB07_District.Where(t => t.pDistrictCode == unitCode).Select(t => t.DistrictCode).ToList();
             var tb44s = (from tb44 in fxdict.TB44_ReservoirDistrict
                          where underUnits.Contains(tb44.UnitCode)

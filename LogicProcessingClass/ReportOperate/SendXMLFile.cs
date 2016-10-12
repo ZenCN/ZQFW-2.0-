@@ -17,8 +17,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class SendXMLFile
     {
-        Entities getEntity = new Entities();
-
         /// <summary>
         /// 发送XML文件(测试期间，已经是发送给.8和.32数据库)
         /// </summary>
@@ -29,7 +27,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>返回0或1，确认是否成功</returns>
         public int SendReportByXML(int pageNO, string sendUniCode, int limit)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             string rptTypeCode = FindRppttypecode(pageNO, limit);
             if (rptTypeCode == null || rptTypeCode == "")//如果上报类型为空，则返回0上报失败
             {
@@ -97,10 +95,12 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>rppttypecode返回上报类别代码</returns>
         public string FindRppttypecode(int pageNO, int limit)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             string rptTypeCode = "";
             var rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();
             rptTypeCode = rpt.RPTType_Code;
+            busEntity.Dispose();
+
             return rptTypeCode;
         }
 
@@ -111,10 +111,12 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>unitcode返回接收文件的单位代码</returns>
         public string FindReciveUnitcode(string rptTypeCode)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)getEntity.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             string unitCode = "";
             var tb11 = fxdict.TB11_RptType.Where(t => t.RptTypeCode == rptTypeCode).SingleOrDefault();
             unitCode = tb11.UnitCode;
+            fxdict.Dispose();
+
             return unitCode;
         }
     }

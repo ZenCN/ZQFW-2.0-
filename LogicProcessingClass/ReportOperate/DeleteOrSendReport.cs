@@ -20,14 +20,14 @@ namespace LogicProcessingClass.ReportOperate
     public class DeleteOrSendReport
     {
         private BusinessEntities busEntity = null;
-        Entities getEntity = new Entities();
+
         /// <summary>
         /// 构造函数，根据单位级别初始化对应的业务模型
         /// </summary>
         /// <param name="limit"></param>
         public DeleteOrSendReport(int limit)
         {
-            busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            busEntity = Persistence.GetDbEntities(limit);
         }
         #region  删除操作
         /// <summary>
@@ -44,13 +44,13 @@ namespace LogicProcessingClass.ReportOperate
             {
                 int upperCount = 0;
                 int count = 0;
-                BusinessEntities business = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
+                BusinessEntities business = Persistence.GetDbEntities(limit);
 
                 //不管是否报送先从本级库中查SPageNO是否被累计过
                 count = busEntity.AggAccRecord.Where(t => t.OperateType == 2 && t.SPageNO == pageNO).Count();
                 if (count == 0 && limit > 2 && State == 3) //已报送
                 {
-                    business = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit - 1); //查看已报送的表是否被上级汇总过
+                    business = Persistence.GetDbEntities(limit - 1); //查看已报送的表是否被上级汇总过
                     count = busEntity.AggAccRecord.Where(t => t.OperateType == 1 && t.SPageNO == pageNO).Count();
                 }
 
@@ -196,7 +196,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 limit = 1;
             }
-            BusinessEntities upBusEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit-1);//上级库中进行查询
+            BusinessEntities upBusEntity = Persistence.GetDbEntities(limit - 1);//上级库中进行查询
             var aggs = upBusEntity.AggAccRecord.Where(t => t.SPageNO == pageNO && t.OperateType == 1).AsQueryable();//查询是否参加上级的汇总
             if (!aggs.Any())
             {

@@ -52,7 +52,7 @@ namespace LogicProcessingClass.Statistics
                                               int pageNumTrueNode, int pageLineNumTrueNode, string unitCode, int level)
         {
             DisasterAnalysis da = new DisasterAnalysis();
-            BusinessEntities businessFXPRV = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
+            BusinessEntities businessFXPRV = Persistence.GetDbEntities(level);
             FXDICTEntities fxdict = new FXDICTEntities();
             StringBuilder sb = new StringBuilder();
            

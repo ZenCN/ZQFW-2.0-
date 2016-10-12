@@ -20,7 +20,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class DifferentialReport
     {
-        Entities getEntity = new Entities();
 
         /// <summary>
         /// 保存或更新因为累计产生的差值表(currentDiffRpt参数中如果有“PageNO”的整数值，是修改，否则是新建)
@@ -35,7 +34,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string SaveOrUpdate(int limit, string unitCode, string currentDiffRpt, Hashtable reportTitle, int SPageNO, ref string aggAcc, ref string dataStr)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             ReportTitle rpt = null;
 
@@ -224,7 +223,7 @@ namespace LogicProcessingClass.ReportOperate
         public string SaveOrUpdate(int limit, ArrayList diffReports, Hashtable reportTitle, ref string dataStr, ref string aggAcc, string allDiffPageNOs)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);//传入的是当前单位级别，数据存放在下级单位，所以需要+1
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit + 1);//传入的是当前单位级别，数据存放在下级单位，所以需要+1
             ReportTitle rpt = null;
             ReportHelpClass rptHelp = new ReportHelpClass();
             int maxSPageNO = rptHelp.FindMaxPageNO(limit);//找到最大的页号并加一

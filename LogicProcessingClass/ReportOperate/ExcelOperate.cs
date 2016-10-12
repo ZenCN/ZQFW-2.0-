@@ -39,9 +39,9 @@ namespace LogicProcessingClass.ReportOperate
         FXDICTEntities fxdict = null;
         public ExcelOperate(int limit)
         {
-            Entities getEntity = new Entities();
-            busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-            fxdict = (FXDICTEntities)getEntity.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            
+            busEntity = Persistence.GetDbEntities(limit);
+            fxdict = Persistence.GetDbEntities();
         }
         /// <summary>把生成好的Excel发送到客户端
         /// </summary>
@@ -2305,8 +2305,8 @@ namespace LogicProcessingClass.ReportOperate
                     sheet1.GetRow(7).GetCell(3).SetCellValue(hj.ZKR.ToString());
                     sheet1.GetRow(7).GetCell(4).SetCellValue(hj.SKR);
 
-                    Entities getEntity = new Entities();
-                    business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
+                    
+                    business = Persistence.GetDbEntities(2);
                     sliceCode = limit == 3 ? unitcode.Substring(0, 4) : unitcode.Substring(0, 2);
                     dqxsl =
                         Convert.ToDouble(
@@ -2891,9 +2891,9 @@ namespace LogicProcessingClass.ReportOperate
         public Dictionary<string, LZNP011> getNMReservoirsData(string unitCode, int limit, int pageNO)
         {
             int[] limitSub = { 2, 4, 6 };
-            Entities getEntity = new Entities();
+            
             Dictionary<string, LZNP011> resData = new Dictionary<string, LZNP011>();
-            BusinessEntities nmBusEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
+            BusinessEntities nmBusEntity = Persistence.GetDbEntities(2);
 
             string tempCode = unitCode.Substring(0, limitSub[limit - 2]);
             var list = (from np01 in nmBusEntity.NP011
@@ -4027,8 +4027,8 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public IList<GTHP01> GetWNWTData(DateTime startTime, DateTime endTime, int limit, string unitCode)
         {
-            Entities entities = new Entities();
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             IList<GTHP01> dataList = null;
 
             int j = 1;
@@ -4067,8 +4067,8 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public IList<GTHP01> Get08YearTData(DateTime startTime, DateTime endTime, int limit, string unitCode)
         {
-            Entities entities = new Entities();
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             IList<GTHP01> dataList = null;
 
             string sql = "";

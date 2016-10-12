@@ -19,9 +19,8 @@ namespace LogicProcessingClass.ReportOperate
 
         public ExcelOper(int limit)
         {
-            Entities getEntity = new Entities();
-            business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-            fxdict = (FXDICTEntities)getEntity.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            business = Persistence.GetDbEntities(limit);
+            fxdict = Persistence.GetDbEntities();
         }
 
         public string To_SH01(int pageno)  //, string ord_code

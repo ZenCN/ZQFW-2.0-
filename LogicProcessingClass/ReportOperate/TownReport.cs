@@ -10,7 +10,7 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class TownReport
     {
-        BusinessEntities townBusEntity = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(5);//默认实例化乡镇对应的业务模型
+        BusinessEntities townBusEntity = Persistence.GetDbEntities(5);//默认实例化乡镇对应的业务模型
 
         //public string SaveOrUpdateTownRpt(int pageNO,)
         //{ 
@@ -100,7 +100,7 @@ namespace LogicProcessingClass.ReportOperate
                 dic.Add("SLSSZJJJSS", townHl011s.SingleOrDefault().SLSSZJJJSS);
                 dic.Add("SZRKR", townHl011s.SingleOrDefault().SZRKR);
             }
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var tb55s = from fieldDefine in fxdict.TB55_FieldDefine
                         where fieldDefine.UnitCls == 5 && fieldDefine.TD_TabCode == "HL011"
                         select new
@@ -189,7 +189,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns>bool</returns>
         public string GetFieldDefineAndMeasureName(int limit, string unitcode)
         {
-            FXDICTEntities fxdict = (FXDICTEntities)new Persistence().GetPersistenceEntity(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var tb55sDefine = from tb55 in fxdict.TB55_FieldDefine
                               where tb55.UnitCls == limit
                               select new

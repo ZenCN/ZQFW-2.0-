@@ -22,7 +22,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 Dictionary<string, Dictionary<string, int>> MsgDic = new Dictionary<string, Dictionary<string, int>>();
                 Dictionary<string, int> SendMsgDetails = new Dictionary<string, int>(); ;
-                BusinessEntities busEntity = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(int.Parse(limit));
+                BusinessEntities busEntity = Persistence.GetDbEntities(int.Parse(limit));
                 var urgeRpts = from urgeRpt in busEntity.UrgeReport
                                where urgeRpt.MsgType == 1
                                select new
@@ -55,6 +55,7 @@ namespace LogicProcessingClass.ReportOperate
                     }
                 }
                 Table[limit] = MsgDic;
+                busEntity.Dispose();
             }
             HAS["SendMsg"] = Table;
         }
@@ -68,7 +69,7 @@ namespace LogicProcessingClass.ReportOperate
         public static string RemoveFormDB(string unitCode, int limit)
         {
             string Result = "";
-            BusinessEntities busEntity = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var urgeRpts = busEntity.UrgeReport.Where(t => t.ReceiveUnitCode == unitCode && t.MsgType == 1);
             try
             {

@@ -19,7 +19,6 @@ namespace LogicProcessingClass.ReportOperate
     public class UrgeAndReadReport
     {
         Tools tool = new Tools();
-        Entities entities = new Entities();
 
         /// <summary>
         /// 给单位催报
@@ -48,13 +47,13 @@ namespace LogicProcessingClass.ReportOperate
                 }
                 else
                 {
-                    FXDICTEntities dicEntity = (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+                    FXDICTEntities dicEntity = Persistence.GetDbEntities();
                     unitname = (from tb07 in dicEntity.TB07_District where tb07.DistrictCode == urgeReportUnit select tb07.DistrictName).First();
                 }
             }
-            BusinessEntities busEntityCTY = (BusinessEntities)entities.GetPersistenceEntityByLevel(3);
-            BusinessEntities busEntityCNT = (BusinessEntities)entities.GetPersistenceEntityByLevel(4);
-            BusinessEntities busEntityTWN = (BusinessEntities)entities.GetPersistenceEntityByLevel(5);
+            BusinessEntities busEntityCTY = Persistence.GetDbEntities(3);
+            BusinessEntities busEntityCNT = Persistence.GetDbEntities(4);
+            BusinessEntities busEntityTWN = Persistence.GetDbEntities(5);
             #region 登陆的单位是省级
             if (limit == 2)
             {
@@ -121,6 +120,8 @@ namespace LogicProcessingClass.ReportOperate
                 }
                 busEntityCNT.SaveChanges();
                 busEntityTWN.SaveChanges();
+
+                busEntityCTY.Dispose();
             }
             #endregion
             #region 登陆的单位是县级
@@ -144,6 +145,9 @@ namespace LogicProcessingClass.ReportOperate
                     AddUrgeReport(busEntityTWN, unitCodes[i], text, personOrPageno, urgeReportUnit, msgType);
                 }
                 busEntityTWN.SaveChanges();
+
+                busEntityCTY.Dispose();
+                busEntityCNT.Dispose();
             }
             #endregion
         }
@@ -156,7 +160,7 @@ namespace LogicProcessingClass.ReportOperate
         public string ReadUrgeReport(int limit, int tbNO)
         {
             string strJson = "";
-            BusinessEntities busEntity = (BusinessEntities)entities.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var urgeReport = busEntity.UrgeReport.Where(urgeRpt => urgeRpt.TBNO == tbNO).First();
             strJson += "{TBNO:'" + urgeReport.TBNO + "',SendUnitName:'" + urgeReport.SendUnitName + "',UrgeRptContent:'" +
                     urgeReport.UrgeRptContent + "',UrgeRptDateTime:'" + urgeReport.UrgeRptDateTime + "',UrgeRptPersonName:'" +
@@ -178,17 +182,15 @@ namespace LogicProcessingClass.ReportOperate
             try
             {
                 string urgeStr = "urgeReport:[";
-                FXDICTEntities dicEntity =
-                    (FXDICTEntities)
-                        entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+                FXDICTEntities dicEntity = Persistence.GetDbEntities();
                 var ucs =
                     (from tb07 in dicEntity.TB07_District where tb07.pDistrictCode == unitCode select tb07.DistrictCode)
                         .ToList();
-                BusinessEntities lowerBusEntity = (BusinessEntities) entities.GetPersistenceEntityByLevel(limit);
+                BusinessEntities lowerBusEntity = Persistence.GetDbEntities(limit);
                 var rpts =
                     lowerBusEntity.ReportTitle.Where(rpt => ucs.Contains(rpt.UnitCode))
                         .Where(rpt => rpt.ReceiveState == 0 && rpt.State == 3);
-                BusinessEntities busEntity = (BusinessEntities) entities.GetPersistenceEntityByLevel(limit);
+                BusinessEntities busEntity = Persistence.GetDbEntities(limit);
                 var urgeReports =
                     busEntity.UrgeReport.Where(
                         urgeReport =>
@@ -206,11 +208,16 @@ namespace LogicProcessingClass.ReportOperate
                     urgeStr = urgeStr.Remove(urgeStr.Length - 1);
                 }
                 strJson = urgeStr + "]";
+
+                dicEntity.Dispose();
+                lowerBusEntity.Dispose();
+                busEntity.Dispose();
             }
             catch (Exception ex)
             {
                 string msg = ex.Message;
             }
+
             return strJson;
         }
 
@@ -224,7 +231,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="urgeReportUnit">催报单位</param>
         private void AddUrgeReport(BusinessEntities busEntity, string receiveUnitCodes, string content, string urgeReportPerson, string urgeReportUnit, int msgType)
         {
-            FXDICTEntities dicEntity = (FXDICTEntities)entities.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             string unitName = (from tb07 in dicEntity.TB07_District where tb07.DistrictCode == urgeReportUnit select tb07.DistrictName).First();
             UrgeReport urgeReport = busEntity.UrgeReport.CreateObject();
             urgeReport.ReceiveUnitCode = receiveUnitCodes;
@@ -236,6 +243,8 @@ namespace LogicProcessingClass.ReportOperate
             urgeReport.MsgType = msgType;
             urgeReport.UrgeRptPersonName = urgeReportPerson;
             busEntity.AddToUrgeReport(urgeReport);
+
+            dicEntity.Dispose();
         }
     }
 }

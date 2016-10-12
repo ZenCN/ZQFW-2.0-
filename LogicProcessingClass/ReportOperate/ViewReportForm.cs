@@ -28,7 +28,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class ViewReportForm
     {
-        Entities getEntity = new Entities();
         BusinessEntities changeEntity = null;
         /// <summary>
         /// 返回该单位最后一次填写的表头ReportTitle信息
@@ -42,7 +41,7 @@ namespace LogicProcessingClass.ReportOperate
             try
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                BusinessEntities busEntity = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
+                BusinessEntities busEntity = Persistence.GetDbEntities(limit);
                 var rpts = from rpt in busEntity.ReportTitle
                     where rpt.UnitCode == unitCode && rpt.ORD_Code == "HL01" && rpt.RPTType_Code == "XZ0"
                           && rpt.Del != 1 && rpt.CopyPageNO == 0 && rpt.SendOperType == 0 && rpt.CSPageNO == 0
@@ -60,6 +59,7 @@ namespace LogicProcessingClass.ReportOperate
                 {
                     reportInfo = "RecentReportInfo:{HL01:{}}";
                 }
+                busEntity.Dispose();
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace LogicProcessingClass.ReportOperate
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string reportInfo = "";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var rpts = from report in busEntity.ReportTitle
                        where report.UnitCode == unitCode &&
                         report.ORD_Code == rptType
@@ -98,6 +98,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 reportInfo = "RecentReportInfo:{}";
             }
+            busEntity.Dispose();
             return reportInfo;
         }
 
@@ -111,7 +112,7 @@ namespace LogicProcessingClass.ReportOperate
         public string ViewReportFormInfo(int limit, int pageNO, string rptType)
         {
             string jsonStr = "";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             XMMZHClass ZH = new XMMZHClass();
             JavaScriptSerializer serializer = new JavaScriptSerializer(); //创建一个序列化对象
             var rpts = from rpt in busEntity.ReportTitle
@@ -285,12 +286,13 @@ namespace LogicProcessingClass.ReportOperate
                     jsonStr = "ReportTitle:[],HP011:[],HP012:{Real:{Large:[],Middle:[]}},Affix:[]";
                 }
             }
+            busEntity.Dispose();
             return jsonStr;
         }
 
         public string ViewReportFormInfo(int limit, int pageNO, string rptType, bool is_NMG)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             XMMZHClass ZH = new XMMZHClass();
             JavaScriptSerializer serializer = new JavaScriptSerializer(); //创建一个序列化对象
             var rpts = from rpt in busEntity.ReportTitle
@@ -412,6 +414,9 @@ namespace LogicProcessingClass.ReportOperate
             {
                 response = "{}";
             }
+
+            busEntity.Dispose();
+
             return response;
         }
 
@@ -424,7 +429,7 @@ namespace LogicProcessingClass.ReportOperate
         public string ViewReportFormInfo(int pageNO, string unitCode, int curLimit)
         {
             string jsonStr = "";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
+            BusinessEntities busEntity = Persistence.GetDbEntities(2);
             XMMZHClass ZH = new XMMZHClass();
             JavaScriptSerializer serializer = new JavaScriptSerializer(); //创建一个序列化对象
             var rpts = from rpt in busEntity.ReportTitle
@@ -493,12 +498,16 @@ namespace LogicProcessingClass.ReportOperate
                                    (dqxsl > 0 ? Convert.ToDouble(dqxsl).ToString("0.000") : "0")
                                    + "'}";
                     }
+                    fxdict.Dispose();
                 }
             }
             else
             {
                 jsonStr = "ReportTitle:[],NP011:[],Affix:[]";
             }
+
+            busEntity.Dispose();
+
             return jsonStr;
         }
 
@@ -507,7 +516,7 @@ namespace LogicProcessingClass.ReportOperate
         public string ViewNMReportFormInfo(int pageNO, string unitCode)
         {
             string jsonStr = "";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
+            BusinessEntities busEntity = Persistence.GetDbEntities(2);
             XMMZHClass ZH = new XMMZHClass();
             JavaScriptSerializer serializer = new JavaScriptSerializer(); //创建一个序列化对象
             var rpts = from rpt in busEntity.ReportTitle
@@ -538,6 +547,9 @@ namespace LogicProcessingClass.ReportOperate
             {
                 jsonStr = "NP011:[]";
             }
+
+            busEntity.Dispose();
+
             return jsonStr;
         }
         public string GetTab6Max(string pageNoList, BusinessEntities busEntities)
@@ -563,10 +575,11 @@ namespace LogicProcessingClass.ReportOperate
         public string GetSHSourceReportList(int pageno, int limit)
         {
             string response = "SourceReport:";
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
 
             try
             {
-                BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+                
                 var aggaccs = (from agg in busEntity.AggAccRecord
                                where agg.PageNo == pageno
                                select new
@@ -582,7 +595,7 @@ namespace LogicProcessingClass.ReportOperate
                         pagenos[i] = aggaccs[i].SPageNO;
                     }
 
-                    busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);
+                    busEntity = Persistence.GetDbEntities(limit + 1);
                     var rpts = (from rpt in busEntity.ReportTitle
                                 where pagenos.Contains(rpt.PageNO)
                                 select new
@@ -615,6 +628,8 @@ namespace LogicProcessingClass.ReportOperate
                 response = ex.Message;
             }
 
+            busEntity.Dispose();
+
             return response;
         }
 
@@ -622,12 +637,12 @@ namespace LogicProcessingClass.ReportOperate
         public string GetDeltaReport(int pageno, int limit)
         {
             string response = "";
-            BusinessEntities db_context = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities db_context = Persistence.GetDbEntities(limit);
 
             try
             {
                 var spagenos = db_context.AggAccRecord.Where(t => t.PageNo == pageno).Select(t => t.SPageNO).ToList();
-                db_context = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1); //下级库
+                db_context = Persistence.GetDbEntities(limit + 1); //下级库
                 var list =
                     db_context.ReportTitle.Where(t => spagenos.Contains(t.PageNO) && t.SourceType == 6)
                         .Select(t => t.PageNO)
@@ -659,8 +674,10 @@ namespace LogicProcessingClass.ReportOperate
             }
             catch (Exception ex)
             {
-                response = ex.InnerException.Message;
+                response = ex.Message;
             }
+
+            db_context.Dispose();
 
             return response;
         }
@@ -676,7 +693,7 @@ namespace LogicProcessingClass.ReportOperate
         public string GetSourceReportList(int pageNO, int limit, int typeLimit, string UnitName, string unitCode)
         {
             string jsonStr = "";
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             var aggaccs = from agg in busEntity.AggAccRecord
                           where agg.PageNo == pageNO
                           select new
@@ -710,7 +727,7 @@ namespace LogicProcessingClass.ReportOperate
             string content = "";
             string unit = "";
             ArrayList Container = new ArrayList();
-            changeEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);//根据查看类型（是否本级）改变级别
+            changeEntity = Persistence.GetDbEntities(limit);//根据查看类型（是否本级）改变级别
             foreach (var aggobj in aggaccs)
             {
                 string types = "0,1,2,6";// //SourceType in(0,1,2,6) 源表可能是差值表
@@ -1052,12 +1069,16 @@ namespace LogicProcessingClass.ReportOperate
                     jsonStr = jsonStr + ",MAX:" + maxTemp;
                 }
             }
+
+            busEntity.Dispose();
+            changeEntity.Dispose();
+
             return jsonStr;
         }
 
         public void ChangeDBConnection(int limit)
         {
-            changeEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            changeEntity = Persistence.GetDbEntities(limit);
         }
 
         /// <summary>
@@ -1069,8 +1090,8 @@ namespace LogicProcessingClass.ReportOperate
         public string RiverData(int pageNO, string unitCode)
         {
             string jsonStr = "";
-            BusinessEntities prvEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);
-            FXDICTEntities fxdict = (FXDICTEntities)getEntity.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            BusinessEntities prvEntity = Persistence.GetDbEntities(2);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var riverRpts = from rpt in prvEntity.ReportTitle
                             where rpt.AssociatedPageNO == pageNO
                             select new
@@ -1095,6 +1116,9 @@ namespace LogicProcessingClass.ReportOperate
                     jsonStr += "<a href='ViewUnderData.aspx?DistrictCode=" + unitCode + "&ViewType=River&level=2&PageNo=" + rPageNo + "&RiverCode=" + riverCode + "' target='_blank' name='" + riverCode + "'>" + riverName + "</a>";
                 }
             }
+            prvEntity.Dispose();
+            fxdict.Dispose();
+
             return jsonStr;
         }
     }

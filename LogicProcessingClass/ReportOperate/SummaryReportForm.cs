@@ -22,86 +22,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class SummaryReportForm
     {
-        /// <summary>返回对应的枚举类型的数据库实体
-        /// </summary>
-        /// <param name="limit">单位级别</param>
-        /// <param name="typeLimit">是否下级（0：本级，1：下级）</param>
-        /// <returns></returns>
-        public EntitiesConnection.entityName GetNextEntityName(int limit, int typeLimit)
-        {
-            switch (limit)
-            {
-                case 0://国家防总
-                    if (typeLimit == 0)
-                    {
-                        return EntitiesConnection.entityName.FXCLDEntities;
-                    }
-                    else
-                    {
-                        return EntitiesConnection.entityName.FXPRVEntities;
-                    }
-                    break;
-                case 2://省级
-                    if (typeLimit == 0)//本级
-                    {
-                        return EntitiesConnection.entityName.FXPRVEntities;
-                    }
-                    else//下级
-                    {
-                        return EntitiesConnection.entityName.FXCTYEntities;
-                    }
-                    break;
-                case 3://市级
-                    if (typeLimit == 0)//本级
-                    {
-                        return EntitiesConnection.entityName.FXCTYEntities;
-                    }
-                    else//下级
-                    {
-                        return EntitiesConnection.entityName.FXCNTEntities;
-                    }
-                    break;
-                case 4://县级
-                    if (typeLimit == 0)//本级
-                    {
-                        return EntitiesConnection.entityName.FXCNTEntities;
-                    }
-                    else//下级
-                    {
-                        return EntitiesConnection.entityName.FXTWNEntities;
-                    }
-                    break;
-                case 5://乡级
-                    return EntitiesConnection.entityName.FXTWNEntities;
-                    break;
-                default:
-                    break;
-            }
-            return EntitiesConnection.entityName.FXCLDEntities;
-        }
-
-        private BusinessEntities busEntities = null;
-        //public SummaryReportForm() { }
-        /// <summary>初始化
-        /// </summary>
-        /// <param name="limit">当前单位级别</param>
-        /// <param name="typeLimit">是否下级（0：本级，1：下级）</param>
-        public SummaryReportForm(int limit, int typeLimit)
-        {
-            Entities getEntities = new Entities();
-            busEntities = (BusinessEntities)getEntities.GetPersistenceEntityByEntityName(GetNextEntityName(limit, typeLimit));
-        }
-
-        public BusinessEntities getBusinessEntities(int limit, int typeLimit)
-        {
-            Entities getEntities = new Entities();
-            busEntities = (BusinessEntities)getEntities.GetPersistenceEntityByEntityName(GetNextEntityName(limit, typeLimit));
-
-            return busEntities;
-        }
-
-
-
         /// <summary> 汇总数据
         /// </summary>
         /// <param name="pageNoList">页号集合</param>
@@ -133,7 +53,7 @@ namespace LogicProcessingClass.ReportOperate
                     list.Add(obj);
                 }
             }
-            jsonStr += GetReportFormList(pageNoList, list, GetNextEntityName(limit, typeLimit), typeLimit, limit,operateType,unitCode);
+            jsonStr += GetReportFormList(pageNoList, list, typeLimit, limit,operateType,unitCode);
             jsonStr += "}";
             return jsonStr;
         }
@@ -494,7 +414,7 @@ namespace LogicProcessingClass.ReportOperate
            
         }*/
 
-        public string GetReportFormList(string pageNoList, IList list, EntitiesConnection.entityName entityName, int typelimit, int limit, string operateType, string unitCode)
+        public string GetReportFormList(string pageNoList, IList list, int typelimit, int limit, string operateType, string unitCode)
         {
             StringBuilder sbJSON = new StringBuilder();
             ArrayList filedList = QueryTableFiled(list);
@@ -507,7 +427,7 @@ namespace LogicProcessingClass.ReportOperate
             SortedList slist = null;
             bool repeat = false;
             bool InQuiry = true;
-            BusinessEntities CTYbusEntities = null;
+            BusinessEntities busEntities = Persistence.GetDbEntities(limit + typelimit);
 
             for (int i = 0; i < filedList.Count; i++)
             {
@@ -554,6 +474,7 @@ namespace LogicProcessingClass.ReportOperate
                 sbJSON.Append(tableName).Append(":[").Append(RetainNumber(alist, list, filedList[i].ToString(), tableName, operateType));//修改有}改为]
                 sbJSON.Append("],");
             }
+            busEntities.Dispose();
             result = sbJSON.Remove(sbJSON.Length - 1, 1).ToString();
 
             return result; 

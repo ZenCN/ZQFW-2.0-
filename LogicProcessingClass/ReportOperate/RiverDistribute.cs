@@ -20,8 +20,8 @@ namespace LogicProcessingClass.ReportOperate
         private BusinessEntities prvBusEntity;//省级库会话
         public RiverDistribute()
         {
-            fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
-            prvBusEntity = (BusinessEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXPRVEntities);
+            fxdict = Persistence.GetDbEntities();
+            prvBusEntity = Persistence.GetDbEntities(2);
         }
         /// <summary>
         /// 根据单位代码获取流域、操作表代码关系类
@@ -689,7 +689,7 @@ namespace LogicProcessingClass.ReportOperate
         public bool NMSaveRiverDistribute(int pageNO, List<RiverInfo> rInfos)
         {
             bool saveFlag = false;
-            BusinessEntities ctyBusEntity = (BusinessEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXCTYEntities);
+            BusinessEntities ctyBusEntity = Persistence.GetDbEntities(3);
             ReportTitle xzRpt = prvBusEntity.ReportTitle.Where(t => t.PageNO == pageNO).SingleOrDefault();
             List<AggAccRecord> aggs = new List<AggAccRecord>();
             if(xzRpt.SourceType  == 1){

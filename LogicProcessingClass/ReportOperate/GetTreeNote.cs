@@ -33,8 +33,8 @@ namespace LogicProcessingClass.ReportOperate
             {
                 limit = limit + 1;
             }
-            Entities getEntity = new Entities();
-            busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            
+            busEntity = Persistence.GetDbEntities(limit);
         }
 
 
@@ -59,6 +59,8 @@ namespace LogicProcessingClass.ReportOperate
                 {
                     units.Add(district.DistrictCode, district.DistrictName);
                 }
+
+                entity.Dispose();
             }
             else
             {
@@ -154,6 +156,7 @@ namespace LogicProcessingClass.ReportOperate
                     units.Add(tb07District.DistrictCode, tb07District.DistrictName);
                 }
             }
+            entity.Dispose();
             //    App[unitCode + "TreeUnits"] = units;
             //}
             //if (App["FormerYearsTreeNodeData" + unitCode + typelimit] != null)//判断是否在缓存中
@@ -189,6 +192,9 @@ namespace LogicProcessingClass.ReportOperate
                     jsonStr = ReplaceLockedID("id", jsonStr, pageNoArray);
                 }
             }
+
+            busEntity.Dispose();
+
             if (jsonStr != "[")
             {
                 jsonStr = jsonStr.Remove(jsonStr.Length - 1);
@@ -243,6 +249,7 @@ namespace LogicProcessingClass.ReportOperate
                     units.Add(tb07District.DistrictCode, tb07District.DistrictName);
                 }
             }
+            entity.Dispose();
             //    App[unitCode + "TreeUnits"] = units;
             //}
             //if (App["FormerYearsTreeNodeData" + unitCode + typelimit] != null)//判断是否在缓存中
@@ -317,6 +324,8 @@ namespace LogicProcessingClass.ReportOperate
             //}
             jsonStr = jsonStr.Replace("[汇总]", "").Replace("[录入]", "").Replace("[初报]", "[已报送]");
 
+            busEntity.Dispose();
+
             return jsonStr;
         }
 
@@ -325,7 +334,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public static string GetCreateTreeData()
         {
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             string str = "RptClass:[";
             var tb15s = fxdict.TB15_RptClass.AsQueryable();
             foreach (var tb15 in tb15s)
@@ -342,6 +351,9 @@ namespace LogicProcessingClass.ReportOperate
                 }
                 str = str + childs + "]},";
             }
+
+            fxdict.Dispose();
+
             if (str != "")
             {
                 str = str.Remove(str.Length - 1) + "]";
@@ -649,13 +661,12 @@ namespace LogicProcessingClass.ReportOperate
 
             try
             {
-                Entities getEntity = new Entities();
                 BusinessEntities upEntities = null;
                 if (typeLimit == 0)  //本级
                 {
                     /*if (limit > 2)
                     {
-                        upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit - 1);
+                        upEntities = Persistence.GetDbEntities(limit - 1);
                         huiZongAggList = upEntities.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();//汇总
                     }
                     else
@@ -663,17 +674,17 @@ namespace LogicProcessingClass.ReportOperate
                         huiZongAggList = new List<int?>();
                     }
                     leiJiAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 2).Select(t => t.SPageNO).Distinct().ToList();//累计*/
-                    upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);  //不管是否报送先从本级库中查SPageNO是否被累计过
+                    upEntities = Persistence.GetDbEntities(limit);  //不管是否报送先从本级库中查SPageNO是否被累计过
                     localAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 2).Select(t => t.SPageNO).Distinct().ToList();
                     if (limit > 2)  //省级无法查看国家防总的AggAcc表
                     {
-                        upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit - 1);  //查看已报送的表是否被上级汇总过
+                        upEntities = Persistence.GetDbEntities(limit - 1);  //查看已报送的表是否被上级汇总过
                         upperAggList = busEntity.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();
                     }
                 }
                 else  //下级
                 {
-                    upEntities = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit); //下级表是否被本级汇总过
+                    upEntities = Persistence.GetDbEntities(limit); //下级表是否被本级汇总过
                     upperAggList = upEntities.AggAccRecord.Where(t => t.OperateType == 1).Select(t => t.SPageNO).Distinct().ToList();//汇总
                 }
                 object[] temp = { };
@@ -703,12 +714,16 @@ namespace LogicProcessingClass.ReportOperate
                     temp[11] = Convert.ToDateTime(obj.WriterTime).ToString("M月d日 HH:mm");
                     arrList.Add(temp);
                 }
+
+                //upEntities.Dispose();
             }
             catch (System.Exception ex)
             {
-                string msg = ex.Message;
+                //string msg = ex.Message;
             }
             
+            //busEntity.Dispose();
+
             return arrList;
         }
 

@@ -2116,7 +2116,7 @@
                                     report.HL013[1].Max = report.MAX;
                                     delete report.MAX;
                                 }
-                                arr = ["HL011", "HL014", "Delta.HL011", "Delta.HL014"];
+                                arr = ["HL011", "HL014"];  //, "Delta.HL011", "Delta.HL014"
 
                                 break;
                             case "HP01":
@@ -2149,25 +2149,26 @@
 
                             var rptType = report.ReportTitle.ORD_Code;
                             var _this = undefined;
-                            var fn = function(key, arr) {
-                                if (key.indexOf(".") < 0) {
-                                    return {
-                                        arr: arr[key],
-                                        key: key
-                                    };
-                                } else {
-                                    angular.forEach(key.split("."), function(name) {
-                                        arr = arr[name];
-                                        if ($.isArray(arr)) {
-                                            return false;
-                                        }
-                                    });
-                                    return ;
-                                }
-                            };  //Key有问题
+//                            var fn = function(key, arr) {
+//                                if (key.indexOf(".") < 0) {
+//                                    return {
+//                                        arr: arr[key],
+//                                        key: key
+//                                    };
+//                                } else {
+//                                    angular.forEach(key.split("."), function(name) {
+//                                        arr = arr[name];
+//                                        if ($.isArray(arr)) {
+//                                            return false;
+//                                        }
+//                                    });
+//                                    return ;
+//                                }
+//                            };  //Key有问题  差值表
                             angular.forEach(arr, function(key) {
                                 tmpArr.splice(0);
-                                _this = fn(key, report);
+                                _this = report[key];
+                                //_this = fn(key, report);  差值表
                                 if (_this.length == 0) {
                                     tmpArr = App.Models[rptType.slice(0, 2)][rptType][key].Array();
                                 } else {
@@ -2187,7 +2188,8 @@
                                         }
                                     });
                                 }
-                                _this = angular.copy(tmpArr);
+                                //_this = angular.copy(tmpArr);
+                                report[key] = angular.copy(tmpArr);
                             });
 
                             $rootScope.Open.Report.Opened.push(report);
@@ -2868,98 +2870,98 @@
                         switch (report.ReportTitle.ORD_Code) {
                         case "HL01":
                             //----------------------------处理差值数据----------------------------
-                            if ($scope.Open.Report.Current.ReportTitle.SourceType > 0) { //根据差值表生成对应的ReportTitle表
-                                var prev_delta_pageno = {};
-                                $.each($scope.Open.Report.Current.Attr.AggAcc.Content, function() {
-                                    if (this.SourceType == 6) {
-                                        prev_delta_pageno[this.UnitCode] = this.id;
-                                    }
-                                });
-                                var excepfield = ['$$hashKey', 'DW', 'DataOrder', 'DistributeRate', 'RiverCode', 'UnitCode'], exist, delta_rpts = {};
-                                var fn = function(key, _this) {
-                                    if (!delta_rpts[_this.UnitCode]) { //之前是否不存在ReportTitle
-                                        delta_rpts[_this.UnitCode] = {
-                                            ReportTitle: {
-                                                PageNO: prev_delta_pageno[_this.UnitCode] || 0,
-                                                UnitCode: _this.UnitCode,
-                                                UnitName: _this.DW,
-                                                CopyPageNO: 0,
-                                                Del: 0,
-                                                SourceType: 6, //锁定表的SourceType为6
-                                                ORD_Code: 'HL01',
-                                                RPTType_Code: 'XZ0',
-                                                StatisticalCycType: $scope.Open.Report.Current.ReportTitle.StatisticalCycType,
-                                                State: 3
-                                            }
-                                        };
-                                    }
+//                            if ($scope.Open.Report.Current.ReportTitle.SourceType > 0) { //根据差值表生成对应的ReportTitle表
+//                                var prev_delta_pageno = {};
+//                                $.each($scope.Open.Report.Current.Attr.AggAcc.Content, function() {
+//                                    if (this.SourceType == 6) {
+//                                        prev_delta_pageno[this.UnitCode] = this.id;
+//                                    }
+//                                });
+//                                var excepfield = ['$$hashKey', 'DW', 'DataOrder', 'DistributeRate', 'RiverCode', 'UnitCode'], exist, delta_rpts = {};
+//                                var fn = function(key, _this) {
+//                                    if (!delta_rpts[_this.UnitCode]) { //之前是否不存在ReportTitle
+//                                        delta_rpts[_this.UnitCode] = {
+//                                            ReportTitle: {
+//                                                PageNO: prev_delta_pageno[_this.UnitCode] || 0,
+//                                                UnitCode: _this.UnitCode,
+//                                                UnitName: _this.DW,
+//                                                CopyPageNO: 0,
+//                                                Del: 0,
+//                                                SourceType: 6, //锁定表的SourceType为6
+//                                                ORD_Code: 'HL01',
+//                                                RPTType_Code: 'XZ0',
+//                                                StatisticalCycType: $scope.Open.Report.Current.ReportTitle.StatisticalCycType,
+//                                                State: 3
+//                                            }
+//                                        };
+//                                    }
 
-                                    delta_rpts[_this.UnitCode][key] = delta_rpts[_this.UnitCode][key] || [];
-                                    delta_rpts[this.UnitCode][key].push(_this);
-                                };
-                                angular.forEach(['HL011', 'HL014'], function(key) {
-                                    $.each($scope.Open.Report.Current.Delta[key], function() {
-                                        exist = false;
-                                        $.each(this, function(field, val) {
-                                            if (excepfield.In_Array(field))
-                                                return true;
+//                                    delta_rpts[_this.UnitCode][key] = delta_rpts[_this.UnitCode][key] || [];
+//                                    delta_rpts[this.UnitCode][key].push(_this);
+//                                };
+//                                angular.forEach(['HL011', 'HL014'], function(key) {
+//                                    $.each($scope.Open.Report.Current.Delta[key], function() {
+//                                        exist = false;
+//                                        $.each(this, function(field, val) {
+//                                            if (excepfield.In_Array(field))
+//                                                return true;
 
-                                            if (!isNaN(val)) {
-                                                exist = true;
-                                                return false;
-                                            }
-                                        });
+//                                            if (!isNaN(val)) {
+//                                                exist = true;
+//                                                return false;
+//                                            }
+//                                        });
 
-                                        if (exist) {
-                                            fn(key, this);
-                                        }
-                                    });
-                                });
+//                                        if (exist) {
+//                                            fn(key, this);
+//                                        }
+//                                    });
+//                                });
 
-                                var rpts = angular.copy($scope.Open.Report.Current);
-                                rpts.HL013.splice(0, 1);
-                                angular.forEach(['HL012', 'HL013'], function(key) {
-                                    $.each(rpts[key], function(i) {
-                                        if (this.PageNO == 0) { //自行增加的
-                                            fn(key, this);
-                                        }
-                                    });
-                                });
+//                                var rpts = angular.copy($scope.Open.Report.Current);
+//                                rpts.HL013.splice(0, 1);
+//                                angular.forEach(['HL012', 'HL013'], function(key) {
+//                                    $.each(rpts[key], function(i) {
+//                                        if (this.PageNO == 0) { //自行增加的
+//                                            fn(key, this);
+//                                        }
+//                                    });
+//                                });
 
-                                rpts = [];
-                                $.each(delta_rpts, function(code, obj) {
-                                    rpts.push(obj);
-                                });
+//                                rpts = [];
+//                                $.each(delta_rpts, function(code, obj) {
+//                                    rpts.push(obj);
+//                                });
 
-                                var obj = undefined;
-                                var response = $scope.Fn.Ajax('index/SaveDeltaReport', { Reports: angular.toJson(rpts) });
-                                if ($.isArray(response)) {
-                                    $.each(response, function() {
-                                        _this = this;
-                                        obj = $scope.Open.Report.Current.Attr.AggAcc.Content.Find('UnitCode', _this.UnitCode);
-                                        if ($.isEmptyObject(obj)) {  //不存在，则插入，存在，则用之前的页号
-                                            obj = {
-                                                id: _this.PageNO,
-                                                UnitCode: _this.UnitCode,
-                                                SourceType: 6
-                                            };
-                                            $scope.Open.Report.Current.Attr.AggAcc.Content.push(obj);
-                                            report.Attr.AggAcc.Content.push(obj);
-                                        }
+//                                var obj = undefined;
+//                                var response = $scope.Fn.Ajax('index/SaveDeltaReport', { Reports: angular.toJson(rpts) });
+//                                if ($.isArray(response)) {
+//                                    $.each(response, function() {
+//                                        _this = this;
+//                                        obj = $scope.Open.Report.Current.Attr.AggAcc.Content.Find('UnitCode', _this.UnitCode);
+//                                        if ($.isEmptyObject(obj)) {  //不存在，则插入，存在，则用之前的页号
+//                                            obj = {
+//                                                id: _this.PageNO,
+//                                                UnitCode: _this.UnitCode,
+//                                                SourceType: 6
+//                                            };
+//                                            $scope.Open.Report.Current.Attr.AggAcc.Content.push(obj);
+//                                            report.Attr.AggAcc.Content.push(obj);
+//                                        }
 
-                                        angular.forEach(['HL012', 'HL013'], function(key) {
-                                            $.each(report[key], function(i) {
-                                                if (this.PageNO == 0 && this.UnitCode == _this.UnitCode) { //自行增加的
-                                                    this.SourcePageNo = _this.PageNO; //保存页号方便减表
-                                                    $scope.Open.Report.Current[key][i].SourcePageNo = _this.PageNO;
-                                                }
-                                            });
-                                        });
-                                    });
-                                } else {
-                                    throw response;
-                                }
-                            }
+//                                        angular.forEach(['HL012', 'HL013'], function(key) {
+//                                            $.each(report[key], function(i) {
+//                                                if (this.PageNO == 0 && this.UnitCode == _this.UnitCode) { //自行增加的
+//                                                    this.SourcePageNo = _this.PageNO; //保存页号方便减表
+//                                                    $scope.Open.Report.Current[key][i].SourcePageNo = _this.PageNO;
+//                                                }
+//                                            });
+//                                        });
+//                                    });
+//                                } else {
+//                                    throw response;
+//                                }
+//                            }
                             //----------------------------处理差值数据----------------------------
                             report["HL012"].RemoveAttr(["Checked", "RiverSelect"], function(obj) {
                                 obj.BZ = typeof(obj.BZ) == "string" ? obj.BZ.replaceAll("[\r|\n]", "{/r-/n}") : undefined;
@@ -3093,7 +3095,11 @@
 
                             delete $scope.Open.Report.Current.Attr.Data_Changed;
                         } else {
-                            alert(result);
+                            if (result.indexOf("更新条目时出错") >= 0) {
+                                Alert("当前在线人数过多，请稍后再试");
+                            } else {
+                                alert(result);
+                            }
                         }
                     },
                     Upload: {

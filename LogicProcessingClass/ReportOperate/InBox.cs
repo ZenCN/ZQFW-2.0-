@@ -22,8 +22,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class InBox
     {
-        Entities getEntity = new Entities();
-
         /// <summary>
         /// 根据接收模块或者回收站模块里的检索条件查询报表
         /// </summary>
@@ -39,8 +37,8 @@ namespace LogicProcessingClass.ReportOperate
         public string SearchReport(int limit, string unitCode, int searchUnitLimit,
             DateTime startTime, DateTime endTime, string rptClassCode, int cycType, int receiveState, string type)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(searchUnitLimit == 0 ? limit : limit + 1);
-            FXDICTEntities  dicEntity = (FXDICTEntities)getEntity.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            BusinessEntities busEntity = Persistence.GetDbEntities(searchUnitLimit == 0 ? limit : limit + 1);
+            FXDICTEntities dicEntity = Persistence.GetDbEntities();
             string strJson = "";
             endTime = endTime.AddDays(1);
             //var rptTypeCode = (from tb28 in dicEntity.TB28_OprRptType where tb28.TB16_OperateReportDefine.RC_Code
@@ -118,6 +116,10 @@ namespace LogicProcessingClass.ReportOperate
                 strJson = "{reportTitles:[]}";
             }
             #endregion
+
+            busEntity.Dispose();
+            dicEntity.Dispose();
+
             return strJson;
         }
 
@@ -138,7 +140,7 @@ namespace LogicProcessingClass.ReportOperate
             {
                 XMMZHClass ZH = new XMMZHClass();
                 BusinessEntities busEntity =
-                    (BusinessEntities) getEntity.GetPersistenceEntityByLevel(searchUnitLimit == 0 ? limit : limit + 1);
+                    Persistence.GetDbEntities(searchUnitLimit == 0 ? limit : limit + 1);
                 var rpts = (from report in busEntity.HL011
                     where report.PageNO == pageNO
                     orderby report.DataOrder
@@ -178,6 +180,8 @@ namespace LogicProcessingClass.ReportOperate
                 {
                     hl01 = hl01.Remove(hl01.Length - 1);
                 }
+
+                busEntity.Dispose();
             } 
             if (unitCode != "")
             {
@@ -192,6 +196,7 @@ namespace LogicProcessingClass.ReportOperate
                     unders = unders.Remove(unders.Length - 1);
                 }
             }
+
             result = "{reportDetails:[" + hl01 + "],affix:[" + aff + "],underUnits:[" + unders + "]}";
             #endregion
             return result;
@@ -208,7 +213,7 @@ namespace LogicProcessingClass.ReportOperate
             string refuseUnitCodes, string time)
         {
             BusinessEntities busEntity =
-                (BusinessEntities) getEntity.GetPersistenceEntityByLevel(searchUnitLimit == 0 ? limit : limit + 1);
+                Persistence.GetDbEntities(searchUnitLimit == 0 ? limit : limit + 1);
             var rpts = busEntity.ReportTitle.Where("it.PageNO in{" + pageNOs + "}").ToList();
             string temp = "1";
             string mgs = "";
@@ -297,7 +302,7 @@ namespace LogicProcessingClass.ReportOperate
                         //else
                         //{
                         BusinessEntities curBusEntity =
-                (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);//当前登录单位中，判断是否参与了上级汇总
+                Persistence.GetDbEntities(limit);//当前登录单位中，判断是否参与了上级汇总
                         var curAaggAccRecords =
                            curBusEntity.AggAccRecord.Where(
                                aggAccRecord => aggAccRecord.SPageNO == rpt.PageNO && aggAccRecord.OperateType == 1);//1为汇总
@@ -385,6 +390,8 @@ namespace LogicProcessingClass.ReportOperate
                 }*/
             }
 
+            busEntity.Dispose();
+
             return temp;
         }
 
@@ -397,9 +404,9 @@ namespace LogicProcessingClass.ReportOperate
         /// <returns></returns>
         public string DeleteReport(int limit, string pageNOs, int searchUnitLimit)
         {
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(searchUnitLimit == 0 ? limit : limit + 1);
-            //BusinessEntities lowerBusEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(searchUnitLimit == 0 ? limit + 1 : limit + 2);
-            BusinessEntities prvEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(2);//从省级库中找出CS数据库中报表的页号
+            BusinessEntities busEntity = Persistence.GetDbEntities(searchUnitLimit == 0 ? limit : limit + 1);
+            //BusinessEntities lowerBusEntity = Persistence.GetDbEntities(searchUnitLimit == 0 ? limit + 1 : limit + 2);
+            BusinessEntities prvEntity = Persistence.GetDbEntities(2);//从省级库中找出CS数据库中报表的页号
 
             var test = busEntity.ReportTitle.Where("it.AssociatedPageNO in {" + pageNOs + "}").Select(rpt => rpt.PageNO);
             Array arr = test.ToArray();
@@ -507,6 +514,8 @@ namespace LogicProcessingClass.ReportOperate
                 {
                     temp = "错误消息：" + e.Message;
                 }
+
+                prvEntity.Dispose();
             }
             else
             {

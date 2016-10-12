@@ -22,8 +22,7 @@ namespace LogicProcessingClass.ReportOperate
         /// <param name="limit">当前单位级别</param>
         public HPSummarizeReport(int limit)
         {
-            Entities getEntities = new Entities();
-            busEntities = (BusinessEntities)getEntities.GetPersistenceEntityByLevel(limit+1);//查看的是下级的
+            busEntities = Persistence.GetDbEntities(limit+1);//查看的是下级的
         }
 
         /// <summary> 汇总数据

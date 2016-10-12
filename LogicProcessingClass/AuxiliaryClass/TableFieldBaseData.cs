@@ -24,7 +24,7 @@ namespace LogicProcessingClass.AuxiliaryClass
 {
     public class TableFieldBaseData
     {
-        FXDICTEntities fxdict = (FXDICTEntities)new Persistence().GetPersistenceEntity(EntitiesConnection.entityName.FXDICTEntities);
+        FXDICTEntities fxdict = Persistence.GetDbEntities();
 
         /// <summary>
         /// 获得所有字段单位，每条数据为TB55_FieldDefine对象,并存储到Application[fieldUnit]中

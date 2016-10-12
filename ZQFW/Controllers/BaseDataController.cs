@@ -197,7 +197,6 @@ namespace ZQFW.Controllers
             string temp = "1";
             JsonResult jsr = new JsonResult();
             Persistence persistence = new Persistence();
-            persistence.PersistenceEntities();  //网站启动第一次全部加载省、市、县、乡镇四个实体加载到application中
             persistence.PersistenceUnits(Request["unitCode"].Substring(0, 2) + "000000");  //网站启动第一次把所有单位信息加载到application中
             jsr = Json(temp);
             jsr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
@@ -255,7 +254,6 @@ namespace ZQFW.Controllers
                     if (Request["unitcode"] != null)
                     {
                         Persistence persistence = new Persistence();
-                        persistence.PersistenceEntities();
                         persistence.PersistenceUnits(Request["unitcode"].Substring(0, 2) + "000000 ");
                     }
                 }

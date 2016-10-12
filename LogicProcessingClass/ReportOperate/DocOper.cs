@@ -16,8 +16,7 @@ namespace LogicProcessingClass.ReportOperate
 
         public DocOper(int limit)
         {
-            Entities getEntity = new Entities();
-            business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            business = Persistence.GetDbEntities(limit);
         }
 
         public string BenefitReport(int tbno)

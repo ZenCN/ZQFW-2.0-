@@ -14,7 +14,7 @@ namespace LogicProcessingClass.Statistics
         int m_Level;
         public DisasterAssessment_Content(int level)
         {
-            m_BsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
+            m_BsnEntities = Persistence.GetDbEntities(level);
             m_Level = level;
         }
 
@@ -118,7 +118,7 @@ namespace LogicProcessingClass.Statistics
         /// <returns>行政单位个数</returns>
         public int GetLowerLevelUnitCount(int pageNO,int level)
         {
-            BusinessEntities bsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level + 1);
+            BusinessEntities bsnEntities = Persistence.GetDbEntities(level + 1);
             var pageNOs = from a in bsnEntities.AggAccRecord
                         where a.PageNo == pageNO
                         select a.PageNo;

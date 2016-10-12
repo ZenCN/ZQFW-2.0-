@@ -97,19 +97,22 @@ namespace ZQFW.Controllers
         /****************************灾情分布******************************/
         public JsonResult GetCycTypes()
         {
-            FXDICTEntities fxdictEntity = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
-            var c = (from tb16 in fxdictEntity.TB16_OperateReportDefine
-                     select tb16.OptionalCyc).ToList();
-            int[] cArray = new int[c[0].Split(',').Length];
-            for (int i = 0; i < cArray.Length; i++)
+            using (FXDICTEntities fxdictEntity = Persistence.GetDbEntities())
             {
-                cArray[i] = Convert.ToInt16(c[0].Split(',')[i]);
+                var c = (from tb16 in fxdictEntity.TB16_OperateReportDefine
+                    select tb16.OptionalCyc).ToList();
+                int[] cArray = new int[c[0].Split(',').Length];
+                for (int i = 0; i < cArray.Length; i++)
+                {
+                    cArray[i] = Convert.ToInt16(c[0].Split(',')[i]);
+                }
+                var cycType = from tb14 in fxdictEntity.TB14_Cyc
+                    from tb16 in cArray
+                    where tb14.CycType == tb16
+                    select tb14;
+
+                return Json(cycType.ToList());
             }
-            var cycType = from tb14 in fxdictEntity.TB14_Cyc
-                          from tb16 in cArray
-                          where tb14.CycType == tb16
-                          select tb14;
-            return Json(cycType.ToList());
         }
 
         /// <summary>获取所查询的时段类型的数据包括的年份    /*吴博怀 20140222*/
@@ -122,13 +125,17 @@ namespace ZQFW.Controllers
             string[] strCycTypeArr = cycTypes.Split(',');
             decimal[] cycTypeArr = Array.ConvertAll<string, decimal>(strCycTypeArr, s => Convert.ToDecimal(s));
             int level = int.Parse(Request.Cookies["limit"].Value);
-            BusinessEntities bsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
-            var years = (from rpt in bsnEntities.ReportTitle
-                         from d in cycTypeArr
-                         where rpt.StatisticalCycType == d && rpt.Del == 0 && rpt.RPTType_Code == "XZ0" && rpt.ORD_Code == "HL01"
-                         select new { year = rpt.EndDateTime.Value.Year }).Distinct()
-                             .OrderByDescending(y => y.year).Select(y => y.year).ToArray();
-            return Json(years);
+            using (BusinessEntities bsnEntities = Persistence.GetDbEntities(level))
+            {
+                var years = (from rpt in bsnEntities.ReportTitle
+                    from d in cycTypeArr
+                    where
+                        rpt.StatisticalCycType == d && rpt.Del == 0 && rpt.RPTType_Code == "XZ0" &&
+                        rpt.ORD_Code == "HL01"
+                    select new {year = rpt.EndDateTime.Value.Year}).Distinct()
+                    .OrderByDescending(y => y.year).Select(y => y.year).ToArray();
+                return Json(years);
+            }
         }
         /// <summary>获取sidetype表示的灾害类型（洪涝或抗旱）year年的cyc时段类型的报表数据（用于生成标尺）  /*吴博怀 20140222*/
         /// 
@@ -140,24 +147,29 @@ namespace ZQFW.Controllers
         public JsonResult GetScaleData(string sidetype, decimal cyctype, int? year)
         {
             if (year == null) return null;
-            FXDICTEntities fxdictEntities = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
             int level = Convert.ToInt32(Request.Cookies["limit"].Value);
-            BusinessEntities bsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
-            var scaleData = from rpt in bsnEntities.ReportTitle.ToList()
-                            from c in fxdictEntities.TB14_Cyc
-                            where rpt.StatisticalCycType == c.CycType && rpt.RPTType_Code == "XZ0" && rpt.ORD_Code == "HL01"
-                            && rpt.EndDateTime.Value.Year == year && rpt.StatisticalCycType == cyctype && rpt.Del == 0
-                            orderby rpt.EndDateTime.Value.Month, rpt.EndDateTime.Value.Day, rpt.StartDateTime.Value.Month, rpt.StartDateTime.Value.Day
-                            select new
-                            {
-                                Pageno = rpt.PageNO,
-                                StartDate = Convert.ToDateTime(rpt.StartDateTime).ToString("yyyy,MM,dd"),
-                                EndDate = Convert.ToDateTime(rpt.EndDateTime).ToString("yyyy,MM,dd"),
-                                SorceType = cyctype,
-                                SorceTypeName = c.Remark,
-                                WriteTime = Convert.ToDateTime(rpt.LastUpdateTime == null ? rpt.WriterTime : rpt.LastUpdateTime).ToString("yyyy年MM月dd日 HH:mm:ss")
-                            };
-            return Json(scaleData);
+            using (BusinessEntities bsnEntities = Persistence.GetDbEntities(level))
+            {
+                FXDICTEntities fxdictEntities = Persistence.GetDbEntities();
+                var scaleData = from rpt in bsnEntities.ReportTitle.ToList()
+                    from c in fxdictEntities.TB14_Cyc
+                    where rpt.StatisticalCycType == c.CycType && rpt.RPTType_Code == "XZ0" && rpt.ORD_Code == "HL01"
+                          && rpt.EndDateTime.Value.Year == year && rpt.StatisticalCycType == cyctype && rpt.Del == 0
+                    orderby rpt.EndDateTime.Value.Month, rpt.EndDateTime.Value.Day, rpt.StartDateTime.Value.Month,
+                        rpt.StartDateTime.Value.Day
+                    select new
+                    {
+                        Pageno = rpt.PageNO,
+                        StartDate = Convert.ToDateTime(rpt.StartDateTime).ToString("yyyy,MM,dd"),
+                        EndDate = Convert.ToDateTime(rpt.EndDateTime).ToString("yyyy,MM,dd"),
+                        SorceType = cyctype,
+                        SorceTypeName = c.Remark,
+                        WriteTime =
+                            Convert.ToDateTime(rpt.LastUpdateTime == null ? rpt.WriterTime : rpt.LastUpdateTime)
+                                .ToString("yyyy年MM月dd日 HH:mm:ss")
+                    };
+                return Json(scaleData);
+            }
         }
 
         /// <summary>获取八大类型灾情数据用户地图渲染
@@ -577,12 +589,15 @@ namespace ZQFW.Controllers
             string endMonth, string endDay, string eDateRange, string cycTypes, int pageNum, int pageLineNum)
         {
             int level = int.Parse(Request.Cookies["limit"].Value);
-            BusinessEntities bsn = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
-            FXDICTEntities fxdict = new FXDICTEntities();
-            DisasterAnalysis da = new DisasterAnalysis();
-            var jsonStr = da.DisasterAnalysisConditionQuery(beginYear, endYear, beginMonth, beginDay, bDateRange,
-             endMonth, endDay, eDateRange, cycTypes, pageNum, pageLineNum, bsn, fxdict);
-            return Json(jsonStr);
+            using (BusinessEntities bsn = Persistence.GetDbEntities(level))
+            {
+                FXDICTEntities fxdict = new FXDICTEntities();
+                DisasterAnalysis da = new DisasterAnalysis();
+                var jsonStr = da.DisasterAnalysisConditionQuery(beginYear, endYear, beginMonth, beginDay, bDateRange,
+                    endMonth, endDay, eDateRange, cycTypes, pageNum, pageLineNum, bsn, fxdict);
+                fxdict.Dispose();
+                return Json(jsonStr);
+            }
         }
 
 
@@ -601,16 +616,19 @@ namespace ZQFW.Controllers
                 return Json(new { });
             }
             int level = int.Parse(Request.Cookies["limit"].Value);
-            BusinessEntities bsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
-            DisasterAnalysis da = new DisasterAnalysis();
-            string[] strPageNOArr = pageNOs.Split(',');
-            int[] pageNOArr = Array.ConvertAll<string, int>(strPageNOArr, strNum => Convert.ToInt32(strNum));
-            disasterType = disasterType.ToLower();
-            string strTitle = da.GetQSTitle(disasterType);//标题
-            string[] timeArr = da.GetDisasterAnalysisDataTime(pageNOArr, bsnEntities);//获得X轴数据
-            QSDataDWBean[] qsDataDWs = da.GetDisasterAnalysisData(pageNOArr, disasterType, unitCodes, bsnEntities);//Y轴点数据
-            var dataSet = new { Title = strTitle, SubTitle = "", Categories = timeArr, Series = qsDataDWs };
-            return Json(dataSet);
+            using (BusinessEntities bsnEntities = Persistence.GetDbEntities(level))
+            {
+                DisasterAnalysis da = new DisasterAnalysis();
+                string[] strPageNOArr = pageNOs.Split(',');
+                int[] pageNOArr = Array.ConvertAll<string, int>(strPageNOArr, strNum => Convert.ToInt32(strNum));
+                disasterType = disasterType.ToLower();
+                string strTitle = da.GetQSTitle(disasterType); //标题
+                string[] timeArr = da.GetDisasterAnalysisDataTime(pageNOArr, bsnEntities); //获得X轴数据
+                QSDataDWBean[] qsDataDWs = da.GetDisasterAnalysisData(pageNOArr, disasterType, unitCodes, bsnEntities);
+                    //Y轴点数据
+                var dataSet = new {Title = strTitle, SubTitle = "", Categories = timeArr, Series = qsDataDWs};
+                return Json(dataSet);
+            }
         }
 
         /// <summary>根据页号查询统计表中的灾情数据

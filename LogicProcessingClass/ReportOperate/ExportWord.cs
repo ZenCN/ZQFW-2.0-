@@ -25,8 +25,6 @@ namespace LogicProcessingClass.ReportOperate
 {
     public class ExportWord
     {
-        Entities getEntity = new Entities();
-
         /// <summary>
         /// 灾情综述导出word
         /// </summary>
@@ -481,9 +479,7 @@ namespace LogicProcessingClass.ReportOperate
         public ArrayList GetReportFormList()
         {
             ArrayList list = new ArrayList();
-            FXDICTEntities dicEntry =
-                (FXDICTEntities)
-                    getEntity.GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities dicEntry = Persistence.GetDbEntities();
             var fieldDefines = from tb55 in dicEntry.TB55_FieldDefine select tb55;
             if (fieldDefines.Any())
             {

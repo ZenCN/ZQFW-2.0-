@@ -15,7 +15,7 @@ namespace LogicProcessingClass.Statistics
         public getDisasterLevelForMap(int level)
         {
             m_Level = level;
-            m_BsnEntities = (BusinessEntities)new Entities().GetPersistenceEntityByLevel(level);
+            m_BsnEntities = Persistence.GetDbEntities(level);
             sEvaluation = new SingleEvaluation();
             //
             //TODO: 在此处添加构造函数逻辑

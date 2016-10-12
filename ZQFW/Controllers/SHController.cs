@@ -21,7 +21,6 @@ namespace ZQFW.Controllers
 {
     public class SHController : Controller
     {
-        Entities getEntity = new Entities();
 
         public ActionResult Index()
         {
@@ -32,7 +31,7 @@ namespace ZQFW.Controllers
 
             //-------------------------------------------<Init Page Data>------------------------------------------------------------------------
             //------------------------New Page-----------------------------------------
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var treeData = from t in fxdict.TB16_OperateReportDefine
                            where t.RC_Code == "SH"
                            select new
@@ -276,6 +275,7 @@ namespace ZQFW.Controllers
             }
 
             initData += "}";  //   BaseData
+            fxdict.Dispose();
             //-------------------------------------------</Init Page Data>------------------------------------------------------------------------
             initData += "}";  //最外面的“}”
             ViewData["InitData"] = initData;
@@ -325,7 +325,7 @@ namespace ZQFW.Controllers
 
             //-------------------------------------------<Init Page Data>------------------------------------------------------------------------
             //------------------------New Page-----------------------------------------
-            FXDICTEntities fxdict = (FXDICTEntities)new Entities().GetPersistenceEntityByEntityName(EntitiesConnection.entityName.FXDICTEntities);
+            FXDICTEntities fxdict = Persistence.GetDbEntities();
             var treeData = from t in fxdict.TB16_OperateReportDefine
                            where t.RC_Code == "SH"
                            select new
@@ -531,6 +531,8 @@ namespace ZQFW.Controllers
             initData += "}";  //最外面的“}”
             ViewData["InitData"] = initData;
 
+            fxdict.Dispose();
+
             bool debug = Request["debug"] == null ? false : true;
             if (debug)
             {
@@ -663,16 +665,18 @@ namespace ZQFW.Controllers
 
             try
             {
-                BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-                var rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageno).SingleOrDefault();
-                if (rpt != null)
+                using (BusinessEntities busEntity = Persistence.GetDbEntities(limit))
                 {
-                    rpt.State = 3;//变更表头的状态为3，表示该套报表已经上报
-                    rpt.ReceiveState = 2;//接收状态字段不变，默认为0 
-                    rpt.CopyPageNO = 0;//副本字段，默认为0
-                    rpt.SendTime = DateTime.Now;
-                    busEntity.SaveChanges();
-                    response = "1";
+                    var rpt = busEntity.ReportTitle.Where(t => t.PageNO == pageno).SingleOrDefault();
+                    if (rpt != null)
+                    {
+                        rpt.State = 3; //变更表头的状态为3，表示该套报表已经上报
+                        rpt.ReceiveState = 2; //接收状态字段不变，默认为0 
+                        rpt.CopyPageNO = 0; //副本字段，默认为0
+                        rpt.SendTime = DateTime.Now;
+                        busEntity.SaveChanges();
+                        response = "1";
+                    }
                 }
             }
             catch (Exception ex)
@@ -687,7 +691,8 @@ namespace ZQFW.Controllers
         {
             string response = "";
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(int.Parse(Request["limit"]));
+            BusinessEntities busEntity = Persistence.GetDbEntities(int.Parse(Request["limit"]));
+
             Hashtable table = serializer.Deserialize<Hashtable>(report);
 
             object rptTitle = serializer.ConvertToType<object>(table["ReportTitle"]);
@@ -957,6 +962,7 @@ namespace ZQFW.Controllers
             {
                 busEntity.SaveChanges();
                 response = rpt.PageNO.ToString();
+                busEntity.Dispose();
             }
             catch (Exception ex)
             {
@@ -973,21 +979,25 @@ namespace ZQFW.Controllers
             string unitCode = Request["unitcode"];
             DateTime sTime = DateTime.Parse(StartDateTime);
             DateTime eTime = DateTime.Parse(EndDateTime);
-            BusinessEntities business = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
-            var rpts =
-                business.ReportTitle.Where(
-                    t => t.ORD_Code == rptType &&
-                         t.UnitCode == unitCode &&
-                         t.Del == 0 &&
-                         t.StartDateTime >= sTime &&
-                         t.EndDateTime <= eTime).OrderByDescending(t => t.WriterTime).ToList();
-            if (rpts.Any())
+
+            using (BusinessEntities business = Persistence.GetDbEntities(limit))
             {
-                response = OpenReport(rptType, 0, limit.ToString(), unitCode, rpts[0].PageNO.ToString()).Data.ToString();
-            }
-            else
-            {
-                response = "{}";
+                var rpts =
+                    business.ReportTitle.Where(
+                        t => t.ORD_Code == rptType &&
+                             t.UnitCode == unitCode &&
+                             t.Del == 0 &&
+                             t.StartDateTime >= sTime &&
+                             t.EndDateTime <= eTime).OrderByDescending(t => t.WriterTime).ToList();
+                if (rpts.Any())
+                {
+                    response =
+                        OpenReport(rptType, 0, limit.ToString(), unitCode, rpts[0].PageNO.ToString()).Data.ToString();
+                }
+                else
+                {
+                    response = "{}";
+                }
             }
 
             return response;
@@ -1269,7 +1279,7 @@ namespace ZQFW.Controllers
         {
             string response = "";
             int limit = int.Parse(Request["limit"]);
-            BusinessEntities local_busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities local_busEntity = Persistence.GetDbEntities(limit);
             ReportTitle rpt = local_busEntity.ReportTitle.Where(t => t.PageNO == pageno).SingleOrDefault();
             rpt.State = 3;
             rpt.SendTime = DateTime.Now;
@@ -1278,7 +1288,7 @@ namespace ZQFW.Controllers
             DateTime start_time = DateTime.Parse(time + " 00:00:00");
             DateTime end_time = DateTime.Parse(time + " 23:59:59");
 
-            BusinessEntities upper_busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit - 1);
+            BusinessEntities upper_busEntity = Persistence.GetDbEntities(limit - 1);
             string unitCode = Request["unitcode"];
             if (limit == 4)
             {
@@ -1363,14 +1373,14 @@ namespace ZQFW.Controllers
         /*public bool ReConpute(ReportTitle reportTitle, int limit, DateTime start_time, DateTime end_time)
         {
             bool flag = false;
-            BusinessEntities local_busEntity = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit);
+            BusinessEntities local_busEntity = Persistence.GetDbEntities(limit);
 
             if (!ClearOldData(local_busEntity, reportTitle.PageNO, false)) //删除之前的数据
             {
                 return false;
             }
 
-            BusinessEntities under_busEntity = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(limit + 1);
+            BusinessEntities under_busEntity = Persistence.GetDbEntities(limit + 1);
             string unit_code = "";
             if (limit == 3)
             {
@@ -1730,21 +1740,24 @@ namespace ZQFW.Controllers
         {
             int limit = int.Parse(Request["limit"]);
             string unitcode = Request["unitcode"];
-            BusinessEntities business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
-            var rpts = business.Benefit.Where(t => t.UnitCode == unitcode).ToList();
-
-            string initdata = "{ Reports:[";
-            if (rpts.Any())
+            using (BusinessEntities business = Persistence.GetDbEntities(limit))
             {
-                foreach (Benefit rpt in rpts)
-                {
-                    initdata += "{ BArea:'" + rpt.BArea + "',BDate:'" + Convert.ToDateTime(rpt.BDate).ToString("yy年M月d日") + "',TBNO:" + rpt.TBNO + "},";
-                }
-                initdata = initdata.Remove(initdata.Length - 1);
-            }
-            initdata += "]}";
+                var rpts = business.Benefit.Where(t => t.UnitCode == unitcode).ToList();
 
-            ViewData["InitData"] = initdata;
+                string initdata = "{ Reports:[";
+                if (rpts.Any())
+                {
+                    foreach (Benefit rpt in rpts)
+                    {
+                        initdata += "{ BArea:'" + rpt.BArea + "',BDate:'" +
+                                    Convert.ToDateTime(rpt.BDate).ToString("yy年M月d日") + "',TBNO:" + rpt.TBNO + "},";
+                    }
+                    initdata = initdata.Remove(initdata.Length - 1);
+                }
+                initdata += "]}";
+
+                ViewData["InitData"] = initdata;
+            }
             bool debug = Request["debug"] == null ? false : true;
             if (debug)
             {
@@ -1783,34 +1796,37 @@ namespace ZQFW.Controllers
         public string GetXsqkData(int pageno, string unitcodes)
         {
             string response = "[";
-            Entities getEntity = new Entities();
-            BusinessEntities business = (BusinessEntities) getEntity.GetPersistenceEntityByLevel(2);
 
-            List<NP011> np011S = business.NP011.Where(t => t.PageNO == pageno).ToList();
-            var unitsStrings = unitcodes.Split(new string[] {","}, StringSplitOptions.RemoveEmptyEntries);
-            decimal? sum;
-            if (np011S.Any())
+
+            using (BusinessEntities business = Persistence.GetDbEntities(2))
             {
-                for (int i = 0; i < unitsStrings.Length; i++)
+                List<NP011> np011S = business.NP011.Where(t => t.PageNO == pageno).ToList();
+                var unitsStrings = unitcodes.Split(new string[] {","}, StringSplitOptions.RemoveEmptyEntries);
+                decimal? sum;
+                if (np011S.Any())
                 {
-                    sum = np011S.Where(t => t.UnitCode.StartsWith(unitsStrings[i].Substring(0, 4))).Sum(t => t.DQXSL);
-                    if (sum != null && Convert.ToDouble(sum) > 0)
+                    for (int i = 0; i < unitsStrings.Length; i++)
                     {
-                        response += sum;
-                    }
-                    else
-                    {
-                        response += "null";
-                    }
+                        sum = np011S.Where(t => t.UnitCode.StartsWith(unitsStrings[i].Substring(0, 4)))
+                            .Sum(t => t.DQXSL);
+                        if (sum != null && Convert.ToDouble(sum) > 0)
+                        {
+                            response += sum;
+                        }
+                        else
+                        {
+                            response += "null";
+                        }
 
-                    response += ",";
+                        response += ",";
+                    }
                 }
-            }
-            else
-            {
-                for (int i = 0; i < unitsStrings.Length; i++)
+                else
                 {
-                    response += "null,";
+                    for (int i = 0; i < unitsStrings.Length; i++)
+                    {
+                        response += "null,";
+                    }
                 }
             }
 
@@ -1829,28 +1845,30 @@ namespace ZQFW.Controllers
             string response = "";
             int limit = int.Parse(Request["limit"]);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            BusinessEntities business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
 
             try
             {
-                Benefit benefit = serializer.Deserialize<Benefit>(report);
-                if (benefit.TBNO > 0)
+                using (BusinessEntities business = Persistence.GetDbEntities(limit))
                 {
-                    response = DeleteBenefitReport(benefit.TBNO);
-                    if (!int.TryParse(response, out limit))
+                    Benefit benefit = serializer.Deserialize<Benefit>(report);
+                    if (benefit.TBNO > 0)
                     {
-                        return response;
+                        response = DeleteBenefitReport(benefit.TBNO);
+                        if (!int.TryParse(response, out limit))
+                        {
+                            return response;
+                        }
                     }
-                }
-                else
-                {
-                    benefit.TBNO = business.Benefit.Any() ? business.Benefit.Max(t => t.TBNO) + 1 : 1;
-                }
+                    else
+                    {
+                        benefit.TBNO = business.Benefit.Any() ? business.Benefit.Max(t => t.TBNO) + 1 : 1;
+                    }
 
-                business.Benefit.AddObject(benefit);
-                business.SaveChanges();
+                    business.Benefit.AddObject(benefit);
+                    business.SaveChanges();
 
-                response = benefit.TBNO.ToString();
+                    response = benefit.TBNO.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -1865,16 +1883,18 @@ namespace ZQFW.Controllers
             string response = "";
             int limit = int.Parse(Request["limit"]);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            BusinessEntities business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
 
             try
             {
-                Benefit benefit = business.Benefit.Where(t => t.TBNO == tbno).SingleOrDefault();
-                if (benefit != null)
+                using (BusinessEntities business = Persistence.GetDbEntities(limit))
                 {
-                    business.Benefit.DeleteObject(benefit);
-                    business.SaveChanges();
-                    response = "1";
+                    Benefit benefit = business.Benefit.Where(t => t.TBNO == tbno).SingleOrDefault();
+                    if (benefit != null)
+                    {
+                        business.Benefit.DeleteObject(benefit);
+                        business.SaveChanges();
+                        response = "1";
+                    }
                 }
             }
             catch (Exception ex)
@@ -1890,14 +1910,16 @@ namespace ZQFW.Controllers
             string response = "";
             int limit = int.Parse(Request["limit"]);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            BusinessEntities business = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit);
 
             try
             {
-                Benefit benefit = business.Benefit.Where(t => t.TBNO == tbno).SingleOrDefault();
-                if (benefit != null)
+                using (BusinessEntities business = Persistence.GetDbEntities(limit))
                 {
-                    response = serializer.Serialize(benefit);
+                    Benefit benefit = business.Benefit.Where(t => t.TBNO == tbno).SingleOrDefault();
+                    if (benefit != null)
+                    {
+                        response = serializer.Serialize(benefit);
+                    }
                 }
             }
             catch (Exception ex)
@@ -1940,7 +1962,7 @@ namespace ZQFW.Controllers
         {
             string response = "";
             int limit = int.Parse(Request["limit"]);
-            BusinessEntities busEntity = (BusinessEntities)getEntity.GetPersistenceEntityByLevel(limit + 1);
+            BusinessEntities busEntity = Persistence.GetDbEntities(limit);
             string sql = "";
             string[] fields = null;
 
@@ -2061,6 +2083,8 @@ namespace ZQFW.Controllers
             {
                 response = ex.Message;
             }
+
+            busEntity.Dispose();
 
             return "{" + response + "}";
         }
