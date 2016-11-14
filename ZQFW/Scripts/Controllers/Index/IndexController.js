@@ -3200,7 +3200,8 @@
                         var go = true;
                         for (var i = 1; i < data.length; i++) {
                             go = true;
-                            switch ($scope.Open.Report.Current.ReportTitle.ORD_Code) {
+                            if ($scope.SysUserCode != '35') {
+                                switch ($scope.Open.Report.Current.ReportTitle.ORD_Code) {
                                 case 'HL01':
                                     if (typeof data[i].DW == "string" && data[i].DW.Contains('本级') && typeof tableField[1] == "string" && tableField[1].Contains("SZFW")) { //XX本级不计
                                         tmp = parseInt(data[i][tableField[1]]);
@@ -3212,6 +3213,7 @@
                                         go = false;
                                     }
                                     break;
+                                }
                             }
 
                             if (go) {

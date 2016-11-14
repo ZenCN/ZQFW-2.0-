@@ -47,7 +47,7 @@
                     <select ng-disabled="Attr.District.City.Left.Value.UnitCode == '35100000'" ng-hide="Attr.Login.Quick.Enable" name="County.Left" ng-model="Attr.District.County.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.County.Left.Select" ng-change="Fn.OnChange.Select()">
                     </select>
                 </li>
-                <li ng-hide="['15','22','23','33','35','44','45'].In_Array(Attr.UserCode)">
+                <li ng-hide="['15','22','23','33','35','42','44','45'].In_Array(Attr.UserCode)">
                     <label>乡&nbsp;&nbsp;级：</label>
                     <label class="lbl" ng-show="Attr.Login.Quick.Enable">{{Attr.Login.Quick.Town.Left}}</label>
                     <select ng-hide="Attr.Login.Quick.Enable" name="Town.Left" ng-model="Attr.District.Town.Left.Value.UnitCode" ng-options="Unit.UnitCode as Unit.UnitName for Unit in Attr.District.Town.Left.Select" ng-change="Fn.OnChange.Select()">
