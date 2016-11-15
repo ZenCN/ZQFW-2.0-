@@ -52,7 +52,7 @@
 
             if (typeof $scope[arr[0]][arr[1]] == "string") {
                 $scope[arr[0]][arr[1]] = $scope[arr[0]][arr[1]].replaceAll("&", "").replaceAll("#", "");
-                if ($scope[arr[0]][arr[1]] > len) {
+                if ($scope[arr[0]][arr[1]].length > len) {
                     $scope[arr[0]][arr[1]] = $scope[arr[0]][arr[1]].substr(0, len - 1);
                 }
             }

@@ -260,6 +260,9 @@ App.Plugin.TableFixed = function () {
                 dwGroupObj.AddCopy($(this));
             });
         } else {*/
+        if (typeof $scope.Report != "object") {
+            return false;
+        }
         if (!(pageIndex == 4 || pageIndex == 5) && table.Type != "Head" && $scope.Report[$scope.Attr.NameSpace].Current.ReportTitle.ORD_Code.indexOf('SH0') < 0
             || $scope.Report[$scope.Attr.NameSpace].Current.ReportTitle.ORD_Code == 'SH01') {
 

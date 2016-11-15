@@ -4,11 +4,20 @@
     <title>灾情综述</title>
     <meta content="webkit" name="renderer"/>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href="../../../../Contents/ReportDetails/HL01/Common/rpt_details.all-0.1.0.min.css"
-          rel="stylesheet" type="text/css"/>
-    <script src="../../../../Contents/ReportDetails/HL01/Common/rpt_details.all-0.1.0.min.js"
-            type="text/javascript"></script>
+    <!--------------------------CSS------------------------------>
+    <link rel="stylesheet" href="../../../../CSS/Public/ToolBar.css"/>
+    <link rel="stylesheet" href="../../../../CSS/Pages/DisasterReview.css"/>
+    <!--------------------------JavaScript------------------------------>
+    <!--Base Library-->
+    <script src="../../../../Scripts/Library/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Angular/angular.min.js" type="text/javascript"></script>
+    <!--Plugin-->
     <script src="../../../../Scripts/Library/Plugins/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Extend/Array.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Library/Extend/String.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Application/ReportDetails/HL01/Common.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Models/DisasterModel.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/Directives/PublicDirective.js" type="text/javascript"></script>
 </head>
 <body ng-controller="MainCtrl">
     <div class="ToolBar">
@@ -141,19 +150,19 @@
         <div><!--灾情特点-->
             <p class="Head">四、灾情特点</p>
             <p>
-                <textarea rows="14" cols="140" ng-model="Report.ZQTD" ng-blur="Fn.CheckLen(3000)" ></textarea>
+                <textarea rows="14" cols="140" ng-model="Report.ZQTD" ng-blur="Fn.CheckLen(1150)" ></textarea>
             </p>
         </div>
         <div><!--灾情地区-->
             <p class="Head">五、灾情地区</p>
             <p>
-                <textarea rows="14" cols="140" ng-model="Report.ZQDQ" ng-blur="Fn.CheckLen(3000)"></textarea>
+                <textarea rows="14" cols="140" ng-model="Report.ZQDQ" ng-blur="Fn.CheckLen(1150)"></textarea>
             </p>
         </div>
         <div><!--抗灾救灾典型-->
             <p class="Head">六、抗灾救灾典型</p>
             <p>
-                <textarea rows="14" cols="140" ng-model="Report.KZJZDX" ng-blur="Fn.CheckLen(3000)"></textarea>
+                <textarea rows="14" cols="140" ng-model="Report.KZJZDX" ng-blur="Fn.CheckLen(1150)"></textarea>
             </p>
         </div>
     </div>

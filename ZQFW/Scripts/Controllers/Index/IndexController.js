@@ -2672,7 +2672,7 @@
                             } else {  //保存时，检查需要校核的字段
                                 rptErrors = {};
                                 if (report.ReportTitle.ORD_Code == "HL01") { //只有洪涝表才有校核
-                                    /*$.each(baseData.RelationCheck.Constant, function(key) {  //基础数据校核  kry:43010100-HL011-SHMJLS
+                                    $.each(baseData.RelationCheck.Constant, function(key) {  //基础数据校核  kry:43010100-HL011-SHMJLS
                                         arr = key.split("-");
                                         if (!report[arr[1]][uIndex(arr[0])]) {
                                             return true;
@@ -2691,7 +2691,7 @@
                                                 rptErrors[arr[0] + "-" + arr[2]].Message += " " + right + "：" + this.name + "不能大于" + this.value;
                                             }
                                         }
-                                    });*/
+                                    });
                                     angular.forEach(report.HL011, function(hl011, i) {
                                         if (i > 0) {
                                             $.each(baseData.RelationCheck.Formula.Inequality, function() {
