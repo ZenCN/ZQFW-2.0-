@@ -537,6 +537,10 @@ namespace LogicProcessingClass.ReportOperate
                         successRiver = riverDis.SaveSingleRiverDistribute(rpt, "AB1");
                     }
                 }
+                else if (unitCode.StartsWith("42"))
+                {
+                    successRiver = riverDis.SingleRiver(pageNO);
+                }
                 else
                 {
                     successRiver = riverDis.SaveRiverDistribute(pageNO, rInfos);

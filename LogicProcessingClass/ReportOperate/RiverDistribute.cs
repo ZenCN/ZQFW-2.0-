@@ -7,6 +7,7 @@ using DBHelper;
 using System.Transactions;
 using System.Collections;
 using System.Data;
+using System.Net.Configuration;
 using System.Reflection;
 using EntityModel.RepeatModel;
 using NPOI.SS.Formula.Functions;
@@ -320,6 +321,418 @@ namespace LogicProcessingClass.ReportOperate
                 isRiverFlag = true;
             }
             return isRiverFlag;
+        }
+
+        /// <summary>
+        /// 单流域保存
+        /// </summary>
+        /// <param name="xzRpt">需要进行流域分配的行政表</param>
+        /// <param name="rptTypeCode">流域上报类型FF1等</param>
+        /// <returns>bool</returns>
+        public bool SaveSingleRiverDistribute(ReportTitle xzRpt, string rptTypeCode)
+        {
+            ReportTitle riverRpt = new ReportTitle();
+            ReportHelpClass rptHelp = new ReportHelpClass();
+            riverRpt = rptHelp.CloneEF<ReportTitle>(xzRpt);
+            riverRpt.PageNO = prvBusEntity.ReportTitle.Max(t => t.PageNO) + 1;
+            riverRpt.RPTType_Code = rptTypeCode;
+            riverRpt.AssociatedPageNO = xzRpt.PageNO;
+            IList<HL011> hl011stemp = xzRpt.HL011.ToList();
+            IList<HL012> hl012stemp = xzRpt.HL012.ToList();
+            IList<HL013> hl013stemp = xzRpt.HL013.ToList();
+            IList<HL014> hl014stemp = xzRpt.HL014.ToList();
+            /********************蓄水表*******/
+            IList<HP011> hp011stemp = xzRpt.HP011.ToList();
+            IList<HP012> hp012stemp = xzRpt.HP012.ToList();
+            /*******************end 蓄水*****/
+            if (xzRpt.HL011.Count() > 0)
+            {
+                foreach (var newHl011 in hl011stemp)
+                {
+                    //newHl011.ReportTitle = riverRpt;】
+
+                    if (rptTypeCode == "AA2" && (newHl011.UnitCode == "22030000" || newHl011.UnitCode == "22040000"))
+                    //松花江流域，不包括四平市、辽源市
+                    {
+                        continue;
+                    }
+                    else if (rptTypeCode == "BB2" && (newHl011.UnitCode != "22030000" && newHl011.UnitCode != "22040000" && newHl011.UnitCode != "22000000"))
+                    {
+                        continue;
+                    }
+
+                    HL011 riverHl011 = new HL011();
+                    riverHl011 = rptHelp.CloneEF<HL011>(newHl011);
+                    riverHl011.PageNO = riverRpt.PageNO;
+                    riverRpt.HL011.Add(riverHl011);
+                }
+
+                if (riverRpt.UnitCode.StartsWith("22") && riverRpt.HL011.Count > 0)
+                {
+                    if (riverRpt.HL011.Count < 2)  //只有一个
+                    {
+                        IList<HL011> hl011s = riverRpt.HL011.ToList();
+                        if (hl011s[0].UnitCode != hl011s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
+                        {
+                            hl011s[0].UnitCode = hl011s[0].UnitCode.Substring(0, 2) + "000000";
+                            hl011s[0].DW = "合计";
+                            riverRpt.HL011.Add(hl011s[0]);
+                        }
+                        else
+                        {
+                            riverRpt.HL011.Clear();
+                        }
+                    }
+                    else
+                    {
+                        HL011 hl01hj = riverRpt.HL011.Cast<HL011>().Where(x => x.DW == "合计").ToList<HL011>()[0];
+                        HL011 hl011temp = new HL011();
+                        IList<HL011> hl011 = riverRpt.HL011.Cast<HL011>().Where(x => x.DW != "合计").ToList<HL011>();
+                        foreach (var hl01 in hl011)
+                        {
+                            TObjectSum<HL011>(hl011temp, hl01);
+                        }
+                        UnionObject<HL011>(hl01hj, hl011temp);
+                    }
+                }
+            }
+            if (xzRpt.HL012.Count() > 0)
+            {
+                foreach (var newHl012 in hl012stemp)
+                {
+                    //newHl012.ReportTitle = riverRpt;
+                    if (rptTypeCode == "AA2" && (newHl012.UnitCode == "22030000" || newHl012.UnitCode == "22040000"))
+                    //松花江流域，不包括四平市、辽源市
+                    {
+                        continue;
+                    }
+                    else if (rptTypeCode == "BB2" && (newHl012.UnitCode != "22030000" && newHl012.UnitCode != "22040000"))
+                    {
+                        continue;
+                    }
+
+                    HL012 riverHl012 = new HL012();
+                    riverHl012 = rptHelp.CloneEF<HL012>(newHl012);
+                    riverHl012.PageNO = riverRpt.PageNO;
+                    riverRpt.HL012.Add(riverHl012);
+                }
+            }
+            if (xzRpt.HL013.Count() > 0)
+            {
+                foreach (var newHl013 in hl013stemp)
+                {
+                    //newHl013.ReportTitle = riverRpt;
+                    if (rptTypeCode == "AA2" && (newHl013.UnitCode == "22030000" || newHl013.UnitCode == "22040000"))
+                    //松花江流域，不包括四平市、辽源市
+                    {
+                        continue;
+                    }
+                    else if (rptTypeCode == "BB2" && (newHl013.UnitCode != "22030000" && newHl013.UnitCode != "22040000" && newHl013.UnitCode != "22000000"))
+                    {
+                        continue;
+                    }
+
+                    HL013 riverHl013 = new HL013();
+                    riverHl013 = rptHelp.CloneEF<HL013>(newHl013);
+                    riverHl013.PageNO = riverRpt.PageNO;
+                    riverRpt.HL013.Add(riverHl013);
+                }
+
+                if (riverRpt.UnitCode.StartsWith("22") && riverRpt.HL013.Count > 0)
+                {
+                    if (riverRpt.HL013.Count < 2)  //只有一个
+                    {
+                        IList<HL013> hl013s = riverRpt.HL013.ToList();
+                        if (hl013s[0].UnitCode != hl013s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
+                        {
+                            hl013s[0].UnitCode = hl013s[0].UnitCode.Substring(0, 2) + "000000";
+                            hl013s[0].DW = "合计";
+                            riverRpt.HL013.Add(hl013s[0]);
+                        }
+                        else
+                        {
+                            riverRpt.HL013.Clear();
+                        }
+                    }
+                    else
+                    {
+                        var list = riverRpt.HL013.Cast<HL013>().Where(x => x.DW == "合计").ToList<HL013>();
+                        if (list.Count > 0)
+                        {
+                            HL013 hl03hj = list[0];
+                            HL013 hl013temp = new HL013();
+                            IList<HL013> hl013 = riverRpt.HL013.Cast<HL013>().Where(x => x.DW != "合计").ToList<HL013>();
+                            foreach (var hl03 in hl013)
+                            {
+                                TObjectSum<HL013>(hl013temp, hl03);
+                            }
+                            UnionObject<HL013>(hl03hj, hl013temp);
+                        }
+                    }
+                }
+            }
+            if (xzRpt.HL014.Count() > 0)
+            {
+                foreach (var newHl014 in hl014stemp)
+                {
+                    //newHl014.ReportTitle = riverRpt;
+                    if (rptTypeCode == "AA2" && (newHl014.UnitCode == "22030000" || newHl014.UnitCode == "22040000"))
+                    //松花江流域，不包括四平市、辽源市
+                    {
+                        continue;
+                    }
+                    else if (rptTypeCode == "BB2" && (newHl014.UnitCode != "22030000" && newHl014.UnitCode != "22040000" && newHl014.UnitCode != "22000000"))
+                    {
+                        continue;
+                    }
+
+                    HL014 riverHl014 = new HL014();
+                    riverHl014 = rptHelp.CloneEF<HL014>(newHl014);
+                    riverHl014.PageNO = riverRpt.PageNO;
+                    riverRpt.HL014.Add(riverHl014);
+                }
+
+                if (riverRpt.UnitCode.StartsWith("22") && riverRpt.HL014.Count > 0)
+                {
+                    if (riverRpt.HL014.Count < 2)  //只有一个
+                    {
+                        IList<HL014> hl014s = riverRpt.HL014.ToList();
+                        if (hl014s[0].UnitCode != hl014s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
+                        {
+                            hl014s[0].UnitCode = hl014s[0].UnitCode.Substring(0, 2) + "000000";
+                            hl014s[0].DW = "合计";
+                            riverRpt.HL014.Add(hl014s[0]);
+                        }
+                        else
+                        {
+                            riverRpt.HL014.Clear();
+                        }
+                    }
+                    else
+                    {
+                        HL014 hl04hj = riverRpt.HL014.Cast<HL014>().Where(x => x.DW == "合计").ToList<HL014>()[0];
+                        HL014 hl014temp = new HL014();
+                        IList<HL014> hl014 = riverRpt.HL014.Cast<HL014>().Where(x => x.DW != "合计").ToList<HL014>();
+                        foreach (var hl04 in hl014)
+                        {
+                            TObjectSum<HL014>(hl014temp, hl04);
+                        }
+                        UnionObject<HL014>(hl04hj, hl014temp);
+                    }
+                }
+            }
+            if (xzRpt.HP011.Count() > 0)
+            {
+                foreach (var newHp011 in hp011stemp)
+                {
+                    //newHp011.ReportTitle = riverRpt;
+                    HP011 riverHp011 = new HP011();
+                    riverHp011 = rptHelp.CloneEF<HP011>(newHp011);
+                    riverHp011.PAGENO = riverRpt.PageNO;
+                    riverRpt.HP011.Add(riverHp011);
+                }
+            }
+            if (xzRpt.HP012.Count() > 0)
+            {
+                foreach (var newHp012 in hp012stemp)
+                {
+                    //newHp012.ReportTitle = riverRpt;
+                    HP012 riverHp012 = new HP012();
+                    riverHp012 = rptHelp.CloneEF<HP012>(newHp012);
+                    riverHp012.PAGENO = riverRpt.PageNO;
+                    riverRpt.HP012.Add(riverHp012);
+                }
+            }
+
+            prvBusEntity.ReportTitle.AddObject(riverRpt);
+            bool singleRiveFlag = false;
+
+
+            //using (TransactionScope scope = new TransactionScope())
+            //{
+
+
+            try
+            {
+                prvBusEntity.SaveChanges();
+                //scope.Complete();
+                singleRiveFlag = true;
+                //}
+            }
+            catch (Exception)
+            {
+                singleRiveFlag = false;
+            }
+            return singleRiveFlag;
+        }
+
+        public bool SingleRiver(int pageno)
+        {
+            if (IsRiverDistribute(pageno) && !DeleteRiverReport(pageno)) //是否已经进行流域分配了
+            {
+                return false;
+            }
+
+            bool success = false;
+            ReportTitle xz_rpt = prvBusEntity.ReportTitle.SingleOrDefault(t => t.PageNO == pageno);
+            RiverRPTypeInfo river_type_info = GetRiverRPTypeInfo(xz_rpt.UnitCode);
+
+            ReportTitle river_rpt = new ReportTitle();
+            ReportHelpClass rptHelp = new ReportHelpClass();
+            river_rpt = rptHelp.CloneEF<ReportTitle>(xz_rpt);
+            river_rpt.PageNO = rptHelp.FindMaxPageNO(2);
+            river_rpt.RPTType_Code = river_type_info.DRiverRPType.ElementAt(0).Value;
+            river_rpt.AssociatedPageNO = xz_rpt.PageNO;
+            IList<HL011> hl011stemp = xz_rpt.HL011.ToList();
+            IList<HL012> hl012stemp = xz_rpt.HL012.ToList();
+            IList<HL013> hl013stemp = xz_rpt.HL013.ToList();
+            IList<HL014> hl014stemp = xz_rpt.HL014.ToList();
+
+            if (xz_rpt.HL011.Count() > 0)
+            {
+                foreach (var newHl011 in hl011stemp)
+                {
+
+                    HL011 riverHl011 = new HL011();
+                    riverHl011 = rptHelp.CloneEF<HL011>(newHl011);
+                    riverHl011.PageNO = river_rpt.PageNO;
+                    river_rpt.HL011.Add(riverHl011);
+                }
+
+                if (river_rpt.HL011.Count > 0)
+                {
+                    if (river_rpt.HL011.Count < 2)  //只有一个
+                    {
+                        IList<HL011> hl011s = river_rpt.HL011.ToList();
+                        if (hl011s[0].UnitCode != hl011s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
+                        {
+                            hl011s[0].UnitCode = hl011s[0].UnitCode.Substring(0, 2) + "000000";
+                            hl011s[0].DW = "合计";
+                            river_rpt.HL011.Add(hl011s[0]);
+                        }
+                        else
+                        {
+                            river_rpt.HL011.Clear();
+                        }
+                    }
+                    else
+                    {
+                        HL011 hl01hj = river_rpt.HL011.Cast<HL011>().Where(x => x.DW == "合计").ToList<HL011>()[0];
+                        HL011 hl011temp = new HL011();
+                        IList<HL011> hl011 = river_rpt.HL011.Cast<HL011>().Where(x => x.DW != "合计").ToList<HL011>();
+                        foreach (var hl01 in hl011)
+                        {
+                            TObjectSum<HL011>(hl011temp, hl01);
+                        }
+                        UnionObject<HL011>(hl01hj, hl011temp);
+                    }
+                }
+            }
+            if (xz_rpt.HL012.Count() > 0)
+            {
+                foreach (var newHl012 in hl012stemp)
+                {
+                    HL012 riverHl012 = new HL012();
+                    riverHl012 = rptHelp.CloneEF<HL012>(newHl012);
+                    riverHl012.PageNO = river_rpt.PageNO;
+                    river_rpt.HL012.Add(riverHl012);
+                }
+            }
+            if (xz_rpt.HL013.Count() > 0)
+            {
+                foreach (var newHl013 in hl013stemp)
+                {
+                    HL013 riverHl013 = new HL013();
+                    riverHl013 = rptHelp.CloneEF<HL013>(newHl013);
+                    riverHl013.PageNO = river_rpt.PageNO;
+                    river_rpt.HL013.Add(riverHl013);
+                }
+
+                if (river_rpt.HL013.Count > 0)
+                {
+                    if (river_rpt.HL013.Count < 2)  //只有一个
+                    {
+                        IList<HL013> hl013s = river_rpt.HL013.ToList();
+                        if (hl013s[0].UnitCode != hl013s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
+                        {
+                            hl013s[0].UnitCode = hl013s[0].UnitCode.Substring(0, 2) + "000000";
+                            hl013s[0].DW = "合计";
+                            river_rpt.HL013.Add(hl013s[0]);
+                        }
+                        else
+                        {
+                            river_rpt.HL013.Clear();
+                        }
+                    }
+                    else
+                    {
+                        var list = river_rpt.HL013.Cast<HL013>().Where(x => x.DW == "合计").ToList<HL013>();
+                        if (list.Count > 0)
+                        {
+                            HL013 hl03hj = list[0];
+                            HL013 hl013temp = new HL013();
+                            IList<HL013> hl013 = river_rpt.HL013.Cast<HL013>().Where(x => x.DW != "合计").ToList<HL013>();
+                            foreach (var hl03 in hl013)
+                            {
+                                TObjectSum<HL013>(hl013temp, hl03);
+                            }
+                            UnionObject<HL013>(hl03hj, hl013temp);
+                        }
+                    }
+                }
+            }
+            if (xz_rpt.HL014.Count() > 0)
+            {
+                foreach (var newHl014 in hl014stemp)
+                {
+                    HL014 riverHl014 = new HL014();
+                    riverHl014 = rptHelp.CloneEF<HL014>(newHl014);
+                    riverHl014.PageNO = river_rpt.PageNO;
+                    river_rpt.HL014.Add(riverHl014);
+                }
+
+                if (river_rpt.HL014.Count > 0)
+                {
+                    if (river_rpt.HL014.Count < 2)  //只有一个
+                    {
+                        IList<HL014> hl014s = river_rpt.HL014.ToList();
+                        if (hl014s[0].UnitCode != hl014s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
+                        {
+                            hl014s[0].UnitCode = hl014s[0].UnitCode.Substring(0, 2) + "000000";
+                            hl014s[0].DW = "合计";
+                            river_rpt.HL014.Add(hl014s[0]);
+                        }
+                        else
+                        {
+                            river_rpt.HL014.Clear();
+                        }
+                    }
+                    else
+                    {
+                        HL014 hl04hj = river_rpt.HL014.Cast<HL014>().Where(x => x.DW == "合计").ToList<HL014>()[0];
+                        HL014 hl014temp = new HL014();
+                        IList<HL014> hl014 = river_rpt.HL014.Cast<HL014>().Where(x => x.DW != "合计").ToList<HL014>();
+                        foreach (var hl04 in hl014)
+                        {
+                            TObjectSum<HL014>(hl014temp, hl04);
+                        }
+                        UnionObject<HL014>(hl04hj, hl014temp);
+                    }
+                }
+            }
+
+            prvBusEntity.ReportTitle.AddObject(river_rpt);
+
+            try
+            {
+                prvBusEntity.SaveChanges();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                success = false;
+            }
+            return success;
         }
 
         /// <summary>
@@ -1293,250 +1706,6 @@ namespace LogicProcessingClass.ReportOperate
             }
             return sql;
         }
-        /// <summary>
-        /// 单流域保存
-        /// </summary>
-        /// <param name="xzRpt">需要进行流域分配的行政表</param>
-        /// <param name="rptTypeCode">流域上报类型FF1等</param>
-        /// <returns>bool</returns>
-        public bool SaveSingleRiverDistribute(ReportTitle xzRpt, string rptTypeCode)
-        {
-            
-
-            ReportTitle riverRpt = new ReportTitle();
-            ReportHelpClass rptHelp = new ReportHelpClass();
-            riverRpt = rptHelp.CloneEF<ReportTitle>(xzRpt);
-            riverRpt.PageNO = prvBusEntity.ReportTitle.Max(t => t.PageNO) + 1;
-            riverRpt.RPTType_Code = rptTypeCode;
-            riverRpt.AssociatedPageNO = xzRpt.PageNO;
-            IList<HL011> hl011stemp = xzRpt.HL011.ToList();
-            IList<HL012> hl012stemp = xzRpt.HL012.ToList();
-            IList<HL013> hl013stemp = xzRpt.HL013.ToList();
-            IList<HL014> hl014stemp = xzRpt.HL014.ToList();
-            /********************蓄水表*******/
-            IList<HP011> hp011stemp = xzRpt.HP011.ToList();
-            IList<HP012> hp012stemp = xzRpt.HP012.ToList();
-            /*******************end 蓄水*****/
-            if (xzRpt.HL011.Count() > 0)
-            {
-                foreach (var newHl011 in hl011stemp)
-                {
-                    //newHl011.ReportTitle = riverRpt;】
-
-                    if (rptTypeCode == "AA2" && (newHl011.UnitCode == "22030000" || newHl011.UnitCode == "22040000"))
-                        //松花江流域，不包括四平市、辽源市
-                    {
-                        continue;
-                    }
-                    else if (rptTypeCode == "BB2" && (newHl011.UnitCode != "22030000" && newHl011.UnitCode != "22040000" && newHl011.UnitCode != "22000000"))
-                    {
-                        continue;
-                    }
-
-                    HL011 riverHl011 = new HL011();
-                    riverHl011 = rptHelp.CloneEF<HL011>(newHl011);
-                    riverHl011.PageNO = riverRpt.PageNO;
-                    riverRpt.HL011.Add(riverHl011);
-                }
-
-                if (riverRpt.UnitCode.StartsWith("22") && riverRpt.HL011.Count > 0)
-                {
-                    if (riverRpt.HL011.Count < 2)  //只有一个
-                    {
-                        IList<HL011> hl011s = riverRpt.HL011.ToList();
-                        if (hl011s[0].UnitCode != hl011s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
-                        {
-                            hl011s[0].UnitCode = hl011s[0].UnitCode.Substring(0, 2) + "000000";
-                            hl011s[0].DW = "合计";
-                            riverRpt.HL011.Add(hl011s[0]);
-                        }
-                        else {
-                            riverRpt.HL011.Clear();
-                        }
-                    }
-                    else
-                    {
-                        HL011 hl01hj = riverRpt.HL011.Cast<HL011>().Where(x => x.DW == "合计").ToList<HL011>()[0];
-                        HL011 hl011temp = new HL011();
-                        IList<HL011> hl011 = riverRpt.HL011.Cast<HL011>().Where(x => x.DW != "合计").ToList<HL011>();
-                        foreach (var hl01 in hl011)
-                        {
-                            TObjectSum<HL011>(hl011temp, hl01);
-                        }
-                        UnionObject<HL011>(hl01hj, hl011temp);
-                    }
-                }
-            }
-            if (xzRpt.HL012.Count() > 0)
-            {
-                foreach (var newHl012 in hl012stemp)
-                {
-                    //newHl012.ReportTitle = riverRpt;
-                    if (rptTypeCode == "AA2" && (newHl012.UnitCode == "22030000" || newHl012.UnitCode == "22040000"))
-                    //松花江流域，不包括四平市、辽源市
-                    {
-                        continue;
-                    }
-                    else if (rptTypeCode == "BB2" && (newHl012.UnitCode != "22030000" && newHl012.UnitCode != "22040000"))
-                    {
-                        continue;
-                    }
-
-                    HL012 riverHl012 = new HL012();
-                    riverHl012 = rptHelp.CloneEF<HL012>(newHl012);
-                    riverHl012.PageNO = riverRpt.PageNO;
-                    riverRpt.HL012.Add(riverHl012);
-                }
-            }
-            if (xzRpt.HL013.Count() > 0)
-            {
-                foreach (var newHl013 in hl013stemp)
-                {
-                    //newHl013.ReportTitle = riverRpt;
-                    if (rptTypeCode == "AA2" && (newHl013.UnitCode == "22030000" || newHl013.UnitCode == "22040000"))
-                    //松花江流域，不包括四平市、辽源市
-                    {
-                        continue;
-                    }
-                    else if (rptTypeCode == "BB2" && (newHl013.UnitCode != "22030000" && newHl013.UnitCode != "22040000" && newHl013.UnitCode != "22000000"))
-                    {
-                        continue;
-                    }
-
-                    HL013 riverHl013 = new HL013();
-                    riverHl013 = rptHelp.CloneEF<HL013>(newHl013);
-                    riverHl013.PageNO = riverRpt.PageNO;
-                    riverRpt.HL013.Add(riverHl013);
-                }
-
-                if (riverRpt.UnitCode.StartsWith("22") && riverRpt.HL013.Count > 0)
-                {
-                    if (riverRpt.HL013.Count < 2)  //只有一个
-                    {
-                        IList<HL013> hl013s = riverRpt.HL013.ToList();
-                        if (hl013s[0].UnitCode != hl013s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
-                        {
-                            hl013s[0].UnitCode = hl013s[0].UnitCode.Substring(0, 2) + "000000";
-                            hl013s[0].DW = "合计";
-                            riverRpt.HL013.Add(hl013s[0]);
-                        }
-                        else
-                        {
-                            riverRpt.HL013.Clear();
-                        }
-                    }
-                    else
-                    {
-                        var list = riverRpt.HL013.Cast<HL013>().Where(x => x.DW == "合计").ToList<HL013>();
-                        if (list.Count > 0)
-                        {
-                            HL013 hl03hj = list[0];
-                            HL013 hl013temp = new HL013();
-                            IList<HL013> hl013 = riverRpt.HL013.Cast<HL013>().Where(x => x.DW != "合计").ToList<HL013>();
-                            foreach (var hl03 in hl013)
-                            {
-                                TObjectSum<HL013>(hl013temp, hl03);
-                            }
-                            UnionObject<HL013>(hl03hj, hl013temp);
-                        }
-                    }
-                }
-            }
-            if (xzRpt.HL014.Count() > 0)
-            {
-                foreach (var newHl014 in hl014stemp)
-                {
-                    //newHl014.ReportTitle = riverRpt;
-                    if (rptTypeCode == "AA2" && (newHl014.UnitCode == "22030000" || newHl014.UnitCode == "22040000"))
-                    //松花江流域，不包括四平市、辽源市
-                    {
-                        continue;
-                    }
-                    else if (rptTypeCode == "BB2" && (newHl014.UnitCode != "22030000" && newHl014.UnitCode != "22040000" && newHl014.UnitCode != "22000000"))
-                    {
-                        continue;
-                    }
-
-                    HL014 riverHl014 = new HL014();
-                    riverHl014 = rptHelp.CloneEF<HL014>(newHl014);
-                    riverHl014.PageNO = riverRpt.PageNO;
-                    riverRpt.HL014.Add(riverHl014);
-                }
-
-                if (riverRpt.UnitCode.StartsWith("22") && riverRpt.HL014.Count > 0)
-                {
-                    if (riverRpt.HL014.Count < 2)  //只有一个
-                    {
-                        IList<HL014> hl014s = riverRpt.HL014.ToList();
-                        if (hl014s[0].UnitCode != hl014s[0].UnitCode.Substring(0, 2) + "000000")  //非合计行
-                        {
-                            hl014s[0].UnitCode = hl014s[0].UnitCode.Substring(0, 2) + "000000";
-                            hl014s[0].DW = "合计";
-                            riverRpt.HL014.Add(hl014s[0]);
-                        }
-                        else
-                        {
-                            riverRpt.HL014.Clear();
-                        }
-                    }
-                    else
-                    {
-                        HL014 hl04hj = riverRpt.HL014.Cast<HL014>().Where(x => x.DW == "合计").ToList<HL014>()[0];
-                        HL014 hl014temp = new HL014();
-                        IList<HL014> hl014 = riverRpt.HL014.Cast<HL014>().Where(x => x.DW != "合计").ToList<HL014>();
-                        foreach (var hl04 in hl014)
-                        {
-                            TObjectSum<HL014>(hl014temp, hl04);
-                        }
-                        UnionObject<HL014>(hl04hj, hl014temp);
-                    }
-                }
-            }
-            if (xzRpt.HP011.Count() > 0)
-            {
-                foreach (var newHp011 in hp011stemp)
-                {
-                    //newHp011.ReportTitle = riverRpt;
-                    HP011 riverHp011 = new HP011();
-                    riverHp011 = rptHelp.CloneEF<HP011>(newHp011);
-                    riverHp011.PAGENO = riverRpt.PageNO;
-                    riverRpt.HP011.Add(riverHp011);
-                }
-            }
-            if (xzRpt.HP012.Count() > 0)
-            {
-                foreach (var newHp012 in hp012stemp)
-                {
-                    //newHp012.ReportTitle = riverRpt;
-                    HP012 riverHp012 = new HP012();
-                    riverHp012 = rptHelp.CloneEF<HP012>(newHp012);
-                    riverHp012.PAGENO = riverRpt.PageNO;
-                    riverRpt.HP012.Add(riverHp012);
-                }
-            }
-
-            prvBusEntity.ReportTitle.AddObject(riverRpt);
-            bool singleRiveFlag = false;
-
-
-            //using (TransactionScope scope = new TransactionScope())
-            //{
-
-
-            try
-            {
-                prvBusEntity.SaveChanges();
-                //scope.Complete();
-                singleRiveFlag = true;
-                //}
-            }
-            catch (Exception)
-            {
-                singleRiveFlag = false;
-            }
-            return singleRiveFlag;
-        }
-
 
         /// <summary>
         /// 获取表（HL011等）字段信息

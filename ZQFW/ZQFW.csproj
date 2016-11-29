@@ -694,6 +694,7 @@
     <Content Include="Scripts\Templates\Public\HL\Table\1\33\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\1\33\THead.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\1\35\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\1\42\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\1\Common\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\1\Common\TBody_View.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\1\Common\THead.htm" />

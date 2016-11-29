@@ -1078,12 +1078,13 @@
                                         $scope.Open.Report.Fn.Comm.OnChange.UnitEntity(unitcode);
                                     });
 
-                                    $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
-
-                                    if ($scope.SysUserCode != '35') {
-                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
-                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
-                                        $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                                    if ($scope.SysUserCode != '42') {
+                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
+                                        if ($scope.SysUserCode != '35') {
+                                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+                                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
+                                            $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                                        }
                                     }
 
                                     if (["45"].In_Array($scope.SysUserCode)) { //包含“本级”的单位
@@ -1246,14 +1247,15 @@
                                         $scope.Open.Report.Fn.Comm.OnChange.UnitEntity(unitcode);
                                     });
 
-                                    $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
-
-                                    if ($scope.SysUserCode != '35') {
-                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
-                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
-                                        $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                                    if ($scope.SysUserCode != '42') {
+                                        $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.ZYZJZDSS.DecimalCount, ["HL013", "ZYZJZDSS"]);
+                                        if ($scope.SysUserCode != '35') {
+                                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCYMLS.DecimalCount, ["HL013", "GCYMLS"]);
+                                            $scope.Open.Report.Fn.Core.HL01.Max(baseData.Field.GCLJJYL.DecimalCount, ["HL013", "GCLJJYL"]);
+                                            $scope.Open.Report.Fn.Core.HL01.Avg(baseData.Field.YMFWBL.DecimalCount, ["HL013", "YMFWBL"]);
+                                        }
                                     }
-                                    
+
                                     if (["45"].In_Array($scope.SysUserCode)) { //包含“本级”的单位
                                         this.DisposeSZFW($scope.Open.Report.Current);
                                     }
@@ -3421,21 +3423,31 @@
                                         }
                                     }
 
-                                    angular.forEach(obj, function(val, key) {
-                                        if (key != "$$hashKey" && !exceptField.In_Array(key) && Number(val) > 0) { //exceptField.In_Array("$$hashKey") = false
-                                            count = 1; //SWFW的个数
-                                            return false;
+                                    //湖北“高新区”受灾范围县不自动填1
+                                    var is_gxq_hb = false;
+                                    if ($scope.SysUserCode == '42') {
+                                        if (baseData.Unit.Local.Limit > 3) { //县级
+                                            is_gxq_hb = baseData.Unit.Local.UnitName.Contains('高新区');  //高新区县级不自动填1
+                                        } else {
+                                            is_gxq_hb = obj.DW.Contains('高新区');  //下级单位不自动填1
                                         }
-                                    });
+                                    }
 
-                                    $scope.Open.Report.Current.HL011[$scope.Open.Report.Fn.Other.UnitIndex(obj.UnitCode)][field] = count;
-                                    /*$scope.Fn.GetEvt().data('NoCallUnitEntity', true); //切勿将true改成“false”，否则会造成死循环！
-                                    $scope.Fn.GetEvt().data('NoCheck', true);
-                                    $scope.Open.Report.Fn.Core.Sum(["HL011", field], 0, 0); 
-                                    $scope.Fn.GetEvt().data('NoCallUnitEntity', false);
-                                    $scope.Fn.GetEvt().data('NoCheck', false);*/
+                                    if (!is_gxq_hb) {
+                                        angular.forEach(obj, function(val, key) {
+                                            if (key != "$$hashKey" && !exceptField.In_Array(key) && Number(val) > 0) { //exceptField.In_Array("$$hashKey") = false
+                                                count = 1; //SWFW的个数
+                                                return false;
+                                            }
+                                        });
+                                        $scope.Open.Report.Current.HL011[$scope.Open.Report.Fn.Other.UnitIndex(obj.UnitCode)][field] = count;
+                                    }
+                                    //特别注意: 以下data、Sum、removeData三个回调方法顺序不能打乱！
                                     $scope.Fn.GetEvt().data('disabledCallBack', ["UnitEntity", "RelationCheck"]);
-                                    $scope.Open.Report.Fn.Core.Sum(["HL011", field], 0, 0);
+                                    //湖北“高新区”受灾范围县不自动填1,所以不需要重新合计受灾范围县那一列
+                                    if (!is_gxq_hb) {
+                                        $scope.Open.Report.Fn.Core.Sum(["HL011", field], 0, 0);
+                                    }
                                     $scope.Fn.GetEvt().removeData('disabledCallBack');
                                 }
                             }
