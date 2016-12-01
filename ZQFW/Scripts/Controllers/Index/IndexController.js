@@ -3427,7 +3427,7 @@
                                     var is_gxq_hb = false;
                                     if ($scope.SysUserCode == '42') {
                                         if (baseData.Unit.Local.Limit > 3) { //县级
-                                            is_gxq_hb = baseData.Unit.Local.UnitName.Contains('高新区');  //高新区县级不自动填1
+                                            is_gxq_hb = ture;  //县级不自动填1
                                         } else {
                                             is_gxq_hb = obj.DW.Contains('高新区');  //下级单位不自动填1
                                         }

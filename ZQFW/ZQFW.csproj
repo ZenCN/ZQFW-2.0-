@@ -733,6 +733,7 @@
     <Content Include="Scripts\Templates\Public\HL\Table\9\22\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\9\33\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\9\35\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\9\42\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\9\Common\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\9\Common\TBody_View.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\9\Common\THead.htm" />
