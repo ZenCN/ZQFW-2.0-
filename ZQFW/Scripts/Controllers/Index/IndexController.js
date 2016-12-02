@@ -3413,8 +3413,8 @@
                                             field = "SZFWZ";
                                         }
                                     }
-
-                                    exceptField = ["PageNO", "TBNO", "DW", "DataOrder", "DistributeRate", "RiverCode", "UnitCode", field, "QXHJ", "ZJXJ"];
+            
+                                    exceptField = ["PageNO", "TBNO", "DW", "DataOrder", "DistributeRate", "RiverCode", "UnitCode", "QXHJ", "ZJXJ", field]; //field要放到最后面
 
                                     if ($scope.SysUserCode == "33") {
                                         exceptField.push("ZYRK");
@@ -3427,7 +3427,12 @@
                                     var is_gxq_hb = false;
                                     if ($scope.SysUserCode == '42') {
                                         if (baseData.Unit.Local.Limit > 3) { //县级
-                                            is_gxq_hb = ture;  //县级不自动填1
+                                            if(baseData.Unit.Local.UnitName.Contains('高新区')){
+                                                is_gxq_hb = true;
+                                            }else{
+                                                field = 'SZFWX';  //县级受灾范围县自动填1
+                                                exceptField[exceptField.length - 1] = field;
+                                            }
                                         } else {
                                             is_gxq_hb = obj.DW.Contains('高新区');  //下级单位不自动填1
                                         }
