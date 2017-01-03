@@ -818,6 +818,7 @@
     <Content Include="Scripts\Templates\Public\UnderConstruction.htm" />
     <Content Include="Scripts\Templates\Town\Menu.htm" />
     <Content Include="Scripts\Templates\Town\New.htm" />
+    <Content Include="database.zip" />
     <None Include="DocModel\Benefit.doc" />
     <None Include="Document\Helper\15_SH\用户手册.doc" />
     <None Include="Document\Helper\35\用户手册.doc" />
