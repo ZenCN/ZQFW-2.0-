@@ -1,0 +1,27 @@
+﻿一、git常用命令
+git reset head^ --回退所有内容到上一个版本
+
+-------------------------------------------------------------------------------------------------
+
+二、git提速方法
+通过修改修改ssh配置提速，找到默认安装目录：C:\Program Files\Git\etc\ssh 下的ssh_config文件 末尾添加以下代码
+
+ControlMaster auto
+##ControlPath /tmp/%r@%h:%p
+ControlPath /tmp/git@github.com:22
+ControlPersist yes
+
+语句解释：
+ControlMaster auto  可以使多个ssh会话共享一个已经存在的连接,如果没有,则自动创建一个连接。
+ControlPath /tmp/%r@%h:%p  可以指定想要共享的连接。%r代表远程登录用户名,一般都为git,%h表示目标主机,%p表示端口。
+ControlPersist yes 则可以让共享的连接持有处于连接状态。
+
+常用的ControlPath 下面包含开源中国、github、gitcafe等代码托管。
+ControlPath /tmp/git@git.oschina.net:22
+ControlPath /tmp/git@github.com:22
+ControlPath /tmp/git@gitcafe.com:22
+
+还有一个能提高50倍的方法,不过对于一般开发者不是很常用.
+如需了解可以参考Speed Up Git (5x to 50x)一文:http://interrobeng.com/2013/08/25/speed-up-git-5x-to-50x/
+
+注意：由于网络的情况，结果可能略有不同。如果更改无效或者导致git无法使用可安装 2.17版本的git（测试过）
