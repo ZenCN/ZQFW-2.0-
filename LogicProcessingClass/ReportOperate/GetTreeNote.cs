@@ -76,7 +76,7 @@ namespace LogicProcessingClass.ReportOperate
             }
 
             string jsonStr = "[";
-            int year = DateTime.Now.Year;
+            int year = DateTime.Now.Year - 1;
             DateTime dt = DateTime.Now.AddDays(-1);//取最近两天的时间,包含当天
             string dateStr = dt.ToString();
             int year1 = dt.Year;
@@ -91,10 +91,10 @@ namespace LogicProcessingClass.ReportOperate
             {
                 jsonStr += "{name:'昨天今天修改保存的报表',open:'true',nocheck:'true',iconSkin:'ico_close ',title:'',children:[" + jsonData + "]},";
             }
-            for (int i = year; i >= year; i--)
+            for (int i = DateTime.Now.Year; i >= year; i--)
             {
                 IList list = GetReceivedReportForm(typeLimit, unitCode, limit, i, "", tableName, cycDate, nextUnitCode, typeTable, queryOneUnit);
-                jsonStr += "{name:'" + i + "年（总共" + list.Count + "套报表）',nocheck:'true'" + (year == i ? ",open:'true'" : "");
+                jsonStr += "{name:'" + i + "年（总共" + list.Count + "套报表）',nocheck:'true'" + (i == DateTime.Now.Year ? ",open:'true'" : "");
                 jsonStr += ",title:'',children: [";
                 jsonStr += GetMonthData(list, 3, typeLimit);
                 jsonStr += "]},";

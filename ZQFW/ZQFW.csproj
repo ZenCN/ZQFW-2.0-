@@ -388,7 +388,7 @@
     <Content Include="Document\File\说明.txt" />
     <Content Include="ExcelFile\说明.txt" />
     <Content Include="ExcelModel\说明.txt" />
-    <Content Include="Git命令.txt" />
+    <Content Include="git_helper.txt" />
     <Content Include="Mapserver\config.txt" />
     <Content Include="Mapserver\css\loginDiv.css" />
     <Content Include="Mapserver\css\mapControl\button.css" />
