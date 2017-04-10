@@ -362,7 +362,8 @@ namespace LogicProcessingClass.ReportOperate
                 fs.Read(data, 0, data.Length);
                 string file = Path.GetFileName(xmlFile);
 
-                if (HttpContext.Current.Request.Cookies["unitcode"].Value.StartsWith("22")) //吉林
+                //吉林省级发送由内网发送改为外网发送
+                /*if (HttpContext.Current.Request.Cookies["unitcode"].Value.StartsWith("22")) //吉林
                 {
                     WS_Deliver.DeliverSoapClient deliver = new WS_Deliver.DeliverSoapClient();
                     int.TryParse(deliver.DeliverXml(data, file, curUnitCode, receiveUnitCode), out count);
@@ -371,7 +372,9 @@ namespace LogicProcessingClass.ReportOperate
                 {
                     WS_XML.wsRptTransSoapClient sendRpt = new WS_XML.wsRptTransSoapClient();//旧的发送方法
                     count = sendRpt.UploadReport(data, file, curUnitCode, receiveUnitCode);//测试时不发送给国家防总
-                }
+                }*/
+                WS_XML.wsRptTransSoapClient sendRpt = new WS_XML.wsRptTransSoapClient();
+                count = sendRpt.UploadReport(data, file, curUnitCode, receiveUnitCode);
                 //WS_BS_CS_XML.RptTransSoapClient sendRpt = new RptTransSoapClient();
                 //count = sendRpt.UploadReport(data, file, curUnitCode, receiveUnitCode);//返回的是存入CS库中的页号
             }
@@ -407,7 +410,8 @@ namespace LogicProcessingClass.ReportOperate
             fileName = fileName.Remove(0, 6);
             string tmp = "";
 
-            if (HttpContext.Current.Request.Cookies["unitcode"].Value.StartsWith("22")) //吉林
+            //吉林省级发送由内网发送改为外网发送
+            /*if (HttpContext.Current.Request.Cookies["unitcode"].Value.StartsWith("22")) //吉林
             {
                 WS_Deliver.DeliverSoapClient deliver = new WS_Deliver.DeliverSoapClient();
                 tmp = deliver.DeliverAffix(0, targetCode, fileName, fileByte);
@@ -416,7 +420,9 @@ namespace LogicProcessingClass.ReportOperate
             {
                 WS_Affix.ServiceSoapClient sendAffix = new WS_Affix.ServiceSoapClient();
                 tmp = sendAffix.SaveFileToServer_V1(0, targetCode, fileName, fileByte);//测试时不发送给国家防总
-            }
+            }*/
+            WS_Affix.ServiceSoapClient sendAffix = new WS_Affix.ServiceSoapClient();
+            tmp = sendAffix.SaveFileToServer_V1(0, targetCode, fileName, fileByte);
             
             if (tmp == "发送完成!")
             {

@@ -839,6 +839,8 @@
     <None Include="Mapserver\HeilongjiangMap1.map" />
     <None Include="Mapserver\HubeiMap.map" />
     <None Include="Mapserver\HubeiMap1.map" />
+    <None Include="Mapserver\SiChuanMap.map" />
+    <None Include="Mapserver\SiChuanMap1.map" />
     <None Include="Scripts\Library\Angular\angular-resource.min.js.map" />
     <None Include="Scripts\Library\Angular\angular.min.js.map" />
     <None Include="Service References\WS_Deliver\Deliver.disco" />

@@ -34,7 +34,7 @@
             Open: {
                 Func: {
                     TreeBoxes: {
-                        Cased: (["15", "22", "23", "33","35", "36", "45"].In_Array($rootScope.SysUserCode) && $rootScope.BaseData.Unit.Local.Limit == 4) || $rootScope.SysORD_Code == "NP01"
+                        Cased: (["15", "22", "23", "33","35", "36", "45", "51"].In_Array($rootScope.SysUserCode) && $rootScope.BaseData.Unit.Local.Limit == 4) || $rootScope.SysORD_Code == "NP01"
                          || $rootScope.BaseData.Unit.Local.Limit == 4 && $rootScope.SysORD_Code == "HP01"
                     }
                 }
