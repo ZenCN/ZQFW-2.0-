@@ -15,7 +15,7 @@ App.Models.HL.HL01.ReportDetials["45"] = function (rpt, field) {
             }
         }
     });
-    szdq = szdq.slice(0, szdq.length - 1) + "等";
+    szdq = szdq.slice(0, szdq.length - 1) + "共";
     var szfwx = rpt.HL011[0].SZFWX ? rpt.HL011[0].SZFWX : 0, szfwz = rpt.HL011[0].SZFWZ ? rpt.HL011[0].SZFWZ : 0;
     switch (Number($.cookie("limit"))) {
         case 2:

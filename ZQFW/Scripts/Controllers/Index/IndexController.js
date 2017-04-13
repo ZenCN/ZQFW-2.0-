@@ -1400,7 +1400,23 @@
                         $scope.Open.Tree.Refresh.CheckBox();
                     },
                     ReportDetails: function() {
-                        if ($scope.SysUserCode != "45") {
+                        if (['45', '51'].In_Array($scope.SysUserCode)) {
+                            $.ajax({
+                                url: 'Index/GetFile?filename=~/Scripts/Models/ReportDetails/' + $scope.SysUserCode + '.js',
+                                dataType: "script",
+                                cache: true,
+                                success: function() {
+                                    var report = App.Models.HL.HL01.ReportDetials[$scope.SysUserCode]($scope.Open.Report.Current, $scope.BaseData.Field);
+                                    var names = [], values = [];
+                                    $.each(report, function(name, value) {
+                                        names.push(name);
+                                        values.push(value);
+                                    });
+
+                                    window.open("BaseData/ExportDisasterReview?report=" + names.toString() + ";" + values.toString().replaceAll("（", "").replaceAll("）", ""));
+                                }
+                            });
+                        } else {
                             var param = $scope.Open.Report.Current.ReportTitle.ORD_Code;
                             if (param == "HP01") { //蓄水通报
                                 var tmp = undefined;
@@ -1430,22 +1446,6 @@
                             }
 
                             window.open("Index/ReportData?" + param, "", "", "");
-                        } else {
-                            $.ajax({
-                                url: 'Index/GetFile?filename=~/Scripts/Models/ReportDetails/45.js',
-                                dataType: "script",
-                                cache: true,
-                                success: function() {
-                                    var report = App.Models.HL.HL01.ReportDetials["45"]($scope.Open.Report.Current, $scope.BaseData.Field);
-                                    var names = [], values = [];
-                                    $.each(report, function(name, value) {
-                                        names.push(name);
-                                        values.push(value);
-                                    });
-
-                                    window.open("BaseData/ExportDisasterReview?report=" + names.toString() + ";" + values.toString().replaceAll("（", "").replaceAll("）", ""));
-                                }
-                            });
                         }
                     },
                     ChangeReportState: function(stateName) {

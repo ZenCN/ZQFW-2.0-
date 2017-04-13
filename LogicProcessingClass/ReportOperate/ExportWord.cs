@@ -200,8 +200,8 @@ namespace LogicProcessingClass.ReportOperate
             doc.Save(filePath + fileName);//将文件存档
             return filePath + fileName;
         }
-        
-        public string ExportZqzsToWord_45(string json, int limit)
+
+        public string MailMergeToZQZSWord(string json, int limit, string code)
         {
             string[] arr = json.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
             string[] fieldNames = arr[0].Split(new string[] { "," }, StringSplitOptions.None);
@@ -220,9 +220,8 @@ namespace LogicProcessingClass.ReportOperate
             fileName = fileName.Replace("年", "-").Replace("月", "-").Replace("日", "");
             fileName = HttpContext.Current.Server.UrlDecode(HttpContext.Current.Request["unitname"]) + "灾情综述" + fileName;
 
-            string tempPath = System.Web.HttpContext.Current.Server.MapPath("~/Views/Release/ReportDetails/HL01/45.doc");
+            string tempPath = System.Web.HttpContext.Current.Server.MapPath("~/Views/Release/ReportDetails/HL01/" + code + ".doc");
             string outputPath = System.Web.HttpContext.Current.Server.MapPath("~/ExcelFile/" + fileName + ".doc");
-
 
             try
             {

@@ -66,9 +66,8 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -276,6 +275,7 @@
     <Content Include="CSS\Img\Public\Logo\33.png" />
     <Content Include="CSS\Img\Public\Logo\44.png" />
     <Content Include="CSS\Img\Public\Logo\45.png" />
+    <Content Include="CSS\Img\Public\Logo\51.png" />
     <Content Include="CSS\Img\Public\Logo\background.png" />
     <Content Include="CSS\Img\Public\MenuIcons\1.png" />
     <Content Include="CSS\Img\Public\MenuIcons\2.png" />
@@ -596,6 +596,7 @@
     <Content Include="Scripts\Library\Plugins\jquery.quicksearch.js" />
     <Content Include="Scripts\Application\ReportDetails\NP01\BenefitController.js" />
     <Content Include="Scripts\Models\ReportDetails\45.js" />
+    <Content Include="Scripts\Models\ReportDetails\51.js" />
     <Content Include="Scripts\Models\SH_Model.js" />
     <Content Include="Scripts\Models\TreeNodeModel.js" />
     <Content Include="Scripts\Models\HP_RptModel.js" />
@@ -720,6 +721,7 @@
     <Content Include="Scripts\Templates\Public\HL\Table\6\33\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\33\THead.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\35\TBody_Edit.htm" />
+    <Content Include="Scripts\Templates\Public\HL\Table\6\51\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\Common\TBody_Edit.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\Common\TBody_View.htm" />
     <Content Include="Scripts\Templates\Public\HL\Table\6\Common\THead.htm" />
@@ -950,6 +952,7 @@
     <Content Include="Views\Debug\SH.ViewUnderReport.cshtml" />
     <None Include="Views\Release\ReportDetails\HL01\45.doc" />
     <Content Include="Views\Release\SH.ViewUnderReport.cshtml" />
+    <None Include="Views\Release\ReportDetails\HL01\51.doc" />
     <None Include="Views\Release\ReportDetails\NP01\Benefit.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -990,7 +993,6 @@
     <Folder Include="Contents\ReportDetails\HP01\" />
     <Folder Include="CSS\StatisticAlanalysis\DisasterAnalysis\" />
     <Folder Include="Scripts\Library\Plugins\preloader\" />
-    <Folder Include="Scripts\Templates\Public\XS\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

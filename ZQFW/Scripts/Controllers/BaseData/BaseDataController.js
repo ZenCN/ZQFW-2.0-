@@ -264,13 +264,13 @@
                 },
                 Delete: function(_this) {
                     if (Number(_this.ID) >= 0) {
-                        $scope.Unit.Unders.Array.RemoveBy('ID', _this.ID);
+                        $scope.Unit.Unders.Array = $scope.Unit.Unders.Array.RemoveBy('ID', _this.ID);
                         Alert("删除成功");
                     } else {
                         if (confirm("确定要删除？")) {
                             $http.post("BaseData/DeleteUnit?unitCode=" + _this.Code).success(function(result) {
                                 if (Number(result) > 0) {
-                                    $scope.Unit.Unders.Array.RemoveBy('Code', _this.Code);
+                                    $scope.Unit.Unders.Array = $scope.Unit.Unders.Array.RemoveBy('Code', _this.Code);
                                     Alert("删除成功");
                                 } else {
                                     Alert(result);

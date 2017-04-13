@@ -12,6 +12,7 @@ using EntityModel;
 using JetBrains;
 using LogicProcessingClass.ReportOperate;
 using LogicProcessingClass.Model;
+using Newtonsoft.Json;
 
 namespace ZQFW.Controllers
 {
@@ -203,26 +204,78 @@ namespace ZQFW.Controllers
             return jsr;
         }
 
-        /// <summary>
-        /// 修改单位
-        /// </summary>
-        /// <returns>成功返回“success”；失败返回失败原因</returns>
-        /// GET: /BaseData/UpdateUnit
-        /*public JsonResult UpdateUnit()
+        public string Update_Add_Units(string update_units, string add_units)
         {
-            string temp = "";
-            JsonResult jsr = new JsonResult();
-            string unitCode = Request["unitCode"];//单位代码
-            string pUnitCode = Request["pUnitCode"];//上级单位代码
-            string unitName = Request["unitName"];//单位名称
-            int uorder = Convert.ToInt32(Request["uorder"]);//单位顺序
-            string riverDictCode = Request["riverDictCode"];//流域代码
-            temp = bd.UpdateUnit(unitCode, pUnitCode, unitName, uorder, riverDictCode);
-            jsr = Json(temp);
-            jsr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return jsr;
-        }*/
-        public string Update_Add_Units()
+            int level = int.Parse(Request["limit"]);
+            LGN lgn = null;
+            TB07_District tb07 = null;
+            List<UnitOper> update_list = null;
+            List<UnitOper> add_list = null;
+            BusinessEntities bus = Persistence.GetDbEntities(level);
+            FXDICTEntities dic = Persistence.GetDbEntities();
+
+            try
+            {
+                if (update_units.Trim() != "[]")
+                {
+                    update_list = JsonConvert.DeserializeObject<List<UnitOper>>(update_units);
+                    update_list.ForEach(u =>
+                    {
+                        tb07 = dic.TB07_District.SingleOrDefault(t => t.DistrictCode == u.Code);
+                        if (tb07 != null)
+                        {
+                            tb07.DistrictName = u.Name;
+                            tb07.Uorder = int.Parse(u.Order);
+                        }
+
+                        lgn = bus.LGN.SingleOrDefault(t => t.LoginName == u.Code);
+                        if (lgn != null)
+                        {
+                            lgn.RealName = u.Name;
+                        }
+                    });
+                }
+
+                if (add_units.Trim() != "[]")
+                {
+                    add_list = JsonConvert.DeserializeObject<List<UnitOper>>(add_units);
+                    add_list.ForEach(u =>
+                    {
+                        tb07 = new TB07_District();
+                        tb07.DistrictCode = u.Code;
+                        tb07.pDistrictCode = u.ParentCode;
+                        tb07.DistrictName = u.Name;
+                        tb07.DistrictClass = level;
+                        tb07.Uorder = int.Parse(u.Order);
+                        tb07.RD_RiverCode1 = u.RiverCode;
+                        dic.TB07_District.AddObject(tb07);
+
+                        lgn = new LGN();
+                        lgn.LoginName = u.Code;
+                        lgn.RealName = u.Name;
+                        lgn.PWD = "sa";
+                        lgn.UserName = "";
+                        lgn.Authority = 1;
+                        lgn.OperateTable = "HL,HP";
+                        bus.LGN.AddObject(lgn);
+                    });
+                }
+
+                dic.SaveChanges();
+                bus.SaveChanges();
+
+                Persistence persistence = new Persistence();
+                persistence.PersistenceUnits(Request["unitcode"].Substring(0, 2) + "000000 ");
+
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return ex.InnerException == null ? ex.Message : ex.InnerException.Message;
+            }
+        }
+
+        /*public string Update_Add_Units()
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             string result = "";
@@ -272,7 +325,7 @@ namespace ZQFW.Controllers
             }
 
             return result;
-        }
+        }*/
 
         /// <summary>
         /// 删除单位
@@ -293,7 +346,7 @@ namespace ZQFW.Controllers
         /// <returns></returns>
         /// GET: /BaseData/GetUnits
         public string GetUnits()
-        {
+        { 
             string temp = "";
             string unitCode = Request["unitCode"];//单位代码
             temp = bd.GetUnits(unitCode);
@@ -364,8 +417,9 @@ namespace ZQFW.Controllers
                         ZqzsBean_15 zqzsBean_i5 = serializer.Deserialize<ZqzsBean_15>(report);
                         fileName = exportWord.ExportZqzsToWord_15(zqzsBean_i5, limit);
                         break;
+                    case "51":
                     case "45":
-                        fileName = exportWord.ExportZqzsToWord_45(report, limit);
+                        fileName = exportWord.MailMergeToZQZSWord(report, limit, Request["unitcode"].Substring(0, 2));
                         break;
                     default:
                         ZqzsBean zqzsBean = serializer.Deserialize<ZqzsBean>(report);
@@ -377,17 +431,16 @@ namespace ZQFW.Controllers
                 //{
                 if (System.IO.File.Exists(fileName))  //判断文件是否存在
                 {
-                    Response.Charset = "ISO-8859-1";  //提供下载的文件，不编码的话文件名会乱码 
-                    Response.ContentEncoding = System.Text.Encoding.UTF8;
-
-                    // 添加头信息，为"文件下载/另存为"对话框指定默认文件名
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(fileName));
-                    Response.ContentType = "Application/octet-stream";
-
-                    // 把文件流发送到客户端 
-                    Response.WriteFile(fileName);
+                    FileStream fs = new FileStream(fileName, FileMode.Open);
+                    byte[] bytes = new byte[(int)fs.Length];
+                    fs.Read(bytes, 0, bytes.Length);
+                    fs.Close();
+                    Response.ContentType = "application/octet-stream";
+                    //通知浏览器下载文件而不是打开
+                    Response.AddHeader("Content-Disposition", "attachment;  filename=" + Path.GetFileName(fileName));
+                    Response.BinaryWrite(bytes);
                     Response.Flush();
-                    Response.Close();
+                    Response.End();
 
                     System.IO.File.Delete(fileName);
                     result = "导出成功！";
@@ -522,5 +575,18 @@ namespace ZQFW.Controllers
 
             return result;
         }
+    }
+
+    public class UnitOper
+    {
+        public string Name { get; set; }
+
+        public string Code { get; set; }
+
+        public string ParentCode { get; set; }
+
+        public string Order { get; set; }
+
+        public string RiverCode { get; set; }
     }
 }
