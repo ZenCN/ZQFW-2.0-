@@ -419,7 +419,8 @@ namespace ZQFW.Controllers
                         break;
                     case "51":
                     case "45":
-                        fileName = exportWord.MailMergeToZQZSWord(report, limit, Request["unitcode"].Substring(0, 2));
+                        fileName = exportWord.MailMergeToZQZSWord(report, limit, Request["unitcode"].Substring(0, 2),
+                            Request["img_url"]);
                         break;
                     default:
                         ZqzsBean zqzsBean = serializer.Deserialize<ZqzsBean>(report);
@@ -482,18 +483,17 @@ namespace ZQFW.Controllers
                 string fileName = exportWord.ExportXsqkToWord(xsqkBean, limit);
                 if (System.IO.File.Exists(fileName))  //判断文件是否存在
                 {
-                    Response.Clear();  //清除缓冲
-                    Response.Charset = "ISO-8859-1";  //提供下载的文件，不编码的话文件名会乱码 
-                    Response.ContentEncoding = System.Text.Encoding.UTF8;
-
-                    // 添加头信息，为"文件下载/另存为"对话框指定默认文件名
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(fileName));
-                    Response.ContentType = "Application/octet-stream";
-
-                    // 把文件流发送到客户端 
-                    Response.WriteFile(fileName);
+                    FileStream fs = new FileStream(fileName, FileMode.Open);
+                    byte[] bytes = new byte[(int)fs.Length];
+                    fs.Read(bytes, 0, bytes.Length);
+                    fs.Close();
+                    Response.ContentType = "application/octet-stream";
+                    //通知浏览器下载文件而不是打开
+                    Response.AddHeader("Content-Disposition", "attachment;  filename=" + Path.GetFileName(fileName));
+                    Response.BinaryWrite(bytes);
                     Response.Flush();
-                    Response.Close();
+                    Response.End();
+
                     System.IO.File.Delete(fileName);
                     result = "导出成功！";
                 }

@@ -126,11 +126,12 @@
                     </a>
                 </li>
                 <form style="display: none" enctype="multipart/form-data">
-                    <input type="file" id="ImportExcel" name="file">
-                    <input type="reset" value="重置">
+                    <input type="file" id="ImportExcel" name="file"/>
+                    <input type="reset" value="重置"/>
                 </form>
                 <li class="DisasterReview" ng-hide="Config.Page.Open.Func.DisasterReview" ng-click="Open.Report.Fn.Core.ReportDetails()">
                     <i></i>灾情综述
+                    <div id="pie_chart" style="width: 550px; height: 450px; display: none"></div>
                 </li>
                 <li class="River" ng-hide="Config.Page.Open.Func.River" ng-click="Open.Report.Fn.Core.HL01.ViewRiverData()">
                     <i></i>流域数据

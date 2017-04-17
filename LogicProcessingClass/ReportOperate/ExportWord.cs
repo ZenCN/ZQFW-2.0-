@@ -4,10 +4,9 @@ using System.Text;
 using EntityModel;
 using Aspose.Words;
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Web;
-using System.Web.Script.Serialization;
 using DBHelper;
 /*----------------------------------------------------------------
 // 版本说明：
@@ -201,7 +200,7 @@ namespace LogicProcessingClass.ReportOperate
             return filePath + fileName;
         }
 
-        public string MailMergeToZQZSWord(string json, int limit, string code)
+        public string MailMergeToZQZSWord(string json, int limit, string code, string img_url)
         {
             string[] arr = json.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
             string[] fieldNames = arr[0].Split(new string[] { "," }, StringSplitOptions.None);
@@ -227,7 +226,17 @@ namespace LogicProcessingClass.ReportOperate
             {
                 var doc = new Document(tempPath);  //载入模板
                 doc.MailMerge.Execute(fieldNames, fieldValues);  //合并模版，相当于页面的渲染
-                doc.Save(outputPath);  //保存合并后的文档\
+
+                if (!string.IsNullOrEmpty(img_url))
+                {
+                    DocumentBuilder builder = new DocumentBuilder(doc);
+                    builder.MoveToDocumentEnd();  //移动焦点到文档最后
+                    builder.InsertBreak(BreakType.LineBreak);//换行
+                    builder.ParagraphFormat.Alignment = ParagraphAlignment.Center;//居中
+                    builder.InsertImage(img_url);
+                }
+
+                doc.Save(outputPath);  //保存合并后的文档
             }
             catch (Exception ex)
             {

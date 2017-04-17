@@ -49,16 +49,14 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.1.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="itextsharp">
       <HintPath>..\LogicProcessingClass\NPOIDlls\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Svg, Version=0.5.2.17984, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Svg">
       <HintPath>..\LogicProcessingClass\NPOIDlls\Svg.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
@@ -583,6 +581,7 @@
     <Content Include="Scripts\Library\Extend\Object.js" />
     <Content Include="Scripts\Library\Extend\String.js" />
     <Content Include="Scripts\Library\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\Library\Plugins\highchart\chart_export_3d.min.js" />
     <Content Include="Scripts\Library\Plugins\preloader.js" />
     <Content Include="CSS\Img\Public\Sprites.png" />
     <Content Include="Scripts\Library\Plugins\table-fixed.js" />
@@ -992,7 +991,6 @@
     <Folder Include="Contents\ReportDetails\HL01\33\" />
     <Folder Include="Contents\ReportDetails\HP01\" />
     <Folder Include="CSS\StatisticAlanalysis\DisasterAnalysis\" />
-    <Folder Include="Scripts\Library\Plugins\preloader\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

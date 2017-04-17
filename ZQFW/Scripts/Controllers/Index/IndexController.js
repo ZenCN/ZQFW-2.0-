@@ -6,16 +6,7 @@
     $rootScope.SysUserCode = baseData.Unit.Local.UnitCode.slice(0, 2);
     $rootScope.SysORD_Code = $.cookie('ord_code');
     if ($rootScope.SysORD_Code == "NP01") {
-        $.ajax({
-            url: 'Scripts/Library/Plugins/highchart/highcharts.js',
-            dataType: "script",
-            success: function() {
-                load_js([
-                    "Scripts/Library/Plugins/highchart/modules/exporting.js", 
-                    "Scripts/Library/Plugins/highchart/highcharts-3d.js"
-                ]);
-            }
-        });
+        $.getScript('Scripts/Library/Plugins/highchart/chart_export_3d.min.js');
     }
     if ($rootScope.SysORD_Code == "HL01") {
         baseData.zTree.RptClass = [baseData.zTree.RptClass.Find("name", "%洪涝%")];
@@ -1401,19 +1392,29 @@
                     },
                     ReportDetails: function() {
                         if (['45', '51'].In_Array($scope.SysUserCode)) {
-                            $.ajax({
-                                url: 'Index/GetFile?filename=~/Scripts/Models/ReportDetails/' + $scope.SysUserCode + '.js',
-                                dataType: "script",
-                                cache: true,
-                                success: function() {
-                                    var report = App.Models.HL.HL01.ReportDetials[$scope.SysUserCode]($scope.Open.Report.Current, $scope.BaseData.Field);
-                                    var names = [], values = [];
-                                    $.each(report, function(name, value) {
-                                        names.push(name);
-                                        values.push(value);
-                                    });
+                            window.plugins.preloader('start');
+                            $.getScript('Index/GetFile?filename=~/Scripts/Models/ReportDetails/' + $scope.SysUserCode + '.js', function() {
+                                var report = App.Models.HL.HL01.ReportDetials[$scope.SysUserCode]($scope.Open.Report.Current, $scope.BaseData.Field);
+                                var names = [], values = [], url;
+                                $.each(report, function(name, value) {
+                                    names.push(name);
+                                    values.push(value);
+                                });
+                                url = "BaseData/ExportDisasterReview?report=" + names.toString() + ";" + values.toString().replaceAll("（", "").replaceAll("）", "");
+                                if ($scope.SysUserCode == '51') {
+                                    var callback = function() {
+                                        var img_url = App.Models.HL.HL01.ReportDetials[$scope.SysUserCode].SaveSvg($scope.Open.Report.Current, $scope.BaseData.Field);
+                                        window.open(url + '&img_url=' + img_url);
+                                        window.plugins.preloader('stop');
+                                    }
 
-                                    window.open("BaseData/ExportDisasterReview?report=" + names.toString() + ";" + values.toString().replaceAll("（", "").replaceAll("）", ""));
+                                    if (!angular.isObject(window.Highcharts)) {
+                                        $.getScript('Scripts/Library/Plugins/highchart/chart_export_3d.min.js', callback);
+                                    } else {
+                                        callback();
+                                    }
+                                } else {
+                                    window.open(url);
                                 }
                             });
                         } else {

@@ -5,7 +5,7 @@ App.Models.HL = App.Models.HL || {
 App.Models.HL.HL01.ReportDetials = App.Models.HL.HL01.ReportDetials || {};
 
 App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
-    var szdq = "", ctyCount = 0, simpleName, sdsw = 0, topFiveName = '', topFiveJJSS = '';
+    var szdq = "", ctyCount = 0, simpleName, shsk = 0, sdsw = 0, topFiveName = '', topFiveJJSS = '';
     $.each(rpt.HL011, function (i) {
         if (i > 0 && !this.DW.Contains("本级") && (Number(this.SZFWX) > 0 || Number(this.SZFWZ) > 0)) {
             szdq += this.DW + "、";
@@ -32,6 +32,8 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
             break;
     }
 
+    shsk = App.Tools.Calculator.Addition(rpt.HL011[0].SHSKD, rpt.HL011[0].SHSKX);
+
     $.each(rpt.HL012, function() {
         if (this.DeathReason.Contains('降雨-山洪灾害')) {
             sdsw++;
@@ -49,7 +51,6 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
             }
         }
     });
-
 
     var fn = function (val, fixed) {
         if (Number(val) > 0) {
@@ -92,13 +93,106 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
         GLZD: rpt.HL011[0].GLZD || 0,
         GDZD: rpt.HL011[0].GDZD || 0,
         TXZD: rpt.HL011[0].TXZD || 0,
-        SHSK: undefined,  //????  顺坏水库
+        SHSK: shsk,  //????  顺坏水库
         SHDFCS: rpt.HL011[0].SHDFCS || 0,
         SHDFCD: fn(rpt.HL011[0].SHDFCD),
         ZJJJZSS: fn(rpt.HL011[0].ZJJJZSS),
         SLSSZJJJSS: fn(rpt.HL011[0].SLSSZJJJSS),
-        Money_Unit: field.ZJJJZSS ? field.ZJJJZSS.MeasureName : "（亿元）",
+        Money_Unit: field.ZJJJZSS ? field.ZJJJZSS.MeasureName : "（万元）",
         Top_Five_Name: topFiveName,
         Top_Five_JJSS: topFiveJJSS
     }
+};
+
+App.Models.HL.HL01.ReportDetials["51"].SaveSvg = function(rpt, field) {
+    var title, pie_data = [], pie_chart, img_url;
+    switch (Number($.cookie('limit'))) {
+    case 2:
+        title = '各市（州）直接经济总损失占全省损失比例图';
+        break;
+    case 3:
+        title = '各县（区）直接经济总损失占全市损失比例图';
+        break;
+    case 4:
+        title = '各乡（镇）直接经济总损失占全县损失比例图';
+        break;
+    }
+    
+    $.each(rpt.HL011, function(i) {
+        if (i > 0 && Number(this.ZJJJZSS) > 0) {
+            pie_data.push({ name: this.DW, y: Number(this.ZJJJZSS), sliced: true });
+        }
+    });
+
+    pie_chart = new Highcharts.Chart({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            },
+            renderTo: 'pie_chart',
+        },
+        title: {
+            text: title,
+            style: {
+                fontSize: '18px',
+                color: '#000'
+            }
+        },
+        subtitle: {
+            text: '单位：' + (field.ZJJJZSS ? field.ZJJJZSS.MeasureName : '（万元）'),
+            style: {
+                fontSize: '14px',
+                color: '#000'
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:.2f}' + (field.ZJJJZSS ? field.ZJJJZSS.MeasureName : '（万元）') + '</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                borderWidth: 10,
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}({point.y:.2f}，{point.percentage:.1f}%)',
+                    color: '#000',
+                    style: {
+                        color: '#000',
+                        fontSize: '12px',
+                        fontFamily: '宋体'
+                    }
+                }
+            }
+        },
+        series: [
+            {
+                type: 'pie',
+                name: '总损失',
+                data: pie_data
+            }
+        ],
+        credits: {
+            enabled: false //禁用版权信息
+        },
+        exporting: {
+            enabled: false //禁用导出按钮
+        }
+    });
+
+    $.ajax({
+        type: "post",
+        data: { svg: pie_chart.getSVG() },
+        url: "/Hightcharts/saveImgFromHightcharts",
+        success: function (str) {
+            img_url = str;
+        },
+        async: false
+    });
+
+    return img_url;
 };
