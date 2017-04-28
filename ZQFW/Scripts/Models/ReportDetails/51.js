@@ -64,7 +64,7 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
         return result;
     };
 
-    return {
+    var result = {
         //----------------ReportTitle--------------------
         UnitName: $.cookie("realname") || $.cookie("fullname"),
         TimeNow: App.Tools.Date.GetToday("yyyy年MM月dd日"),
@@ -102,7 +102,59 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
         Top_Five_Name: topFiveName,
         Top_Five_JJSS: topFiveJJSS
     }
+
+    function division(arg1, arg2, n) //除法
+    {
+        arg1 = arg1 == undefined ? 0 : arg1;
+        arg2 = Number(arg2) > 0 ? arg2 : 1;
+        if (arg1 == 0 || arg2 == 0) {
+            return 0; //此处不能返回undefined
+        } else {
+            var t1 = 0,
+                t2 = 0,
+                r1,
+                r2;
+            try {
+                t1 = arg1.toString().split(".")[1].length;
+            } catch (e) {
+            }
+            try {
+                t2 = arg2.toString().split(".")[1].length;
+            } catch (e) {
+            }
+            with (Math) {
+                r1 = Number(arg1.toString().replace(".", ""));
+                r2 = Number(arg2.toString().replace(".", ""));
+                n = n == undefined ? 4 : n;
+                return parseFloat(((r1 / r2) * pow(10, t2 - t1)).toFixed(n));
+            }
+        }
+    }
+
+    $.ajax({
+        url: '/index/getlastfewyeardata?start=' + result.StartDateTime + '&end=' + result.EndDateTime,
+        async: false,
+        success: function(data) {
+            data = eval("(" + data + ")");
+            if (angular.isObject(data)) {
+                result.SZ_Last = division(result.SZRK * field.SZRK.MeasureValue, data.QNTQ.SZRK, 2);
+                result.HL_Last = division(result.SHMJXJ * field.SHMJXJ.MeasureValue, data.QNTQ.SHMJXJ, 2);
+                result.SW_Last = division(result.SWRK * field.SWRK.MeasureValue, data.QNTQ.SWRK, 2);
+                result.SZR_Last = division(result.SZRKR * field.SZRKR.MeasureValue, data.QNTQ.SZRKR, 2);
+                result.ZJSS_Last = division(result.ZJJJZSS * field.ZJJJZSS.MeasureValue, data.QNTQ.ZJJJZSS, 2);
+
+                result.SZ_All = division(result.SZRK * field.SZRK.MeasureValue, data.LNPJ.SZRK, 2);
+                result.HL_All = division(result.SHMJXJ * field.SHMJXJ.MeasureValue, data.LNPJ.SHMJXJ, 2);
+                result.SW_All = division(result.SWRK * field.SWRK.MeasureValue, data.LNPJ.SWRK, 2);
+                result.SZR_All = division(result.SZRKR * field.SZRKR.MeasureValue, data.LNPJ.SZRKR, 2);
+                result.ZJSS_All = division(result.ZJJJZSS * field.ZJJJZSS.MeasureValue, data.LNPJ.ZJJJZSS, 2);
+            }
+        }
+    });
+
+    return result;
 };
+
 
 App.Models.HL.HL01.ReportDetials["51"].SaveSvg = function(rpt, field) {
     var title, pie_data = [], pie_chart, img_url;

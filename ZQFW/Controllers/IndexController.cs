@@ -10,12 +10,10 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using DBHelper;
 using EntityModel;
-using JetBrains.Util;
 using LogicProcessingClass.AuxiliaryClass;
 using LogicProcessingClass.Model;
 using LogicProcessingClass.ReportOperate;
 using Newtonsoft.Json;
-using NuGet;
 using HttpUtility = System.Web.HttpUtility;
 
 namespace ZQFW.Controllers
@@ -1091,6 +1089,13 @@ namespace ZQFW.Controllers
         {
             format = format == null ? "yyyy-MM-dd HH:mm:ss" : format;
             return DateTime.Now.ToString(format);
+        }
+
+        public string GetLastFewYearData(DateTime? start, DateTime? end)
+        {
+            int level = int.Parse(Request["limit"]);
+
+            return new BaseData().GetLastFewYearData(start.Value.AddYears(-1), end.Value.AddYears(-1), level);
         }
     }
 }

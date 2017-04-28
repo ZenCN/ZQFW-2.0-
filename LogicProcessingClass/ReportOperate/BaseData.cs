@@ -21,6 +21,17 @@ using NPOI.SS.Formula.Functions;
 
 namespace LogicProcessingClass.ReportOperate
 {
+    public class LNPJ
+    {
+
+        // Properties
+        public decimal? SHMJXJ { get; set; }
+        public decimal? SWRK { get; set; }
+        public decimal? SZRK { get; set; }
+        public decimal? SZRKR { get; set; }
+        public decimal? ZJJJZSS { get; set; }
+    }
+
     public class BaseData
     {
         Tools tool = new Tools();
@@ -85,6 +96,140 @@ namespace LogicProcessingClass.ReportOperate
             }
             dicEntity.SaveChanges();
 
+        }
+
+        private decimal? EmptyToZero(decimal? val)
+        {
+            if (val.HasValue)
+            {
+                return val;
+            }
+            return 0;
+        }
+
+        public string GetLastFewYearData(DateTime? start, DateTime? end, int level)
+        {
+            HL011 hl;
+            Func<HL011, bool> predicate = null;
+            Func<HL011, bool> func2 = null;
+            string str = "";
+            DateTime? start_1 = start.Value;
+            DateTime? start_2 = start.Value.AddHours(23);
+            DateTime? end_1 = end.Value;
+            DateTime? end_2 = end.Value.AddHours(23);
+            ReportTitle rpt = null;
+            BusinessEntities dbEntities = Persistence.GetDbEntities(level);
+            List<ReportTitle> source = (from t in dbEntities.ReportTitle
+                                        where ((t.StartDateTime >= start_1 && t.StartDateTime <= start_2) 
+                                        && (t.EndDateTime >= end_1 && t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                                        orderby t.PageNO descending
+                                        select t).ToList<ReportTitle>();
+            if (source.Any<ReportTitle>())
+            {
+                rpt = source.First<ReportTitle>();
+            }
+            else
+            {
+                start_1 = new DateTime?(start.Value.AddDays(-10.0));
+                start_2 = new DateTime?(start.Value.AddDays(10.0));
+                end_1 = new DateTime?(end.Value.AddDays(-10.0));
+                end_2 = new DateTime?(end.Value.AddDays(10.0));
+                source = (from t in dbEntities.ReportTitle
+                          where ((((t.StartDateTime > start_1) && (t.StartDateTime <= start_2)) && (t.EndDateTime > end_1)) && (t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                          orderby t.PageNO descending
+                          select t).ToList<ReportTitle>();
+                if (source.Any<ReportTitle>())
+                {
+                    rpt = source.First<ReportTitle>();
+                }
+            }
+            str = "\"QNTQ\":{";
+            if (rpt != null)
+            {
+                if (predicate == null)
+                {
+                    predicate = delegate(HL011 t)
+                    {
+                        int? pageNO = t.PageNO;
+                        int num = rpt.PageNO;
+                        return ((pageNO.GetValueOrDefault() == num) && pageNO.HasValue) && (t.UnitCode == rpt.UnitCode);
+                    };
+                }
+                hl = rpt.HL011.SingleOrDefault<HL011>(predicate);
+                if (hl != null)
+                {
+                    object obj2 = str;
+                    str = string.Concat(new object[] { obj2, "\"SZRK\":", this.EmptyToZero(hl.SZRK), ",\"SHMJXJ\":", this.EmptyToZero(hl.SHMJXJ), ",\"SWRK\":", this.EmptyToZero(hl.SWRK), ",\"SZRKR\":", this.EmptyToZero(hl.SZRKR), ",\"ZJJJZSS\":", this.EmptyToZero(hl.ZJJJZSS) });
+                }
+            }
+            str = str + "},";
+            List<LNPJ> list2 = new List<LNPJ>();
+            for (int i = 0; i >= -9; i--)
+            {
+                rpt = null;
+                start_1 = start.Value.AddYears(i);
+                start_2 = start.Value.AddYears(i).AddHours(23);
+                end_1 = end.Value.AddYears(i);
+                end_2 = end.Value.AddYears(i).AddHours(23);
+
+                source = (from t in dbEntities.ReportTitle
+                          where ((t.StartDateTime >= start_1 && t.StartDateTime <= start_2) 
+                          && (t.EndDateTime >= end_1 && t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                          orderby t.PageNO descending
+                          select t).ToList<ReportTitle>();
+                if (source.Any<ReportTitle>())
+                {
+                    rpt = source.First<ReportTitle>();
+                }
+                else
+                {
+                    start_1 = new DateTime?(start.Value.AddYears(i).AddDays(-10.0));
+                    start_2 = new DateTime?(start.Value.AddYears(i).AddDays(10.0));
+                    end_1 = new DateTime?(end.Value.AddYears(i).AddDays(-10.0));
+                    end_2 = new DateTime?(end.Value.AddYears(i).AddDays(10.0));
+                    source = (from t in dbEntities.ReportTitle
+                              where ((((t.StartDateTime > start_1) && (t.StartDateTime <= start_2)) && (t.EndDateTime > end_1)) && (t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                              orderby t.PageNO descending
+                              select t).ToList<ReportTitle>();
+                    if (source.Any<ReportTitle>())
+                    {
+                        rpt = source.First<ReportTitle>();
+                    }
+                }
+                if (rpt != null)
+                {
+                    if (func2 == null)
+                    {
+                        func2 = delegate(HL011 t)
+                        {
+                            int? pageNO = t.PageNO;
+                            int num = rpt.PageNO;
+                            return ((pageNO.GetValueOrDefault() == num) && pageNO.HasValue) && (t.UnitCode == rpt.UnitCode);
+                        };
+                    }
+                    hl = rpt.HL011.SingleOrDefault<HL011>(func2);
+                    if (hl != null)
+                    {
+                        LNPJ item = new LNPJ
+                        {
+                            SZRK = EmptyToZero(hl.SZRK),
+                            SHMJXJ = EmptyToZero(hl.SHMJXJ),
+                            SWRK = EmptyToZero(hl.SWRK),
+                            SZRKR = EmptyToZero(hl.SZRKR),
+                            ZJJJZSS = EmptyToZero(hl.ZJJJZSS)
+                        };
+                        list2.Add(item);
+                    }
+                }
+            }
+            str = str + "\"LNPJ\":{";
+            if (list2.Any<LNPJ>())
+            {
+                string str3 = str;
+                str = str3 + "\"SZRK\":" + list2.Average<LNPJ>(((Func<LNPJ, decimal?>)(t => t.SZRK))).Value.ToString("0.0000") + ",\"SHMJXJ\":" + list2.Average<LNPJ>(((Func<LNPJ, decimal?>)(t => t.SHMJXJ))).Value.ToString("0.0000") + ",\"SWRK\":" + list2.Average<LNPJ>(((Func<LNPJ, decimal?>)(t => t.SWRK))).Value.ToString("0.0000") + ",\"SZRKR\":" + list2.Average<LNPJ>(((Func<LNPJ, decimal?>)(t => t.SZRKR))).Value.ToString("0.0000") + ",\"ZJJJZSS\":" + list2.Average<LNPJ>(((Func<LNPJ, decimal?>)(t => t.ZJJJZSS))).Value.ToString("0.0000");
+            }
+            str = str + "}";
+            return ("{" + str + "}");
         }
 
         public int GetLimitByUnitCode(string unitcode)
