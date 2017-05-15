@@ -2031,7 +2031,10 @@ namespace LogicProcessingClass.ReportOperate
             {
                 cellCount = 16;
             }
-            sheet1 = CreateCell(sheet1, xmmhp011s.Count, cellCount, 6);
+
+            int row_count = xmmhp011s.Count >= xmmhp012s.Count ? xmmhp011s.Count : xmmhp012s.Count;
+
+            sheet1 = CreateCell(sheet1, row_count, cellCount, 6);
             string[] fieldsArr = fields.Split(',');
             //for (int j = 1; j < 15; j++)
             //{
@@ -2046,35 +2049,38 @@ namespace LogicProcessingClass.ReportOperate
             //HSSFDataValidation dataValidate = new HSSFDataValidation(regions, constraint);
             //((HSSFSheet)sheet1).AddValidationData(dataValidate);
 
-            for (int i = 0; i < xmmhp011s.Count; i++)//16个cell
+            NPOI.SS.UserModel.IRow row = null;
+            for (int i = 0; i < row_count; i++)//16个cell
             {
-                sheet1.GetRow(6 + i).GetCell(0).SetCellValue(xmmhp011s[i].DW);
-                sheet1.GetRow(6 + i).GetCell(1).SetCellValue(xmmhp011s[i].XYSKCS);
-                sheet1.GetRow(6 + i).GetCell(2).SetCellValue(xmmhp011s[i].XYKYXS);
-                sheet1.GetRow(6 + i).GetCell(3).SetCellValue(xmmhp011s[i].XYKXXS);
-                sheet1.GetRow(6 + i).GetCell(4).SetCellValue(xmmhp011s[i].XYKKYS);
-                sheet1.GetRow(6 + i).GetCell(5).SetCellValue(xmmhp011s[i].XKXZYBFB);
-                sheet1.GetRow(6 + i).GetCell(6).SetCellValue(xmmhp011s[i].XRSKCS);
-                sheet1.GetRow(6 + i).GetCell(7).SetCellValue(xmmhp011s[i].XRKYXS);
-                sheet1.GetRow(6 + i).GetCell(8).SetCellValue(xmmhp011s[i].XRKXXS);
-                sheet1.GetRow(6 + i).GetCell(9).SetCellValue(xmmhp011s[i].XRKKYS);
-                sheet1.GetRow(6 + i).GetCell(10).SetCellValue(xmmhp011s[i].XRXZYBFB);
-                sheet1.GetRow(6 + i).GetCell(11).SetCellValue(xmmhp011s[i].SPTHJCS);
-                sheet1.GetRow(6 + i).GetCell(12).SetCellValue(xmmhp011s[i].SPTYXS);
-                sheet1.GetRow(6 + i).GetCell(13).SetCellValue(xmmhp011s[i].SPTXXS);
-                sheet1.GetRow(6 + i).GetCell(14).SetCellValue(xmmhp011s[i].SPTKYS);
-                sheet1.GetRow(6 + i).GetCell(15).SetCellValue(xmmhp011s[i].TXZYBFB);
-                if (limit == 2)
+                row = sheet1.GetRow(6 + i);
+                if (i < xmmhp011s.Count)
                 {
-                    if (i < xmmhp012s.Count)
-                    {
-                        sheet1.GetRow(6 + i).GetCell(16).SetCellValue(xmmhp012s[i].DXSKMC);
-                        sheet1.GetRow(6 + i).GetCell(17).SetCellValue(xmmhp012s[i].DXKYXSL);
-                        sheet1.GetRow(6 + i).GetCell(18).SetCellValue(xmmhp012s[i].DXKXXSL);
-                        sheet1.GetRow(6 + i).GetCell(19).SetCellValue(xmmhp012s[i].DXKKYS);
-                        sheet1.GetRow(6 + i).GetCell(20).SetCellValue(xmmhp012s[i].DXZYBFB);
-                        sheet1.GetRow(6 + i).GetCell(21).SetCellValue(xmmhp012s[i].QNTQDXS);
-                    }
+                    row.GetCell(0).SetCellValue(xmmhp011s[i].DW);
+                    row.GetCell(1).SetCellValue(xmmhp011s[i].XYSKCS);
+                    row.GetCell(2).SetCellValue(xmmhp011s[i].XYKYXS);
+                    row.GetCell(3).SetCellValue(xmmhp011s[i].XYKXXS);
+                    row.GetCell(4).SetCellValue(xmmhp011s[i].XYKKYS);
+                    row.GetCell(5).SetCellValue(xmmhp011s[i].XKXZYBFB);
+                    row.GetCell(6).SetCellValue(xmmhp011s[i].XRSKCS);
+                    row.GetCell(7).SetCellValue(xmmhp011s[i].XRKYXS);
+                    row.GetCell(8).SetCellValue(xmmhp011s[i].XRKXXS);
+                    row.GetCell(9).SetCellValue(xmmhp011s[i].XRKKYS);
+                    row.GetCell(10).SetCellValue(xmmhp011s[i].XRXZYBFB);
+                    row.GetCell(11).SetCellValue(xmmhp011s[i].SPTHJCS);
+                    row.GetCell(12).SetCellValue(xmmhp011s[i].SPTYXS);
+                    row.GetCell(13).SetCellValue(xmmhp011s[i].SPTXXS);
+                    row.GetCell(14).SetCellValue(xmmhp011s[i].SPTKYS);
+                    row.GetCell(15).SetCellValue(xmmhp011s[i].TXZYBFB);
+                }
+                
+                if (limit == 2 && i < xmmhp012s.Count)
+                {
+                    row.GetCell(16).SetCellValue(xmmhp012s[i].DXSKMC);
+                    row.GetCell(17).SetCellValue(xmmhp012s[i].DXKYXSL);
+                    row.GetCell(18).SetCellValue(xmmhp012s[i].DXKXXSL);
+                    row.GetCell(19).SetCellValue(xmmhp012s[i].DXKKYS);
+                    row.GetCell(20).SetCellValue(xmmhp012s[i].DXZYBFB);
+                    row.GetCell(21).SetCellValue(xmmhp012s[i].QNTQDXS);
                 }
             }
             //填写表头信息

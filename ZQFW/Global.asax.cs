@@ -42,7 +42,7 @@ namespace ZQFW
             Persistence persistence = new Persistence();
             //四川省 51000000  湖北 42000000 浙江省 33000000  湖南省 43000000 吉林省 22000000 
             //内蒙古 15000000  江西省 36000000 广西 45000000 福建省 35000000  黑龙江省 23000000  
-            persistence.PersistenceUnits("51000000 ");
+            persistence.PersistenceUnits("43000000 ");
 
             LogicProcessingClass.ReportOperate.Message.ReadMsgFillInApplicaion();
         }

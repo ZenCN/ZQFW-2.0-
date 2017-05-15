@@ -206,12 +206,12 @@ namespace ZQFW.Controllers
 
         public string Update_Add_Units(string update_units, string add_units)
         {
-            int level = int.Parse(Request["limit"]);
+            int level = 0;
             LGN lgn = null;
             TB07_District tb07 = null;
             List<UnitOper> update_list = null;
             List<UnitOper> add_list = null;
-            BusinessEntities bus = Persistence.GetDbEntities(level);
+            BusinessEntities bus = null;
             FXDICTEntities dic = Persistence.GetDbEntities();
 
             try
@@ -219,6 +219,8 @@ namespace ZQFW.Controllers
                 if (update_units.Trim() != "[]")
                 {
                     update_list = JsonConvert.DeserializeObject<List<UnitOper>>(update_units);
+                    level = Tools.GetLimitByCode(update_list.First().ParentCode) + 1;
+                    bus = Persistence.GetDbEntities(level);
                     update_list.ForEach(u =>
                     {
                         tb07 = dic.TB07_District.SingleOrDefault(t => t.DistrictCode == u.Code);
@@ -235,10 +237,12 @@ namespace ZQFW.Controllers
                         }
                     });
                 }
-
+                
                 if (add_units.Trim() != "[]")
                 {
                     add_list = JsonConvert.DeserializeObject<List<UnitOper>>(add_units);
+                    level = Tools.GetLimitByCode(add_list.First().ParentCode) + 1;
+                    bus = Persistence.GetDbEntities(level);
                     add_list.ForEach(u =>
                     {
                         tb07 = new TB07_District();

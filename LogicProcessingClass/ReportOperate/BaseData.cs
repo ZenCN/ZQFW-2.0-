@@ -107,7 +107,7 @@ namespace LogicProcessingClass.ReportOperate
             return 0;
         }
 
-        public string GetLastFewYearData(DateTime? start, DateTime? end, int level)
+        public string GetLastFewYearData(DateTime? start, DateTime? end, int level, string unitcode)
         {
             HL011 hl;
             Func<HL011, bool> predicate = null;
@@ -121,7 +121,7 @@ namespace LogicProcessingClass.ReportOperate
             BusinessEntities dbEntities = Persistence.GetDbEntities(level);
             List<ReportTitle> source = (from t in dbEntities.ReportTitle
                                         where ((t.StartDateTime >= start_1 && t.StartDateTime <= start_2) 
-                                        && (t.EndDateTime >= end_1 && t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                                        && (t.EndDateTime >= end_1 && t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0") && t.UnitCode == unitcode
                                         orderby t.PageNO descending
                                         select t).ToList<ReportTitle>();
             if (source.Any<ReportTitle>())
@@ -135,7 +135,9 @@ namespace LogicProcessingClass.ReportOperate
                 end_1 = new DateTime?(end.Value.AddDays(-10.0));
                 end_2 = new DateTime?(end.Value.AddDays(10.0));
                 source = (from t in dbEntities.ReportTitle
-                          where ((((t.StartDateTime > start_1) && (t.StartDateTime <= start_2)) && (t.EndDateTime > end_1)) && (t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                          where (t.StartDateTime >= start_1 && t.StartDateTime <= start_2 && 
+                          t.EndDateTime >= end_1 && t.EndDateTime <= end_2 && 
+                          t.RPTType_Code == "XZ0" && t.UnitCode == unitcode)
                           orderby t.PageNO descending
                           select t).ToList<ReportTitle>();
                 if (source.Any<ReportTitle>())
@@ -173,8 +175,8 @@ namespace LogicProcessingClass.ReportOperate
                 end_2 = end.Value.AddYears(i).AddHours(23);
 
                 source = (from t in dbEntities.ReportTitle
-                          where ((t.StartDateTime >= start_1 && t.StartDateTime <= start_2) 
-                          && (t.EndDateTime >= end_1 && t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                          where ((t.StartDateTime >= start_1 && t.StartDateTime <= start_2)
+                          && (t.EndDateTime >= end_1 && t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0") && t.UnitCode == unitcode
                           orderby t.PageNO descending
                           select t).ToList<ReportTitle>();
                 if (source.Any<ReportTitle>())
@@ -188,7 +190,9 @@ namespace LogicProcessingClass.ReportOperate
                     end_1 = new DateTime?(end.Value.AddYears(i).AddDays(-10.0));
                     end_2 = new DateTime?(end.Value.AddYears(i).AddDays(10.0));
                     source = (from t in dbEntities.ReportTitle
-                              where ((((t.StartDateTime > start_1) && (t.StartDateTime <= start_2)) && (t.EndDateTime > end_1)) && (t.EndDateTime <= end_2)) && (t.RPTType_Code == "XZ0")
+                              where t.StartDateTime >= start_1 && t.StartDateTime <= start_2 && 
+                              t.EndDateTime >= end_1 && t.EndDateTime <= end_2 && 
+                              t.RPTType_Code == "XZ0" && t.UnitCode == unitcode
                               orderby t.PageNO descending
                               select t).ToList<ReportTitle>();
                     if (source.Any<ReportTitle>())

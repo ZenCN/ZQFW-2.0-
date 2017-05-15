@@ -561,7 +561,9 @@
         }
     };
 
-    //$rootScope.Fn.OnInit();
+    if (["HP01", "NP01"].In_Array($rootScope.SysORD_Code)) {
+        $rootScope.Fn.OnInit();  //湖南蓄水、内蒙古蓄水要用到
+    }
     $rootScope.CurrentUrl = window.location.hash.replace("#", "");
     $rootScope.RedictUrl = function (url) {
         var name = url.replace('/', '');
@@ -1394,7 +1396,7 @@
                         if (['45', '51'].In_Array($scope.SysUserCode)) {
                             window.plugins.preloader('start');
                             $.getScript('Index/GetFile?filename=~/Scripts/Models/ReportDetails/' + $scope.SysUserCode + '.js', function() {
-                                var report = App.Models.HL.HL01.ReportDetials[$scope.SysUserCode]($scope.Open.Report.Current, $scope.BaseData.Field);
+                                var report = App.Models.HL.HL01.ReportDetials[$scope.SysUserCode](angular.copy($scope.Open.Report.Current), $scope.BaseData.Field);
                                 var names = [], values = [], url;
                                 $.each(report, function(name, value) {
                                     names.push(name);

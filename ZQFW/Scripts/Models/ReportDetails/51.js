@@ -40,17 +40,24 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
         }
     });
 
+    var zss_name = "分别为";
+    var dw_count = 0;
     $.each(rpt.HL011.BubbleSort('ZJJJZSS'), function (i) {
-        if (i > 0) {
+        if (i > 0 && Number(this.ZJJJZSS) > 0) {
             topFiveName += this.DW + '、';
             topFiveJJSS += this.ZJJJZSS + '、';
-            if (i == 5) {
-                topFiveName = topFiveName.slice(0, topFiveName.length - 1);
-                topFiveJJSS = topFiveJJSS.slice(0, topFiveJJSS.length - 1);
+            if (++dw_count == 5) {
                 return false;
             }
         }
     });
+    if (dw_count > 0) {
+        topFiveName = topFiveName.slice(0, topFiveName.length - 1);
+        topFiveJJSS = topFiveJJSS.slice(0, topFiveJJSS.length - 1);
+        if (dw_count == 1) {
+            zss_name = "为";
+        }
+    }
 
     var fn = function (val, fixed) {
         if (Number(val) > 0) {
@@ -93,20 +100,21 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
         GLZD: rpt.HL011[0].GLZD || 0,
         GDZD: rpt.HL011[0].GDZD || 0,
         TXZD: rpt.HL011[0].TXZD || 0,
-        SHSK: shsk,  //????  顺坏水库
+        SHSK: shsk || 0,  //损坏水库
         SHDFCS: rpt.HL011[0].SHDFCS || 0,
         SHDFCD: fn(rpt.HL011[0].SHDFCD),
         ZJJJZSS: fn(rpt.HL011[0].ZJJJZSS),
         SLSSZJJJSS: fn(rpt.HL011[0].SLSSZJJJSS),
         Money_Unit: field.ZJJJZSS ? field.ZJJJZSS.MeasureName : "（万元）",
         Top_Five_Name: topFiveName,
-        Top_Five_JJSS: topFiveJJSS
+        Top_Five_JJSS: topFiveJJSS,
+        ZSS_Name: zss_name
     }
 
-    function division(arg1, arg2, n) //除法
+    function division(arg1, arg2, n, name) //除法
     {
         arg1 = arg1 == undefined ? 0 : arg1;
-        arg2 = Number(arg2) > 0 ? arg2 : 1;
+        arg2 = Number(arg2) > 0 ? arg2 : field[name].MeasureValue;
         if (arg1 == 0 || arg2 == 0) {
             return 0; //此处不能返回undefined
         } else {
@@ -137,17 +145,17 @@ App.Models.HL.HL01.ReportDetials["51"] = function (rpt, field) {
         success: function(data) {
             data = eval("(" + data + ")");
             if (angular.isObject(data)) {
-                result.SZ_Last = division(result.SZRK * field.SZRK.MeasureValue, data.QNTQ.SZRK, 2);
-                result.HL_Last = division(result.SHMJXJ * field.SHMJXJ.MeasureValue, data.QNTQ.SHMJXJ, 2);
-                result.SW_Last = division(result.SWRK * field.SWRK.MeasureValue, data.QNTQ.SWRK, 2);
-                result.SZR_Last = division(result.SZRKR * field.SZRKR.MeasureValue, data.QNTQ.SZRKR, 2);
-                result.ZJSS_Last = division(result.ZJJJZSS * field.ZJJJZSS.MeasureValue, data.QNTQ.ZJJJZSS, 2);
+                result.SZ_Last = division(result.SZRK * field.SZRK.MeasureValue, data.QNTQ.SZRK, 2, 'SZRK');
+                result.HL_Last = division(result.SHMJXJ * field.SHMJXJ.MeasureValue, data.QNTQ.SHMJXJ, 2, 'SHMJXJ');
+                result.SW_Last = division(result.SWRK * field.SWRK.MeasureValue, data.QNTQ.SWRK, 2,'SWRK');
+                result.SZR_Last = division(result.SZRKR * field.SZRKR.MeasureValue, data.QNTQ.SZRKR, 2,'SZRKR');
+                result.ZJSS_Last = division(result.ZJJJZSS * field.ZJJJZSS.MeasureValue, data.QNTQ.ZJJJZSS, 2,'ZJJJZSS');
 
-                result.SZ_All = division(result.SZRK * field.SZRK.MeasureValue, data.LNPJ.SZRK, 2);
-                result.HL_All = division(result.SHMJXJ * field.SHMJXJ.MeasureValue, data.LNPJ.SHMJXJ, 2);
-                result.SW_All = division(result.SWRK * field.SWRK.MeasureValue, data.LNPJ.SWRK, 2);
-                result.SZR_All = division(result.SZRKR * field.SZRKR.MeasureValue, data.LNPJ.SZRKR, 2);
-                result.ZJSS_All = division(result.ZJJJZSS * field.ZJJJZSS.MeasureValue, data.LNPJ.ZJJJZSS, 2);
+                result.SZ_All = division(result.SZRK * field.SZRK.MeasureValue, data.LNPJ.SZRK, 2, 'SZRK');
+                result.HL_All = division(result.SHMJXJ * field.SHMJXJ.MeasureValue, data.LNPJ.SHMJXJ, 2,'SHMJXJ');
+                result.SW_All = division(result.SWRK * field.SWRK.MeasureValue, data.LNPJ.SWRK, 2,'SWRK');
+                result.SZR_All = division(result.SZRKR * field.SZRKR.MeasureValue, data.LNPJ.SZRKR, 2,'SZRKR');
+                result.ZJSS_All = division(result.ZJJJZSS * field.ZJJJZSS.MeasureValue, data.LNPJ.ZJJJZSS, 2,'ZJJJZSS');
             }
         }
     });

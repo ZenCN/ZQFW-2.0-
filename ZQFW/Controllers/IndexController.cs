@@ -1094,8 +1094,9 @@ namespace ZQFW.Controllers
         public string GetLastFewYearData(DateTime? start, DateTime? end)
         {
             int level = int.Parse(Request["limit"]);
+            string unitcode = Request["unitcode"];
 
-            return new BaseData().GetLastFewYearData(start.Value.AddYears(-1), end.Value.AddYears(-1), level);
+            return new BaseData().GetLastFewYearData(start.Value.AddYears(-1), end.Value.AddYears(-1), level, unitcode);
         }
     }
 }
